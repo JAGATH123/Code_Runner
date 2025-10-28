@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # CPU-only container (existing, for regular code)
+  python-code-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python-code-runner
+    container_name: python-code-runner-container
+    stdin_open: true
+    tty: true
+    network_mode: none
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=10m
+    mem_limit: 128m
+    cpus: 0.5
+    user: "1000:1000"
+    restart: no
+    volumes:
+      - /dev/null:/dev/null
+
+  # GPU-enabled container (new, for GPU workloads)
+  python-code-runner-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    image: python-code-runner-gpu
+    container_name: python-code-runner-gpu-container
+    stdin_open: true
+    tty: true
+    network_mode: none
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=100m  # Larger temp space for GPU operations
+    mem_limit: 4g  # More memory for GPU workloads
+    cpus: 2.0  # More CPU cores for GPU workloads
+    user: "1000:1000"
+    restart: no
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1  # Use 1 GPU
+              capabilities: [gpu, compute, utility]
+              # Optional: Limit GPU memory (uncomment to restrict)
+              # device_ids: ['0']
+              # options:
+              #   - "com.nvidia.cuda.version=12.4"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - CUDA_VISIBLE_DEVICES=0
+    volumes:
+      - /dev/null:/dev/null

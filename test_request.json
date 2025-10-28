@@ -1,0 +1,5 @@
+{
+  "code": "import matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.linspace(0, 10, 100)\ny = np.sin(x)\n\nplt.figure(figsize=(8, 6))\nplt.plot(x, y)\nplt.title('Test Sine Wave')\nplt.xlabel('X values')\nplt.ylabel('Y values')\nplt.show()\n\nprint('Plot generated successfully!')",
+  "input": "",
+  "language": "python"
+}

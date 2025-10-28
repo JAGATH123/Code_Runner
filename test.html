@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Villain Showcase</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --villain-red: #ff003c;
+            --villain-magenta: #ff00ff;
+            --villain-cyan: #00ffff;
+            --villain-yellow: #ffff00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000011;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+            color: var(--villain-cyan);
+        }
+        canvas { display: block; }
+        
+        .ui-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        /* Character Profile Popup */
+        .character-profile {
+            position: fixed;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(10, 0, 10, 0.85);
+            border: 2px solid var(--villain-red);
+            padding: 25px;
+            pointer-events: none; /* Initially not interactive */
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 35px rgba(255, 0, 60, 0.6), inset 0 0 20px rgba(255, 0, 60, 0.4);
+            z-index: 2000;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+            transform-origin: bottom center;
+            transform: scale(0.5);
+        }
+        
+        .character-profile.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: scale(1);
+        }
+        
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 0, 60, 0.5);
+        }
+        
+        .profile-name {
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--villain-red);
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .profile-name::after, .profile-name::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: transparent;
+            text-shadow: 0 0 2px var(--villain-red);
+        }
+
+        .profile-name::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--villain-magenta);
+            animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+        }
+
+        .profile-name::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--villain-cyan), 2px 2px var(--villain-magenta);
+            animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(15% 0 75% 0); } 100% { clip-path: inset(40% 0 25% 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(80% 0 5% 0); } 100% { clip-path: inset(30% 0 65% 0); }
+        }
+        
+        .close-btn {
+            width: 40px; height: 40px;
+            background: rgba(255, 0, 60, 0.2);
+            border: 2px solid var(--villain-red);
+            color: #fff; font-size: 20px; cursor: pointer;
+            transition: all 0.3s ease;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+        }
+        
+        .close-btn:hover {
+            background: var(--villain-magenta);
+            border-color: var(--villain-magenta);
+            transform: rotate(180deg);
+        }
+        
+        .profile-content {
+            display: flex; flex-direction: column; gap: 20px;
+            max-height: 50vh; overflow-y: auto;
+        }
+
+        .stats-section, .abilities-section, .ability-details-section {
+            background: rgba(0, 0, 0, 0.4); padding: 15px;
+            border: 1px solid rgba(255, 0, 60, 0.4);
+        }
+        
+        .section-title {
+            font-size: 20px; margin-bottom: 15px;
+            color: var(--villain-red); text-transform: uppercase; font-weight: 700;
+        }
+        
+        .stat-bar { margin-bottom: 15px; }
+        .stat-name {
+            font-size: 12px; margin-bottom: 5px;
+            color: rgba(255, 255, 255, 0.8); text-transform: uppercase;
+        }
+        
+        .stat-bar-container {
+            width: 100%; height: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--villain-red);
+            position: relative;
+        }
+        
+        .stat-bar-fill {
+            height: 100%; background: var(--villain-red);
+            box-shadow: 0 0 10px var(--villain-red); transition: width 1s ease;
+        }
+        
+        .ability-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px;
+        }
+        
+        .ability-card {
+            background: rgba(0, 0, 0, 0.5); border: 1px solid var(--villain-red);
+            padding: 10px; text-align: center;
+            transition: all 0.3s ease; cursor: pointer;
+        }
+        
+        .ability-card:hover, .ability-card.selected {
+            background: var(--villain-red); color: #fff;
+            transform: scale(1.05); box-shadow: 0 0 15px var(--villain-red);
+        }
+        
+        .ability-card:hover .ability-name, .ability-card.selected .ability-name { color: #fff; }
+        .ability-card:hover .ability-icon, .ability-card.selected .ability-icon { background: var(--villain-yellow); }
+        
+        .ability-icon {
+            width: 30px; height: 30px;
+            background: var(--villain-magenta); color: #000;
+            margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;
+            font-size: 18px; font-weight: bold;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: background 0.3s ease;
+        }
+        
+        .ability-name {
+            font-size: 10px; color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase; transition: color 0.3s ease;
+        }
+        
+        .bio-text {
+            line-height: 1.6; color: rgba(255, 255, 255, 0.8); font-size: 12px;
+        }
+        
+        .character-name {
+            position: absolute; bottom: 100px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 48px; font-weight: 900;
+            text-transform: uppercase; letter-spacing: 4px; color: var(--villain-red);
+            text-shadow: 0 0 15px var(--villain-red), 0 0 5px #fff, 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        .character-role {
+            position: absolute; bottom: 60px; left: 50%;
+            transform: translateX(-50%); color: var(--villain-magenta); font-size: 18px;
+            text-transform: uppercase; letter-spacing: 8px;
+        }
+        
+        .click-indicator {
+            position: absolute; bottom: 150px; left: 50%;
+            transform: translateX(-50%); color: rgba(255, 255, 255, 0.6);
+            font-size: 14px; text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        
+        .abilities {
+            position: absolute; bottom: 30px; left: 50%;
+            transform: translateX(-50%); display: flex; gap: 15px;
+        }
+        
+        .ability-btn {
+            width: 50px; height: 50px;
+            background: rgba(0, 0, 0, 0.5); border: 2px solid var(--villain-red);
+            color: #fff; font-size: 20px; font-weight: bold;
+            cursor: pointer; pointer-events: all; transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+        }
+        
+        .ability-btn:hover { background: var(--villain-red); color: #fff; transform: scale(1.1); }
+        
+        .ability-btn.ultimate {
+            background: var(--villain-magenta); border-color: var(--villain-magenta);
+            width: 70px; height: 70px;
+        }
+        .ability-btn.ultimate:hover { background: var(--villain-red); border-color: var(--villain-red); }
+        
+        .loading {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px; text-align: center; color: var(--villain-yellow);
+        }
+    </style>
+</head>
+<body>
+    <div class="ui-overlay">
+        <div class="click-indicator" id="clickIndicator" style="display: none;">[ SCAN SUBJECT FOR DATA ]</div>
+        <div class="character-name" id="charName" style="display: none;">KHAOS</div>
+        <div class="character-role" id="charRole" style="display: none;">NET-SLASHER</div>
+        
+        <div class="abilities" id="abilities" style="display: none;">
+            <button class="ability-btn">Q</button>
+            <button class="ability-btn">E</button>
+            <button class="ability-btn">C</button>
+            <button class="ability-btn ultimate">X</button>
+        </div>
+        
+        <div class="loading" id="loading">...ACQUIRING TARGET...</div>
+    </div>
+
+    <!-- Character Profile Popup -->
+    <div class="character-profile" id="characterProfile">
+        <div class="profile-header">
+            <div class="profile-name" data-text="KHAOS">KHAOS</div>
+            <button class="close-btn" id="closeProfile">X</button>
+        </div>
+        
+        <div class="profile-content">
+            <div class="stats-section">
+                <div class="section-title">COMBAT PROFILE</div>
+                <div class="stat-bar"><div class="stat-name">BRUTALITY</div><div class="stat-bar-container"><div class="stat-bar-fill" data-value="95"></div></div></div>
+                <div class="stat-bar"><div class="stat-name">SPEED</div><div class="stat-bar-container"><div class="stat-bar-fill" data-value="85"></div></div></div>
+                <div class="stat-bar"><div class="stat-name">ARMOR</div><div class="stat-bar-container"><div class="stat-bar-fill" data-value="60"></div></div></div>
+                <div class="stat-bar"><div class="stat-name">CUNNING</div><div class="stat-bar-container"><div class="stat-bar-fill" data-value="88"></div></div></div>
+                <div class="stat-bar"><div class="stat-name">TECH</div><div class="stat-bar-container"><div class="stat-bar-fill" data-value="75"></div></div></div>
+            </div>
+            
+            <div class="abilities-section">
+                <div class="section-title">ILLEGAL CHROME</div>
+                <div class="ability-grid">
+                    <div class="ability-card"><div class="ability-icon">Q</div><div class="ability-name">Synapse Burn</div></div>
+                    <div class="ability-card"><div class="ability-icon">E</div><div class="ability-name">Micro-Missiles</div></div>
+                    <div class="ability-card"><div class="ability-icon">C</div><div class="ability-name">Gorilla Arms</div></div>
+                    <div class="ability-card"><div class="ability-icon">X</div><div class="ability-name">System Collapse</div></div>
+                </div>
+            </div>
+            
+            <div class="ability-details-section" id="abilityDetails">
+                <h3 class="section-title" id="abilityDetailTitle">Accessing Black Market Schematic...</h3>
+                <p class="bio-text" id="abilityDetailDesc">Select chrome to bypass ICE.</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+        let scene, camera, renderer, controls, composer, hologramProjector;
+        let soldier, mixer, animations = {}, starfields = [], gridPlatform;
+        let isLoaded = false, isProfileOpen = false;
+        const clock = new THREE.Clock();
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        
+        const abilityData = {
+            'Q': { name: 'Synapse Burn', desc: 'A violent quickhack that overloads the target\'s neural pathways, causing immense pain and frying their chrome. Messy, but effective.' },
+            'E': { name: 'Micro-Missile Launcher', desc: 'You think a grenade is cute? This arm-mounted cannon fires a volley of self-guided explosives. Reduces targets to a fine red mist.' },
+            'C': { name: 'Gorilla Arms', desc: 'Rip doors from their hinges and bodies from their spines. These augmented knuckles turn every punch into a killing blow. Subtlety is for gonks.' },
+            'X': { name: 'System Collapse', desc: 'The ultimate violation. A ghost-in-the-machine attack that remotely shuts down a target\'s body, leaving them a twitching, helpless puppet.' }
+        };
+
+        const hologramShader = {
+            uniforms: {
+                time: { value: 0 },
+                color: { value: new THREE.Color(0xff003c) }
+            },
+            vertexShader: `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform float time;
+                uniform vec3 color;
+                varying vec2 vUv;
+
+                float random(vec2 st) {
+                    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+                }
+
+                void main() {
+                    float scanline = sin(vUv.y * 300.0 + time * 5.0) * 0.1;
+                    float noise = random(vUv * time) * 0.2;
+                    float falloff = 1.0 - vUv.y;
+                    
+                    gl_FragColor = vec4(color, falloff * 0.5 + scanline + noise);
+                }
+            `
+        };
+
+
+        init();
+
+        async function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 5, 12);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.5;
+            document.body.appendChild(renderer.domElement);
+
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.target.set(0, 3, 0);
+            controls.minDistance = 6;
+            controls.maxDistance = 20;
+            controls.maxPolarAngle = Math.PI / 2 + 0.3;
+            controls.minPolarAngle = Math.PI / 3.5;
+            controls.enablePan = false;
+
+            createSpaceEnvironment();
+            createStarfield();
+            createLighting();
+            await loadSoldier();
+            createHologramProjector();
+            setupPostProcessing();
+            setupEventListeners();
+
+            window.addEventListener('resize', onWindowResize);
+            animate();
+        }
+
+        function createSpaceEnvironment() {
+            const platformGeometry = new THREE.CylinderGeometry(5, 5, 0.2, 64);
+            const loader = new THREE.TextureLoader();
+            const gridTexture = loader.load('https://threejs.org/examples/textures/hardwood2_diffuse.jpg'); // Reusing a texture for grid effect
+            gridTexture.wrapS = THREE.RepeatWrapping;
+            gridTexture.wrapT = THREE.RepeatWrapping;
+            gridTexture.repeat.set(4, 4);
+
+            const platformMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x111111, 
+                roughness: 0.4, 
+                metalness: 0.8, 
+                emissive: 0xff003c, 
+                emissiveIntensity: 0.3,
+                map: gridTexture,
+            });
+            gridPlatform = new THREE.Mesh(platformGeometry, platformMaterial);
+            gridPlatform.position.y = -0.1;
+            gridPlatform.receiveShadow = true;
+            scene.add(gridPlatform);
+        }
+
+        function createStarfield() {
+            const starCounts = [5000, 3000, 2000];
+            starCounts.forEach((count, i) => {
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(count * 3);
+                for (let j = 0; j < count; j++) {
+                    positions[j * 3] = (Math.random() - 0.5) * 300;
+                    positions[j * 3 + 1] = (Math.random() - 0.5) * 300;
+                    positions[j * 3 + 2] = (Math.random() - 0.5) * 300;
+                }
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const material = new THREE.PointsMaterial({ color: 0xaaaaaa, size: 0.05 + i * 0.02, transparent: true, opacity: 0.8 });
+                const stars = new THREE.Points(geometry, material);
+                stars.userData.velocity = (i + 1) * 0.05;
+                starfields.push(stars);
+                scene.add(stars);
+            });
+        }
+
+        function createLighting() {
+            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const keyLight = new THREE.DirectionalLight(0xffffff, 1);
+            keyLight.position.set(5, 10, 5);
+            keyLight.castShadow = true;
+            scene.add(keyLight);
+            const rimLight = new THREE.DirectionalLight(0xff003c, 5);
+            rimLight.position.set(-5, 5, -10);
+            scene.add(rimLight);
+        }
+
+        async function loadSoldier() {
+            try {
+                const loader = new GLTFLoader();
+                const gltf = await loader.loadAsync('mini_alien.glb');
+                soldier = gltf.scene;
+                soldier.scale.set(4, 4, 4);
+                soldier.rotation.y = Math.PI;
+                soldier.traverse((child) => {
+                    if (child.isMesh) {
+                        child.castShadow = true;
+                        child.material.metalness = 0.7;
+                        child.material.roughness = 0.4;
+                    }
+                });
+                scene.add(soldier);
+                mixer = new THREE.AnimationMixer(soldier);
+                gltf.animations.forEach((clip) => {
+                    animations[clip.name] = mixer.clipAction(clip);
+                });
+                if (animations['Idle']) animations['Idle'].play();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('clickIndicator').style.display = 'block';
+                document.getElementById('charName').style.display = 'block';
+                document.getElementById('charRole').style.display = 'block';
+                document.getElementById('abilities').style.display = 'flex';
+                isLoaded = true;
+            } catch (error) {
+                console.error('Error loading model:', error);
+            }
+        }
+        
+        function createHologramProjector() {
+            const geometry = new THREE.ConeGeometry(2, 4, 16, 1, true);
+            const material = new THREE.ShaderMaterial({
+                ...hologramShader,
+                transparent: true,
+                depthWrite: false,
+                side: THREE.DoubleSide
+            });
+            hologramProjector = new THREE.Mesh(geometry, material);
+            hologramProjector.rotation.x = Math.PI;
+            hologramProjector.scale.set(0, 0, 0);
+            scene.add(hologramProjector);
+        }
+
+        function setupEventListeners() {
+            renderer.domElement.addEventListener('click', onCharacterClick);
+            document.getElementById('closeProfile').addEventListener('click', toggleProfile);
+             document.querySelectorAll('.abilities-section .ability-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const abilityKey = e.currentTarget.querySelector('.ability-icon').textContent;
+                    showAbilityDetails(abilityKey);
+                });
+            });
+        }
+        
+        function onCharacterClick(event) {
+            if (!isLoaded || !soldier) return;
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObject(soldier, true);
+            if (intersects.length > 0) toggleProfile();
+        }
+
+        function toggleProfile() {
+            isProfileOpen = !isProfileOpen;
+            const profile = document.getElementById('characterProfile');
+            if(isProfileOpen) {
+                profile.classList.add('show');
+                setTimeout(() => {
+                    document.querySelectorAll('.stat-bar-fill').forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-value') + '%';
+                    });
+                }, 300);
+            } else {
+                profile.classList.remove('show');
+                profile.querySelectorAll('.stat-bar-fill').forEach(bar => bar.style.width = '0%');
+            }
+        }
+
+        function showAbilityDetails(key) {
+            const data = abilityData[key];
+            if (!data) return;
+            document.getElementById('abilityDetailTitle').textContent = data.name;
+            document.getElementById('abilityDetailDesc').textContent = data.desc;
+            document.querySelectorAll('.abilities-section .ability-card').forEach(card => {
+                card.classList.remove('selected');
+                if (card.querySelector('.ability-icon').textContent === key) card.classList.add('selected');
+            });
+        }
+
+        function setupPostProcessing() {
+            composer = new EffectComposer(renderer);
+            composer.addPass(new RenderPass(scene, camera));
+            const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.0, 0.4, 0.2);
+            composer.addPass(bloomPass);
+        }
+
+        function updateHologram() {
+            if (!soldier || !hologramProjector) return;
+            
+            hologramProjector.material.uniforms.time.value = clock.getElapsedTime();
+
+            const chestPosition = new THREE.Vector3(0, 2.5, 0);
+            soldier.localToWorld(chestPosition);
+            
+            const targetScale = isProfileOpen ? 1 : 0;
+            hologramProjector.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
+            hologramProjector.position.copy(chestPosition);
+            
+            const profileElement = document.getElementById('characterProfile');
+            const screenPosition = chestPosition.clone();
+            screenPosition.y += 3.5;
+            screenPosition.project(camera);
+
+            const x = (screenPosition.x * 0.5 + 0.5) * window.innerWidth;
+            const y = (-screenPosition.y * 0.5 + 0.5) * window.innerHeight;
+
+            profileElement.style.left = `${x}px`;
+            profileElement.style.top = `${y}px`;
+            profileElement.style.transform = `translate(-50%, -100%) scale(${profileElement.classList.contains('show') ? 1 : 0.5})`;
+        }
+
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const delta = clock.getDelta();
+            
+            controls.update();
+            if (mixer && isLoaded) mixer.update(delta);
+            
+            starfields.forEach(stars => {
+                stars.position.z += stars.userData.velocity * delta;
+                if (stars.position.z > 150) stars.position.z -= 300;
+            });
+
+            if (gridPlatform && gridPlatform.material.map) {
+                gridPlatform.material.map.offset.y -= 0.05 * delta;
+            }
+            
+            updateHologram();
+            
+            composer.render();
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            composer.setSize(window.innerWidth, window.innerHeight);
+        }
+    </script>
+</body>
+</html>
+
