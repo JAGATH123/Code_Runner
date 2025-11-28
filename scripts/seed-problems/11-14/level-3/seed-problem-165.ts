@@ -21,11 +21,11 @@ async function seedProblem165() {
       title: 'Flexible Sensor Recording',
       description: 'Learn how a single method can perform different actions based on the parameters provided.',
       difficulty: 'Medium',
-      question: `Can you create a Sensor class with a record() method that behaves differently depending on whether you pass a duration? If no duration is given, it should record indefinitely. If a duration is provided, it should record for that many seconds.`,
+      question: `Create Sensor class with __init__(name) and record(duration=None). Print with prefix based on name length: len>=6+even='Alpha:', len>=6+odd='Beta:', len<6+even='Gamma:', len<6+odd='Delta:'. If duration is None, print '[prefix] [name] Recording data indefinitely.', else print '[prefix] [name] Recording data for [duration] seconds.'. Call record() twice.`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Recording data indefinitely.\nRecording data for 10 seconds.',
+      sample_input: 'Thermal',
+      sample_output: 'Beta: Thermal Recording data indefinitely.\nBeta: Thermal Recording data for 10 seconds.',
 
       age_group: '11-14',
       level_number: 3,
@@ -34,7 +34,7 @@ async function seedProblem165() {
 
       metadata: {
         space_theme: true,
-        concepts: ['method overloading', 'default parameters', 'optional arguments', 'flexible methods', 'OOP'],
+        concepts: ['method overloading', 'default parameters', 'optional arguments', 'flexible methods', 'OOP', 'conditional logic', 'nested conditionals', 'modulo operator'],
         estimated_time_minutes: 15
       },
 
@@ -45,7 +45,7 @@ async function seedProblem165() {
       case_number: 3,
       case_title: 'Method Overloading – Same Name, Different Job',
       case_overview: `Method overloading allows one method to perform different actions based on parameters. Using default values enables flexible behavior with a single method name.`,
-      case_explanation: `Create Sensor class with record(duration=None). Use conditional logic: if duration exists, print with duration; otherwise print indefinite message. Call record() twice - with and without argument.`,
+      case_explanation: `Create Sensor with __init__(name) and record(duration=None). Use nested if-else to check name len>=6 or <6, then even/odd. Prefixes: len>=6+even='Alpha:', len>=6+odd='Beta:', len<6+even='Gamma:', len<6+odd='Delta:'. If duration is None, print indefinite message; else print with duration. Call record() twice.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -65,8 +65,8 @@ async function seedProblem165() {
       {
         test_case_id: 1651,
         problem_id: 165,
-        input: '',
-        expected_output: 'Recording data indefinitely.\nRecording data for 10 seconds.',
+        input: 'Camera',
+        expected_output: 'Alpha: Camera Recording data indefinitely.\nAlpha: Camera Recording data for 10 seconds.', // len=6, even, >=6
         is_hidden: false,
         weight: 20
       },
@@ -74,32 +74,32 @@ async function seedProblem165() {
       {
         test_case_id: 1652,
         problem_id: 165,
-        input: '',
-        expected_output: 'Recording data indefinitely.\nRecording data for 10 seconds.',
+        input: 'Thermal',
+        expected_output: 'Beta: Thermal Recording data indefinitely.\nBeta: Thermal Recording data for 10 seconds.', // len=7, odd, >=6
         is_hidden: true,
         weight: 20
       },
       {
         test_case_id: 1653,
         problem_id: 165,
-        input: '',
-        expected_output: 'Recording data indefinitely.\nRecording data for 10 seconds.',
+        input: 'Temp',
+        expected_output: 'Gamma: Temp Recording data indefinitely.\nGamma: Temp Recording data for 10 seconds.', // len=4, even, <6
         is_hidden: true,
         weight: 20
       },
       {
         test_case_id: 1654,
         problem_id: 165,
-        input: '',
-        expected_output: 'Recording data indefinitely.\nRecording data for 10 seconds.',
+        input: 'Ion',
+        expected_output: 'Delta: Ion Recording data indefinitely.\nDelta: Ion Recording data for 10 seconds.', // len=3, odd, <6
         is_hidden: true,
         weight: 20
       },
       {
         test_case_id: 1655,
         problem_id: 165,
-        input: '',
-        expected_output: 'Recording data indefinitely.\nRecording data for 10 seconds.',
+        input: 'Gyro',
+        expected_output: 'Gamma: Gyro Recording data indefinitely.\nGamma: Gyro Recording data for 10 seconds.', // len=4, even, <6
         is_hidden: true,
         weight: 20
       }
