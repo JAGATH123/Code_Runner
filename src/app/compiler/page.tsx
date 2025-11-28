@@ -1,6 +1,6 @@
 
-import { Header } from '@/components/Header';
-import { FreeCompiler } from '@/components/FreeCompiler';
+import { Header } from '@/components/layout/Header';
+import { FreeCompiler } from '@/components/editor/FreeCompiler';
 import { Terminal, Zap, Code, Activity } from 'lucide-react';
 
 export default function CompilerPage() {

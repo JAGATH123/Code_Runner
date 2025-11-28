@@ -1,8 +1,8 @@
 
 'use client';
 
-import { Header } from '@/components/Header';
-import { LevelList } from '@/components/LevelList';
+import { Header } from '@/components/layout/Header';
+import { LevelList } from '@/components/lists/LevelList';
 import type { Level } from '@/lib/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ import { useGlobalAudio } from '@/contexts/AudioContext';
 import { usePageAudio } from '@/hooks/usePageAudio';
 import { useAnimations } from '@/hooks/useAnimations';
 import { useEffect, useState } from 'react';
-import MemoryLoadingScreen from '@/components/MemoryLoadingScreen';
+import MemoryLoadingScreen from '@/components/layout/MemoryLoadingScreen';
 
 interface LevelPageProps {
     params: {

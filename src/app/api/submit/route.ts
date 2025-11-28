@@ -1,13 +1,26 @@
 import { NextResponse } from 'next/server';
-import { DataService } from '@/lib/data-service';
-import { SubmissionExecutor } from '@/lib/submission-executor';
+import { DataService } from '@/lib/database/data-service';
+import { SubmissionExecutor } from '@/lib/execution/submission-executor';
+import { GPUContainerPool } from '@/lib/execution/gpu-container-pool';
 import type { SubmissionResult } from '@/lib/types';
 
 type TestCase = { input: string; expected_output: string };
 
+// Initialize GPU-aware container pool on startup
+let poolInitialized = false;
+
+async function ensurePoolInitialized() {
+  if (!poolInitialized) {
+    await GPUContainerPool.initialize();
+    poolInitialized = true;
+  }
+}
+
 // Real Python submission endpoint using Docker sandbox
 export async function POST(request: Request) {
   try {
+    // Ensure GPU-aware pool is initialized
+    await ensurePoolInitialized();
     const { problemId, code, language } = await request.json();
 
     if (language !== 'python') {

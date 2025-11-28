@@ -1,12 +1,12 @@
 'use client';
 
-import { Header } from '@/components/Header';
-import { CompilerUI } from '@/components/CompilerUI';
+import { Header } from '@/components/layout/Header';
+import { CompilerUI } from '@/components/editor/CompilerUI';
 import type { Problem } from '@/lib/types';
 import { notFound } from 'next/navigation';
 import { useGlobalAudio } from '@/contexts/AudioContext';
 import { useEffect, useState } from 'react';
-import MemoryLoadingScreen from '@/components/MemoryLoadingScreen';
+import MemoryLoadingScreen from '@/components/layout/MemoryLoadingScreen';
 
 interface ProblemPageProps {
   params: {

@@ -1,8 +1,8 @@
 
 'use client';
 
-import { Header } from '@/components/Header';
-import { SessionList } from '@/components/SessionList';
+import { Header } from '@/components/layout/Header';
+import { SessionList } from '@/components/lists/SessionList';
 import type { Level } from '@/lib/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';

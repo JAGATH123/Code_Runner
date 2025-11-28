@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Header } from '@/components/Header';
+import { Header } from '@/components/layout/Header';
 import { ArrowRight, Zap, Rocket, Code2, Star } from 'lucide-react';
 import { useGlobalAudio } from '@/contexts/AudioContext';
 import { useAnimations } from '@/hooks/useAnimations';
 import { usePageAudio } from '@/hooks/usePageAudio';
 import { useEffect, useRef, useState } from 'react';
-import MemoryLoadingScreen from '@/components/MemoryLoadingScreen';
+import MemoryLoadingScreen from '@/components/layout/MemoryLoadingScreen';
 
 function AgeSelectionPageContent() {
   const router = useRouter();

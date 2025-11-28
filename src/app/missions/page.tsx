@@ -1,6 +1,6 @@
 'use client';
 
-import { Header } from '@/components/Header';
+import { Header } from '@/components/layout/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { useProgress } from '@/lib/progress';
+import { useProgress } from '@/lib/utilities/progress';
 import { useGlobalAudio } from '@/contexts/AudioContext';
 import { usePageAudio } from '@/hooks/usePageAudio';
 

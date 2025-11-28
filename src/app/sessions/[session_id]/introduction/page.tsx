@@ -1,11 +1,11 @@
 'use client';
 
-import { Header } from '@/components/Header';
+import { Header } from '@/components/layout/Header';
 import type { Session } from '@/lib/types';
 import { notFound } from 'next/navigation';
 import { useGlobalAudio } from '@/contexts/AudioContext';
 import { useEffect, useState } from 'react';
-import MemoryLoadingScreen from '@/components/MemoryLoadingScreen';
+import MemoryLoadingScreen from '@/components/layout/MemoryLoadingScreen';
 import { Activity, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { GPUContainerPool } from '@/lib/gpu-container-pool';
+import { GPUContainerPool } from '@/lib/execution/gpu-container-pool';
 
 // Initialize GPU-aware container pool on startup
 let poolInitialized = false;
