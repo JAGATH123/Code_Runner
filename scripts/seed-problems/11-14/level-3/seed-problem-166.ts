@@ -18,14 +18,14 @@ async function seedProblem166() {
     const problem166 = {
       problem_id: 166,
       session_id: 30, // Level 3, Session 8
-      title: 'Customizing Rover Identification',
+      title: 'Overriding Inherited Methods – Changing Behavior',
       description: 'Discover how child classes can replace inherited methods with their own specialized versions.',
       difficulty: 'Medium',
-      question: `Can you create a generic Rover class with an identify() method, and then a specialized MarsRover that overrides this method to provide its own unique identification? Test both to see how each identifies itself differently.`,
+      question: `Can you create a MarsRover that overrides its parent Rover's identify() method with specialized behavior and conditional prefixes?`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Generic Rover\nMars Exploration Rover',
+      sample_input: 'Spirit',
+      sample_output: 'Advanced Rover: Generic Rover\nAdvanced Rover: Mars Exploration Rover',
 
       age_group: '11-14',
       level_number: 3,
@@ -34,7 +34,7 @@ async function seedProblem166() {
 
       metadata: {
         space_theme: true,
-        concepts: ['method overriding', 'inheritance', 'polymorphism', 'specialized behavior', 'OOP'],
+        concepts: ['method overriding', 'inheritance', 'polymorphism', 'specialized behavior', 'OOP', 'conditional logic', 'nested conditionals', 'modulo operator'],
         estimated_time_minutes: 15
       },
 
@@ -44,8 +44,8 @@ async function seedProblem166() {
       // Case-specific content
       case_number: 4,
       case_title: 'Overriding Inherited Methods – Changing Behavior',
-      case_overview: `Method overriding lets child classes replace inherited methods with specialized versions. Each class can have unique behavior while sharing the same method name.`,
-      case_explanation: `Create Rover class with identify() printing "Generic Rover". Create MarsRover inheriting Rover, override identify() to print "Mars Exploration Rover". Create both objects and call their identify() methods.`,
+      case_overview: `Method overriding lets child classes replace inherited methods with specialized versions.`,
+      case_explanation: `Build Rover and MarsRover with overridden methods using conditional prefixes based on rover name.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,47 +61,63 @@ async function seedProblem166() {
 
     // Test cases for Problem 166
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1661,
         problem_id: 166,
-        input: '',
-        expected_output: 'Generic Rover\nMars Exploration Rover',
+        input: 'Spirit',
+        expected_output: 'Advanced Rover: Generic Rover\nAdvanced Rover: Mars Exploration Rover', // len=6, even, >=6
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1662,
         problem_id: 166,
-        input: '',
-        expected_output: 'Generic Rover\nMars Exploration Rover',
-        is_hidden: true,
-        weight: 20
+        input: 'Opportunity',
+        expected_output: 'Elite Rover: Generic Rover\nElite Rover: Mars Exploration Rover', // len=11, odd, >=6
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1663,
         problem_id: 166,
-        input: '',
-        expected_output: 'Generic Rover\nMars Exploration Rover',
+        input: 'Curiosity',
+        expected_output: 'Elite Rover: Generic Rover\nElite Rover: Mars Exploration Rover', // len=9, odd, >=6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1664,
         problem_id: 166,
-        input: '',
-        expected_output: 'Generic Rover\nMars Exploration Rover',
+        input: 'Perseverance',
+        expected_output: 'Advanced Rover: Generic Rover\nAdvanced Rover: Mars Exploration Rover', // len=12, even, >=6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1665,
         problem_id: 166,
-        input: '',
-        expected_output: 'Generic Rover\nMars Exploration Rover',
+        input: 'Sojourner',
+        expected_output: 'Elite Rover: Generic Rover\nElite Rover: Mars Exploration Rover', // len=9, odd, >=6
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1666,
+        problem_id: 166,
+        input: 'Zhurong',
+        expected_output: 'Elite Rover: Generic Rover\nElite Rover: Mars Exploration Rover', // len=7, odd, >=6
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1667,
+        problem_id: 166,
+        input: 'Yutu',
+        expected_output: 'Base Rover: Generic Rover\nBase Rover: Mars Exploration Rover', // len=4, even, <6
+        is_hidden: true,
+        weight: 16
       }
     ];
 

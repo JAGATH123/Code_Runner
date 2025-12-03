@@ -18,14 +18,14 @@ async function seedProblem169() {
     const problem169 = {
       problem_id: 169,
       session_id: 31, // Level 3, Session 9
-      title: 'Combining Navigation and Communication Systems',
+      title: 'Multiple Inheritance',
       description: 'Explore how a single class can inherit capabilities from multiple parent classes simultaneously.',
       difficulty: 'Medium',
-      question: `Can you create a MissionAI that combines both navigation and communication capabilities by inheriting from two separate parent classes? The system should be able to navigate space and send signals without writing duplicate code.`,
+      question: `Can you create a MissionAI that inherits from multiple parent classes with conditional prefixes?`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Navigating space.\nSending signal.',
+      sample_input: 'Nexus',
+      sample_output: 'MixAI: Navigating space.\nMixAI: Sending signal.',
 
       age_group: '11-14',
       level_number: 3,
@@ -34,7 +34,7 @@ async function seedProblem169() {
 
       metadata: {
         space_theme: true,
-        concepts: ['multiple inheritance', 'inheritance', 'parent classes', 'child class', 'code reuse', 'OOP'],
+        concepts: ['multiple inheritance', 'inheritance', 'parent classes', 'child class', 'code reuse', 'OOP', 'conditional logic', 'nested conditionals', 'modulo operator'],
         estimated_time_minutes: 15
       },
 
@@ -44,8 +44,8 @@ async function seedProblem169() {
       // Case-specific content
       case_number: 1,
       case_title: 'Multiple Inheritance',
-      case_overview: `Multiple inheritance allows a class to inherit features from two or more parent classes simultaneously, giving the child access to methods from all parents without code duplication.`,
-      case_explanation: `Create Navigator class with navigate() method and Communicator class with transmit() method. Create MissionAI inheriting from both. Create object and call both inherited methods.`,
+      case_overview: `Multiple inheritance lets classes inherit features from multiple parents simultaneously.`,
+      case_explanation: `Build MissionAI inheriting from Navigator and Communicator with conditional prefixes based on AI name.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,47 +61,63 @@ async function seedProblem169() {
 
     // Test cases for Problem 169
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1691,
         problem_id: 169,
-        input: '',
-        expected_output: 'Navigating space.\nSending signal.',
+        input: 'Nexus',
+        expected_output: 'MixAI: Navigating space.\nMixAI: Sending signal.', // len=5, odd, <6
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1692,
         problem_id: 169,
-        input: '',
-        expected_output: 'Navigating space.\nSending signal.',
-        is_hidden: true,
-        weight: 20
+        input: 'Quantum',
+        expected_output: 'ComboAI: Navigating space.\nComboAI: Sending signal.', // len=7, odd, >=6
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1693,
         problem_id: 169,
-        input: '',
-        expected_output: 'Navigating space.\nSending signal.',
+        input: 'Matrix',
+        expected_output: 'MultiAI: Navigating space.\nMultiAI: Sending signal.', // len=6, even, >=6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1694,
         problem_id: 169,
-        input: '',
-        expected_output: 'Navigating space.\nSending signal.',
+        input: 'Core',
+        expected_output: 'DualAI: Navigating space.\nDualAI: Sending signal.', // len=4, even, <6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1695,
         problem_id: 169,
-        input: '',
-        expected_output: 'Navigating space.\nSending signal.',
+        input: 'AI',
+        expected_output: 'DualAI: Navigating space.\nDualAI: Sending signal.', // len=2, even, <6
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1696,
+        problem_id: 169,
+        input: 'Fusion',
+        expected_output: 'MultiAI: Navigating space.\nMultiAI: Sending signal.', // len=6, even, >=6
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1697,
+        problem_id: 169,
+        input: 'Nova',
+        expected_output: 'DualAI: Navigating space.\nDualAI: Sending signal.', // len=4, even, <6
+        is_hidden: true,
+        weight: 16
       }
     ];
 

@@ -18,13 +18,13 @@ async function seedProblem179() {
     const problem179 = {
       problem_id: 179,
       session_id: 32, // Level 3, Session 10
-      title: 'Universal Start Method Across Objects',
+      title: 'Same Method in Different Classes – Classic Polymorphism',
       description: 'Understand how unrelated classes can share method names with different implementations.',
       difficulty: 'Medium',
-      question: `Can you create three unrelated classes (Fan, Car, Computer) that all have a start() method but perform completely different actions? Demonstrate how the same method name can have different meanings across different objects.`,
+      question: `Can you create three unrelated classes (Fan, Car, Computer) that all have a start() method but perform completely different actions? Take 3 inputs for object types ("Fan", "Car", or "Computer"), create objects based on input, and call their start() methods in order to demonstrate polymorphism.`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      sample_input: 'Fan\nCar\nComputer',
       sample_output: 'Fan is spinning.\nCar engine started.\nComputer booting up.',
 
       age_group: '11-14',
@@ -61,47 +61,63 @@ async function seedProblem179() {
 
     // Test cases for Problem 179
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1791,
         problem_id: 179,
-        input: '',
+        input: 'Fan\nCar\nComputer',
         expected_output: 'Fan is spinning.\nCar engine started.\nComputer booting up.',
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1792,
         problem_id: 179,
-        input: '',
-        expected_output: 'Fan is spinning.\nCar engine started.\nComputer booting up.',
-        is_hidden: true,
-        weight: 20
+        input: 'Computer\nFan\nCar',
+        expected_output: 'Computer booting up.\nFan is spinning.\nCar engine started.',
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1793,
         problem_id: 179,
-        input: '',
-        expected_output: 'Fan is spinning.\nCar engine started.\nComputer booting up.',
+        input: 'Fan\nFan\nFan',
+        expected_output: 'Fan is spinning.\nFan is spinning.\nFan is spinning.',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1794,
         problem_id: 179,
-        input: '',
-        expected_output: 'Fan is spinning.\nCar engine started.\nComputer booting up.',
+        input: 'Car\nCar\nComputer',
+        expected_output: 'Car engine started.\nCar engine started.\nComputer booting up.',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1795,
         problem_id: 179,
-        input: '',
-        expected_output: 'Fan is spinning.\nCar engine started.\nComputer booting up.',
+        input: 'Computer\nComputer\nComputer',
+        expected_output: 'Computer booting up.\nComputer booting up.\nComputer booting up.',
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1796,
+        problem_id: 179,
+        input: 'Car\nFan\nCar',
+        expected_output: 'Car engine started.\nFan is spinning.\nCar engine started.',
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1797,
+        problem_id: 179,
+        input: 'Fan\nComputer\nFan',
+        expected_output: 'Fan is spinning.\nComputer booting up.\nFan is spinning.',
+        is_hidden: true,
+        weight: 16
       }
     ];
 

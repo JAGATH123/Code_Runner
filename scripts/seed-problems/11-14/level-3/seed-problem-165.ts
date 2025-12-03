@@ -18,10 +18,10 @@ async function seedProblem165() {
     const problem165 = {
       problem_id: 165,
       session_id: 30, // Level 3, Session 8
-      title: 'Flexible Sensor Recording',
+      title: 'Method Overloading – Same Name, Different Job',
       description: 'Learn how a single method can perform different actions based on the parameters provided.',
       difficulty: 'Medium',
-      question: `Create Sensor class with __init__(name) and record(duration=None). Print with prefix based on name length: len>=6+even='Alpha:', len>=6+odd='Beta:', len<6+even='Gamma:', len<6+odd='Delta:'. If duration is None, print '[prefix] [name] Recording data indefinitely.', else print '[prefix] [name] Recording data for [duration] seconds.'. Call record() twice.`,
+      question: `Can you create a Sensor class with a flexible record() method that works with or without a duration parameter?`,
 
       compiler_comment: '# Write your code here\n',
       sample_input: 'Thermal',
@@ -44,8 +44,8 @@ async function seedProblem165() {
       // Case-specific content
       case_number: 3,
       case_title: 'Method Overloading – Same Name, Different Job',
-      case_overview: `Method overloading allows one method to perform different actions based on parameters. Using default values enables flexible behavior with a single method name.`,
-      case_explanation: `Create Sensor with __init__(name) and record(duration=None). Use nested if-else to check name len>=6 or <6, then even/odd. Prefixes: len>=6+even='Alpha:', len>=6+odd='Beta:', len<6+even='Gamma:', len<6+odd='Delta:'. If duration is None, print indefinite message; else print with duration. Call record() twice.`,
+      case_overview: `Method overloading lets one method perform different actions based on parameters using default values.`,
+      case_explanation: `Implement Sensor with conditional prefixes and optional duration parameter for flexible recording behavior.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,31 +61,31 @@ async function seedProblem165() {
 
     // Test cases for Problem 165
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1651,
         problem_id: 165,
         input: 'Camera',
         expected_output: 'Alpha: Camera Recording data indefinitely.\nAlpha: Camera Recording data for 10 seconds.', // len=6, even, >=6
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1652,
         problem_id: 165,
         input: 'Thermal',
         expected_output: 'Beta: Thermal Recording data indefinitely.\nBeta: Thermal Recording data for 10 seconds.', // len=7, odd, >=6
-        is_hidden: true,
-        weight: 20
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1653,
         problem_id: 165,
         input: 'Temp',
         expected_output: 'Gamma: Temp Recording data indefinitely.\nGamma: Temp Recording data for 10 seconds.', // len=4, even, <6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1654,
@@ -93,7 +93,7 @@ async function seedProblem165() {
         input: 'Ion',
         expected_output: 'Delta: Ion Recording data indefinitely.\nDelta: Ion Recording data for 10 seconds.', // len=3, odd, <6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1655,
@@ -101,7 +101,23 @@ async function seedProblem165() {
         input: 'Gyro',
         expected_output: 'Gamma: Gyro Recording data indefinitely.\nGamma: Gyro Recording data for 10 seconds.', // len=4, even, <6
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1656,
+        problem_id: 165,
+        input: 'Scanner',
+        expected_output: 'Beta: Scanner Recording data indefinitely.\nBeta: Scanner Recording data for 10 seconds.', // len=7, odd, >=6
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1657,
+        problem_id: 165,
+        input: 'Radar',
+        expected_output: 'Delta: Radar Recording data indefinitely.\nDelta: Radar Recording data for 10 seconds.', // len=5, odd, <6
+        is_hidden: true,
+        weight: 16
       }
     ];
 

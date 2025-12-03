@@ -14,20 +14,18 @@ async function seedProblem180() {
     const problemsCollection = db.collection('problems');
     const testCasesCollection = db.collection('test_cases');
 
-    // Problem 180: Level 3, Session 10, Case 6 - Adaptive AI Systems (Final Task)
+    // Problem 180: Level 3, Session 10, Case 6 - Comprehensive Polymorphism
     const problem180 = {
       problem_id: 180,
       session_id: 32, // Level 3, Session 10
-      title: 'Adaptive AI Systems – Evolving Intelligence Through Polymorphism',
-      description: 'A massive storm spike is distorting communication signals across deep space. AI assistants must dynamically adapt their responses based on mission context while maintaining a unified interface. Your mission is to engineer an adaptive AI Command Unit that demonstrates complete polymorphic behavior: function overriding for context-aware responses, operator overloading for resource management (+, *, -, /), and polymorphic iteration showing how different AI types work together through shared interfaces.',
+      title: 'Building an Adaptive AI System – Comprehensive Polymorphism',
+      description: 'Combine multiple polymorphism concepts into one comprehensive system.',
       difficulty: 'Hard',
-      question: `The Nova Network is experiencing storm-induced message distortion. Can you build an adaptive AI system that demonstrates polymorphism through context-aware responses, resource operations using overloaded operators, and unified handling of diverse AI types?
-
-Your system must showcase: specialized AI units with overridden response methods, operator overloading for combining processing power and resource management, and polymorphic behavior where different AI types respond uniquely through a common interface.`,
+      question: `Can you create an AI system that demonstrates polymorphism? Build three AI classes (Scout, Engineer, Commander) with a respond() method that prints different messages. Then add operator overloading (+) to combine their power levels and names. Take inputs for AI types and power levels, create objects, call their methods, and demonstrate adding two AI units together.`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: 'Explorer\n100\nRescue\n80\n150',
-      sample_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 180 power\nBoosted AI unit with 300 power\nDamaged AI unit with 50 power\nShared AI unit with 50.0 power',
+      sample_input: 'Scout\n50\nEngineer\n70',
+      sample_output: 'Scout responding: Scanning area.\nEngineer responding: Building structures.\nScout-Engineer with power 120',
 
       age_group: '11-14',
       level_number: 3,
@@ -36,18 +34,19 @@ Your system must showcase: specialized AI units with overridden response methods
 
       metadata: {
         space_theme: true,
-        concepts: ['polymorphism', 'function overriding', 'operator overloading', '__add__', '__mul__', '__sub__', '__truediv__', 'common interface', 'dynamic behavior', 'OOP'],
-        estimated_time_minutes: 30
+        concepts: ['polymorphism', 'method overriding', 'operator overloading', '__add__', '__str__', 'comprehensive OOP'],
+        estimated_time_minutes: 20
       },
 
       // Session-level content
       session_title: 'Session 10: Polymorphism',
+      session_introduction: `A storm spike distorts messages mid-flight across the Nova Network. AI assistants must adapt their responses based on mission context while maintaining a unified interface. Your objective is to demonstrate polymorphism through a common interface with different implementations, utilizing operator and method overloading patterns where appropriate. The deliverable is a system of mixed AI objects handled through one common function, where each AI type responds differently but through the same call signature, showcasing the power of polymorphic design in deep space operations.`,
 
       // Case-specific content
       case_number: 6,
-      case_title: 'Adaptive AI Systems – Evolving Intelligence Through Polymorphism',
-      case_overview: `This final mission demonstrates complete polymorphic architecture: function overriding for specialized AI behaviors, operator overloading (+, *, -, /) for resource management, and polymorphic iteration where diverse AI types share common interfaces while maintaining unique implementations.`,
-      case_explanation: `Build base AIAssistant with name, processing_power, and respond(). Create ExplorerAI and RescueAI overriding respond() with context-specific messages. Overload + (__add__) to combine power, * (__mul__) for boost, - (__sub__) for damage, / (__truediv__) for sharing. Read 5 inputs: AI1 type, power1, AI2 type, power2, boost value. Create specialized AIs, demonstrate operations, show polymorphic responses.`,
+      case_title: 'Building an Adaptive AI System – Comprehensive Polymorphism',
+      case_overview: `This comprehensive problem combines method overriding, operator overloading, and polymorphic behavior. Students must create multiple classes with shared method names, implement custom operators, and demonstrate unified handling of diverse types.`,
+      case_explanation: `Create base AI class structure. Implement Scout, Engineer, Commander classes with unique respond() methods. Add __add__ operator to combine AI units (join names with '-' and add power levels). Implement __str__ to display combined AI. Create objects from input and demonstrate all features.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,65 +60,65 @@ Your system must showcase: specialized AI units with overridden response methods
     const problemResult = await problemsCollection.insertOne(problem180);
     console.log('Problem 180 inserted');
 
-    // Test cases for Problem 180 (7 test cases for final task)
+    // Test cases for Problem 180
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1801,
         problem_id: 180,
-        input: 'Explorer\n100\nRescue\n80\n150',
-        expected_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 180 power\nBoosted AI unit with 300 power\nDamaged AI unit with 50 power\nShared AI unit with 50.0 power',
+        input: 'Scout\n50\nEngineer\n70',
+        expected_output: 'Scout responding: Scanning area.\nEngineer responding: Building structures.\nScout-Engineer with power 120',
         is_hidden: false,
-        weight: 15
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1802,
         problem_id: 180,
-        input: 'Explorer\n120\nRescue\n90\n200',
-        expected_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 210 power\nBoosted AI unit with 400 power\nDamaged AI unit with 20 power\nShared AI unit with 45.0 power',
-        is_hidden: true,
-        weight: 15
+        input: 'Commander\n100\nScout\n30',
+        expected_output: 'Commander responding: Leading the team.\nScout responding: Scanning area.\nCommander-Scout with power 130',
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1803,
         problem_id: 180,
-        input: 'Explorer\n150\nRescue\n100\n250',
-        expected_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 250 power\nBoosted AI unit with 500 power\nDamaged AI unit with 50 power\nShared AI unit with 50.0 power',
+        input: 'Engineer\n60\nCommander\n90',
+        expected_output: 'Engineer responding: Building structures.\nCommander responding: Leading the team.\nEngineer-Commander with power 150',
         is_hidden: true,
-        weight: 15
+        weight: 16
       },
       {
         test_case_id: 1804,
         problem_id: 180,
-        input: 'Explorer\n80\nRescue\n70\n100',
-        expected_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 150 power\nBoosted AI unit with 200 power\nDamaged AI unit with 10 power\nShared AI unit with 35.0 power',
+        input: 'Scout\n40\nScout\n60',
+        expected_output: 'Scout responding: Scanning area.\nScout responding: Scanning area.\nScout-Scout with power 100',
         is_hidden: true,
-        weight: 15
+        weight: 16
       },
       {
         test_case_id: 1805,
         problem_id: 180,
-        input: 'Explorer\n110\nRescue\n95\n180',
-        expected_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 205 power\nBoosted AI unit with 360 power\nDamaged AI unit with 15 power\nShared AI unit with 47.5 power',
+        input: 'Engineer\n80\nEngineer\n75',
+        expected_output: 'Engineer responding: Building structures.\nEngineer responding: Building structures.\nEngineer-Engineer with power 155',
         is_hidden: true,
-        weight: 10
+        weight: 16
       },
       {
         test_case_id: 1806,
         problem_id: 180,
-        input: 'Explorer\n130\nRescue\n110\n220',
-        expected_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 240 power\nBoosted AI unit with 440 power\nDamaged AI unit with 20 power\nShared AI unit with 55.0 power',
+        input: 'Commander\n95\nEngineer\n55',
+        expected_output: 'Commander responding: Leading the team.\nEngineer responding: Building structures.\nCommander-Engineer with power 150',
         is_hidden: true,
-        weight: 15
+        weight: 16
       },
       {
         test_case_id: 1807,
         problem_id: 180,
-        input: 'Explorer\n90\nRescue\n85\n120',
-        expected_output: 'ExplorerAI responding: Scanning unknown territories.\nRescueAI responding: Initiating emergency protocols.\nCombined AI unit with 175 power\nBoosted AI unit with 240 power\nDamaged AI unit with 5 power\nShared AI unit with 42.5 power',
+        input: 'Scout\n25\nCommander\n85',
+        expected_output: 'Scout responding: Scanning area.\nCommander responding: Leading the team.\nScout-Commander with power 110',
         is_hidden: true,
-        weight: 15
+        weight: 16
       }
     ];
 
@@ -127,7 +126,7 @@ Your system must showcase: specialized AI units with overridden response methods
     await testCasesCollection.insertMany(testCases);
     console.log(`${testCases.length} test cases inserted for Problem 180`);
 
-    console.log('\n✅ Problem 180 (Level 3, Session 10, Case 6: Adaptive AI Systems - FINAL TASK) seeded successfully!');
+    console.log('\n✅ Problem 180 (Level 3, Session 10, Case 6: Comprehensive Polymorphism) seeded successfully!');
 
   } catch (error) {
     console.error('Error seeding database:', error);

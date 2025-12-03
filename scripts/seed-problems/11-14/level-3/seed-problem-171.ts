@@ -18,14 +18,14 @@ async function seedProblem171() {
     const problem171 = {
       problem_id: 171,
       session_id: 31, // Level 3, Session 9
-      title: 'Specialized Thermal Sensor Behavior',
+      title: 'Method Overriding',
       description: 'Discover how child classes can replace parent methods with customized versions.',
       difficulty: 'Medium',
-      question: `Can you create a ThermalSensor that changes the behavior of its parent Sensor class by providing a specialized status message? The child class should override the generic sensor status with thermal-specific information.`,
+      question: `Can you create a ThermalSensor that overrides its parent Sensor's status() method with specialized behavior?`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Thermal sensor activated.',
+      sample_input: 'Celsius',
+      sample_output: 'TempSensor: Thermal sensor activated.',
 
       age_group: '11-14',
       level_number: 3,
@@ -34,7 +34,7 @@ async function seedProblem171() {
 
       metadata: {
         space_theme: true,
-        concepts: ['method overriding', 'inheritance', 'polymorphism', 'specialized behavior', 'OOP'],
+        concepts: ['method overriding', 'inheritance', 'polymorphism', 'specialized behavior', 'OOP', 'conditional logic', 'nested conditionals', 'modulo operator'],
         estimated_time_minutes: 15
       },
 
@@ -44,8 +44,8 @@ async function seedProblem171() {
       // Case-specific content
       case_number: 3,
       case_title: 'Method Overriding',
-      case_overview: `Method overriding occurs when a child class defines a method with the same name as the parent class, replacing the parent's behavior with specialized functionality.`,
-      case_explanation: `Create Sensor class with status() printing "Sensor is online." Create ThermalSensor inheriting from Sensor, override status() to print "Thermal sensor activated." Create ThermalSensor object and call status().`,
+      case_overview: `Method overriding lets child classes replace parent methods with specialized functionality.`,
+      case_explanation: `Build ThermalSensor that overrides Sensor's status() method with conditional prefixes based on sensor name.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,47 +61,63 @@ async function seedProblem171() {
 
     // Test cases for Problem 171
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1711,
         problem_id: 171,
-        input: '',
-        expected_output: 'Thermal sensor activated.',
+        input: 'Celsius',
+        expected_output: 'TempSensor: Thermal sensor activated.', // len=7, odd, >=6
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1712,
         problem_id: 171,
-        input: '',
-        expected_output: 'Thermal sensor activated.',
-        is_hidden: true,
-        weight: 20
+        input: 'Pyrometer',
+        expected_output: 'TempSensor: Thermal sensor activated.', // len=9, odd, >=6
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1713,
         problem_id: 171,
-        input: '',
-        expected_output: 'Thermal sensor activated.',
+        input: 'Kelvin',
+        expected_output: 'HeatSensor: Thermal sensor activated.', // len=6, even, >=6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1714,
         problem_id: 171,
-        input: '',
-        expected_output: 'Thermal sensor activated.',
+        input: 'IR',
+        expected_output: 'Thermal: Thermal sensor activated.', // len=2, even, <6
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1715,
         problem_id: 171,
-        input: '',
-        expected_output: 'Thermal sensor activated.',
+        input: 'Heat',
+        expected_output: 'Thermal: Thermal sensor activated.', // len=4, even, <6
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1716,
+        problem_id: 171,
+        input: 'Temp',
+        expected_output: 'Thermal: Thermal sensor activated.', // len=4, even, <6
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1717,
+        problem_id: 171,
+        input: 'Fire',
+        expected_output: 'Thermal: Thermal sensor activated.', // len=4, even, <6
+        is_hidden: true,
+        weight: 16
       }
     ];
 

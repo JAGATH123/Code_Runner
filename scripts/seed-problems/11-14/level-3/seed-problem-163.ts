@@ -18,10 +18,10 @@ async function seedProblem163() {
     const problem163 = {
       problem_id: 163,
       session_id: 30, // Level 3, Session 8
-      title: 'Extending Spacecraft Capabilities',
+      title: 'Single Inheritance – Extending Base Features',
       description: 'Learn how child classes can inherit features from parent classes while adding their own specialized functionality.',
       difficulty: 'Medium',
-      question: `Create Spacecraft class with launch() method. Create Satellite(Spacecraft) with transmit() method. Both methods print with prefix based on name length: len>=7+even='Advanced:', len>=7+odd='Elite:', len<7+even='Basic:', len<7+odd='Swift:'. Call both methods.`,
+      question: `Can you build a Satellite that inherits from Spacecraft, where both classes use conditional prefixes based on the spacecraft name?`,
 
       compiler_comment: '# Write your code here\n',
       sample_input: 'Hubble',
@@ -44,8 +44,8 @@ async function seedProblem163() {
       // Case-specific content
       case_number: 1,
       case_title: 'Single Inheritance – Extending Base Features',
-      case_overview: `Single inheritance allows a child class to inherit methods from a parent class while adding new specialized features. The child gains all parent capabilities without rewriting code.`,
-      case_explanation: `Create Spacecraft with __init__(name) and launch() that prints with conditional prefix. Satellite inherits from Spacecraft and adds transmit(). Use nested if-else to check name len>=7 or <7, then even/odd. Prefixes: len>=7+even='Advanced:', len>=7+odd='Elite:', len<7+even='Basic:', len<7+odd='Swift:'. Call both methods.`,
+      case_overview: `Single inheritance lets child classes gain parent methods while adding new features.`,
+      case_explanation: `Implement Spacecraft and Satellite classes with conditional prefixes based on name length and parity.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,31 +61,31 @@ async function seedProblem163() {
 
     // Test cases for Problem 163
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1631,
         problem_id: 163,
         input: 'Hubble',
         expected_output: 'Basic: Hubble Launching into space!\nBasic: Hubble Transmitting data to Earth.', // len=6, even, <7
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1632,
         problem_id: 163,
         input: 'GPS',
         expected_output: 'Swift: GPS Launching into space!\nSwift: GPS Transmitting data to Earth.', // len=3, odd, <7
-        is_hidden: true,
-        weight: 20
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1633,
         problem_id: 163,
         input: 'Voyager',
         expected_output: 'Elite: Voyager Launching into space!\nElite: Voyager Transmitting data to Earth.', // len=7, odd, >=7
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1634,
@@ -93,7 +93,7 @@ async function seedProblem163() {
         input: 'Starlink',
         expected_output: 'Advanced: Starlink Launching into space!\nAdvanced: Starlink Transmitting data to Earth.', // len=8, even, >=7
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1635,
@@ -101,7 +101,23 @@ async function seedProblem163() {
         input: 'ISS',
         expected_output: 'Swift: ISS Launching into space!\nSwift: ISS Transmitting data to Earth.', // len=3, odd, <7
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1636,
+        problem_id: 163,
+        input: 'Intelsat',
+        expected_output: 'Advanced: Intelsat Launching into space!\nAdvanced: Intelsat Transmitting data to Earth.', // len=8, even, >=7
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1637,
+        problem_id: 163,
+        input: 'GOES',
+        expected_output: 'Basic: GOES Launching into space!\nBasic: GOES Transmitting data to Earth.', // len=4, even, <7
+        is_hidden: true,
+        weight: 16
       }
     ];
 

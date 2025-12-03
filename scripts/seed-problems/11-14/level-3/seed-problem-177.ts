@@ -18,14 +18,14 @@ async function seedProblem177() {
     const problem177 = {
       problem_id: 177,
       session_id: 32, // Level 3, Session 10
-      title: 'Comparing Student Performance',
+      title: 'Overloading > – Compare Object Attributes',
       description: 'Discover how to enable comparison operators for custom objects.',
       difficulty: 'Medium',
-      question: `Can you create a Student class that allows comparing students based on their marks using the > operator? When comparing two students, it should determine who has higher marks.`,
+      question: `Can you create a Student class that allows comparing students based on their marks using the > operator? Take 6 inputs for 3 students (name, marks for each), create objects, use > to find the highest scorer, and print their name.`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Bob has higher marks.',
+      sample_input: 'Alice\n85\nBob\n90\nCarol\n88',
+      sample_output: 'Bob',
 
       age_group: '11-14',
       level_number: 3,
@@ -61,47 +61,63 @@ async function seedProblem177() {
 
     // Test cases for Problem 177
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1771,
         problem_id: 177,
-        input: '',
-        expected_output: 'Bob has higher marks.',
+        input: 'Alice\n85\nBob\n90\nCarol\n88',
+        expected_output: 'Bob',
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1772,
         problem_id: 177,
-        input: '',
-        expected_output: 'Bob has higher marks.',
-        is_hidden: true,
-        weight: 20
+        input: 'John\n95\nSara\n88\nMike\n92',
+        expected_output: 'John',
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1773,
         problem_id: 177,
-        input: '',
-        expected_output: 'Bob has higher marks.',
+        input: 'David\n78\nEmma\n92\nTom\n85',
+        expected_output: 'Emma',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1774,
         problem_id: 177,
-        input: '',
-        expected_output: 'Bob has higher marks.',
+        input: 'Lisa\n75\nPeter\n100\nMary\n89',
+        expected_output: 'Peter',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1775,
         problem_id: 177,
-        input: '',
-        expected_output: 'Bob has higher marks.',
+        input: 'Kate\n60\nJack\n85\nRose\n95',
+        expected_output: 'Rose',
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1776,
+        problem_id: 177,
+        input: 'Sam\n93\nAlex\n89\nJoe\n91',
+        expected_output: 'Sam',
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1777,
+        problem_id: 177,
+        input: 'Nina\n82\nLeo\n96\nAmy\n88',
+        expected_output: 'Leo',
+        is_hidden: true,
+        weight: 16
       }
     ];
 

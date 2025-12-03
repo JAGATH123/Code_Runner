@@ -18,10 +18,10 @@ async function seedProblem164() {
     const problem164 = {
       problem_id: 164,
       session_id: 30, // Level 3, Session 8
-      title: 'Building a Multi-Generation Space Fleet',
+      title: 'Multilevel Inheritance – Passing Down the Chain',
       description: 'Explore how inheritance can pass skills down through multiple levels, like a family tree of spacecraft.',
       difficulty: 'Medium',
-      question: `Create Vehicle with move(), Rocket(Vehicle) with ignite(), CargoRocket(Rocket) with deliver(). All methods print with prefix based on name length: len>=8+even='Heavy:', len>=8+odd='Super:', len<8+even='Fast:', len<8+odd='Quick:'. Call all three methods.`,
+      question: `Can you create a three-level inheritance chain (Vehicle → Rocket → CargoRocket) with conditional prefixes for each method?`,
 
       compiler_comment: '# Write your code here\n',
       sample_input: 'Falcon9',
@@ -44,8 +44,8 @@ async function seedProblem164() {
       // Case-specific content
       case_number: 2,
       case_title: 'Multilevel Inheritance – Passing Down the Chain',
-      case_overview: `Multilevel inheritance creates a hierarchy where each class inherits from another, passing skills down like generations. Each level builds upon the previous without rewriting code.`,
-      case_explanation: `Build Vehicle with __init__(name) and move(), Rocket(Vehicle) adds ignite(), CargoRocket(Rocket) adds deliver(). All methods print with conditional prefix. Use nested if-else to check name len>=8 or <8, then even/odd. Prefixes: len>=8+even='Heavy:', len>=8+odd='Super:', len<8+even='Fast:', len<8+odd='Quick:'. Call all three methods.`,
+      case_overview: `Multilevel inheritance creates hierarchies where each class inherits from another, building upon previous levels.`,
+      case_explanation: `Build three-tier inheritance with conditional prefixes based on vehicle name length and parity.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,31 +61,31 @@ async function seedProblem164() {
 
     // Test cases for Problem 164
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1641,
         problem_id: 164,
         input: 'Starship',
         expected_output: 'Heavy: Starship Moving...\nHeavy: Starship Rocket engines firing!\nHeavy: Starship Delivering satellite payload.', // len=8, even, >=8
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1642,
         problem_id: 164,
         input: 'Discovery',
         expected_output: 'Super: Discovery Moving...\nSuper: Discovery Rocket engines firing!\nSuper: Discovery Delivering satellite payload.', // len=9, odd, >=8
-        is_hidden: true,
-        weight: 20
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1643,
         problem_id: 164,
         input: 'Soyuz',
         expected_output: 'Quick: Soyuz Moving...\nQuick: Soyuz Rocket engines firing!\nQuick: Soyuz Delivering satellite payload.', // len=5, odd, <8
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1644,
@@ -93,7 +93,7 @@ async function seedProblem164() {
         input: 'Falcon',
         expected_output: 'Fast: Falcon Moving...\nFast: Falcon Rocket engines firing!\nFast: Falcon Delivering satellite payload.', // len=6, even, <8
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1645,
@@ -101,7 +101,23 @@ async function seedProblem164() {
         input: 'SaturnV',
         expected_output: 'Quick: SaturnV Moving...\nQuick: SaturnV Rocket engines firing!\nQuick: SaturnV Delivering satellite payload.', // len=7, odd, <8
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1646,
+        problem_id: 164,
+        input: 'Ariane',
+        expected_output: 'Fast: Ariane Moving...\nFast: Ariane Rocket engines firing!\nFast: Ariane Delivering satellite payload.', // len=6, even, <8
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1647,
+        problem_id: 164,
+        input: 'Atlas',
+        expected_output: 'Quick: Atlas Moving...\nQuick: Atlas Rocket engines firing!\nQuick: Atlas Delivering satellite payload.', // len=5, odd, <8
+        is_hidden: true,
+        weight: 16
       }
     ];
 

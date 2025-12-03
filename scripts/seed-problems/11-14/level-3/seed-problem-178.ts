@@ -18,14 +18,14 @@ async function seedProblem178() {
     const problem178 = {
       problem_id: 178,
       session_id: 32, // Level 3, Session 10
-      title: 'Extending Diagnostic Systems with super()',
+      title: 'Overriding __str__() – Custom Object Output',
       description: 'Master how to extend parent functionality while preserving original behavior.',
       difficulty: 'Medium',
-      question: `Can you create an AdvancedCheck system that first runs the basic diagnostics from its parent SystemCheck class using super(), then adds additional functionality checks? The system should combine both parent and child behaviors.`,
+      question: `Can you create a SystemCheck class with a run() method that prints a diagnostic message, then an AdvancedCheck child class that uses super() to call the parent method and adds its own message? Take input for the system name and call run().`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Running system diagnostics.\nAll systems functional.',
+      sample_input: 'Server',
+      sample_output: 'Server: Running diagnostics.\nServer: Advanced check complete.',
 
       age_group: '11-14',
       level_number: 3,
@@ -43,7 +43,7 @@ async function seedProblem178() {
 
       // Case-specific content
       case_number: 4,
-      case_title: 'Using super() to Access Parent Methods',
+      case_title: 'Overriding __str__() – Custom Object Output',
       case_overview: `The super() function enables child classes to invoke parent methods, allowing behavior extension rather than complete replacement. This preserves parent logic while adding new functionality.`,
       case_explanation: `Create SystemCheck with check() printing diagnostics message. Create AdvancedCheck inheriting SystemCheck. Override check() using super().check() first, then add functionality message. Create object and call check().`,
 
@@ -61,47 +61,63 @@ async function seedProblem178() {
 
     // Test cases for Problem 178
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1781,
         problem_id: 178,
-        input: '',
-        expected_output: 'Running system diagnostics.\nAll systems functional.',
+        input: 'Server',
+        expected_output: 'Server: Running diagnostics.\nServer: Advanced check complete.',
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1782,
         problem_id: 178,
-        input: '',
-        expected_output: 'Running system diagnostics.\nAll systems functional.',
-        is_hidden: true,
-        weight: 20
+        input: 'Database',
+        expected_output: 'Database: Running diagnostics.\nDatabase: Advanced check complete.',
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1783,
         problem_id: 178,
-        input: '',
-        expected_output: 'Running system diagnostics.\nAll systems functional.',
+        input: 'Network',
+        expected_output: 'Network: Running diagnostics.\nNetwork: Advanced check complete.',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1784,
         problem_id: 178,
-        input: '',
-        expected_output: 'Running system diagnostics.\nAll systems functional.',
+        input: 'Application',
+        expected_output: 'Application: Running diagnostics.\nApplication: Advanced check complete.',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1785,
         problem_id: 178,
-        input: '',
-        expected_output: 'Running system diagnostics.\nAll systems functional.',
+        input: 'Security',
+        expected_output: 'Security: Running diagnostics.\nSecurity: Advanced check complete.',
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1786,
+        problem_id: 178,
+        input: 'Storage',
+        expected_output: 'Storage: Running diagnostics.\nStorage: Advanced check complete.',
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1787,
+        problem_id: 178,
+        input: 'Cloud',
+        expected_output: 'Cloud: Running diagnostics.\nCloud: Advanced check complete.',
+        is_hidden: true,
+        weight: 16
       }
     ];
 

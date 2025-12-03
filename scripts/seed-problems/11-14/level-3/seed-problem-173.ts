@@ -18,13 +18,13 @@ async function seedProblem173() {
     const problem173 = {
       problem_id: 173,
       session_id: 31, // Level 3, Session 9
-      title: 'Understanding Method Resolution Order',
+      title: 'Method Resolution Order (MRO) in Multiple Inheritance',
       description: 'Explore how Python determines which method to call when multiple parent classes have methods with the same name.',
       difficulty: 'Medium',
-      question: `Can you create a CommanderAI that inherits from both ScannerAI and LoggerAI, where both parents have a report() method? Observe which parent's method gets called and understand the resolution order Python follows.`,
+      question: `Can you demonstrate Python's Method Resolution Order (MRO) using multiple inheritance with conflicting method names?`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      sample_input: 'Alpha',
       sample_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
 
       age_group: '11-14',
@@ -34,7 +34,7 @@ async function seedProblem173() {
 
       metadata: {
         space_theme: true,
-        concepts: ['MRO', 'method resolution order', 'multiple inheritance', '__mro__', 'inheritance order', 'OOP'],
+        concepts: ['MRO', 'method resolution order', 'multiple inheritance', '__mro__', 'inheritance order', 'OOP', 'class initialization'],
         estimated_time_minutes: 15
       },
 
@@ -44,8 +44,8 @@ async function seedProblem173() {
       // Case-specific content
       case_number: 5,
       case_title: 'Method Resolution Order (MRO) in Multiple Inheritance',
-      case_overview: `Method Resolution Order (MRO) determines which parent's method is called when multiple parents have methods with the same name. Python follows the order classes are listed in inheritance.`,
-      case_explanation: `Create ScannerAI and LoggerAI classes, both with report() method. Create CommanderAI inheriting from both. The first parent's method runs. Use CommanderAI.__mro__ to see resolution order. Call report() and print __mro__.`,
+      case_overview: `MRO determines which parent's method is called when multiple parents have conflicting method names.`,
+      case_explanation: `Build CommanderAI inheriting from ScannerAI and LoggerAI to demonstrate MRO with conflicting method names.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,47 +61,63 @@ async function seedProblem173() {
 
     // Test cases for Problem 173
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1731,
         problem_id: 173,
-        input: '',
+        input: 'Alpha',
         expected_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1732,
         problem_id: 173,
-        input: '',
+        input: 'Bravo',
         expected_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
-        is_hidden: true,
-        weight: 20
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1733,
         problem_id: 173,
-        input: '',
+        input: 'Charlie',
         expected_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1734,
         problem_id: 173,
-        input: '',
+        input: 'Delta',
         expected_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1735,
         problem_id: 173,
-        input: '',
+        input: 'Echo',
         expected_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1736,
+        problem_id: 173,
+        input: 'Foxtrot',
+        expected_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1737,
+        problem_id: 173,
+        input: 'Golf',
+        expected_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
+        is_hidden: true,
+        weight: 16
       }
     ];
 

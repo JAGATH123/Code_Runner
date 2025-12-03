@@ -21,9 +21,7 @@ async function seedProblem168() {
       title: 'Generational Intelligence Upgrade – Deep Space AI Evolution',
       description: 'During a critical surge in deep space operations, single-purpose AI units hit their operational limits. The crew must evolve their AI systems into generational families that inherit shared skills while developing specialized capabilities. Your mission is to design an advanced ExplorerAI that demonstrates the full power of inheritance hierarchies, combining diagnostic tools, decision-making intelligence, and adaptive task execution.',
       difficulty: 'Hard',
-      question: `The Nova Network requires an evolved AI system capable of exploration, diagnostics, and adaptive mission execution. Can you build a complete ExplorerAI that inherits from multiple generations of AI units?
-
-Your ExplorerAI must demonstrate multilevel inheritance (from AIAssistant through TechAI and MissionAI), perform specialized exploration scanning, and override task execution with intelligent behavior for sample collection missions.`,
+      question: `Can you evolve a basic AIAssistant into a specialized ExplorerAI using multilevel inheritance and method overriding?`,
 
       compiler_comment: '# Write your code here\n',
       sample_input: 'Nova\nDeep Space Exploration\nEuropa\nCollect Sample',
@@ -46,8 +44,8 @@ Your ExplorerAI must demonstrate multilevel inheritance (from AIAssistant throug
       // Case-specific content
       case_number: 6,
       case_title: 'Generational Intelligence Upgrade – Deep Space AI Evolution',
-      case_overview: `This final mission demonstrates the complete inheritance ecosystem: base AIAssistant with identity, TechAI adding diagnostics, MissionAI adding decisions and flexible task execution, and ExplorerAI with specialized scanning and overridden collection behavior.`,
-      case_explanation: `Build AIAssistant base with name/purpose. Create TechAI inheriting with run_diagnostics(). Add MissionAI inheriting TechAI with make_decision() and execute_task(*tasks). Create ExplorerAI inheriting MissionAI, add explore(target), override execute_task() to handle "Collect Sample" specially. Test all inherited and new methods.`,
+      case_overview: `Demonstrate complete inheritance hierarchies with multiple levels and specialized method overriding.`,
+      case_explanation: `Build four-tier inheritance (AIAssistant → TechAI → MissionAI → ExplorerAI) with overridden methods and flexible parameters.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -63,31 +61,31 @@ Your ExplorerAI must demonstrate multilevel inheritance (from AIAssistant throug
 
     // Test cases for Problem 168 (7 test cases for final task)
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1681,
         problem_id: 168,
         input: 'Nova\nDeep Space Exploration\nEuropa\nCollect Sample',
         expected_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Europa for life signs...\nSample collection initiated.',
         is_hidden: false,
-        weight: 15
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1682,
         problem_id: 168,
         input: 'Atlas\nPlanetary Survey\nMars\nAnalyze Terrain',
         expected_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Mars for life signs...\nExecuting task: Analyze Terrain',
-        is_hidden: true,
-        weight: 15
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1683,
         problem_id: 168,
         input: 'Orion\nAsteroid Mining\nCeres\nCollect Sample',
         expected_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Ceres for life signs...\nSample collection initiated.',
         is_hidden: true,
-        weight: 15
+        weight: 16
       },
       {
         test_case_id: 1684,
@@ -95,7 +93,7 @@ Your ExplorerAI must demonstrate multilevel inheritance (from AIAssistant throug
         input: 'Titan\nMoon Research\nEnceladus\nDeploy Sensors',
         expected_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Enceladus for life signs...\nExecuting task: Deploy Sensors',
         is_hidden: true,
-        weight: 15
+        weight: 16
       },
       {
         test_case_id: 1685,
@@ -103,7 +101,7 @@ Your ExplorerAI must demonstrate multilevel inheritance (from AIAssistant throug
         input: 'Voyager\nDeep Space Survey\nTitan\nCollect Sample',
         expected_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Titan for life signs...\nSample collection initiated.',
         is_hidden: true,
-        weight: 10
+        weight: 16
       },
       {
         test_case_id: 1686,
@@ -111,7 +109,7 @@ Your ExplorerAI must demonstrate multilevel inheritance (from AIAssistant throug
         input: 'Phoenix\nExoplanet Study\nProxima b\nRecord Data',
         expected_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Proxima b for life signs...\nExecuting task: Record Data',
         is_hidden: true,
-        weight: 15
+        weight: 16
       },
       {
         test_case_id: 1687,
@@ -119,7 +117,7 @@ Your ExplorerAI must demonstrate multilevel inheritance (from AIAssistant throug
         input: 'Horizon\nCometary Analysis\nHalley\nCollect Sample',
         expected_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Halley for life signs...\nSample collection initiated.',
         is_hidden: true,
-        weight: 15
+        weight: 16
       }
     ];
 

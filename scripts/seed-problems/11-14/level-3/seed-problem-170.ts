@@ -18,14 +18,14 @@ async function seedProblem170() {
     const problem170 = {
       problem_id: 170,
       session_id: 31, // Level 3, Session 9
-      title: 'Building a Hybrid AI Laboratory System',
+      title: 'Hybrid Inheritance',
       description: 'Learn how to combine different inheritance types to create complex, multi-functional systems.',
       difficulty: 'Medium',
-      question: `Can you design a LabAI system that demonstrates hybrid inheritance by combining both single-level and multi-level inheritance paths? The system should inherit boot capabilities from a base, then combine specialized medical scanning and research analysis features.`,
+      question: `Can you create a LabAI using hybrid inheritance that combines multilevel and multiple inheritance patterns?`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Booting AI system...\nScanning medical data...\nAnalyzing research results...',
+      sample_input: 'Genesis',
+      sample_output: 'MergedSys: Booting AI system...\nMergedSys: Scanning medical data...\nMergedSys: Analyzing research results...',
 
       age_group: '11-14',
       level_number: 3,
@@ -34,7 +34,7 @@ async function seedProblem170() {
 
       metadata: {
         space_theme: true,
-        concepts: ['hybrid inheritance', 'multiple inheritance', 'multilevel inheritance', 'class hierarchy', 'inheritance paths', 'OOP'],
+        concepts: ['hybrid inheritance', 'multiple inheritance', 'multilevel inheritance', 'class hierarchy', 'inheritance paths', 'OOP', 'conditional logic', 'nested conditionals', 'modulo operator'],
         estimated_time_minutes: 15
       },
 
@@ -44,8 +44,8 @@ async function seedProblem170() {
       // Case-specific content
       case_number: 2,
       case_title: 'Hybrid Inheritance',
-      case_overview: `Hybrid inheritance combines multiple inheritance types (single, multilevel, multiple) in one structure, allowing complex class hierarchies that merge features from different inheritance paths.`,
-      case_explanation: `Create AIBase with boot() method. Create MedicalAI inheriting AIBase with scan() method. Create ResearchAI inheriting AIBase with analyze() method. Create LabAI inheriting from both MedicalAI and ResearchAI. Call all three methods.`,
+      case_overview: `Hybrid inheritance combines multiple inheritance types in one structure for complex class hierarchies.`,
+      case_explanation: `Build LabAI using hybrid inheritance (AIBase → MedicalAI/ResearchAI → LabAI) with conditional prefixes.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,47 +61,63 @@ async function seedProblem170() {
 
     // Test cases for Problem 170
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1701,
         problem_id: 170,
-        input: '',
-        expected_output: 'Booting AI system...\nScanning medical data...\nAnalyzing research results...',
+        input: 'Genesis',
+        expected_output: 'MergedSys: Booting AI system...\nMergedSys: Scanning medical data...\nMergedSys: Analyzing research results...', // len=7, odd, >=7
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1702,
         problem_id: 170,
-        input: '',
-        expected_output: 'Booting AI system...\nScanning medical data...\nAnalyzing research results...',
-        is_hidden: true,
-        weight: 20
+        input: 'MediCore',
+        expected_output: 'HybridSys: Booting AI system...\nHybridSys: Scanning medical data...\nHybridSys: Analyzing research results...', // len=8, even, >=7
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1703,
         problem_id: 170,
-        input: '',
-        expected_output: 'Booting AI system...\nScanning medical data...\nAnalyzing research results...',
+        input: 'Apollo',
+        expected_output: 'LabSys: Booting AI system...\nLabSys: Scanning medical data...\nLabSys: Analyzing research results...', // len=6, even, <7
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1704,
         problem_id: 170,
-        input: '',
-        expected_output: 'Booting AI system...\nScanning medical data...\nAnalyzing research results...',
+        input: 'Atlas',
+        expected_output: 'MixSys: Booting AI system...\nMixSys: Scanning medical data...\nMixSys: Analyzing research results...', // len=5, odd, <7
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1705,
         problem_id: 170,
-        input: '',
-        expected_output: 'Booting AI system...\nScanning medical data...\nAnalyzing research results...',
+        input: 'Helix',
+        expected_output: 'MixSys: Booting AI system...\nMixSys: Scanning medical data...\nMixSys: Analyzing research results...', // len=5, odd, <7
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1706,
+        problem_id: 170,
+        input: 'Research',
+        expected_output: 'HybridSys: Booting AI system...\nHybridSys: Scanning medical data...\nHybridSys: Analyzing research results...', // len=8, even, >=7
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1707,
+        problem_id: 170,
+        input: 'Lab',
+        expected_output: 'MixSys: Booting AI system...\nMixSys: Scanning medical data...\nMixSys: Analyzing research results...', // len=3, odd, <7
+        is_hidden: true,
+        weight: 16
       }
     ];
 

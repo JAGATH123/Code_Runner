@@ -18,14 +18,14 @@ async function seedProblem167() {
     const problem167 = {
       problem_id: 167,
       session_id: 30, // Level 3, Session 8
-      title: 'Advanced Auto-Navigation System',
+      title: 'Building a Space Inheritance System',
       description: 'Combine multilevel inheritance with method overriding to build an intelligent navigation system.',
       difficulty: 'Medium',
-      question: `Can you build a complete inheritance chain starting with a System class, adding NavigationSystem with calibration, and finally AutoNav that overrides the status message to show precision mode? The AutoNav should have access to all methods from its ancestors.`,
+      question: `Can you build a complete navigation system using multilevel inheritance with method overriding and conditional prefixes?`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'AutoNav: Precision mode enabled\nCalibrating star tracker...',
+      sample_input: 'NaviCore',
+      sample_output: 'NavSys: Precision mode enabled\nNavSys: Calibrating star tracker...',
 
       age_group: '11-14',
       level_number: 3,
@@ -34,7 +34,7 @@ async function seedProblem167() {
 
       metadata: {
         space_theme: true,
-        concepts: ['multilevel inheritance', 'method overriding', 'class hierarchy', 'polymorphism', 'OOP'],
+        concepts: ['multilevel inheritance', 'method overriding', 'class hierarchy', 'polymorphism', 'OOP', 'conditional logic', 'nested conditionals', 'modulo operator'],
         estimated_time_minutes: 15
       },
 
@@ -44,8 +44,8 @@ async function seedProblem167() {
       // Case-specific content
       case_number: 5,
       case_title: 'Building a Space Inheritance System',
-      case_overview: `Combining multilevel inheritance with method overriding creates powerful class hierarchies. Child classes inherit all ancestor methods while customizing specific behaviors.`,
-      case_explanation: `Build System with status(), NavigationSystem inherits and adds calibrate(), AutoNav inherits both and overrides status(). Create AutoNav object, call both status() and calibrate() to demonstrate combined functionality.`,
+      case_overview: `Combining multilevel inheritance with method overriding creates powerful, customizable class hierarchies.`,
+      case_explanation: `Build three-tier inheritance with overridden methods and conditional prefixes for advanced navigation systems.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,47 +61,63 @@ async function seedProblem167() {
 
     // Test cases for Problem 167
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1671,
         problem_id: 167,
-        input: '',
-        expected_output: 'AutoNav: Precision mode enabled\nCalibrating star tracker...',
+        input: 'NaviCore',
+        expected_output: 'NavSys: Precision mode enabled\nNavSys: Calibrating star tracker...', // len=8, even, >=7
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1672,
         problem_id: 167,
-        input: '',
-        expected_output: 'AutoNav: Precision mode enabled\nCalibrating star tracker...',
-        is_hidden: true,
-        weight: 20
+        input: 'Navigator',
+        expected_output: 'AutoSys: Precision mode enabled\nAutoSys: Calibrating star tracker...', // len=9, odd, >=7
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1673,
         problem_id: 167,
-        input: '',
-        expected_output: 'AutoNav: Precision mode enabled\nCalibrating star tracker...',
+        input: 'Guidance',
+        expected_output: 'NavSys: Precision mode enabled\nNavSys: Calibrating star tracker...', // len=8, even, >=7
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1674,
         problem_id: 167,
-        input: '',
-        expected_output: 'AutoNav: Precision mode enabled\nCalibrating star tracker...',
+        input: 'AutoPilot',
+        expected_output: 'AutoSys: Precision mode enabled\nAutoSys: Calibrating star tracker...', // len=9, odd, >=7
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1675,
         problem_id: 167,
-        input: '',
-        expected_output: 'AutoNav: Precision mode enabled\nCalibrating star tracker...',
+        input: 'NavAI',
+        expected_output: 'Core: Precision mode enabled\nCore: Calibrating star tracker...', // len=5, odd, <7
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1676,
+        problem_id: 167,
+        input: 'System',
+        expected_output: 'Sys: Precision mode enabled\nSys: Calibrating star tracker...', // len=6, even, <7
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1677,
+        problem_id: 167,
+        input: 'Star',
+        expected_output: 'Sys: Precision mode enabled\nSys: Calibrating star tracker...', // len=4, even, <7
+        is_hidden: true,
+        weight: 16
       }
     ];
 

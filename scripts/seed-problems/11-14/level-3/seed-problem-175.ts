@@ -18,13 +18,13 @@ async function seedProblem175() {
     const problem175 = {
       problem_id: 175,
       session_id: 32, // Level 3, Session 10
-      title: 'Making AI Units Think Differently',
+      title: 'Function Overriding – Making AI Think Differently',
       description: 'Explore how different AI classes can share the same method name but behave uniquely based on their specialization.',
       difficulty: 'Medium',
-      question: `Can you create a base Animal class with a speak() method, then build specialized Dog and Cat classes that override this method with their own unique sounds? Each animal type should produce its own distinct vocalization.`,
+      question: `Can you create a base Animal class with a speak() method, then build specialized Dog and Cat classes that override this method with their own unique sounds? Take 2 inputs for animal types ("Dog" or "Cat"), create objects for each, and call their speak() methods in order.`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      sample_input: 'Dog\nCat',
       sample_output: 'The dog barks.\nThe cat meows.',
 
       age_group: '11-14',
@@ -61,47 +61,63 @@ async function seedProblem175() {
 
     // Test cases for Problem 175
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1751,
         problem_id: 175,
-        input: '',
+        input: 'Dog\nCat',
         expected_output: 'The dog barks.\nThe cat meows.',
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1752,
         problem_id: 175,
-        input: '',
-        expected_output: 'The dog barks.\nThe cat meows.',
-        is_hidden: true,
-        weight: 20
+        input: 'Cat\nDog',
+        expected_output: 'The cat meows.\nThe dog barks.',
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1753,
         problem_id: 175,
-        input: '',
-        expected_output: 'The dog barks.\nThe cat meows.',
+        input: 'Dog\nDog',
+        expected_output: 'The dog barks.\nThe dog barks.',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1754,
         problem_id: 175,
-        input: '',
-        expected_output: 'The dog barks.\nThe cat meows.',
+        input: 'Cat\nCat',
+        expected_output: 'The cat meows.\nThe cat meows.',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1755,
         problem_id: 175,
-        input: '',
+        input: 'Dog\nCat',
         expected_output: 'The dog barks.\nThe cat meows.',
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1756,
+        problem_id: 175,
+        input: 'Cat\nDog',
+        expected_output: 'The cat meows.\nThe dog barks.',
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1757,
+        problem_id: 175,
+        input: 'Dog\nDog',
+        expected_output: 'The dog barks.\nThe dog barks.',
+        is_hidden: true,
+        weight: 16
       }
     ];
 

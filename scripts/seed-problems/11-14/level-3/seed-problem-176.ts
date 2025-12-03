@@ -18,14 +18,14 @@ async function seedProblem176() {
     const problem176 = {
       problem_id: 176,
       session_id: 32, // Level 3, Session 10
-      title: 'Combining Book Pages with Custom Addition',
+      title: 'Operator Overloading – Redefining + for Custom Objects',
       description: 'Learn how to redefine operators like + to work with custom objects.',
       difficulty: 'Medium',
-      question: `Can you create a Book class where adding two books together combines their page counts? When you use the + operator on Book objects, it should create a new Book with the total pages from both.`,
+      question: `Can you create a Book class with title and pages attributes? When adding books with +, combine titles with '-' and add pages. Take 2 inputs (title, pages) for each of 2 books, add them, and print the result.`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Book with 250 pages',
+      sample_input: 'Fiction\n150\nScience\n100',
+      sample_output: 'Fiction-Science Book with 250 pages',
 
       age_group: '11-14',
       level_number: 3,
@@ -61,47 +61,63 @@ async function seedProblem176() {
 
     // Test cases for Problem 176
     const testCases = [
-      // Visible test case
+      // Visible test cases
       {
         test_case_id: 1761,
         problem_id: 176,
-        input: '',
-        expected_output: 'Book with 250 pages',
+        input: 'Fiction\n150\nScience\n100',
+        expected_output: 'Fiction-Science Book with 250 pages',
         is_hidden: false,
-        weight: 20
+        weight: 10
       },
-      // Hidden test cases
       {
         test_case_id: 1762,
         problem_id: 176,
-        input: '',
-        expected_output: 'Book with 250 pages',
-        is_hidden: true,
-        weight: 20
+        input: 'Math\n120\nHistory\n230',
+        expected_output: 'Math-History Book with 350 pages',
+        is_hidden: false,
+        weight: 10
       },
+      // Hidden test cases
       {
         test_case_id: 1763,
         problem_id: 176,
-        input: '',
-        expected_output: 'Book with 250 pages',
+        input: 'Art\n75\nMusic\n125',
+        expected_output: 'Art-Music Book with 200 pages',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1764,
         problem_id: 176,
-        input: '',
-        expected_output: 'Book with 250 pages',
+        input: 'Physics\n50\nChemistry\n75',
+        expected_output: 'Physics-Chemistry Book with 125 pages',
         is_hidden: true,
-        weight: 20
+        weight: 16
       },
       {
         test_case_id: 1765,
         problem_id: 176,
-        input: '',
-        expected_output: 'Book with 250 pages',
+        input: 'Biology\n300\nGeography\n250',
+        expected_output: 'Biology-Geography Book with 550 pages',
         is_hidden: true,
-        weight: 20
+        weight: 16
+      },
+      {
+        test_case_id: 1766,
+        problem_id: 176,
+        input: 'English\n80\nLiterature\n120',
+        expected_output: 'English-Literature Book with 200 pages',
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1767,
+        problem_id: 176,
+        input: 'Drama\n175\nPoetry\n225',
+        expected_output: 'Drama-Poetry Book with 400 pages',
+        is_hidden: true,
+        weight: 16
       }
     ];
 
