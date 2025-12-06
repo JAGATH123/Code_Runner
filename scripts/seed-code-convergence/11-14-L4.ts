@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/code-runner';
 const MONGODB_DB = process.env.MONGODB_DB || 'code-runner';
 
-async function seedProblem242() {
+async function seedCodeConvergenceL4() {
   const client = new MongoClient(MONGODB_URI);
 
   try {
@@ -14,12 +14,13 @@ async function seedProblem242() {
     const problemsCollection = db.collection('problems');
     const testCasesCollection = db.collection('test_cases');
 
-    // Problem 242: Level 4, Code Converge - Project GALACTIC COMMAND
-    const problem242 = {
+    // Code Convergence L4: Project GALACTIC COMMAND
+    const codeConvergenceL4 = {
       problem_id: 242,
-      session_id: 44, // Level 4, Code Converge
+      session_id: 44, // Level 4, Code Convergence
       title: 'Project GALACTIC COMMAND – The Final Defense System',
       description: 'Build a fully integrated AI spacecraft controller uniting all Level 4 concepts - OOP, file handling, exception handling, and Pygame interface.',
+
       difficulty: 'Hard',
       question: `Build the Galactic Command System—a fully integrated spacecraft controller combining OOP, file I/O, exception handling, and Pygame. The crew must restore the Nova Network by coordinating all subsystems.
 
@@ -29,7 +30,7 @@ Build a Pygame window (400x300) displaying live status updates from the command 
 
 Print status messages: "Command Core initialized", "Mission Logger active", "Exception handling secured", "Dashboard online", "System integration complete". Output mission_transcript.txt with complete log and ensure clean shutdown.`,
 
-      compiler_comment: '# Write your code here\n',
+      example_code: '# Project GALACTIC COMMAND - The Final Defense System\n# Write your code here\n',
       sample_input: '',
       sample_output: 'Command Core initialized\nMission Logger active\nException handling secured\nDashboard online\nSystem integration complete',
 
@@ -40,6 +41,11 @@ Print status messages: "Command Core initialized", "Mission Logger active", "Exc
 
       metadata: {
         space_theme: true,
+        story_linked: true,
+        is_final_task: true,
+        is_capstone: true,
+        is_code_convergence: true,
+        unlocks_next_level: false,
         concepts: [
           'Object-Oriented Programming',
           'Classes and Methods',
@@ -59,12 +65,14 @@ Print status messages: "Command Core initialized", "Mission Logger active", "Exc
           'Real-time Monitoring'
         ],
         estimated_time_minutes: 60,
-        is_code_converge: true,
+        galactic_command_phase: 'complete',
+        narrative_beat: 'NOVA NETWORK RESTORED - VORAX-9 STABLE',
         prerequisite_sessions: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43]
       },
 
       // Session-level content
-      session_title: 'Code Converge: Project GALACTIC COMMAND',
+      session_title: 'Code Convergence: Project GALACTIC COMMAND',
+      session_introduction: `The ultimate test of your Python mastery. Project GALACTIC COMMAND demands you integrate every concept learned across Level 4—from exception handling and file operations to object-oriented programming and Pygame visualization. This is where theory becomes practice, where individual skills converge into a unified system that can control an entire spacecraft AI. GALACTIC COMMAND must handle mission states, log operations, manage exceptions, and provide real-time visual feedback under extreme conditions. The fate of the Nova Network depends on your ability to bring all systems together.`,
 
       // Case-specific content
       case_number: 1,
@@ -76,15 +84,15 @@ Print status messages: "Command Core initialized", "Mission Logger active", "Exc
       updated_at: new Date()
     };
 
-    // Delete existing problem 242 if it exists
+    // Delete existing Code Convergence L4 if it exists
     await problemsCollection.deleteOne({ problem_id: 242 });
     await testCasesCollection.deleteMany({ problem_id: 242 });
 
-    // Insert problem 242
-    const problemResult = await problemsCollection.insertOne(problem242);
-    console.log('Problem 242 inserted');
+    // Insert Code Convergence L4
+    const problemResult = await problemsCollection.insertOne(codeConvergenceL4);
+    console.log('Code Convergence L4 inserted');
 
-    // Test cases for Problem 242 (7 test cases with higher weights for Code Converge)
+    // Test cases for Code Convergence L4 (7 test cases)
     const testCases = [
       // Visible test case
       {
@@ -148,9 +156,9 @@ Print status messages: "Command Core initialized", "Mission Logger active", "Exc
 
     // Insert test cases
     await testCasesCollection.insertMany(testCases);
-    console.log(`${testCases.length} test cases inserted for Problem 242`);
+    console.log(`${testCases.length} test cases inserted for Code Convergence L4`);
 
-    console.log('\n✅ Problem 242 (Level 4, Code Converge: Project GALACTIC COMMAND) seeded successfully!');
+    console.log('\n✅ Code Convergence L4 (Project GALACTIC COMMAND) seeded successfully!');
 
   } catch (error) {
     console.error('Error seeding database:', error);
@@ -162,7 +170,7 @@ Print status messages: "Command Core initialized", "Mission Logger active", "Exc
 }
 
 // Run the seed function
-seedProblem242()
+seedCodeConvergenceL4()
   .then(() => {
     console.log('\n🚀 Database seeding completed!');
     process.exit(0);

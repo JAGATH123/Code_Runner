@@ -21,11 +21,11 @@ async function seedProblem189() {
       title: 'Multiple Exceptions – Handle More Than One Error',
       description: 'Learn to handle different types of errors using multiple except blocks for more precise error handling.',
       difficulty: 'Easy',
-      question: `Create a command decoder that accepts a command code, divides 50 by it, and handles both ValueError (invalid input like letters) and ZeroDivisionError (zero input) with specific error messages.`,
+      question: `Create a command decoder that accepts a command code, divides 50 by it, and handles both ValueError (invalid input like letters) and ZeroDivisionError (zero input) with specific error messages. For invalid input, display an error message about entering a number. For zero input, display that the command code cannot be zero. For successful division, display the result.`,
 
       compiler_comment: '# Write your code here\n',
-      sample_input: 'abc',
-      sample_output: 'Invalid input! Please enter a number.',
+      sample_input: '5',
+      sample_output: 'Result: 10.0',
 
       age_group: '11-14',
       level_number: 4,
@@ -73,8 +73,8 @@ async function seedProblem189() {
       {
         test_case_id: 1892,
         problem_id: 189,
-        input: '0',
-        expected_output: 'Command code cannot be zero.',
+        input: '5',
+        expected_output: 'Result: 10.0',
         is_hidden: false,
         weight: 10
       },
@@ -82,29 +82,13 @@ async function seedProblem189() {
       {
         test_case_id: 1893,
         problem_id: 189,
-        input: '5',
-        expected_output: 'Code divided by 5: 10.0',
+        input: '10',
+        expected_output: 'Result: 5.0',
         is_hidden: true,
         weight: 16
       },
       {
         test_case_id: 1894,
-        problem_id: 189,
-        input: 'xyz',
-        expected_output: 'Invalid input! Please enter a number.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 1895,
-        problem_id: 189,
-        input: '10',
-        expected_output: 'Code divided by 5: 5.0',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 1896,
         problem_id: 189,
         input: '0',
         expected_output: 'Command code cannot be zero.',
@@ -112,10 +96,26 @@ async function seedProblem189() {
         weight: 16
       },
       {
+        test_case_id: 1895,
+        problem_id: 189,
+        input: 'xyz',
+        expected_output: 'Invalid input! Please enter a number.',
+        is_hidden: true,
+        weight: 16
+      },
+      {
+        test_case_id: 1896,
+        problem_id: 189,
+        input: '25',
+        expected_output: 'Result: 2.0',
+        is_hidden: true,
+        weight: 16
+      },
+      {
         test_case_id: 1897,
         problem_id: 189,
         input: '2',
-        expected_output: 'Code divided by 5: 25.0',
+        expected_output: 'Result: 25.0',
         is_hidden: true,
         weight: 16
       }

@@ -25,7 +25,7 @@ async function seedProblem185() {
 
       compiler_comment: '# Write your code here\n',
       sample_input: '10\n0',
-      sample_output: 'Error: division by zero\nError Type: <class \'ZeroDivisionError\'>',
+      sample_output: 'Error: float division by zero\nError Type: <class \'ZeroDivisionError\'>',
 
       age_group: '11-14',
       level_number: 4,
@@ -66,7 +66,7 @@ async function seedProblem185() {
         test_case_id: 1851,
         problem_id: 185,
         input: '10\n0',
-        expected_output: 'Error: division by zero\nError Type: <class \'ZeroDivisionError\'>',
+        expected_output: 'Error: float division by zero\nError Type: <class \'ZeroDivisionError\'>',
         is_hidden: false,
         weight: 10
       },
@@ -83,7 +83,7 @@ async function seedProblem185() {
         test_case_id: 1853,
         problem_id: 185,
         input: '50\n0',
-        expected_output: 'Error: division by zero\nError Type: <class \'ZeroDivisionError\'>',
+        expected_output: 'Error: float division by zero\nError Type: <class \'ZeroDivisionError\'>',
         is_hidden: true,
         weight: 16
       },
@@ -107,7 +107,7 @@ async function seedProblem185() {
         test_case_id: 1856,
         problem_id: 185,
         input: '150\n0',
-        expected_output: 'Error: division by zero\nError Type: <class \'ZeroDivisionError\'>',
+        expected_output: 'Error: float division by zero\nError Type: <class \'ZeroDivisionError\'>',
         is_hidden: true,
         weight: 16
       },

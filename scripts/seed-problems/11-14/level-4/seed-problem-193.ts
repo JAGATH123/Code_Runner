@@ -21,19 +21,7 @@ async function seedProblem193() {
       title: 'Cosmic Fault Resilience – Mastering Spacecraft System Stability',
       description: 'Build a complete fault-resilient spacecraft system using all advanced exception handling techniques learned in this session.',
       difficulty: 'Hard',
-      question: `Welcome to the Cosmic Fault Resilience System! You are a Space Fault Engineer building an intelligent program that keeps your spacecraft stable even when things go wrong. Power, cooling, and comms come up intermittently, and you must harden routines to keep the relay stable under fluctuating loads.
-
-Your system must complete 4 steps plus a homework task:
-
-Step 1: Faulty Sensor Input Handler - Read atmospheric pressure safely using try-except to catch ValueError.
-
-Step 2: Command Execution Unit - Access a command from a list and divide it by a number, handling IndexError, ZeroDivisionError, and ValueError.
-
-Step 3: Fault Log Backup Unit - Calculate a result and save it to a log file using nested try-except for independent error handling.
-
-Step 4: Mission Status Responder - Accept "OK" or "ERROR" status inputs, using try-except-else-finally to ensure safe shutdown.
-
-Homework: Space Ration Distribution Shield - Calculate food per crew member, handling ZeroDivisionError and ValueError, with warnings for low rations.`,
+      question: `Build a fault-resilient spacecraft system that handles multiple subsystem checks with comprehensive exception handling. Your program must validate atmospheric pressure readings, execute command calculations with error handling, log operations to a file, process mission status with guaranteed cleanup, and distribute space rations with safety checks. Handle ValueError for invalid inputs, ZeroDivisionError for division by zero, IndexError for invalid list access, and other errors appropriately. Ensure all systems shut down safely and distribution completes regardless of errors encountered.`,
 
       compiler_comment: '# Write your code here\n',
       sample_input: '75\n2\n5\n10\nOK\n100\n5',
