@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { writeFile, unlink } from 'fs/promises';
+import { writeFile, unlink, mkdir, readFile } from 'fs/promises';
 import { join } from 'path';
 import { tmpdir } from 'os';
 import { parsePythonError, formatErrorForDisplay } from '../parsers/python-error-parser';
@@ -22,6 +22,12 @@ interface ExecutionResult {
   executionTime: number;
   plots?: string[];
   usedGPU?: boolean;
+  pygameBundle?: {
+    html: string;
+    wasm: string;
+    data: string;
+    js: string;
+  };
 }
 
 export class GPUContainerPool {
@@ -389,10 +395,94 @@ export class GPUContainerPool {
       const hasMatplotlib = this.detectMatplotlibUsage(code);
       let processedCode = hasMatplotlib ? this.injectPlotSavingCode(code) : code;
 
-      // Detect pygame usage and inject headless wrapper
+      // Detect pygame usage and compile with Pygbag for interactive gameplay
       const hasPygame = this.detectPygameUsage(code);
+      let pygameBundle: { html: string; wasm: string; data: string; js: string } | undefined;
+      let skipDockerExecution = false;
+
       if (hasPygame) {
-        processedCode = this.injectPygameWrapper(processedCode);
+        console.log('[Pygame] Detected Pygame code, compiling with Pygbag for interactive gameplay...');
+
+        // STEP 1: Execute code in regular Python to capture print output
+        let pygamePrintOutput = '';
+        try {
+          console.log('[Pygame] Executing code in regular Python to capture print output...');
+
+          // Create modified code that exits after a few frames to capture initial print output
+          const captureCode = code.replace(
+            /while\s+running:/,
+            `frame_count = 0\nwhile running and frame_count < 5:`  // Run only 5 frames
+          ).replace(
+            /pygame\.display\.(flip|update)\(\)/g,
+            `pygame.display.$1()\n    frame_count += 1`  // Increment frame counter
+          );
+
+          const hostCodePath = join(tmpdir(), `${sessionId}_capture.py`);
+          await writeFile(hostCodePath, captureCode, 'utf8');
+
+          const isWindows = process.platform === 'win32';
+          const catCommand = isWindows ? 'type' : 'cat';
+          await execAsync(`${catCommand} "${hostCodePath}" | docker exec -i ${containerId} sh -c "cat > /tmp/${sessionId}_capture.py"`);
+
+          const { stdout: capturedOutput } = await execAsync(
+            `docker exec ${containerId} sh -c "cd /tmp && timeout 3s python ${sessionId}_capture.py 2>&1"`,
+            { timeout: 4000 }
+          );
+
+          // Clean up Pygame initialization messages but keep actual print output
+          pygamePrintOutput = capturedOutput
+            .split('\n')
+            .filter(line => {
+              const trimmed = line.trim();
+              // Filter out Pygame system messages
+              if (!trimmed) return false;
+              if (trimmed.includes('pygame')) return false;
+              if (trimmed.includes('SDL')) return false;
+              if (trimmed.includes('Hello from the pygame')) return false;
+              if (trimmed.includes('community')) return false;
+              return true;
+            })
+            .join('\n')
+            .trim();
+
+          console.log(`[Pygame] Captured print output: "${pygamePrintOutput}"`);
+
+          await unlink(hostCodePath).catch(() => {});
+          await execAsync(`docker exec ${containerId} rm -f /tmp/${sessionId}_capture.py`).catch(() => {});
+        } catch (error) {
+          console.log('[Pygame] Failed to capture print output from execution:', error);
+          pygamePrintOutput = '';
+        }
+
+        // STEP 2: Compile with Pygbag for interactive gameplay
+        const bundle = await this.compilePygame(code, sessionId);
+        if (bundle) {
+          pygameBundle = bundle;
+          skipDockerExecution = true;
+          console.log('[Pygame] Pygbag compilation successful');
+
+          return {
+            stdout: pygamePrintOutput,
+            stderr: '',
+            status: 'Success',
+            plots: undefined,
+            pygameBundle
+          };
+        } else {
+          console.warn('[Pygame] Pygbag compilation failed, falling back to screenshot mode');
+          processedCode = this.injectPygameWrapper(processedCode);
+        }
+      }
+
+      // Skip Docker execution if Pygbag succeeded
+      if (skipDockerExecution) {
+        return {
+          stdout: '',
+          stderr: '',
+          status: 'Success',
+          plots: undefined,
+          pygameBundle
+        };
       }
 
       // Inject GPU verification code if using GPU
@@ -493,7 +583,8 @@ export class GPUContainerPool {
         stdout: stdout.trim(),
         stderr: formattedStderr,
         status: formattedStderr ? 'Error' : 'Success',
-        plots
+        plots,
+        pygameBundle
       };
 
     } catch (error) {
@@ -687,6 +778,86 @@ except Exception as e:
     }
 
     return frames;
+  }
+
+  /**
+   * Compile Pygame code to WebAssembly using Pygbag for interactive browser gameplay
+   */
+  private static async compilePygame(code: string, sessionId: string): Promise<{
+    html: string;
+    wasm: string;
+    data: string;
+    js: string;
+  } | null> {
+    try {
+      console.log(`[Pygbag] Starting Pygame compilation for session ${sessionId}`);
+
+      const tempDir = join(process.cwd(), 'temp');
+      const pygameDir = join(tempDir, `pygame_${sessionId}`);
+      const buildDir = join(pygameDir, 'build', 'web');
+
+      await mkdir(pygameDir, { recursive: true });
+
+      // Add minimal stdout interceptor for live print capture
+      const stdoutInterceptor = `
+import sys
+try:
+    import platform
+    if platform.system() == 'Emscripten':
+        import js
+        _orig = sys.stdout
+        class Out:
+            def write(self, s):
+                _orig.write(s)
+                if s.strip() and 'pygame' not in s and 'SDL' not in s:
+                    try:
+                        js.eval(f"window.parent.postMessage({{type:'pygame-console',message:{repr(s.strip())}}}, '*')")
+                    except: pass
+            def flush(self):
+                _orig.flush()
+        sys.stdout = Out()
+except: pass
+`;
+      const instrumentedCode = stdoutInterceptor + code;
+
+      const mainPyPath = join(pygameDir, 'main.py');
+      await writeFile(mainPyPath, instrumentedCode, 'utf8');
+
+      console.log(`[Pygbag] Created temp directory with instrumented code: ${pygameDir}`);
+
+      // Run Pygbag build inside Docker container
+      const buildCmd = `docker run --rm -v "${pygameDir}:/app/game:rw" --workdir /app ${this.CPU_IMAGE_NAME} python3 -m pygbag --build /app/game`;
+      console.log(`[Pygbag] Running build command: ${buildCmd}`);
+
+      const { stdout, stderr } = await execAsync(buildCmd, { timeout: 30000 });
+
+      console.log(`[Pygbag] Build completed`);
+      if (stdout) console.log(`[Pygbag] Stdout:`, stdout);
+      if (stderr) console.log(`[Pygbag] Stderr:`, stderr);
+
+      // Read generated files and encode as base64
+      // Pygbag 0.9.2 generates: index.html, game.apk, favicon.png
+      // The HTML loads Pygbag runtime from CDN
+      const htmlContent = await readFile(join(buildDir, 'index.html'), 'utf8');
+      const apkContent = await readFile(join(buildDir, 'game.apk'));
+
+      const bundle = {
+        html: Buffer.from(htmlContent).toString('base64'),
+        wasm: apkContent.toString('base64'), // game.apk (reuse wasm field)
+        data: '', // Not used in 0.9.2
+        js: ''    // Not used in 0.9.2
+      };
+
+      console.log(`[Pygbag] Successfully compiled and encoded bundle (HTML + APK with live console)`);
+
+      // Cleanup temp directory
+      await execAsync(`rm -rf "${pygameDir}"`).catch(() => {});
+
+      return bundle;
+    } catch (error) {
+      console.error(`[Pygbag] Compilation failed:`, error);
+      return null;
+    }
   }
 
   private static async returnContainer(containerId: string, type: 'cpu' | 'gpu'): Promise<void> {

@@ -3,6 +3,7 @@
 import type { Problem, ExecutionResult, SubmissionResult, TestCase } from '@/lib/types';
 import { useState, useTransition, useEffect } from 'react';
 import { CodeEditor } from './CodeEditor';
+import { PygameCanvas } from './PygameCanvas';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -46,6 +47,7 @@ export function CompilerUI({ problem }: CompilerUIProps) {
     executionTime: null,
   });
   const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
+  const [pygameConsoleOutput, setPygameConsoleOutput] = useState<string[]>([]);
   const { playProjectTextSound } = useGlobalAudio();
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState('customInput');
@@ -74,6 +76,7 @@ export function CompilerUI({ problem }: CompilerUIProps) {
     startTransition(async () => {
       setResult({ stdout: '', stderr: '', status: 'Running', executionTime: null });
       setSubmissionResult(null);
+      setPygameConsoleOutput([]); // Clear previous pygame console output
       setActiveTab('result');
 
       const response = await fetch('/api/run', {
@@ -83,6 +86,12 @@ export function CompilerUI({ problem }: CompilerUIProps) {
       });
       const data: ExecutionResult = await response.json();
       setResult(data);
+
+      // If Pygame game with initial stdout, add it to pygame console output
+      if (data.pygameBundle && data.stdout) {
+        const initialOutput = data.stdout.trim().split('\n');
+        setPygameConsoleOutput(initialOutput);
+      }
     });
   };
 
@@ -90,6 +99,7 @@ export function CompilerUI({ problem }: CompilerUIProps) {
      startTransition(async () => {
       setResult({ stdout: '', stderr: '', status: 'Submitting', executionTime: null });
       setSubmissionResult(null);
+      setPygameConsoleOutput([]); // Clear previous pygame console output
       setActiveTab('result');
 
       try {
@@ -101,18 +111,24 @@ export function CompilerUI({ problem }: CompilerUIProps) {
         const data = await response.json();
         if (response.ok) {
           setSubmissionResult(data.summary);
-          
+
           // Mark problem and level as completed if all tests pass
           if (data.summary.status === 'Accepted') {
             progress.markProblemComplete(problem.problem_id);
             progress.markLevelComplete(problem.age_group, problem.level_number);
           }
-          
+
           toast({
             title: `Submission ${data.summary.status}`,
             description: `Passed ${data.summary.passed}/${data.summary.total} test cases.`,
             variant: data.summary.status === 'Accepted' ? 'default' : 'destructive',
           });
+
+          // If Pygame submission with output, add to console
+          if (data.executionResult?.pygameBundle && data.executionResult?.stdout) {
+            const initialOutput = data.executionResult.stdout.trim().split('\n');
+            setPygameConsoleOutput(initialOutput);
+          }
         } else {
             throw new Error(data.error || 'Failed to submit.');
         }
@@ -182,7 +198,7 @@ export function CompilerUI({ problem }: CompilerUIProps) {
             <Terminal className="h-4 w-4 text-primary/60" />
           </div>
 
-          {result.stdout && (
+          {result.stdout && !result.pygameBundle && (
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs font-space text-neon-green">
                 <FileOutput className="h-3 w-3" />
@@ -214,23 +230,47 @@ export function CompilerUI({ problem }: CompilerUIProps) {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs font-space text-neon-purple">
                 <Target className="h-3 w-3" />
-                <span>PLOT VISUALIZATION</span>
+                <span>VISUAL OUTPUT</span>
               </div>
               <div className="space-y-3">
                 {result.plots.map((plot, index) => (
                   <div key={index} className="bg-space-gray/20 border border-neon-purple/30 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-mono text-neon-purple">Plot {index + 1}</span>
+                      <span className="text-xs font-mono text-neon-purple">Visual {index + 1}</span>
                     </div>
                     <div>
                       <img
                         src={plot}
-                        alt={`Plot ${index + 1}`}
+                        alt={`Visual output ${index + 1}`}
                         className="w-full h-auto rounded border border-neon-purple/20"
                       />
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {result.pygameBundle && (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-xs font-space text-neon-cyan">
+                <Zap className="h-3 w-3 animate-pulse" />
+                <span>INTERACTIVE PYGAME</span>
+              </div>
+              <PygameCanvas
+                bundle={result.pygameBundle}
+                onConsoleOutput={(message) => {
+                  setPygameConsoleOutput(prev => [...prev, message]);
+                }}
+              />
+              <div className="mt-4">
+                <div className="flex items-center gap-2 text-xs font-space text-foreground mb-2">
+                  <Terminal className="h-3 w-3" />
+                  <span>CONSOLE OUTPUT</span>
+                </div>
+                <pre className="font-mono text-sm bg-black p-4 rounded border border-gray-700 overflow-auto max-h-40 text-white">
+                  {pygameConsoleOutput.length > 0 ? pygameConsoleOutput.join('\n') : '(Use arrow keys - print output will appear here)'}
+                </pre>
               </div>
             </div>
           )}
@@ -294,14 +334,14 @@ export function CompilerUI({ problem }: CompilerUIProps) {
 
         <Separator className="my-6 border-primary/30" />
 
-        {/* Mission Briefing / Description - Story Frame (Only for Final Tasks - case_number 6) */}
-        {problem.description && problem.case_number === 6 && (
+        {/* Mission Briefing / Description - Story Frame (For Final Tasks and Code Convergence) */}
+        {problem.description && (problem.case_number === 6 || problem.metadata?.is_code_convergence) && (
           <div className="mb-6 rounded-lg border border-blue-200 dark:border-blue-900/40 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/20 dark:to-cyan-950/20 p-5 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
               <Database className="h-5 w-5 text-blue-600 dark:text-blue-400" />
               <span className="font-space text-sm font-bold uppercase tracking-wide text-blue-600 dark:text-blue-400">MISSION BRIEFING</span>
             </div>
-            <div className="text-gray-800 dark:text-gray-200 text-base leading-relaxed whitespace-pre-wrap font-medium" style={{ fontFamily: problem.case_number === 6 ? "'Terminal Grotesque', monospace" : 'inherit', fontSize: problem.case_number === 6 ? '1rem' : 'inherit', lineHeight: problem.case_number === 6 ? '1.8' : 'inherit' }}>
+            <div className="text-gray-800 dark:text-gray-200 text-base leading-relaxed whitespace-pre-wrap font-medium" style={{ fontFamily: (problem.case_number === 6 || problem.metadata?.is_code_convergence) ? "'Terminal Grotesque', monospace" : 'inherit', fontSize: (problem.case_number === 6 || problem.metadata?.is_code_convergence) ? '1rem' : 'inherit', lineHeight: (problem.case_number === 6 || problem.metadata?.is_code_convergence) ? '1.8' : 'inherit' }}>
               {problem.description}
             </div>
           </div>
