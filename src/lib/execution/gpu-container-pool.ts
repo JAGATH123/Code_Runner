@@ -227,7 +227,7 @@ export class GPUContainerPool {
     console.log(`Pool initialized - CPU: ${this.cpuContainers.size}, GPU: ${this.gpuContainers.size}`);
   }
 
-  static async executeCode(code: string, input: string = ''): Promise<ExecutionResult> {
+  static async executeCode(code: string, input: string = '', images: Array<{ name: string; data: string }> = []): Promise<ExecutionResult> {
     const startTime = Date.now();
 
     try {
@@ -246,7 +246,7 @@ export class GPUContainerPool {
 
       try {
         // Execute code in container
-        const result = await this.runCodeInContainer(container.id, code, input, useGPU);
+        const result = await this.runCodeInContainer(container.id, code, input, useGPU, images);
 
         const executionTime = Date.now() - startTime;
         return {
@@ -386,7 +386,8 @@ export class GPUContainerPool {
     containerId: string,
     code: string,
     input: string,
-    isGPU: boolean
+    isGPU: boolean,
+    images: Array<{ name: string; data: string }> = []
   ): Promise<Omit<ExecutionResult, 'executionTime' | 'usedGPU'>> {
     const sessionId = `exec_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
@@ -455,7 +456,7 @@ export class GPUContainerPool {
         }
 
         // STEP 2: Compile with Pygbag for interactive gameplay
-        const bundle = await this.compilePygame(code, sessionId);
+        const bundle = await this.compilePygame(code, sessionId, images);
         if (bundle) {
           pygameBundle = bundle;
           skipDockerExecution = true;
@@ -783,7 +784,7 @@ except Exception as e:
   /**
    * Compile Pygame code to WebAssembly using Pygbag for interactive browser gameplay
    */
-  private static async compilePygame(code: string, sessionId: string): Promise<{
+  private static async compilePygame(code: string, sessionId: string, images: Array<{ name: string; data: string }> = []): Promise<{
     html: string;
     wasm: string;
     data: string;
@@ -798,30 +799,134 @@ except Exception as e:
 
       await mkdir(pygameDir, { recursive: true });
 
-      // Add minimal stdout interceptor for live print capture
+      // Add stdout interceptor for print capture
       const stdoutInterceptor = `
 import sys
+_original_init = None
+_interceptor_active = False
+
 try:
     import platform
     if platform.system() == 'Emscripten':
+        import pygame
         import js
-        _orig = sys.stdout
+
+        _orig_stdout = sys.stdout
+        _printed_messages = set()
+
         class Out:
             def write(self, s):
-                _orig.write(s)
-                if s.strip() and 'pygame' not in s and 'SDL' not in s:
+                global _printed_messages
+                _orig_stdout.write(s)
+                if _interceptor_active and s.strip():
+                    text = s.strip()
+
+                    # Filter system/debug messages
+                    skip_keywords = ['pygame', 'SDL', '__call__', 'coroutine', 'object at 0x',
+                                   '.call', 'fire_event', 'patch_', 'asyncio']
+                    if any(kw in text for kw in skip_keywords):
+                        return
+
+                    # Filter single characters or just numbers
+                    if len(text) <= 2 or text.isdigit():
+                        return
+
+                    # Block duplicate messages - only allow each unique message once
+                    if text in _printed_messages:
+                        return
+
+                    _printed_messages.add(text)
                     try:
-                        js.eval(f"window.parent.postMessage({{type:'pygame-console',message:{repr(s.strip())}}}, '*')")
+                        js.eval(f"window.parent.postMessage({{type:'pygame-console',message:{repr(text)}}}, '*')")
+                        _orig_stdout.flush()  # Force flush to ensure message is sent
                     except: pass
             def flush(self):
-                _orig.flush()
-        sys.stdout = Out()
+                _orig_stdout.flush()
+
+        # Activate interceptor after pygame.init()
+        _original_init = pygame.init
+        def _patched_init():
+            global _interceptor_active
+            result = _original_init()
+            _interceptor_active = True
+            sys.stdout = Out()
+            return result
+        pygame.init = _patched_init
 except: pass
 `;
-      const instrumentedCode = stdoutInterceptor + code;
+
+      // FIXED async transformation with proper indentation handling
+      // Step 1: Remove pygame.quit() and sys.exit() first
+      let processedCode = code
+        .replace(/pygame\.quit\(\)\s*/g, '')
+        .replace(/sys\.exit\(\)\s*/g, '');
+
+      // Step 2: Split into lines and process
+      const lines = processedCode.split('\n');
+      const imports: string[] = [];
+      const gameCode: string[] = [];
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const trimmed = line.trim();
+
+        // Separate imports
+        if (trimmed.startsWith('import ') || trimmed.startsWith('from ')) {
+          imports.push(line);
+        } else {
+          gameCode.push(line);
+
+          // Inject await asyncio.sleep(0) AFTER pygame.display.flip/update with SAME indentation
+          if (trimmed.includes('pygame.display.flip()') || trimmed.includes('pygame.display.update()')) {
+            const indent = line.match(/^(\s*)/)?.[1] || '';
+            gameCode.push(`${indent}await asyncio.sleep(0)`);
+          }
+        }
+      }
+
+      // Step 3: Wrap game code in async main() with proper indentation
+      const indentedGameCode = gameCode.map(line => {
+        if (line.trim() === '') return ''; // Keep empty lines
+        return '    ' + line; // Add 4 spaces for async main body
+      }).join('\n');
+
+      // Step 4: Create final async code with asyncio.run() to execute main()
+      const asyncCode = `import asyncio
+${imports.join('\n')}
+
+async def main():
+${indentedGameCode}
+
+asyncio.run(main())
+`;
+
+      const instrumentedCode = stdoutInterceptor + asyncCode;
+
+      console.log('[Pygbag] ========== TRANSFORMED CODE ==========');
+      console.log(asyncCode);
+      console.log('[Pygbag] ========== END ==========');
 
       const mainPyPath = join(pygameDir, 'main.py');
       await writeFile(mainPyPath, instrumentedCode, 'utf8');
+
+      // Save uploaded images to pygameDir for Pygame to load
+      if (images && images.length > 0) {
+        console.log(`[Pygbag] Saving ${images.length} uploaded image(s) to Pygame directory...`);
+        for (const img of images) {
+          try {
+            // Remove data:image/png;base64, or data:image/jpeg;base64, prefix
+            const base64Data = img.data.replace(/^data:image\/\w+;base64,/, '');
+            const buffer = Buffer.from(base64Data, 'base64');
+
+            // Write image to pygameDir so it's available to Python code
+            const imagePath = join(pygameDir, img.name);
+            await writeFile(imagePath, buffer);
+            console.log(`[Pygbag] Saved image: ${img.name} (${buffer.length} bytes)`);
+          } catch (imgError) {
+            console.error(`[Pygbag] Failed to save image ${img.name}:`, imgError);
+          }
+        }
+      }
 
       console.log(`[Pygbag] Created temp directory with instrumented code: ${pygameDir}`);
 

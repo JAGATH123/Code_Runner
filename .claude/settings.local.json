@@ -23,7 +23,14 @@
       "Bash(xargs:*)",
       "Bash(git add:*)",
       "Bash(python test_problem_174.py:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(git rm:*)",
+      "Bash(docker images:*)",
+      "Bash(echo:*)",
+      "Bash(docker run:*)"
     ],
     "deny": [],
     "ask": []

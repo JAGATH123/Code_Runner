@@ -12,6 +12,14 @@ export interface ExecutionResult {
   status: 'Success' | 'Error' | 'Timeout';
   executionTime: number | null;
   plots?: string[];
+
+  // Pygame interactive bundle (WebAssembly via Pygbag)
+  pygameBundle?: {
+    html: string;      // base64 encoded index.html
+    wasm: string;      // base64 encoded .wasm file
+    data: string;      // base64 encoded pygame.data
+    js: string;        // base64 encoded pygbag.js
+  };
 }
 
 export class DockerPythonExecutor {
@@ -66,6 +74,10 @@ export class DockerPythonExecutor {
     return /import\s+matplotlib|from\s+matplotlib|plt\.|pyplot\./i.test(code);
   }
 
+  private static detectPygameUsage(code: string): boolean {
+    return /import\s+pygame|from\s+pygame/i.test(code);
+  }
+
   private static injectPlotSavingCode(code: string): string {
     // Add matplotlib plot capturing logic
     const plotCapture = `
@@ -112,67 +124,189 @@ atexit.register(_output_plots)
     return plotCapture + '\n' + code;
   }
 
+  private static async compilePygame(code: string, sessionId: string): Promise<{
+    html: string;
+    wasm: string;
+    data: string;
+    js: string;
+  } | null> {
+    try {
+      console.log(`[Pygbag] Starting Pygame compilation for session ${sessionId}`);
+
+      const tempDir = join(process.cwd(), 'temp');
+      const pygameDir = join(tempDir, `pygame_${sessionId}`);
+      const buildDir = join(pygameDir, 'build', 'web');
+
+      // Create pygame project directory
+      await mkdir(pygameDir, { recursive: true });
+
+      // Write the main.py file
+      const mainPyPath = join(pygameDir, 'main.py');
+      await writeFile(mainPyPath, code, 'utf8');
+
+      console.log(`[Pygbag] Created main.py at ${mainPyPath}`);
+
+      // Run pygbag build command inside Docker container
+      // Using python-code-runner image which should have pygbag installed
+      // Use python3 -m pygbag to ensure it's found
+      const buildCmd = `docker run --rm -v "${pygameDir}:/app/game:rw" -w /app/game ${this.CONTAINER_NAME} python3 -m pygbag --build main.py`;
+
+      console.log(`[Pygbag] Running build command: ${buildCmd}`);
+
+      const { stdout, stderr } = await execAsync(buildCmd, { timeout: 30000 });
+
+      console.log(`[Pygbag] Build stdout:`, stdout);
+      if (stderr) console.log(`[Pygbag] Build stderr:`, stderr);
+
+      // Read the generated files
+      const htmlPath = join(buildDir, 'index.html');
+      const wasmPath = join(buildDir, 'main.py.wasm');
+      const dataPath = join(buildDir, 'pygame.data');
+      const jsPath = join(buildDir, 'pygbag.js');
+
+      console.log(`[Pygbag] Reading generated files from ${buildDir}`);
+
+      const htmlContent = await readFile(htmlPath, 'utf8');
+      const wasmContent = await readFile(wasmPath);
+      const dataContent = await readFile(dataPath);
+      const jsContent = await readFile(jsPath, 'utf8');
+
+      console.log(`[Pygbag] Successfully read all bundle files`);
+
+      // Encode to base64
+      const bundle = {
+        html: Buffer.from(htmlContent).toString('base64'),
+        wasm: wasmContent.toString('base64'),
+        data: dataContent.toString('base64'),
+        js: Buffer.from(jsContent).toString('base64')
+      };
+
+      console.log(`[Pygbag] Bundle sizes - HTML: ${bundle.html.length}, WASM: ${bundle.wasm.length}, Data: ${bundle.data.length}, JS: ${bundle.js.length}`);
+
+      // Cleanup pygame directory
+      await execAsync(`rm -rf "${pygameDir}"`).catch(() => {});
+
+      return bundle;
+    } catch (error) {
+      console.error(`[Pygbag] Compilation failed:`, error);
+      return null;
+    }
+  }
+
   private static async extractPlotsFromOutput(containerId: string, stdout: string): Promise<string[]> {
     const plots: string[] = [];
-    
+
     try {
-      console.log(`Extracting plots from output...`);
-      
-      // Parse base64 plot data from stdout using the [PLOT_B64:data] markers
+      console.log(`Extracting visual outputs from code execution...`);
+
+      // Parse matplotlib plot data from stdout using [PLOT_B64:data] markers
       const plotDataMatches = stdout.match(/\[PLOT_B64:([^\]]+)\]/g);
-      console.log(`Plot data matches found: ${plotDataMatches?.length || 0}`);
-      
+      console.log(`Matplotlib plot matches found: ${plotDataMatches?.length || 0}`);
+
       if (plotDataMatches) {
         for (const match of plotDataMatches) {
           try {
             const base64Data = match.match(/\[PLOT_B64:([^\]]+)\]/)?.[1];
             if (base64Data) {
               plots.push(`data:image/png;base64,${base64Data}`);
-              console.log(`Successfully extracted plot data (${base64Data.length} chars)`);
+              console.log(`Successfully extracted matplotlib plot (${base64Data.length} chars)`);
             }
           } catch (error) {
             console.warn(`Failed to extract plot data from match:`, error);
           }
         }
-      } else {
-        console.log('No plot data found in stdout');
+      }
+
+      // Parse Pygame screenshot data from stdout using [PYGAME_B64:data] markers
+      const pygameDataMatches = stdout.match(/\[PYGAME_B64:([^\]]+)\]/g);
+      console.log(`Pygame screenshot matches found: ${pygameDataMatches?.length || 0}`);
+
+      if (pygameDataMatches) {
+        for (const match of pygameDataMatches) {
+          try {
+            const base64Data = match.match(/\[PYGAME_B64:([^\]]+)\]/)?.[1];
+            if (base64Data) {
+              plots.push(`data:image/png;base64,${base64Data}`);
+              console.log(`Successfully extracted Pygame screenshot (${base64Data.length} chars)`);
+            }
+          } catch (error) {
+            console.warn(`Failed to extract Pygame data from match:`, error);
+          }
+        }
+      }
+
+      if (!plotDataMatches && !pygameDataMatches) {
+        console.log('No visual output data found in stdout');
       }
     } catch (error) {
-      console.warn('Failed to extract plots:', error);
+      console.warn('Failed to extract visual outputs:', error);
     }
-    
-    console.log(`Total plots extracted: ${plots.length}`);
+
+    console.log(`Total visual outputs extracted: ${plots.length}`);
     return plots;
   }
 
   public static async executeCode(code: string, input: string = ''): Promise<ExecutionResult> {
     const startTime = Date.now();
-    
+
     try {
       await this.ensureContainerExists();
-      
-      // Check if code uses matplotlib and inject plot saving logic
+
+      // Check if code uses matplotlib or pygame
       const hasMatplotlib = this.detectMatplotlibUsage(code);
-      const processedCode = hasMatplotlib ? this.injectPlotSavingCode(code) : code;
-      
+      const hasPygame = this.detectPygameUsage(code);
+
+      // Prepare code for execution (inject matplotlib plot capture if needed)
+      let processedCode = code;
+      if (hasMatplotlib) {
+        processedCode = this.injectPlotSavingCode(processedCode);
+      }
+
       // Create temp files for reliable execution
       const { codeFile, inputFile, sessionId } = await this.createTempFiles(processedCode, input);
-      
+
+      // If Pygame is detected, compile with Pygbag for interactive mode
+      let pygameBundle: { html: string; wasm: string; data: string; js: string } | undefined;
+
+      if (hasPygame) {
+        console.log('[Pygame] Detected Pygame code, compiling with Pygbag...');
+        const bundle = await this.compilePygame(code, sessionId);
+        if (bundle) {
+          pygameBundle = bundle;
+          console.log('[Pygame] Pygbag compilation successful');
+
+          // Skip normal execution - return bundle only for interactive mode
+          await this.cleanupTempFiles(codeFile, inputFile);
+          const executionTime = Date.now() - startTime;
+          return {
+            stdout: '',
+            stderr: '',
+            status: 'Success',
+            executionTime,
+            pygameBundle
+          };
+        } else {
+          console.warn('[Pygame] Pygbag compilation failed, will run code for console output only');
+        }
+      }
+
       try {
-        // Build docker command that allows plot saving when matplotlib is detected
-        const tmpfsOptions = hasMatplotlib ? '/tmp:size=10m' : '/tmp:noexec,nosuid,size=10m';
-        const dockerCmd = input 
+        // Build docker command that allows image saving when matplotlib is detected
+        // Note: Pygame uses Pygbag compilation, not screenshot capture
+        const needsImageCapture = hasMatplotlib;
+        const tmpfsOptions = needsImageCapture ? '/tmp:size=10m' : '/tmp:noexec,nosuid,size=10m';
+        const dockerCmd = input
           ? `type "${inputFile}" | docker run --rm --network none --memory ${this.MEMORY_LIMIT} --cpus="0.5" --user 1000:1000 --read-only --tmpfs ${tmpfsOptions} -i -v "${codeFile}:/app/code.py:ro" ${this.CONTAINER_NAME} timeout 20s python /app/code.py`
           : `docker run --rm --network none --memory ${this.MEMORY_LIMIT} --cpus="0.5" --user 1000:1000 --read-only --tmpfs ${tmpfsOptions} -v "${codeFile}:/app/code.py:ro" ${this.CONTAINER_NAME} timeout 20s python /app/code.py`;
-        
+
         let stdout = '';
         let stderr = '';
         let containerId = '';
         let plots: string[] | undefined;
-        
+
         try {
-          // For matplotlib code, we need a persistent container to extract plots
-          if (hasMatplotlib) {
+          // For matplotlib code, we need a persistent container to extract images
+          if (needsImageCapture) {
             // Create a named container that we can extract files from
             const containerName = `python-exec-${sessionId}`;
             const createCmd = input
@@ -227,13 +361,14 @@ atexit.register(_output_plots)
         }
 
         const executionTime = Date.now() - startTime;
-        
+
         return {
           stdout: stdout.trim(),
           stderr: stderr.trim(),
           status: stderr.trim() ? 'Error' : 'Success',
           executionTime,
-          plots
+          plots,
+          pygameBundle
         };
       } finally {
         // Always cleanup temp files

@@ -87,7 +87,7 @@ export function GlobalAudioControl() {
   }, []);
 
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div className="fixed top-4 right-4 z-50">
       <button
         onClick={() => {
           // Only play click sound if audio is currently enabled
@@ -137,7 +137,7 @@ export function GlobalAudioControl() {
 
         {/* Tooltip */}
         <div
-          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs font-space rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-2 py-1 text-xs font-space rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
           style={{
             backgroundColor: themeColors.background,
             border: `1px solid ${themeColors.border}`,
@@ -148,8 +148,8 @@ export function GlobalAudioControl() {
             AUDIO {!isMounted || isBackgroundMusicEnabled ? 'ON' : 'OFF'}
           </span>
           <div
-            className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent"
-            style={{ borderTopColor: themeColors.border }}
+            className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-b-2 border-transparent"
+            style={{ borderBottomColor: themeColors.border }}
           ></div>
         </div>
       </button>

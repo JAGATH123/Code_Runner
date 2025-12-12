@@ -91,6 +91,15 @@ export interface Problem {
   // Additional metadata
   age_group?: '11-14' | '15-18';
   level_number?: number;
+  metadata?: {
+    concepts?: string[];
+    space_theme?: boolean;
+    is_code_convergence?: boolean;
+    story_linked?: boolean;
+    estimated_time_minutes?: number;
+    prerequisites?: string[];
+    [key: string]: any;
+  };
 }
 
 export interface Session {
@@ -118,6 +127,14 @@ export interface ExecutionResult {
   status: 'Success' | 'Error' | 'Timeout' | 'Running' | 'Submitting' | '';
   executionTime: number | null;
   plots?: string[]; // Array of base64-encoded plot images
+
+  // Pygame interactive bundle (WebAssembly)
+  pygameBundle?: {
+    html: string;      // base64 encoded index.html
+    wasm: string;      // base64 encoded .wasm file
+    data: string;      // base64 encoded pygame.data
+    js: string;        // base64 encoded pygbag.js
+  };
 }
 
 export interface SubmissionResult {

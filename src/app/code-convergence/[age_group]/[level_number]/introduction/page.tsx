@@ -117,6 +117,36 @@ const levelConfigs: Record<string, {
       ]
     },
     ultimateChallengePath: '/code-convergence/[age_group]/[level_number]/ultimate-challenge'
+  },
+  '4': {
+    title: 'Project GALACTIC COMMAND',
+    subtitle: 'Welcome to Project GALACTIC COMMAND - The Ultimate Integration Challenge!',
+    description: 'The Nova Network is failing, and only a fully integrated AI spacecraft controller can restore it. GALACTIC COMMAND is where all Level 4 concepts converge: OOP, file handling, exception handling, and Pygame visualization. This is the ultimate test of your Python mastery.',
+    concepts: [
+      'Object-Oriented Programming with classes and methods',
+      'File I/O operations and logging systems',
+      'Custom exception handling and error recovery',
+      'Pygame window creation and real-time updates',
+      'System integration and modular design',
+      'State management and monitoring',
+      'Complete end-to-end application development'
+    ],
+    missionStatement: 'Your mission: Build the Galactic Command System - a fully integrated spacecraft AI controller that coordinates all subsystems and restores the Nova Network.',
+    task: {
+      number: '1',
+      taskName: 'GALACTIC COMMAND Integration System',
+      instructions: [
+        'Create a GalacticCommand class with methods for mission control (start_mission, navigate, abort, status_report)',
+        'Implement a MissionLogger class that writes timestamped actions to "mission_log.txt" using file append mode',
+        'Define a custom EmergencyAbortError exception and handle it with try-except blocks',
+        'Build a Pygame window (400x300) that displays live status updates from the command system',
+        'Initialize all subsystems: command core, mission logger, exception handler, and dashboard',
+        'Demonstrate full integration: start mission, navigate to destinations, handle errors, log all actions',
+        'Display system status messages and ensure clean shutdown of all components',
+        'Output a complete mission transcript showing all operations performed'
+      ]
+    },
+    ultimateChallengePath: '/code-convergence/[age_group]/[level_number]/ultimate-challenge'
   }
 };
 
@@ -269,7 +299,7 @@ export default function CodeConvergenceIntroduction({ params }: CodeConvergenceI
           <div className="mt-10 text-center pb-8">
             <Link href={ultimateChallengePath}>
               <Button className="text-white font-space font-semibold px-10 py-3 text-base hover:opacity-80 transition-opacity" style={{ backgroundColor: 'rgb(0, 191, 255)' }}>
-                Continue to {level_number === '1' ? 'Ultimate Challenge' : level_number === '2' ? 'Project ORBITRON' : 'Project COSMIC LINK'}
+                Continue to {level_number === '1' ? 'Ultimate Challenge' : level_number === '2' ? 'Project ORBITRON' : level_number === '3' ? 'Project COSMIC LINK' : 'Project GALACTIC COMMAND'}
               </Button>
             </Link>
           </div>

@@ -444,7 +444,7 @@ export function SessionList({ sessions, level }: SessionListProps) {
                                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-blue-600"></div>
                                   <CardHeader className="flex-grow py-4">
                                     <CardTitle className="text-lg font-space transition-colors" style={{ color: 'rgb(243, 237, 233)' }}>
-                                      {level.level_number === 1 ? 'The Ultimate Challenge' : level.level_number === 2 ? 'Project ORBITRON' : 'Project COSMIC LINK'}
+                                      {level.level_number === 1 ? 'The Ultimate Challenge' : level.level_number === 2 ? 'Project ORBITRON' : level.level_number === 3 ? 'Project COSMIC LINK' : 'Project GALACTIC COMMAND'}
                                     </CardTitle>
                                   </CardHeader>
                                 </Card>

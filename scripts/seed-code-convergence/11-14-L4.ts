@@ -19,16 +19,15 @@ async function seedCodeConvergenceL4() {
       problem_id: 242,
       session_id: 44, // Level 4, Code Convergence
       title: 'Project GALACTIC COMMAND – The Final Defense System',
-      description: 'Build a fully integrated AI spacecraft controller uniting all Level 4 concepts - OOP, file handling, exception handling, and Pygame interface.',
+      description: 'The Nova Network is failing! Build a fully integrated spacecraft AI controller combining everything from Level 4: Object-Oriented Programming, file handling, exception handling, and Pygame. Create GALACTIC COMMAND and restore the network!',
 
       difficulty: 'Hard',
-      question: `Build the Galactic Command System—a fully integrated spacecraft controller combining OOP, file I/O, exception handling, and Pygame. The crew must restore the Nova Network by coordinating all subsystems.
+      question: `Build a spacecraft control system with these components:
 
-Create a GalacticCommand class with methods: start_mission(), navigate(destination), abort(), status_report(). Track state with self.status. Create a MissionLogger class that appends timestamped actions to "mission_log.txt". Define custom EmergencyAbortError exception and use try-except to handle invalid operations.
-
-Build a Pygame window (400x300) displaying live status updates from the command class. Integrate all components: initialize command core, start mission, navigate to Mars then Jupiter, attempt abort (handle exception), log all actions, and display updates on dashboard.
-
-Print status messages: "Command Core initialized", "Mission Logger active", "Exception handling secured", "Dashboard online", "System integration complete". Output mission_transcript.txt with complete log and ensure clean shutdown.`,
+1. Create a GalacticCommand class with methods for mission control
+2. Create a MissionLogger class that saves actions to a file
+3. Use custom exceptions with try-except for error handling
+4. Build a Pygame window to display system status`,
 
       example_code: '# Project GALACTIC COMMAND - The Final Defense System\n# Write your code here\n',
       sample_input: '',
@@ -77,7 +76,6 @@ Print status messages: "Command Core initialized", "Mission Logger active", "Exc
       // Case-specific content
       case_number: 1,
       case_title: 'Project GALACTIC COMMAND – The Final Defense System',
-      case_overview: `LEVEL 4 — The Final Frontier (Restore Nova Network). Prerequisites: Sessions 1-10 complete; relay subsystems discovered; logs healthy. Part 1 (Repair Run): Load config & validators, orchestrate repair order, live UI mirrors steps. All stages must succeed or safe-recover with no unhandled exceptions. Unlock: "MERGE LINK READY – VORAX-9 STABLE". ASTRA: "I can reach him now. Hold the link steady." Part 2 (Merge & Epilogue): Execute merge, save final states, watch for new-node ping. Final unlock: "NOVA NETWORK RESTORED" then "NEW NODE DETECTED – ORIGIN UNKNOWN". VORAX-9: "Directive restored. Thank you… sister." ASTRA: "The galaxy just answered back."`,
       case_explanation: `Build the Galactic Command System by integrating all Level 4 concepts: Create a GalacticCommand class for spacecraft operations, implement MissionLogger for real-time file logging, define custom exceptions for error handling, build a Pygame dashboard for live status display, and connect all components in a main integration loop. This comprehensive project demonstrates mastery of OOP, file I/O, exception handling, and Pygame, simulating a real spacecraft AI control system with modular design and clean interfacing.`,
 
       created_at: new Date(),

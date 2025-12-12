@@ -13,10 +13,19 @@ export interface DBProblem {
   sample_output: string;
   age_group: string;
   level_number: number;
-  metadata: {
-    concepts: string[];
-    space_theme: boolean;
-    estimated_time_minutes: number;
+  metadata?: {
+    concepts?: string[];
+    space_theme?: boolean;
+    estimated_time_minutes?: number;
+    story_linked?: boolean;
+    is_final_task?: boolean;
+    is_capstone?: boolean;
+    is_code_convergence?: boolean;
+    unlocks_next_level?: boolean;
+    galactic_command_phase?: string;
+    narrative_beat?: string;
+    prerequisite_sessions?: number[];
+    [key: string]: any; // Allow additional metadata fields
   };
 
   // Session-level content (for educational problems)
@@ -106,6 +115,20 @@ export interface Problem {
   sample_output: string;
   age_group?: string;
   level_number?: number;
+  metadata?: {
+    concepts?: string[];
+    space_theme?: boolean;
+    estimated_time_minutes?: number;
+    story_linked?: boolean;
+    is_final_task?: boolean;
+    is_capstone?: boolean;
+    is_code_convergence?: boolean;
+    unlocks_next_level?: boolean;
+    galactic_command_phase?: string;
+    narrative_beat?: string;
+    prerequisite_sessions?: number[];
+    [key: string]: any;
+  };
 
   // Session-level content
   session_title?: string;
@@ -157,6 +180,7 @@ export function dbProblemToProblem(dbProblem: DBProblem): Problem {
     sample_output: dbProblem.sample_output,
     age_group: dbProblem.age_group,
     level_number: dbProblem.level_number,
+    metadata: dbProblem.metadata,
 
     // Session-level content
     session_title: dbProblem.session_title,

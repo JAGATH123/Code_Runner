@@ -5,8 +5,11 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install minimal system dependencies in one layer
+# Added nodejs and npm for Pygbag (WebAssembly compilation)
 RUN apt-get update && apt-get install -y \
     gcc \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
@@ -22,6 +25,10 @@ RUN pip install --no-cache-dir \
     pillow==10.0.0 \
     scipy==1.11.1 \
     scikit-learn==1.3.0
+
+# Install pygbag separately (WebAssembly compiler for Pygame)
+RUN pip install --no-cache-dir pygbag && \
+    python3 -c "import pygbag; print('Pygbag installed successfully')"
 
 # Create execution directories with proper permissions
 RUN mkdir -p /app/code /tmp/plots /tmp/matplotlib && \

@@ -1,7 +1,7 @@
 'use client';
 
 import type { Problem, ExecutionResult, SubmissionResult, TestCase } from '@/lib/types';
-import { useState, useTransition, useEffect } from 'react';
+import { useState, useTransition, useEffect, useCallback } from 'react';
 import { CodeEditor } from './CodeEditor';
 import { PygameCanvas } from './PygameCanvas';
 import { Button } from '@/components/ui/button';
@@ -48,6 +48,12 @@ export function CompilerUI({ problem }: CompilerUIProps) {
   });
   const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
   const [pygameConsoleOutput, setPygameConsoleOutput] = useState<string[]>([]);
+
+  // Memoize console output handler to prevent duplicate event listeners
+  const handleConsoleOutput = useCallback((message: string) => {
+    setPygameConsoleOutput(prev => [...prev, message]);
+  }, []);
+
   const { playProjectTextSound } = useGlobalAudio();
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState('customInput');
@@ -259,19 +265,19 @@ export function CompilerUI({ problem }: CompilerUIProps) {
               </div>
               <PygameCanvas
                 bundle={result.pygameBundle}
-                onConsoleOutput={(message) => {
-                  setPygameConsoleOutput(prev => [...prev, message]);
-                }}
+                onConsoleOutput={handleConsoleOutput}
               />
-              <div className="mt-4">
-                <div className="flex items-center gap-2 text-xs font-space text-foreground mb-2">
-                  <Terminal className="h-3 w-3" />
-                  <span>CONSOLE OUTPUT</span>
+              {pygameConsoleOutput.length > 0 && (
+                <div className="mt-4">
+                  <div className="flex items-center gap-2 text-xs font-space text-foreground mb-2">
+                    <Terminal className="h-3 w-3" />
+                    <span>CONSOLE OUTPUT</span>
+                  </div>
+                  <pre className="font-mono text-sm bg-black p-4 rounded border border-gray-700 overflow-auto max-h-40 text-white">
+                    {pygameConsoleOutput.join('\n')}
+                  </pre>
                 </div>
-                <pre className="font-mono text-sm bg-black p-4 rounded border border-gray-700 overflow-auto max-h-40 text-white">
-                  {pygameConsoleOutput.length > 0 ? pygameConsoleOutput.join('\n') : '(Use arrow keys - print output will appear here)'}
-                </pre>
-              </div>
+              )}
             </div>
           )}
         </div>

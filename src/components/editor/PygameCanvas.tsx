@@ -20,7 +20,16 @@ export function PygameCanvas({ bundle, onConsoleOutput }: PygameCanvasProps) {
     const handler = (e: MessageEvent) => {
       if (e.data?.type === 'pygame-console' && onConsoleOutput) {
         const msg = e.data.message.replace(/\x1b\[[0-9;]*m/g, '').trim();
-        if (msg && !msg.includes('Pygbag') && !msg.includes('Loading')) {
+
+        // Filter system messages
+        const systemKeywords = ['Pygbag', 'Loading', '__call__', 'coroutine',
+                               'object at 0x', '.call', 'fire_event', 'patch_'];
+        const isSystemMsg = systemKeywords.some(kw => msg.includes(kw));
+
+        // Filter short/numeric messages
+        const isGarbage = msg.length <= 2 || /^\d+$/.test(msg);
+
+        if (msg && !isSystemMsg && !isGarbage) {
           onConsoleOutput(msg);
         }
       }

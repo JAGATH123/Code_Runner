@@ -19,14 +19,16 @@ interface UltimateChallengePageProps {
 const levelProblemMap: Record<string, string> = {
   '1': 'code_convergence_ultimate',
   '2': '1000',
-  '3': '181'
+  '3': '181',
+  '4': '242'
 };
 
 // Map level numbers to loading text
 const levelLoadingText: Record<string, string> = {
   '1': '// Loading ultimate challenge...',
   '2': '// Loading Project ORBITRON...',
-  '3': '// Loading Project COSMIC LINK...'
+  '3': '// Loading Project COSMIC LINK...',
+  '4': '// Loading Project GALACTIC COMMAND...'
 };
 
 export default function UltimateChallengePage({ params }: UltimateChallengePageProps) {
