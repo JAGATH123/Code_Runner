@@ -890,14 +890,15 @@ except: pass
         return '    ' + line; // Add 4 spaces for async main body
       }).join('\n');
 
-      // Step 4: Create final async code with asyncio.run() to execute main()
+      // Step 4: Create final async code with top-level await for Pygbag
       const asyncCode = `import asyncio
 ${imports.join('\n')}
 
 async def main():
 ${indentedGameCode}
 
-asyncio.run(main())
+# Pygbag supports top-level await
+await main()
 `;
 
       const instrumentedCode = stdoutInterceptor + asyncCode;
