@@ -855,51 +855,37 @@ try:
 except: pass
 `;
 
-      // FIXED async transformation with proper indentation handling
-      // Step 1: Remove pygame.quit() and sys.exit() first
+      // Pygbag async transformation - NO WRAPPING, just inject await asyncio.sleep(0)
+      // Step 1: Remove pygame.quit() and sys.exit()
       let processedCode = code
         .replace(/pygame\.quit\(\)\s*/g, '')
         .replace(/sys\.exit\(\)\s*/g, '');
 
-      // Step 2: Split into lines and process
+      // Step 2: Check if asyncio is already imported
+      const hasAsyncioImport = /^import\s+asyncio/m.test(processedCode) || /^from\s+asyncio/m.test(processedCode);
+
+      // Step 3: Split into lines and inject await asyncio.sleep(0) after display updates
       const lines = processedCode.split('\n');
-      const imports: string[] = [];
-      const gameCode: string[] = [];
+      const transformedLines: string[] = [];
 
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
         const trimmed = line.trim();
 
-        // Separate imports
-        if (trimmed.startsWith('import ') || trimmed.startsWith('from ')) {
-          imports.push(line);
-        } else {
-          gameCode.push(line);
+        transformedLines.push(line);
 
-          // Inject await asyncio.sleep(0) AFTER pygame.display.flip/update with SAME indentation
-          if (trimmed.includes('pygame.display.flip()') || trimmed.includes('pygame.display.update()')) {
-            const indent = line.match(/^(\s*)/)?.[1] || '';
-            gameCode.push(`${indent}await asyncio.sleep(0)`);
-          }
+        // Inject await asyncio.sleep(0) AFTER pygame.display.flip/update
+        if (trimmed.includes('pygame.display.flip()') || trimmed.includes('pygame.display.update()')) {
+          const indent = line.match(/^(\s*)/)?.[1] || '';
+          transformedLines.push(`${indent}await asyncio.sleep(0)`);
         }
       }
 
-      // Step 3: Wrap game code in async main() with proper indentation
-      const indentedGameCode = gameCode.map(line => {
-        if (line.trim() === '') return ''; // Keep empty lines
-        return '    ' + line; // Add 4 spaces for async main body
-      }).join('\n');
-
-      // Step 4: Create final async code with top-level await for Pygbag
-      const asyncCode = `import asyncio
-${imports.join('\n')}
-
-async def main():
-${indentedGameCode}
-
-# Pygbag supports top-level await
-await main()
-`;
+      // Step 4: Add asyncio import at the top if not present
+      let asyncCode = transformedLines.join('\n');
+      if (!hasAsyncioImport) {
+        asyncCode = `import asyncio\n${asyncCode}`;
+      }
 
       const instrumentedCode = stdoutInterceptor + asyncCode;
 
