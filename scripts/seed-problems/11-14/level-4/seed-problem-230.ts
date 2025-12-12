@@ -23,7 +23,7 @@ async function seedProblem230() {
       difficulty: 'Easy',
       question: `Create a Pygame window with size 800x500 pixels. Set its title to "Control Interface" and apply a dark background color (RGB: 10, 10, 40). Initialize Pygame, create the window, set the caption, fill the background, and update the display. Print "Window created successfully" when done.`,
 
-      compiler_comment: '# Write your code here\n',
+      compiler_comment: '# Here is a sample line of code that prints text:\nprint("Hello, World!")\n\n# Write your code here\n',
       sample_input: '',
       sample_output: 'Window created successfully',
 
@@ -59,65 +59,25 @@ async function seedProblem230() {
     const problemResult = await problemsCollection.insertOne(problem230);
     console.log('Problem 230 inserted');
 
-    // Test cases for Problem 230
+    // Test cases for Problem 230 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2301,
         problem_id: 230,
         input: '',
         expected_output: 'Window created successfully',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2302,
         problem_id: 230,
         input: '',
         expected_output: 'Window created successfully',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2303,
-        problem_id: 230,
-        input: '',
-        expected_output: 'Window created successfully',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2304,
-        problem_id: 230,
-        input: '',
-        expected_output: 'Window created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2305,
-        problem_id: 230,
-        input: '',
-        expected_output: 'Window created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2306,
-        problem_id: 230,
-        input: '',
-        expected_output: 'Window created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2307,
-        problem_id: 230,
-        input: '',
-        expected_output: 'Window created successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 
