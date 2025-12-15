@@ -23,7 +23,7 @@ async function seedProblem230() {
       difficulty: 'Easy',
       question: `Create a Pygame window with size 800x500 pixels. Set its title to "Control Interface" and apply a dark background color (RGB: 10, 10, 40). Initialize Pygame, create the window, set the caption, fill the background, and update the display. Print "Window created successfully" when done.`,
 
-      compiler_comment: '# Here is a sample line of code that prints text:\nprint("Hello, World!")\n\n# Write your code here\n',
+      compiler_comment: '# Here is a sample line of code that prints text:\nprint("Hello, World!")\n\n',
       sample_input: '',
       sample_output: 'Window created successfully',
 
