@@ -23,7 +23,7 @@ async function seedProblem231() {
       difficulty: 'Medium',
       question: `Create a Pygame window (800x500) and draw two rectangles to represent fuel and oxygen levels. Set initial fuel to 80 and oxygen to 90. Draw the fuel bar at position (50, 450) with green color (0, 255, 0), width = fuel * 2, height = 20. Draw the oxygen bar at position (50, 480) with blue color (0, 0, 255), width = oxygen * 2, height = 20. Print "Visual indicators drawn" when complete.`,
 
-      compiler_comment: '# Write your code here\n',
+      compiler_comment: '',
       sample_input: '',
       sample_output: 'Visual indicators drawn',
 
@@ -44,7 +44,7 @@ async function seedProblem231() {
       // Case-specific content
       case_number: 2,
       case_title: 'Drawing Visual Indicators',
-      case_overview: `Cadets will build on their window setup by drawing two rectangles to represent fuel and oxygen levels. These act as dynamic gauges whose size reflects the value of each parameter. This exercise introduces how visual shapes can be used to convey changing system states in an intuitive and graphical manner.`,
+      case_overview: `Draw two rectangles as visual gauges for fuel and oxygen levels. The width of each bar is proportional to its value.`,
       case_explanation: `draw.rect() is used to draw a rectangle on the screen. The rectangle's width is proportional to the value it represents. Fuel and oxygen are placed separately with fixed height. Colors distinguish each bar. display.update() reflects these drawings on screen.`,
 
       created_at: new Date(),
@@ -59,65 +59,25 @@ async function seedProblem231() {
     const problemResult = await problemsCollection.insertOne(problem231);
     console.log('Problem 231 inserted');
 
-    // Test cases for Problem 231
+    // Test cases for Problem 231 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2311,
         problem_id: 231,
         input: '',
         expected_output: 'Visual indicators drawn',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2312,
         problem_id: 231,
         input: '',
         expected_output: 'Visual indicators drawn',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2313,
-        problem_id: 231,
-        input: '',
-        expected_output: 'Visual indicators drawn',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2314,
-        problem_id: 231,
-        input: '',
-        expected_output: 'Visual indicators drawn',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2315,
-        problem_id: 231,
-        input: '',
-        expected_output: 'Visual indicators drawn',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2316,
-        problem_id: 231,
-        input: '',
-        expected_output: 'Visual indicators drawn',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2317,
-        problem_id: 231,
-        input: '',
-        expected_output: 'Visual indicators drawn',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 
