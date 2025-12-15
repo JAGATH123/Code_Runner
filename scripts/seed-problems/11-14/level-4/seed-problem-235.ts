@@ -29,7 +29,7 @@ Implement keyboard controls: UP/DOWN arrows adjust all systems by 5, LEFT/RIGHT 
 
 Display status text at bottom showing system values and overall status: "OPTIMAL" if all > 60, "CRITICAL" if any < 30. Print appropriate messages for initialization, rendering, and updates.`,
 
-      compiler_comment: '# Write your code here\n',
+      compiler_comment: '',
       sample_input: '',
       sample_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
 
@@ -50,8 +50,8 @@ Display status text at bottom showing system values and overall status: "OPTIMAL
       // Case-specific content
       case_number: 6,
       case_title: 'Mission Dashboard – Building a Space Command Interface',
-      case_overview: `In this final challenge, cadets will build a complete Mission Dashboard to visualize key spacecraft status data using Pygame. The dashboard will act as a control and monitoring interface, combining graphics, interactivity, and animation. It will include visual representations of system levels, keyboard controls, animated elements, and dynamic status displays.`,
-      case_explanation: `Integrate all Pygame concepts: window initialization, drawing shapes with conditional colors, text rendering, event handling for keyboard input, animation with position updates, and dynamic display refresh. This comprehensive system demonstrates mastery of Pygame basics for creating interactive visual interfaces similar to real mission control dashboards.`,
+      case_overview: `Build a complete Mission Dashboard combining all Pygame concepts: status bars with conditional colors, keyboard controls, animation, and status display.`,
+      case_explanation: `Combine window setup, conditional drawing, text rendering, keyboard events, and animation. All messages print once before the game loop starts.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -65,7 +65,7 @@ Display status text at bottom showing system values and overall status: "OPTIMAL
     const problemResult = await problemsCollection.insertOne(problem235);
     console.log('Problem 235 inserted');
 
-    // Test cases for Problem 235 (7 test cases)
+    // Test cases for Problem 235 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
       // Visible test case
       {
@@ -74,56 +74,16 @@ Display status text at bottom showing system values and overall status: "OPTIMAL
         input: '',
         expected_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
         is_hidden: false,
-        weight: 15
+        weight: 50
       },
-      // Hidden test cases
+      // Hidden test case
       {
         test_case_id: 2352,
         problem_id: 235,
         input: '',
         expected_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
         is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2353,
-        problem_id: 235,
-        input: '',
-        expected_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2354,
-        problem_id: 235,
-        input: '',
-        expected_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2355,
-        problem_id: 235,
-        input: '',
-        expected_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
-        is_hidden: true,
-        weight: 10
-      },
-      {
-        test_case_id: 2356,
-        problem_id: 235,
-        input: '',
-        expected_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2357,
-        problem_id: 235,
-        input: '',
-        expected_output: 'Dashboard initialized\nStatus bars rendered\nAnimation active\nStatus: OPTIMAL',
-        is_hidden: true,
-        weight: 15
+        weight: 50
       }
     ];
 
