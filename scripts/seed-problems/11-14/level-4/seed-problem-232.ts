@@ -23,7 +23,7 @@ async function seedProblem232() {
       difficulty: 'Easy',
       question: `Create a Pygame window and display two status metrics using text rendering. Set speed = 1700 and altitude = 22000. Create a font object and render two text strings: "Speed: 1700 km/h" and "Altitude: 22000 m" in white color (255, 255, 255). Display the speed text at position (600, 450) and altitude text at position (600, 480). Print "Status information rendered" when complete.`,
 
-      compiler_comment: '# Write your code here\n',
+      compiler_comment: '',
       sample_input: '',
       sample_output: 'Status information rendered',
 
@@ -44,8 +44,8 @@ async function seedProblem232() {
       // Case-specific content
       case_number: 3,
       case_title: 'Rendering Status Information',
-      case_overview: `This case introduces text rendering using Pygame's built-in font system. Cadets will display key status metrics like speed and altitude, simulating how real-time information is often presented in dashboards. This step helps learners understand how to create and place readable, formatted data on the screen during active operation.`,
-      case_explanation: `Font() creates a font object. render() converts text into an image surface. blit() displays that image at a given location. Variables are embedded using formatted strings. display.update() shows the final result on screen.`,
+      case_overview: `Render text on screen to display status information like speed and altitude using Pygame's font system.`,
+      case_explanation: `Use pygame.font.Font() to create a font, render() to convert text to surface, and blit() to display it at a position.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -59,65 +59,25 @@ async function seedProblem232() {
     const problemResult = await problemsCollection.insertOne(problem232);
     console.log('Problem 232 inserted');
 
-    // Test cases for Problem 232
+    // Test cases for Problem 232 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2321,
         problem_id: 232,
         input: '',
         expected_output: 'Status information rendered',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2322,
         problem_id: 232,
         input: '',
         expected_output: 'Status information rendered',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2323,
-        problem_id: 232,
-        input: '',
-        expected_output: 'Status information rendered',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2324,
-        problem_id: 232,
-        input: '',
-        expected_output: 'Status information rendered',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2325,
-        problem_id: 232,
-        input: '',
-        expected_output: 'Status information rendered',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2326,
-        problem_id: 232,
-        input: '',
-        expected_output: 'Status information rendered',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2327,
-        problem_id: 232,
-        input: '',
-        expected_output: 'Status information rendered',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 
