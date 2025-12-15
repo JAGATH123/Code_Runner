@@ -864,7 +864,7 @@ except: pass
       // Step 2: Check if asyncio is already imported
       const hasAsyncioImport = /^import\s+asyncio/m.test(processedCode) || /^from\s+asyncio/m.test(processedCode);
 
-      // Step 3: Split into lines and inject await asyncio.sleep(0) after display updates
+      // Step 3: Split into lines and inject await asyncio.sleep(0) after display updates and in while loops
       const lines = processedCode.split('\n');
       const transformedLines: string[] = [];
 
@@ -878,6 +878,16 @@ except: pass
         if (trimmed.includes('pygame.display.flip()') || trimmed.includes('pygame.display.update()')) {
           const indent = line.match(/^(\s*)/)?.[1] || '';
           transformedLines.push(`${indent}await asyncio.sleep(0)`);
+        }
+
+        // Inject await asyncio.sleep(0) at the start of while loops to prevent freezing
+        if (trimmed.startsWith('while ') && trimmed.endsWith(':')) {
+          // Look ahead to find the first line inside the while loop
+          if (i + 1 < lines.length) {
+            const nextLine = lines[i + 1];
+            const nextIndent = nextLine.match(/^(\s*)/)?.[1] || '';
+            transformedLines.push(`${nextIndent}await asyncio.sleep(0)`);
+          }
         }
       }
 
