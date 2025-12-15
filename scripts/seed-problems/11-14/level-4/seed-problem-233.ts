@@ -21,11 +21,11 @@ async function seedProblem233() {
       title: 'Responding to Key Inputs',
       description: 'Learn to handle keyboard events and modify program state based on user input.',
       difficulty: 'Medium',
-      question: `Create an event loop that responds to keyboard inputs to modify fuel and oxygen values. Start with fuel = 80, oxygen = 90. Left arrow decreases fuel by 10, right arrow increases fuel by 10. Down arrow decreases oxygen by 10, up arrow increases oxygen by 10. Use max(0, value) and min(100, value) to keep values within bounds. After every change, print the current fuel and oxygen values in format: "Fuel: [value], Oxygen: [value]"`,
+      question: `Create an event loop that responds to keyboard inputs to modify fuel and oxygen values. Start with fuel = 80, oxygen = 90. Print initial values immediately in format: "Fuel: [value], Oxygen: [value]". Left arrow decreases fuel by 10, right arrow increases fuel by 10. Down arrow decreases oxygen by 10, up arrow increases oxygen by 10. Use max(0, value) and min(100, value) to keep values within bounds. After every change, print the updated values.`,
 
-      compiler_comment: '# Write your code here\n',
+      compiler_comment: '',
       sample_input: '',
-      sample_output: 'Fuel: 70, Oxygen: 100',
+      sample_output: 'Fuel: 80, Oxygen: 90',
 
       age_group: '11-14',
       level_number: 4,
@@ -44,8 +44,8 @@ async function seedProblem233() {
       // Case-specific content
       case_number: 4,
       case_title: 'Responding to Key Inputs',
-      case_overview: `Cadets will now make the interface interactive by listening for user input via keyboard keys. Pressing arrow keys will increase or decrease fuel and oxygen values. This builds a foundational understanding of event handling in Pygame and introduces how real-world systems respond to control inputs to modify internal states.`,
-      case_explanation: `KEYDOWN triggers when a key is pressed. Arrow keys correspond to changes in values. min() and max() ensure values stay within bounds. The loop listens continuously for new events. Variables are updated based on which key is pressed.`,
+      case_overview: `Handle keyboard input to modify fuel and oxygen values using arrow keys. Learn event handling in Pygame.`,
+      case_explanation: `Use event.type == KEYDOWN to detect key presses. Check event.key for arrow keys (K_LEFT, K_RIGHT, K_UP, K_DOWN). Use min() and max() to keep values in bounds.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -59,65 +59,25 @@ async function seedProblem233() {
     const problemResult = await problemsCollection.insertOne(problem233);
     console.log('Problem 233 inserted');
 
-    // Test cases for Problem 233
+    // Test cases for Problem 233 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2331,
         problem_id: 233,
         input: '',
-        expected_output: 'Fuel: 70, Oxygen: 100',
+        expected_output: 'Fuel: 80, Oxygen: 90',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2332,
         problem_id: 233,
         input: '',
-        expected_output: 'Fuel: 70, Oxygen: 100',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2333,
-        problem_id: 233,
-        input: '',
-        expected_output: 'Fuel: 70, Oxygen: 100',
+        expected_output: 'Fuel: 80, Oxygen: 90',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2334,
-        problem_id: 233,
-        input: '',
-        expected_output: 'Fuel: 70, Oxygen: 100',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2335,
-        problem_id: 233,
-        input: '',
-        expected_output: 'Fuel: 70, Oxygen: 100',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2336,
-        problem_id: 233,
-        input: '',
-        expected_output: 'Fuel: 70, Oxygen: 100',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2337,
-        problem_id: 233,
-        input: '',
-        expected_output: 'Fuel: 70, Oxygen: 100',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 
