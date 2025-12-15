@@ -410,13 +410,23 @@ export class GPUContainerPool {
           console.log('[Pygame] Executing code in regular Python to capture print output...');
 
           // Create modified code that exits after a few frames to capture initial print output
-          const captureCode = code.replace(
-            /while\s+running:/,
-            `frame_count = 0\nwhile running and frame_count < 5:`  // Run only 5 frames
-          ).replace(
-            /pygame\.display\.(flip|update)\(\)/g,
-            `pygame.display.$1()\n    frame_count += 1`  // Increment frame counter
-          );
+          // Add frame counter at the start, and modify the while loop to limit iterations
+          const captureCode = `frame_count = 0\n${code}`
+            .replace(
+              /while\s+running:/,
+              `while running and frame_count < 5:`  // Run only 5 frames
+            )
+            .replace(
+              /pygame\.display\.(flip|update)\(\)/g,
+              (match, method) => {
+                // Only increment inside the while loop (check if next lines are indented)
+                return `pygame.display.${method}()`;
+              }
+            )
+            .replace(
+              /while running and frame_count < 5:/,
+              `while running and frame_count < 5:\n    frame_count += 1`  // Increment at start of loop
+            );
 
           const hostCodePath = join(tmpdir(), `${sessionId}_capture.py`);
           await writeFile(hostCodePath, captureCode, 'utf8');

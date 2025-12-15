@@ -191,8 +191,138 @@ print('[BATCH_RESULTS]' + json.dumps(results))
 
   public static async executeSubmission(
     code: string,
-    testCases: TestCase[]
+    testCases: TestCase[],
+    isPygameProblem: boolean = false
   ): Promise<SubmissionResult> {
+
+    // PYGAME SPECIAL HANDLING: Pygame code runs in a game loop with live print capture
+    // The batch driver approach doesn't work for Pygame
+    if (isPygameProblem) {
+      console.log('[Submission] ===== PYGAME SUBMISSION =====');
+      console.log('[Submission] Using CONSOLE OUTPUT (print capture) for validation');
+      console.log('[Submission] NOT using SYSTEM OUTPUT');
+      try {
+        // Execute Pygame code directly (it will compile with Pygbag)
+        const executionResult = await GPUContainerPool.executeCode(code, '');
+
+        if (executionResult.status === 'Error' || executionResult.status === 'Timeout') {
+          return {
+            status: 'Wrong Answer',
+            passed: 0,
+            total: testCases.length,
+            results: testCases.map(tc => ({
+              input: tc.input,
+              expected: tc.expected_output,
+              actual: '',
+              passed: false,
+              error: executionResult.stderr || 'Execution failed'
+            }))
+          };
+        }
+
+        // CRITICAL: Verify student actually wrote Pygame code (not just print statement)
+        if (!executionResult.pygameBundle) {
+          console.log('[Submission] ERROR: No Pygame bundle found - student did not write valid Pygame code');
+          return {
+            status: 'Wrong Answer',
+            passed: 0,
+            total: testCases.length,
+            results: testCases.map(tc => ({
+              input: tc.input,
+              expected: tc.expected_output,
+              actual: '',
+              passed: false,
+              error: 'Code must include proper Pygame initialization and game loop'
+            }))
+          };
+        }
+
+        // Additional validation: Check for required Pygame elements in code
+        const hasImportPygame = code.includes('import pygame');
+        const hasPygameInit = code.includes('pygame.init()');
+        const hasDisplaySetMode = /pygame\.display\.set_mode\s*\(/.test(code);
+        const hasDisplayUpdate = /pygame\.display\.(update|flip)\s*\(/.test(code);
+        const hasGameLoop = /while\s+running/.test(code) || /while\s+True/.test(code);
+
+        if (!hasImportPygame || !hasPygameInit || !hasDisplaySetMode || !hasDisplayUpdate || !hasGameLoop) {
+          console.log('[Submission] ERROR: Missing required Pygame elements');
+          console.log(`[Submission] Has import pygame: ${hasImportPygame}`);
+          console.log(`[Submission] Has pygame.init(): ${hasPygameInit}`);
+          console.log(`[Submission] Has display.set_mode(): ${hasDisplaySetMode}`);
+          console.log(`[Submission] Has display.update/flip(): ${hasDisplayUpdate}`);
+          console.log(`[Submission] Has game loop: ${hasGameLoop}`);
+
+          return {
+            status: 'Wrong Answer',
+            passed: 0,
+            total: testCases.length,
+            results: testCases.map(tc => ({
+              input: tc.input,
+              expected: tc.expected_output,
+              actual: '',
+              passed: false,
+              error: 'Code must include: import pygame, pygame.init(), display.set_mode(), display update, and game loop'
+            }))
+          };
+        }
+
+        // For Pygame, compare the stdout (from print capture) with expected output
+        // This stdout comes from the initial 5-frame execution print capture
+        // It is the SAME as what appears in CONSOLE OUTPUT in the UI
+        const actualOutput = this.normalizeOutput(executionResult.stdout);
+        console.log(`[Submission] ===== VALIDATION SOURCE =====`);
+        console.log(`[Submission] Source: CONSOLE OUTPUT (print capture from initial execution)`);
+        console.log(`[Submission] Captured output: "${actualOutput}"`);
+        console.log(`[Submission] Expected output: "${testCases[0]?.expected_output}"`);
+        console.log(`[Submission] ===== COMPARING =====`);
+        let passedCount = 0;
+
+        // Pygame problems typically have the same expected output for all test cases
+        // (since they don't use input - they're interactive games)
+        const results = testCases.map(tc => {
+          const passed = this.compareOutputs(actualOutput, tc.expected_output);
+          console.log(`[Submission] Test case - Expected: "${tc.expected_output}", Actual: "${actualOutput}", Passed: ${passed}`);
+          if (passed) passedCount++;
+
+          return {
+            input: tc.input,
+            expected: tc.expected_output,
+            actual: actualOutput,
+            passed,
+            error: undefined
+          };
+        });
+
+        const finalStatus = passedCount === testCases.length ? 'Accepted' : 'Wrong Answer';
+        console.log(`[Submission] ===== RESULT =====`);
+        console.log(`[Submission] Status: ${finalStatus}`);
+        console.log(`[Submission] Passed: ${passedCount}/${testCases.length}`);
+        console.log(`[Submission] Validation used: CONSOLE OUTPUT (print capture)`);
+        console.log(`[Submission] ===== END =====`);
+
+        return {
+          status: finalStatus,
+          passed: passedCount,
+          total: testCases.length,
+          results
+        };
+
+      } catch (error) {
+        console.error('[Submission] Pygame execution error:', error);
+        return {
+          status: 'Wrong Answer',
+          passed: 0,
+          total: testCases.length,
+          results: testCases.map(tc => ({
+            input: tc.input,
+            expected: tc.expected_output,
+            actual: '',
+            passed: false,
+            error: error instanceof Error ? error.message : 'Pygame execution failed'
+          }))
+        };
+      }
+    }
 
     // OPTIMIZATION: Batch all test cases into ONE container execution
     // This reduces execution time from ~770s to ~1.5s (500x faster!)
