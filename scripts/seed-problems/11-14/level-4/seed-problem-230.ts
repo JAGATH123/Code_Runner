@@ -44,8 +44,8 @@ async function seedProblem230() {
       // Case-specific content
       case_number: 1,
       case_title: 'Creating a Graphical Window',
-      case_overview: `Cadets will initialize a Pygame window which will serve as the base interface for all visual elements. They will learn to configure the screen size, set a meaningful title, and apply a space-themed background. This forms the canvas for everything that will be drawn and updated in later stages of the program.`,
-      case_explanation: `pygame.init() activates Pygame modules. set_mode() defines the display window's size. set_caption() sets the title of the window. fill() gives the window a solid background color. display.update() makes all changes visible on screen.`,
+      case_overview: `Initialize a Pygame window with custom size, title, and background color. This creates the canvas for drawing graphics.`,
+      case_explanation: `Use pygame.init() to start Pygame, set_mode() for window size, set_caption() for title, fill() for background, and display.update() to show changes.`,
 
       created_at: new Date(),
       updated_at: new Date()
