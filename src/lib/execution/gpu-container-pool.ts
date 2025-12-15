@@ -445,12 +445,18 @@ export class GPUContainerPool {
             .split('\n')
             .filter(line => {
               const trimmed = line.trim();
-              // Filter out Pygame system messages
+              // Filter out empty lines
               if (!trimmed) return false;
+              // Filter out Pygame system messages
               if (trimmed.includes('pygame')) return false;
               if (trimmed.includes('SDL')) return false;
               if (trimmed.includes('Hello from the pygame')) return false;
               if (trimmed.includes('community')) return false;
+              // Filter out Python warnings
+              if (trimmed.includes('warnings.warn')) return false;
+              if (trimmed.includes('DeprecationWarning')) return false;
+              if (trimmed.includes('UserWarning')) return false;
+              if (trimmed.startsWith('warnings.')) return false;
               return true;
             })
             .join('\n')
