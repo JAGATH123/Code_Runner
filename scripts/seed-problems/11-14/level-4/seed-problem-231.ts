@@ -45,7 +45,7 @@ async function seedProblem231() {
       case_number: 2,
       case_title: 'Drawing Visual Indicators',
       case_overview: `Draw two rectangles as visual gauges for fuel and oxygen levels. The width of each bar is proportional to its value.`,
-      case_explanation: `draw.rect() is used to draw a rectangle on the screen. The rectangle's width is proportional to the value it represents. Fuel and oxygen are placed separately with fixed height. Colors distinguish each bar. display.update() reflects these drawings on screen.`,
+      case_explanation: `Use pygame.draw.rect() to draw rectangles. Width is proportional to the value (fuel * 2, oxygen * 2). Green for fuel, blue for oxygen.`,
 
       created_at: new Date(),
       updated_at: new Date()
