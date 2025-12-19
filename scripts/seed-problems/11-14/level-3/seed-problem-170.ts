@@ -21,10 +21,7 @@ async function seedProblem170() {
       title: 'Hybrid Inheritance',
       description: 'Learn how to combine different inheritance types to create complex, multi-functional systems.',
       difficulty: 'Medium',
-      question: `Can you create a LabAI using hybrid inheritance that combines multilevel and multiple inheritance patterns?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Genesis',
+      question: `Can you create a LabAI using hybrid inheritance that combines multilevel and multiple inheritance patterns?`,      sample_input: 'Genesis',
       sample_output: 'MergedSys: Booting AI system...\nMergedSys: Scanning medical data...\nMergedSys: Analyzing research results...',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem225() {
       title: 'Creating a New File Safely',
       description: 'Learn to create files safely using x mode with exception handling to prevent overwriting.',
       difficulty: 'Medium',
-      question: `Try creating a file named "mylog.txt" using "x" mode (exclusive creation). Inside the file, write "Name: John Doe - Subject: Python Programming". Use try-except to handle FileExistsError. If the file is created successfully, print "File created successfully." If it already exists, print "File already exists."`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Try creating a file named "mylog.txt" using "x" mode (exclusive creation). Inside the file, write "Name: John Doe - Subject: Python Programming". Use try-except to handle FileExistsError. If the file is created successfully, print "File created successfully." If it already exists, print "File already exists."`,      sample_input: '',
       sample_output: 'File created successfully.',
 
       age_group: '11-14',

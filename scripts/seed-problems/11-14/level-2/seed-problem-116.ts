@@ -21,10 +21,7 @@ async function seedProblem116() {
       title: 'Conversion Functions',
       description: 'Learn to convert between data types using int(), float(), and str().',
       difficulty: 'Easy',
-      question: `Take a string number as input. Convert it to integer using int() and to float using float(), then print their sum.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '42',
+      question: `Take a string number as input. Convert it to integer using int() and to float using float(), then print their sum.`,      sample_input: '42',
       sample_output: '84.0',
 
       age_group: '11-14',

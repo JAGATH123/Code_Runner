@@ -21,10 +21,7 @@ async function seedProblem130() {
       title: 'os module',
       description: 'The os module connects programs to the computer\'s file system, enabling directory navigation and file organization tasks.',
       difficulty: 'Easy',
-      question: `The spacecraft data analysis system receives file paths from various sensor logs stored across different directories. The system needs to extract just the directory path from complete file paths to organize data by location. Given a complete file path, can you extract the directory portion using path manipulation functions?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '/home/station/logs/sensor_data.txt',
+      question: `The spacecraft data analysis system receives file paths from various sensor logs stored across different directories. The system needs to extract just the directory path from complete file paths to organize data by location. Given a complete file path, can you extract the directory portion using path manipulation functions?`,      sample_input: '/home/station/logs/sensor_data.txt',
       sample_output: '/home/station/logs',
 
       age_group: '11-14',

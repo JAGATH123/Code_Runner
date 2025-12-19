@@ -37,8 +37,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Problem or test cases not found' }, { status: 404 });
     }
 
+    // Get problem details to check if it's a Pygame problem
+    const problem = await DataService.getProblemById(problemId);
+    const isPygameProblem = problem && (problem.session_id === 42 || problem.session_id === 43);
+
     // Execute code against all test cases
-    const summary = await SubmissionExecutor.executeSubmission(code, cases);
+    const summary = await SubmissionExecutor.executeSubmission(code, cases, isPygameProblem);
 
     return NextResponse.json({ summary });
   } catch (error) {

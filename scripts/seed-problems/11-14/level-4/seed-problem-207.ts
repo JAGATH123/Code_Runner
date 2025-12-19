@@ -25,10 +25,7 @@ async function seedProblem207() {
 1. "ALERT: OXYGEN DROP at 14:55"
 2. "RECOVERY: BACKUP SYSTEM ACTIVATED"
 
-Each entry should be on a new line. Print "Emergency entries appended successfully" when done.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Each entry should be on a new line. Print "Emergency entries appended successfully" when done.`,      sample_input: '',
       sample_output: 'Emergency entries appended successfully',
 
       age_group: '11-14',

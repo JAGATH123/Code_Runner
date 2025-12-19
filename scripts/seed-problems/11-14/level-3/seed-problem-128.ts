@@ -21,10 +21,7 @@ async function seedProblem128() {
       title: 'Using the random module',
       description: 'The random module brings unpredictability to programs through random numbers, shuffling, and simulations—perfect for games and testing.',
       difficulty: 'Easy',
-      question: `The training simulation needs to generate random challenge scenarios for astronaut preparation. Given a seed value to initialize the random generator, can you simulate a dice roll that produces a number between 1 and 6 to determine the difficulty level of the next training module?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '42',
+      question: `The training simulation needs to generate random challenge scenarios for astronaut preparation. Given a seed value to initialize the random generator, can you simulate a dice roll that produces a number between 1 and 6 to determine the difficulty level of the next training module?`,      sample_input: '42',
       sample_output: '6',
 
       age_group: '11-14',

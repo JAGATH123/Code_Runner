@@ -21,10 +21,7 @@ async function seedProblem73() {
       title: 'Creating and Accessing a Dictionary',
       description: 'Learn to create dictionaries and access values using keys.',
       difficulty: 'Easy',
-      question: `Create a dictionary called 'spacecraft' with keys "name", "speed", and "crew" storing the three input values. Then print each value by accessing it from the dictionary.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Voyager\n17\n0',
+      question: `Create a dictionary called 'spacecraft' with keys "name", "speed", and "crew" storing the three input values. Then print each value by accessing it from the dictionary.`,      sample_input: 'Voyager\n17\n0',
       sample_output: 'Voyager\n17\n0',
 
       age_group: '11-14',

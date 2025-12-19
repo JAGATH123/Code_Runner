@@ -21,10 +21,7 @@ async function seedProblem115() {
       title: 'Length & Type',
       description: 'Learn to use len() to get object length and type() to check data types.',
       difficulty: 'Easy',
-      question: `Take a string as input. Create a list with the string as a single element, print its length using len(), then print its type using type().`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Apollo',
+      question: `Take a string as input. Create a list with the string as a single element, print its length using len(), then print its type using type().`,      sample_input: 'Apollo',
       sample_output: '1\n<class \'list\'>',
 
       age_group: '11-14',

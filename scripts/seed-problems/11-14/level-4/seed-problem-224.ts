@@ -21,10 +21,7 @@ async function seedProblem224() {
       title: 'Listing All Files in a Folder',
       description: 'Learn to list directory contents using os.listdir() and check folder existence with os.path.exists().',
       difficulty: 'Easy',
-      question: `Create a folder on your computer named "mydata" and add two text files in it (can be blank files named "file1.txt" and "file2.txt"). Write a Python program that checks if the folder exists using os.path.exists(), then lists all files inside "mydata" using os.listdir(). If the folder exists, print "Files in folder: [list]". If the folder doesn't exist, print "Folder not found."`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a folder on your computer named "mydata" and add two text files in it (can be blank files named "file1.txt" and "file2.txt"). Write a Python program that checks if the folder exists using os.path.exists(), then lists all files inside "mydata" using os.listdir(). If the folder exists, print "Files in folder: [list]". If the folder doesn't exist, print "Folder not found."`,      sample_input: '',
       sample_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
 
       age_group: '11-14',

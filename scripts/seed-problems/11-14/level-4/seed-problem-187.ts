@@ -21,10 +21,7 @@ async function seedProblem187() {
       title: 'Galactic Anomaly Detector – Fortifying the Cosmic Shield System',
       description: 'Build a comprehensive fault-tolerant system that protects spacecraft from unexpected cosmic disturbances using exception handling.',
       difficulty: 'Hard',
-      question: `Can you build a Galactic Anomaly Detector that handles multiple space anomalies? Take 3 inputs: distance, time, and sensor_index. First, calculate velocity (distance/time) and print "Velocity:" followed by the result. Handle ZeroDivisionError by printing "Error: Cannot calculate with zero time". Second, access sensor data at the given index from a pre-defined list [10, 20, 30, 40, 50] and print "Sensor Reading:" followed by the value. Handle IndexError by printing "Error: Sensor index out of range". Finally, print "System Status: Operational" to indicate the shield is active.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '100\n5\n1',
+      question: `Can you build a Galactic Anomaly Detector that handles multiple space anomalies? Take 3 inputs: distance, time, and sensor_index. First, calculate velocity (distance/time) and print "Velocity:" followed by the result. Handle ZeroDivisionError by printing "Error: Cannot calculate with zero time". Second, access sensor data at the given index from a pre-defined list [10, 20, 30, 40, 50] and print "Sensor Reading:" followed by the value. Handle IndexError by printing "Error: Sensor index out of range". Finally, print "System Status: Operational" to indicate the shield is active.`,      sample_input: '100\n5\n1',
       sample_output: 'Velocity: 20.0\nSensor Reading: 20\nSystem Status: Operational',
 
       age_group: '11-14',

@@ -23,10 +23,7 @@ async function seedProblem84() {
 
 Create the repair routine that restores the Galactic Intelligence Core using nested dictionaries and advanced operations.`,
       difficulty: 'Hard',
-      question: `Read N (number of phases). For each phase: read name, crew count, system count, then for each system read name and power. Store in nested dictionaries. Read query_phase name. If it exists print "Phase: {name}, Crew: {crew}, Power: {total_power}" where total_power is sum of all systems in that phase. If not found print "Phase not found". Then merge all systems from all phases keeping maximum power for duplicates, print sorted alphabetically as "{system}: {power}".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\nAtmospheric_Entry\n5\n2\nHeat_Shields\n80\nNavigation\n100\nCanyon_Descent\n3\n1\nThrusters\n90\nAtmospheric_Entry',
+      question: `Read N (number of phases). For each phase: read name, crew count, system count, then for each system read name and power. Store in nested dictionaries. Read query_phase name. If it exists print "Phase: {name}, Crew: {crew}, Power: {total_power}" where total_power is sum of all systems in that phase. If not found print "Phase not found". Then merge all systems from all phases keeping maximum power for duplicates, print sorted alphabetically as "{system}: {power}".`,      sample_input: '2\nAtmospheric_Entry\n5\n2\nHeat_Shields\n80\nNavigation\n100\nCanyon_Descent\n3\n1\nThrusters\n90\nAtmospheric_Entry',
       sample_output: 'Phase: Atmospheric_Entry, Crew: 5, Power: 180\nHeat_Shields: 80\nNavigation: 100\nThrusters: 90',
 
       age_group: '11-14',

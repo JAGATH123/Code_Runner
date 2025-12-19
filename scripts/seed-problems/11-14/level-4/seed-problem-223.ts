@@ -33,10 +33,7 @@ Step 3: Read Logs as a Stream with next() - Reopen the file and use next() to re
 
 Step 4: Truncate After a Fault Event - Open in r+ mode and truncate the file to preserve only the first 3 entries. Print "Log truncated to safe entries"
 
-Step 5: Confirm File Readiness and Seal the Vault - Append final entry "CHRONICLE SEALED - READY FOR TRANSMISSION". Print the file's name and encoding. Print "Mission Chronicle finalized"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Step 5: Confirm File Readiness and Seal the Vault - Append final entry "CHRONICLE SEALED - READY FOR TRANSMISSION". Print the file's name and encoding. Print "Mission Chronicle finalized"`,      sample_input: '',
       sample_output: 'Position after SYSTEM BOOT: 12\nPosition after DIAGNOSTICS PASS: 29\nPosition after ENGINE ONLINE: 43\nPosition after VORAX-9 STABLE: 59\nPosition after SHIELDS ACTIVE: 75\nTargeted entry: ENGINE ONLINE\nEntry 2: DIAGNOSTICS PASS\nEntry 4: VORAX-9 STABLE\nLog truncated to safe entries\nFile Name: chronicle_log.txt\nEncoding: utf-8\nMission Chronicle finalized',
 
       age_group: '11-14',

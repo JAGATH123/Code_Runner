@@ -21,10 +21,7 @@ async function seedProblem144() {
       title: 'Galactic AI Blueprints – Crafting the Cosmic Minds',
       description: 'Build a fully functional AI assistant using Object-Oriented Programming, combining class creation, multiple methods, multiple objects, and user interaction.',
       difficulty: 'Hard',
-      question: `Can you create an AIAssistant class with name and purpose attributes, an introduce method, and a perform_task method with conditional logic? If purpose is 'defense', add 'Alert: Security protocol activated!' before task. If purpose is 'medical', add 'Health check: All systems normal.' before task.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Nova\nnavigation\nscan asteroid',
+      question: `Can you create an AIAssistant class with name and purpose attributes, an introduce method, and a perform_task method with conditional logic? If purpose is 'defense', add 'Alert: Security protocol activated!' before task. If purpose is 'medical', add 'Health check: All systems normal.' before task.`,      sample_input: 'Nova\nnavigation\nscan asteroid',
       sample_output: 'My name is Nova and my purpose is navigation.\nNova is performing: scan asteroid',
 
       age_group: '11-14',

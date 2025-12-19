@@ -21,10 +21,7 @@ async function seedProblem221() {
       title: 'Truncating Mission Logs',
       description: 'Learn to cut files to a safe size using truncate() to preserve only essential data.',
       difficulty: 'Medium',
-      question: `A file "galactic_log.txt" contains multiple log entries. Truncate the file to retain only the first two full log entries (approximately 50 bytes). Use r+ mode. Print "Log file truncated to safe size" after truncation. Then read and print the remaining content to confirm.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `A file "galactic_log.txt" contains multiple log entries. Truncate the file to retain only the first two full log entries (approximately 50 bytes). Use r+ mode. Print "Log file truncated to safe size" after truncation. Then read and print the remaining content to confirm.`,      sample_input: '',
       sample_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
 
       age_group: '11-14',

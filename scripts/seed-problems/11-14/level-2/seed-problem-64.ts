@@ -21,10 +21,7 @@ async function seedProblem64() {
       title: 'Multiple Layers of Nesting',
       description: 'Learn to create three levels of nested loops for handling complex multi-dimensional iterations.',
       difficulty: 'Medium',
-      question: `Build a program that prints all station-module-sensor combinations. Take three inputs: number of stations, modules per station, and sensors per module. Display three numbers separated by spaces for each combination, starting from 1.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\n2\n2',
+      question: `Build a program that prints all station-module-sensor combinations. Take three inputs: number of stations, modules per station, and sensors per module. Display three numbers separated by spaces for each combination, starting from 1.`,      sample_input: '2\n2\n2',
       sample_output: `1 1 1
 1 1 2
 1 2 1

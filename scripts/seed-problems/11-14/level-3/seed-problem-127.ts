@@ -21,10 +21,7 @@ async function seedProblem127() {
       title: 'Using the math module',
       description: 'The math module provides powerful mathematical functions for quick and accurate calculations, from simple square roots to complex factorials.',
       difficulty: 'Easy',
-      question: `The spacecraft mission computer needs to calculate possible mission configurations based on crew arrangements. Given a number of available crew members, can you calculate how many different ways they can be arranged in specific positions using factorial calculations?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5',
+      question: `The spacecraft mission computer needs to calculate possible mission configurations based on crew arrangements. Given a number of available crew members, can you calculate how many different ways they can be arranged in specific positions using factorial calculations?`,      sample_input: '5',
       sample_output: '120',
 
       age_group: '11-14',

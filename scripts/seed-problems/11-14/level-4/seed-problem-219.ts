@@ -21,10 +21,7 @@ async function seedProblem219() {
       title: 'Navigating Logs Using seek()',
       description: 'Learn to jump directly to specific byte positions in files using seek() for fast data access.',
       difficulty: 'Medium',
-      question: `A file "galactic_log.txt" contains multiple log entries. Use seek() to jump to byte position 50 (the third entry) and print that line using readline(). Strip any extra whitespace. Print in format: "Third entry: [content]"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `A file "galactic_log.txt" contains multiple log entries. Use seek() to jump to byte position 50 (the third entry) and print that line using readline(). Strip any extra whitespace. Print in format: "Third entry: [content]"`,      sample_input: '',
       sample_output: 'Third entry: CABIN SEALED',
 
       age_group: '11-14',

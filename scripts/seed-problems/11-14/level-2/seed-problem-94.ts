@@ -21,10 +21,7 @@ async function seedProblem94() {
       title: 'Set Difference and Symmetric Difference',
       description: 'Learn to find unique elements using .difference() and .symmetric_difference() to compare sets.',
       difficulty: 'Medium',
-      question: `Read N1, then read N1 strings to create set1. Read N2, then read N2 strings to create set2. Calculate difference (set1 - set2). If empty print "No unique elements in first set", else print elements sorted alphabetically (one per line). Calculate symmetric difference. If empty print "Sets are identical", else print elements sorted alphabetically (one per line).`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '4\nHubble\nISS\nVoyager\nKepler\n3\nISS\nGalileo\nVoyager',
+      question: `Read N1, then read N1 strings to create set1. Read N2, then read N2 strings to create set2. Calculate difference (set1 - set2). If empty print "No unique elements in first set", else print elements sorted alphabetically (one per line). Calculate symmetric difference. If empty print "Sets are identical", else print elements sorted alphabetically (one per line).`,      sample_input: '4\nHubble\nISS\nVoyager\nKepler\n3\nISS\nGalileo\nVoyager',
       sample_output: 'Hubble\nKepler\nGalileo\nHubble\nKepler',
 
       age_group: '11-14',

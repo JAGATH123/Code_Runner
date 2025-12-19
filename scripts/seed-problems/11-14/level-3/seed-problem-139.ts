@@ -21,10 +21,7 @@ async function seedProblem139() {
       title: 'Creating a Simple Class',
       description: 'In Python, a class is like a blueprint that defines what properties an object should have and what it can do, helping you reuse the same structure without rewriting code.',
       difficulty: 'Easy',
-      question: `Can you create an Animal class with a name attribute and a speak method that prints '[name] makes a sound.'?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Tiger',
+      question: `Can you create an Animal class with a name attribute and a speak method that prints '[name] makes a sound.'?`,      sample_input: 'Tiger',
       sample_output: 'Tiger makes a sound.',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem197() {
       title: 'Multi-Layer Exception Handling',
       description: 'Learn to handle different types of failures with layered exception blocks for proper error diagnosis.',
       difficulty: 'Medium',
-      question: `Create a two-layer failure system. If system_status is "power_loss", raise ValueError("Power system failure!"). Handle ValueError with message "Mission Alert: Power system failure!" and general Exception with "Generic Failure occurred". Always print "Log transmission complete" in finally block.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'power_loss',
+      question: `Create a two-layer failure system. If system_status is "power_loss", raise ValueError("Power system failure!"). Handle ValueError with message "Mission Alert: Power system failure!" and general Exception with "Generic Failure occurred". Always print "Log transmission complete" in finally block.`,      sample_input: 'power_loss',
       sample_output: 'Mission Alert: Power system failure!\nLog transmission complete',
 
       age_group: '11-14',

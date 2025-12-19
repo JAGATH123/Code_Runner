@@ -21,10 +21,7 @@ async function seedProblem152() {
       title: 'Printing Object Info with __str__()',
       description: 'The __str__() method controls what message appears when printing an object, making output meaningful instead of showing memory addresses.',
       difficulty: 'Easy',
-      question: `Can you create a Book class with title and author attributes, and implement __str__()? Print with prefix based on title length: len>=10+even='Long Title:', len>=10+odd='Extended:', len<10+even='Short Title:', len<10+odd='Brief:', followed by '[title] by [author]'.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Wings of Fire\nA.P.J Abdul Kalam',
+      question: `Can you create a Book class with title and author attributes, and implement __str__()? Print with prefix based on title length: len>=10+even='Long Title:', len>=10+odd='Extended:', len<10+even='Short Title:', len<10+odd='Brief:', followed by '[title] by [author]'.`,      sample_input: 'Wings of Fire\nA.P.J Abdul Kalam',
       sample_output: 'Extended: Wings of Fire by A.P.J Abdul Kalam',
 
       age_group: '11-14',

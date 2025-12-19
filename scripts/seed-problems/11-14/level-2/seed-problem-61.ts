@@ -21,10 +21,7 @@ async function seedProblem61() {
       title: 'Simple Nested Loop',
       description: 'Learn how to execute one loop inside another loop to create multi-level iterations.',
       difficulty: 'Medium',
-      question: `Create a program that displays all mission-checkpoint pairs. Take two numbers as input: total missions and checkpoints per mission. Display each combination as "Mission [number] - [number]" starting from 1.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\n3',
+      question: `Create a program that displays all mission-checkpoint pairs. Take two numbers as input: total missions and checkpoints per mission. Display each combination as "Mission [number] - [number]" starting from 1.`,      sample_input: '2\n3',
       sample_output: `Mission 1 - 1
 Mission 1 - 2
 Mission 1 - 3

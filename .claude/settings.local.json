@@ -30,7 +30,11 @@
       "Bash(git rm:*)",
       "Bash(docker images:*)",
       "Bash(echo:*)",
-      "Bash(docker run:*)"
+      "Bash(docker run:*)",
+      "Bash(node remove-compiler-comment.js:*)",
+      "Bash(node reseed-levels-1-2-3.js:*)",
+      "Bash(node:*)",
+      "Bash(del:*)"
     ],
     "deny": [],
     "ask": []

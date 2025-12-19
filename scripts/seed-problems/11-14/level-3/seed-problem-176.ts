@@ -21,10 +21,7 @@ async function seedProblem176() {
       title: 'Operator Overloading – Redefining + for Custom Objects',
       description: 'Learn how to redefine operators like + to work with custom objects.',
       difficulty: 'Medium',
-      question: `Can you create a Book class with title and pages attributes? When adding books with +, combine titles with '-' and add pages. Take 2 inputs (title, pages) for each of 2 books, add them, and print the result.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Fiction\n150\nScience\n100',
+      question: `Can you create a Book class with title and pages attributes? When adding books with +, combine titles with '-' and add pages. Take 2 inputs (title, pages) for each of 2 books, add them, and print the result.`,      sample_input: 'Fiction\n150\nScience\n100',
       sample_output: 'Fiction-Science Book with 250 pages',
 
       age_group: '11-14',

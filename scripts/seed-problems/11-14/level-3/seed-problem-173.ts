@@ -21,10 +21,7 @@ async function seedProblem173() {
       title: 'Method Resolution Order (MRO) in Multiple Inheritance',
       description: 'Explore how Python determines which method to call when multiple parent classes have methods with the same name.',
       difficulty: 'Medium',
-      question: `Can you demonstrate Python's Method Resolution Order (MRO) using multiple inheritance with conflicting method names?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Alpha',
+      question: `Can you demonstrate Python's Method Resolution Order (MRO) using multiple inheritance with conflicting method names?`,      sample_input: 'Alpha',
       sample_output: 'Scanner reporting: All clear.\n(<class \'__main__.CommanderAI\'>, <class \'__main__.ScannerAI\'>, <class \'__main__.LoggerAI\'>, <class \'object\'>)',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem161() {
       title: 'Access Control with Role-Based Permissions',
       description: 'In large systems, different users might have different roles and levels of access. This explores how to apply role-based access control (RBAC) where users are assigned roles that determine the data they can access.',
       difficulty: 'Medium',
-      question: `Your mission control system assigns different access levels based on crew roles. Can you create an AccessControl class where Commanders get full access (with PIN verification), Users get limited access, and Guests are denied entry?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Commander\n9876\n9876',
+      question: `Your mission control system assigns different access levels based on crew roles. Can you create an AccessControl class where Commanders get full access (with PIN verification), Users get limited access, and Guests are denied entry?`,      sample_input: 'Commander\n9876\n9876',
       sample_output: 'Access Granted: Commander',
 
       age_group: '11-14',

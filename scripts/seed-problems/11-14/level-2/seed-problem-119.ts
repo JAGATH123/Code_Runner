@@ -21,10 +21,7 @@ async function seedProblem119() {
       title: 'Input and Output Functions',
       description: 'Master input() and print() to communicate with users and display formatted output.',
       difficulty: 'Easy',
-      question: `Take two strings as input: a name and a role. Print the message: "Commander <name>, you are now assigned as the <role>."`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Alex\nNavigation Officer',
+      question: `Take two strings as input: a name and a role. Print the message: "Commander <name>, you are now assigned as the <role>."`,      sample_input: 'Alex\nNavigation Officer',
       sample_output: 'Commander Alex, you are now assigned as the Navigation Officer.',
 
       age_group: '11-14',

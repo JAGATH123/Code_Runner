@@ -21,10 +21,7 @@ async function seedProblem150() {
       title: 'AI Crew Command – Building Interstellar Operations',
       description: 'The AI assistants need identity and behavior to work together. As you approach the bridge, soft status lights begin to glow, signaling the crew members are ready to collaborate. Each assistant awaits your command, their energy reserves displayed and tasks queued.',
       difficulty: 'Hard',
-      question: `Can you manage N AI crew members on the bridge? For each member, create an AICrewMember object with name, role, and energy. Call show_status(), then perform_task(task) - if energy >= 50, perform task (reduce energy by 30), else show error. Call show_status() again after each task.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\nRobo1\nEngineer\n80\nRepairing engine\nRobo2\nPilot\n40\nFlying spaceship',
+      question: `Can you manage N AI crew members on the bridge? For each member, create an AICrewMember object with name, role, and energy. Call show_status(), then perform_task(task) - if energy >= 50, perform task (reduce energy by 30), else show error. Call show_status() again after each task.`,      sample_input: '2\nRobo1\nEngineer\n80\nRepairing engine\nRobo2\nPilot\n40\nFlying spaceship',
       sample_output: 'Name: Robo1 | Role: Engineer | Energy: 80\nRobo1 is performing task: Repairing engine\nName: Robo1 | Role: Engineer | Energy: 50\nName: Robo2 | Role: Pilot | Energy: 40\nRobo2 does not have enough energy to perform Flying spaceship!\nName: Robo2 | Role: Pilot | Energy: 40',
 
       age_group: '11-14',

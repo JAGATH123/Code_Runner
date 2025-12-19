@@ -21,10 +21,7 @@ async function seedProblem80() {
       title: 'Looping through .items(), .keys(), and .values()',
       description: 'Learn to iterate through dictionaries using .items(), .keys(), and .values() methods.',
       difficulty: 'Easy',
-      question: `Create a dictionary with planet names and moon counts from N inputs. Loop through and print all keys using .keys(). Loop through and print all values using .values(). Loop through and print all pairs using .items() in format "planet: moons".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\nMars\n2\nJupiter\n79',
+      question: `Create a dictionary with planet names and moon counts from N inputs. Loop through and print all keys using .keys(). Loop through and print all values using .values(). Loop through and print all pairs using .items() in format "planet: moons".`,      sample_input: '2\nMars\n2\nJupiter\n79',
       sample_output: 'Mars\nJupiter\n2\n79\nMars: 2\nJupiter: 79',
 
       age_group: '11-14',

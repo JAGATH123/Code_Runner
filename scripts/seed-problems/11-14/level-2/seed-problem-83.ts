@@ -21,10 +21,7 @@ async function seedProblem83() {
       title: 'Nesting Dictionaries',
       description: 'Learn to create nested dictionaries where values are dictionaries themselves, perfect for storing complex hierarchical data.',
       difficulty: 'Easy',
-      question: `Create a nested dictionary with N rockets. Each rocket has "stages" and "height" properties. Query one rocket name and print its height. If rocket not found, print "Not Found".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\nFalcon 9\n2\n70\nAriane 5\n2\n53\nFalcon 9',
+      question: `Create a nested dictionary with N rockets. Each rocket has "stages" and "height" properties. Query one rocket name and print its height. If rocket not found, print "Not Found".`,      sample_input: '2\nFalcon 9\n2\n70\nAriane 5\n2\n53\nFalcon 9',
       sample_output: '70',
 
       age_group: '11-14',

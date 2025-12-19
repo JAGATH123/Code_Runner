@@ -23,10 +23,7 @@ async function seedProblem102() {
 
 Create the Galactic Command Center automation library that runs thermal, thruster, and communications health checks automatically, displaying green/yellow/red status reports so the crew can focus on decoding the message.`,
       difficulty: 'Medium',
-      question: `The automated health monitor must check subsystem status values and report conditions. Write a program with user-defined functions that accepts mission parameters, prints diagnostic readings, and returns formatted status reports to minimize manual system checks during the signal investigation.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Apollo 11\n1969\n3',
+      question: `The automated health monitor must check subsystem status values and report conditions. Write a program with user-defined functions that accepts mission parameters, prints diagnostic readings, and returns formatted status reports to minimize manual system checks during the signal investigation.`,      sample_input: 'Apollo 11\n1969\n3',
       sample_output: 'Apollo 11 1969 3\nMission Apollo 11 was launched in 1969 with a crew of 3 astronauts.',
 
       age_group: '11-14',

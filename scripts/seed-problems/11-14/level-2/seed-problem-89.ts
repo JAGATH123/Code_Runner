@@ -21,10 +21,7 @@ async function seedProblem89() {
       title: 'Checking Membership and Using (in)',
       description: 'Learn to use the in operator to check if a value exists in a tuple.',
       difficulty: 'Easy',
-      question: `Create a tuple with N strings from input. Check if string S exists in the tuple using in operator. Print "Found" if it exists, else print "Not Found".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\nMercury\nVenus\nEarth\nEarth',
+      question: `Create a tuple with N strings from input. Check if string S exists in the tuple using in operator. Print "Found" if it exists, else print "Not Found".`,      sample_input: '3\nMercury\nVenus\nEarth\nEarth',
       sample_output: 'Found',
 
       age_group: '11-14',

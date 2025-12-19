@@ -21,10 +21,7 @@ async function seedProblem180() {
       title: 'Building an Adaptive AI System – Comprehensive Polymorphism',
       description: 'Combine multiple polymorphism concepts into one comprehensive system.',
       difficulty: 'Hard',
-      question: `Can you create an AI system that demonstrates polymorphism? Build three AI classes (Scout, Engineer, Commander) with a respond() method that prints different messages. Then add operator overloading (+) to combine their power levels and names. Take inputs for AI types and power levels, create objects, call their methods, and demonstrate adding two AI units together.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Scout\n50\nEngineer\n70',
+      question: `Can you create an AI system that demonstrates polymorphism? Build three AI classes (Scout, Engineer, Commander) with a respond() method that prints different messages. Then add operator overloading (+) to combine their power levels and names. Take inputs for AI types and power levels, create objects, call their methods, and demonstrate adding two AI units together.`,      sample_input: 'Scout\n50\nEngineer\n70',
       sample_output: 'Scout responding: Scanning area.\nEngineer responding: Building structures.\nScout-Engineer with power 120',
 
       age_group: '11-14',

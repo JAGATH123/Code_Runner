@@ -21,10 +21,7 @@ async function seedProblem201() {
       title: 'Reading from a File',
       description: 'Learn to open and read content from existing files to retrieve saved information.',
       difficulty: 'Easy',
-      question: `Create a program that opens "mynote.txt" in read mode, reads its content, prints the content to the screen, and closes the file. Assume the file contains "Hello, this is my first note!"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a program that opens "mynote.txt" in read mode, reads its content, prints the content to the screen, and closes the file. Assume the file contains "Hello, this is my first note!"`,      sample_input: '',
       sample_output: 'Hello, this is my first note!',
 
       age_group: '11-14',

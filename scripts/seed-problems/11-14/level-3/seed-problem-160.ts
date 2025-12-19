@@ -21,10 +21,7 @@ async function seedProblem160() {
       title: 'Implementing Multi-Layer Security',
       description: 'In complex systems, sometimes multiple layers of security are necessary. This involves applying multiple validation checks within the same system, such as validating both a PIN code and an access key.',
       difficulty: 'Medium',
-      question: `Your spacecraft's vault system requires two-factor authentication for maximum security. Can you create a SecureVault class that only grants access when both the PIN code and access key are correct?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '1234\nABCD\n1234\nABCD',
+      question: `Your spacecraft's vault system requires two-factor authentication for maximum security. Can you create a SecureVault class that only grants access when both the PIN code and access key are correct?`,      sample_input: '1234\nABCD\n1234\nABCD',
       sample_output: 'Access Granted',
 
       age_group: '11-14',

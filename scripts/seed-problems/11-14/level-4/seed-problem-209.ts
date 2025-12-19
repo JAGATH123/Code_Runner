@@ -26,10 +26,7 @@ async function seedProblem209() {
 The file initially contains:
 PREP CHECKED
 IGNITION STARTED
-LAUNCHED`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+LAUNCHED`,      sample_input: '',
       sample_output: 'Log status modified successfully',
 
       age_group: '11-14',

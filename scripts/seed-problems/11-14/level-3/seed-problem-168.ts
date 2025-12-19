@@ -21,10 +21,7 @@ async function seedProblem168() {
       title: 'Generational Intelligence Upgrade – Deep Space AI Evolution',
       description: 'During a critical surge in deep space operations, single-purpose AI units hit their operational limits. The crew must evolve their AI systems into generational families that inherit shared skills while developing specialized capabilities. Your mission is to design an advanced ExplorerAI that demonstrates the full power of inheritance hierarchies, combining diagnostic tools, decision-making intelligence, and adaptive task execution.',
       difficulty: 'Hard',
-      question: `Can you evolve a basic AIAssistant into a specialized ExplorerAI using multilevel inheritance and method overriding?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Nova\nDeep Space Exploration\nEuropa\nCollect Sample',
+      question: `Can you evolve a basic AIAssistant into a specialized ExplorerAI using multilevel inheritance and method overriding?`,      sample_input: 'Nova\nDeep Space Exploration\nEuropa\nCollect Sample',
       sample_output: 'Running technical diagnostics...\nMaking mission-level decision...\nExplorerAI is scanning Europa for life signs...\nSample collection initiated.',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem203() {
       title: 'Using With Statement for Safe File Handling',
       description: 'Learn to use the with statement for safer file handling that automatically closes files.',
       difficulty: 'Medium',
-      question: `Use the with statement to open "mynote.txt" in read mode, read its content, and print it. The file should automatically close after reading. The file contains "Hello, this is my first note!"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Use the with statement to open "mynote.txt" in read mode, read its content, and print it. The file should automatically close after reading. The file contains "Hello, this is my first note!"`,      sample_input: '',
       sample_output: 'Hello, this is my first note!',
 
       age_group: '11-14',

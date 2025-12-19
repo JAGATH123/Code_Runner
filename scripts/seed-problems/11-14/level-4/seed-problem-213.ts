@@ -26,10 +26,7 @@ async function seedProblem213() {
 2. "Master Data Structures"
 3. "Build Real Projects"
 
-Each item should be on a new line (use \\n). Print "Wishlist saved successfully" when done.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Each item should be on a new line (use \\n). Print "Wishlist saved successfully" when done.`,      sample_input: '',
       sample_output: 'Wishlist saved successfully',
 
       age_group: '11-14',

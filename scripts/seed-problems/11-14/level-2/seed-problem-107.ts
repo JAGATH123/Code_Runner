@@ -21,10 +21,7 @@ async function seedProblem107() {
       title: 'Keyword Variable-Length Arguments',
       description: 'Learn to create functions that accept any number of keyword arguments using **kwargs.',
       difficulty: 'Medium',
-      question: `Take integer N and N pairs of key-value inputs. Define a function log_event(**info) that accepts any number of keyword arguments and prints "<key>: <value>" for each pair. Call the function with all input key-value pairs.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\nEvent\nLaunch\nDate\n2024-12-01\nLocation\nCape Canaveral',
+      question: `Take integer N and N pairs of key-value inputs. Define a function log_event(**info) that accepts any number of keyword arguments and prints "<key>: <value>" for each pair. Call the function with all input key-value pairs.`,      sample_input: '3\nEvent\nLaunch\nDate\n2024-12-01\nLocation\nCape Canaveral',
       sample_output: 'Event: Launch\nDate: 2024-12-01\nLocation: Cape Canaveral',
 
       age_group: '11-14',

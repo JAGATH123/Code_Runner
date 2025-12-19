@@ -21,10 +21,7 @@ async function seedProblem154() {
       title: 'Making Objects Callable with __call__()',
       description: 'The __call__() method allows objects to behave like functions, making them directly executable with parentheses for interactive and concise code.',
       difficulty: 'Medium',
-      question: `Can you create a Printer class with name attribute and implement __call__()? Print with prefix based on name length: len>=5+even='Professional Printer:', len>=5+odd='Advanced Printer:', len<5+even='Basic Printer:', len<5+odd='Quick Printer:', followed by '[name] is printing: [document]'.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'HP\nScience_Project.pdf',
+      question: `Can you create a Printer class with name attribute and implement __call__()? Print with prefix based on name length: len>=5+even='Professional Printer:', len>=5+odd='Advanced Printer:', len<5+even='Basic Printer:', len<5+odd='Quick Printer:', followed by '[name] is printing: [document]'.`,      sample_input: 'HP\nScience_Project.pdf',
       sample_output: 'Basic Printer: HP is printing: Science_Project.pdf',
 
       age_group: '11-14',

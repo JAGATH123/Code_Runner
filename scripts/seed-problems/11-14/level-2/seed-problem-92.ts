@@ -21,10 +21,7 @@ async function seedProblem92() {
       title: 'Removing Items from a Set',
       description: 'Learn to remove items from sets using .remove() and .discard() methods and understand their differences.',
       difficulty: 'Easy',
-      question: `Create a set with N satellite names from input. Remove one satellite using .remove() and another using .discard(). Print remaining satellites sorted alphabetically, one per line.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5\nHubble\nISS\nVoyager\nGalileo\nKepler\nISS\nKepler',
+      question: `Create a set with N satellite names from input. Remove one satellite using .remove() and another using .discard(). Print remaining satellites sorted alphabetically, one per line.`,      sample_input: '5\nHubble\nISS\nVoyager\nGalileo\nKepler\nISS\nKepler',
       sample_output: 'Galileo\nHubble\nVoyager',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem135() {
       title: 'Signal Math with operator Module',
       description: 'The operator module provides functions for standard Python operators, enabling functional programming approaches to arithmetic and comparisons.',
       difficulty: 'Easy',
-      question: `Can you read two integers and output their sum, product, and equality check (True/False) on separate lines?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '12\n8',
+      question: `Can you read two integers and output their sum, product, and equality check (True/False) on separate lines?`,      sample_input: '12\n8',
       sample_output: '20\n96\nFalse',
 
       age_group: '11-14',

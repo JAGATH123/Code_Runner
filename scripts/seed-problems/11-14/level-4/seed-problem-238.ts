@@ -23,7 +23,6 @@ async function seedProblem238() {
       difficulty: 'Easy',
       question: `Create a Pygame window (400x300) with gray background (200, 200, 200). Display your name "John Doe" at the top center of the screen (approximately position 150, 30) using a system font size 40 in black color (0, 0, 0). Use pygame.font.SysFont() to create the font and render() to create the text surface. Print "Text display active" when initialized.`,
 
-      compiler_comment: '# Write your code here\n',
       sample_input: '',
       sample_output: 'Text display active',
 
@@ -59,65 +58,25 @@ async function seedProblem238() {
     const problemResult = await problemsCollection.insertOne(problem238);
     console.log('Problem 238 inserted');
 
-    // Test cases for Problem 238
+    // Test cases for Problem 238 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2381,
         problem_id: 238,
         input: '',
         expected_output: 'Text display active',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2382,
         problem_id: 238,
         input: '',
         expected_output: 'Text display active',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2383,
-        problem_id: 238,
-        input: '',
-        expected_output: 'Text display active',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2384,
-        problem_id: 238,
-        input: '',
-        expected_output: 'Text display active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2385,
-        problem_id: 238,
-        input: '',
-        expected_output: 'Text display active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2386,
-        problem_id: 238,
-        input: '',
-        expected_output: 'Text display active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2387,
-        problem_id: 238,
-        input: '',
-        expected_output: 'Text display active',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

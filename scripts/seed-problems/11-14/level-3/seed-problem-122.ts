@@ -21,10 +21,7 @@ async function seedProblem122() {
       title: 'Different Ways to Import',
       description: 'Explore multiple methods of importing modules—like choosing the best antenna for a type of signal in space communications.',
       difficulty: 'Easy',
-      question: `Mission Control has a list of possible destination planets and distance measurements in millions of kilometers. Can you randomly select one planet and calculate the average journey distance to plan the mission route?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Mars,Venus,Jupiter,Saturn\n2,4,6,8',
+      question: `Mission Control has a list of possible destination planets and distance measurements in millions of kilometers. Can you randomly select one planet and calculate the average journey distance to plan the mission route?`,      sample_input: 'Mars,Venus,Jupiter,Saturn\n2,4,6,8',
       sample_output: 'Mars\n5',
 
       age_group: '11-14',

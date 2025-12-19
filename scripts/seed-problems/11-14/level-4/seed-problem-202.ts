@@ -21,10 +21,7 @@ async function seedProblem202() {
       title: 'Appending to a File',
       description: 'Learn to add new content to an existing file without deleting the old content using append mode.',
       difficulty: 'Medium',
-      question: `A file "mynote.txt" contains "Hello, this is my first note!". Open it in append mode and add a new line "\\nHere's something new I learned today." without erasing the original content. Print "Content appended successfully" when done.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `A file "mynote.txt" contains "Hello, this is my first note!". Open it in append mode and add a new line "\\nHere's something new I learned today." without erasing the original content. Print "Content appended successfully" when done.`,      sample_input: '',
       sample_output: 'Content appended successfully',
 
       age_group: '11-14',

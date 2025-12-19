@@ -21,10 +21,7 @@ async function seedProblem85() {
       title: 'Creating and Accessing a Tuple',
       description: 'Learn to create tuples and access their elements using indexing.',
       difficulty: 'Easy',
-      question: `Create a tuple with N astronaut names from input. Access and print the astronaut at index I1, then the astronaut at index I2.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '4\nNeil\nBuzz\nSally\nYuri\n1\n3',
+      question: `Create a tuple with N astronaut names from input. Access and print the astronaut at index I1, then the astronaut at index I2.`,      sample_input: '4\nNeil\nBuzz\nSally\nYuri\n1\n3',
       sample_output: 'Buzz\nYuri',
 
       age_group: '11-14',

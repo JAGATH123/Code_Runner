@@ -26,10 +26,7 @@ async function seedProblem206() {
 2. "IGNITION STARTED"
 3. "LAUNCHED"
 
-Each entry should be on a new line. Print "Mission log created successfully" when done.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Each entry should be on a new line. Print "Mission log created successfully" when done.`,      sample_input: '',
       sample_output: 'Mission log created successfully',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem182() {
       title: 'Understanding Runtime Errors',
       description: 'Learn to identify and handle runtime errors that occur during program execution.',
       difficulty: 'Easy',
-      question: `Can you create a velocity calculator that handles runtime errors? Take inputs for speed and time, then calculate velocity using division. Use try-except to catch ZeroDivisionError and print the appropriate error message.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '100\n0',
+      question: `Can you create a velocity calculator that handles runtime errors? Take inputs for speed and time, then calculate velocity using division. Use try-except to catch ZeroDivisionError and print the appropriate error message.`,      sample_input: '100\n0',
       sample_output: 'Error: Time cannot be zero',
 
       age_group: '11-14',

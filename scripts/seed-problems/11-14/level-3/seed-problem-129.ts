@@ -21,10 +21,7 @@ async function seedProblem129() {
       title: 'Datetime module',
       description: 'The datetime module handles dates and times, helping track schedules, deadlines, and time-based mission data with precision.',
       difficulty: 'Easy',
-      question: `Mission Control receives timestamps from various space stations in different formats. The system needs to standardize all dates for the central database. Given a date in DD-MM-YYYY format, can you convert it to the standard YYYY-MM-DD format required by the interstellar tracking system?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '15-03-2024',
+      question: `Mission Control receives timestamps from various space stations in different formats. The system needs to standardize all dates for the central database. Given a date in DD-MM-YYYY format, can you convert it to the standard YYYY-MM-DD format required by the interstellar tracking system?`,      sample_input: '15-03-2024',
       sample_output: '2024-03-15',
 
       age_group: '11-14',

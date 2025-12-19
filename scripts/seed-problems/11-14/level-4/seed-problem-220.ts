@@ -21,10 +21,7 @@ async function seedProblem220() {
       title: 'Using next() to Read a Line',
       description: 'Learn to read files line-by-line using next() for sequential stream processing.',
       difficulty: 'Easy',
-      question: `Open "galactic_log.txt" which contains multiple log entries. Use next() to skip the first two lines, then print only the third and fourth log entries. Format: "Third Entry: [content]" and "Fourth Entry: [content]" on separate lines.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Open "galactic_log.txt" which contains multiple log entries. Use next() to skip the first two lines, then print only the third and fourth log entries. Format: "Third Entry: [content]" and "Fourth Entry: [content]" on separate lines.`,      sample_input: '',
       sample_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
 
       age_group: '11-14',

@@ -23,10 +23,7 @@ async function seedProblem78() {
 
 Create the Galactic Archives system that structures mission telemetry with functions and default parameters.`,
       difficulty: 'Medium',
-      question: `Create a mission planner. Take two inputs: distance and crew_count. Calculate fuel needed as distance × 5. Check if crew_count is at least 3. If crew is sufficient, print "Mission approved! Fuel needed: X units". If crew is insufficient, print "Mission denied! Insufficient crew".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '100\n4',
+      question: `Create a mission planner. Take two inputs: distance and crew_count. Calculate fuel needed as distance × 5. Check if crew_count is at least 3. If crew is sufficient, print "Mission approved! Fuel needed: X units". If crew is insufficient, print "Mission denied! Insufficient crew".`,      sample_input: '100\n4',
       sample_output: 'Mission approved! Fuel needed: 500 units',
 
       age_group: '11-14',

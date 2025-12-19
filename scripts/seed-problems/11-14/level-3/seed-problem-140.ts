@@ -21,10 +21,7 @@ async function seedProblem140() {
       title: 'Adding More Methods',
       description: 'Adding multiple methods to a class makes objects more powerful and flexible, allowing them to perform various related actions while keeping code organized.',
       difficulty: 'Easy',
-      question: `Can you create a Student class with name and grade attributes, an introduce method, and a study method for a subject?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Anita\n7\nMath',
+      question: `Can you create a Student class with name and grade attributes, an introduce method, and a study method for a subject?`,      sample_input: 'Anita\n7\nMath',
       sample_output: 'My name is Anita and I am in grade 7.\nAnita is studying Math.',
 
       age_group: '11-14',

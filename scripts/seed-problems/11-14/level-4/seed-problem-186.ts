@@ -21,10 +21,7 @@ async function seedProblem186() {
       title: 'Simulating Custom Exceptions',
       description: 'Define custom exceptions to simulate specific errors tailored to your application.',
       difficulty: 'Medium',
-      question: `Can you create and handle a custom SensorFailure exception? Define a custom exception class called SensorFailure that inherits from Exception. Take input for sensor status (0 for fail, 1 for success). If status is 0, raise SensorFailure with message "Sensor malfunction detected!". Catch and print "Custom Error:" followed by the error message. If status is 1, print "Sensor operational.".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '0',
+      question: `Can you create and handle a custom SensorFailure exception? Define a custom exception class called SensorFailure that inherits from Exception. Take input for sensor status (0 for fail, 1 for success). If status is 0, raise SensorFailure with message "Sensor malfunction detected!". Catch and print "Custom Error:" followed by the error message. If status is 1, print "Sensor operational.".`,      sample_input: '0',
       sample_output: 'Custom Error: Sensor malfunction detected!',
 
       age_group: '11-14',

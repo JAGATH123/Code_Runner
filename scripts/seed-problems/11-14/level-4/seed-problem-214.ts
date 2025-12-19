@@ -26,10 +26,7 @@ Learn Machine Learning
 Master Data Structures
 Build Real Projects
 
-Print the full content using read(). Display all lines as they appear in the file.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Print the full content using read(). Display all lines as they appear in the file.`,      sample_input: '',
       sample_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
 
       age_group: '11-14',

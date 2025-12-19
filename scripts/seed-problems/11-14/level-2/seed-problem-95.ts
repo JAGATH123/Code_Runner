@@ -21,10 +21,7 @@ async function seedProblem95() {
       title: 'Set Membership and Looping',
       description: 'Learn to check membership using in operator and loop through sets to process elements.',
       difficulty: 'Easy',
-      question: `Create a set with N strings from input. Check if string Q exists using in operator and print "Found" or "Not Found". Loop through and print all elements prefixed with "Item: " sorted alphabetically.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '4\nHubble\nISS\nVoyager\nGalileo\nISS',
+      question: `Create a set with N strings from input. Check if string Q exists using in operator and print "Found" or "Not Found". Loop through and print all elements prefixed with "Item: " sorted alphabetically.`,      sample_input: '4\nHubble\nISS\nVoyager\nGalileo\nISS',
       sample_output: 'Found\nItem: Galileo\nItem: Hubble\nItem: ISS\nItem: Voyager',
 
       age_group: '11-14',

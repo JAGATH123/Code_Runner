@@ -26,10 +26,7 @@ PREP CHECKED
 IGNITION STARTED
 LAUNCHED
 
-Print each entry on a separate line.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Print each entry on a separate line.`,      sample_input: '',
       sample_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
 
       age_group: '11-14',

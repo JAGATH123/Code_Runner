@@ -23,7 +23,6 @@ async function seedProblem236() {
       difficulty: 'Easy',
       question: `Create a Pygame window (300x300) with a blue square (30x30) starting at position (50, 50). The square should move left and right using arrow keys (LEFT moves by -5, RIGHT moves by +5). Add functionality to move the square up and down using UP arrow (y -= 5) and DOWN arrow (y += 5). Use clock.tick(30) for 30 FPS. Print "Square movement active" when initialized.`,
 
-      compiler_comment: '# Write your code here\n',
       sample_input: '',
       sample_output: 'Square movement active',
 
@@ -59,65 +58,25 @@ async function seedProblem236() {
     const problemResult = await problemsCollection.insertOne(problem236);
     console.log('Problem 236 inserted');
 
-    // Test cases for Problem 236
+    // Test cases for Problem 236 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2361,
         problem_id: 236,
         input: '',
         expected_output: 'Square movement active',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2362,
         problem_id: 236,
         input: '',
         expected_output: 'Square movement active',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2363,
-        problem_id: 236,
-        input: '',
-        expected_output: 'Square movement active',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2364,
-        problem_id: 236,
-        input: '',
-        expected_output: 'Square movement active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2365,
-        problem_id: 236,
-        input: '',
-        expected_output: 'Square movement active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2366,
-        problem_id: 236,
-        input: '',
-        expected_output: 'Square movement active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2367,
-        problem_id: 236,
-        input: '',
-        expected_output: 'Square movement active',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

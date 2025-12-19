@@ -21,10 +21,7 @@ async function seedProblem118() {
       title: 'Sorting & Ranging',
       description: 'Learn to use sorted() to organize data and range() to create number sequences.',
       difficulty: 'Easy',
-      question: `Read 3 strings (one per line), then read two integers start and end. Store the 3 strings in a list. Print sorted(list_of_strings). Then print list(range(start, end+1)).`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Fuel\nOxygen\nBattery\n1\n3',
+      question: `Read 3 strings (one per line), then read two integers start and end. Store the 3 strings in a list. Print sorted(list_of_strings). Then print list(range(start, end+1)).`,      sample_input: 'Fuel\nOxygen\nBattery\n1\n3',
       sample_output: '[\'Battery\', \'Fuel\', \'Oxygen\']\n[1, 2, 3]',
 
       age_group: '11-14',

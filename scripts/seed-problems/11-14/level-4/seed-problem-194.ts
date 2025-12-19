@@ -21,10 +21,7 @@ async function seedProblem194() {
       title: 'Ensuring Critical Operations with Finally',
       description: 'Learn to guarantee that critical cleanup operations always execute using the finally block, even when errors occur.',
       difficulty: 'Easy',
-      question: `Create a launch system simulation that initiates a launch sequence. Even if a division by zero error occurs during calculations, the system must always print "Fuel valves closed" in the finally block to ensure safe shutdown.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a launch system simulation that accepts a fuel divisor value and calculates 100 divided by it. Use try-except-finally to handle ZeroDivisionError. If successful, print the calculation result. If division by zero occurs, print an error message. Always print "Fuel valves closed" in the finally block regardless of success or failure.`,      sample_input: '0',
       sample_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
 
       age_group: '11-14',
@@ -61,11 +58,11 @@ async function seedProblem194() {
 
     // Test cases for Problem 194
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 1941,
         problem_id: 194,
-        input: '',
+        input: '0',
         expected_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
         is_hidden: false,
         weight: 10
@@ -73,8 +70,8 @@ async function seedProblem194() {
       {
         test_case_id: 1942,
         problem_id: 194,
-        input: '',
-        expected_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
+        input: '10',
+        expected_output: 'Initiating launch sequence...\nCalculation result: 10.0\nFuel valves closed',
         is_hidden: false,
         weight: 10
       },
@@ -82,15 +79,15 @@ async function seedProblem194() {
       {
         test_case_id: 1943,
         problem_id: 194,
-        input: '',
-        expected_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
+        input: '5',
+        expected_output: 'Initiating launch sequence...\nCalculation result: 20.0\nFuel valves closed',
         is_hidden: true,
         weight: 16
       },
       {
         test_case_id: 1944,
         problem_id: 194,
-        input: '',
+        input: '0',
         expected_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
         is_hidden: true,
         weight: 16
@@ -98,23 +95,23 @@ async function seedProblem194() {
       {
         test_case_id: 1945,
         problem_id: 194,
-        input: '',
-        expected_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
+        input: '20',
+        expected_output: 'Initiating launch sequence...\nCalculation result: 5.0\nFuel valves closed',
         is_hidden: true,
         weight: 16
       },
       {
         test_case_id: 1946,
         problem_id: 194,
-        input: '',
-        expected_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
+        input: '4',
+        expected_output: 'Initiating launch sequence...\nCalculation result: 25.0\nFuel valves closed',
         is_hidden: true,
         weight: 16
       },
       {
         test_case_id: 1947,
         problem_id: 194,
-        input: '',
+        input: '0',
         expected_output: 'Initiating launch sequence...\nError: Division by zero during calculations.\nFuel valves closed',
         is_hidden: true,
         weight: 16

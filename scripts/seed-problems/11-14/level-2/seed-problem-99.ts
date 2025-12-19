@@ -21,10 +21,7 @@ async function seedProblem99() {
       title: 'Returning Values from Functions',
       description: 'Learn to use return statements to send values back from functions.',
       difficulty: 'Easy',
-      question: `Read two integers a and b. Define a function multiply(a, b) that returns a * b. Call the function with the two inputs and print the returned result.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\n4',
+      question: `Read two integers a and b. Define a function multiply(a, b) that returns a * b. Call the function with the two inputs and print the returned result.`,      sample_input: '3\n4',
       sample_output: '12',
 
       age_group: '11-14',

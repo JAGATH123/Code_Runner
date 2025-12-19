@@ -23,10 +23,7 @@ async function seedProblem108() {
 
 Create the Advanced Command Center with parameterized diagnostics that accept custom thresholds and operational modes, returning context-aware advisories tuned to current mission conditions.`,
       difficulty: 'Hard',
-      question: `Create function mission_report(mission_name, duration=5, *modules, **extra_info) that prints mission info in format shown in sample. Read: name, duration, module_count, modules, kwarg_count, key-value pairs. Always call mission_report(name, duration, *modules, **kwargs) regardless of duration value. Always print "Extra Info:" header even if no kwargs.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Voyager\n0\n3\nCamera\nRadio\nPower\n1\nStatus\nActive',
+      question: `Create function mission_report(mission_name, duration=5, *modules, **extra_info) that prints mission info in format shown in sample. Read: name, duration, module_count, modules, kwarg_count, key-value pairs. Always call mission_report(name, duration, *modules, **kwargs) regardless of duration value. Always print "Extra Info:" header even if no kwargs.`,      sample_input: 'Voyager\n0\n3\nCamera\nRadio\nPower\n1\nStatus\nActive',
       sample_output: 'Mission: Voyager\nDuration: 0 days\nModules:\n- Camera\n- Radio\n- Power\nExtra Info:\n- Status: Active',
 
       age_group: '11-14',

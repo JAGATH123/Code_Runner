@@ -21,10 +21,7 @@ async function seedProblem148() {
       title: 'Conditional Logic in Methods',
       description: 'Methods can include conditional statements to control object behavior based on attributes, enabling dynamic decision-making that makes programs flexible.',
       difficulty: 'Easy',
-      question: `Can you create a Student class with name and score attributes, and a check_pass method with conditional logic? If score is even and >= 50, print 'Success: [name] has passed.' If score is odd and >= 50, print 'Victory: [name] has passed.' If score is even and < 50, print 'Failure: [name] has failed.' If score is odd and < 50, print 'Defeat: [name] has failed.'`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Rohit\n45',
+      question: `Can you create a Student class with name and score attributes, and a check_pass method with conditional logic? If score is even and >= 50, print 'Success: [name] has passed.' If score is odd and >= 50, print 'Victory: [name] has passed.' If score is even and < 50, print 'Failure: [name] has failed.' If score is odd and < 50, print 'Defeat: [name] has failed.'`,      sample_input: 'Rohit\n45',
       sample_output: 'Defeat: Rohit has failed.',
 
       age_group: '11-14',

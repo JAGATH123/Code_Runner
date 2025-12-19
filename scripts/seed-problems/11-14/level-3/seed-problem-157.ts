@@ -21,10 +21,7 @@ async function seedProblem157() {
       title: 'Securing Crew Data with Access Levels',
       description: 'Access modifiers define how class attributes are accessed from outside the class. Public attributes are accessible anywhere. Protected attributes suggest limited access. Private attributes are strongly restricted and cannot be accessed directly.',
       difficulty: 'Easy',
-      question: `Create a CrewMember class with public name, protected _email, and private __password. Print name with prefix based on length: len>=10+even='Senior Crew:', len>=10+odd='Lead Crew:', len<10+even='Crew:', len<10+odd='New Crew:', then print email.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Captain Nova\nnova@ship.com\nsecret123',
+      question: `Create a CrewMember class with public name, protected _email, and private __password. Print name with prefix based on length: len>=10+even='Senior Crew:', len>=10+odd='Lead Crew:', len<10+even='Crew:', len<10+odd='New Crew:', then print email.`,      sample_input: 'Captain Nova\nnova@ship.com\nsecret123',
       sample_output: 'Senior Crew: Captain Nova\nnova@ship.com',
 
       age_group: '11-14',

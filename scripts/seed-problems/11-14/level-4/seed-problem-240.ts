@@ -59,65 +59,25 @@ async function seedProblem240() {
     const problemResult = await problemsCollection.insertOne(problem240);
     console.log('Problem 240 inserted');
 
-    // Test cases for Problem 240
+    // Test cases for Problem 240 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2401,
         problem_id: 240,
         input: '',
         expected_output: 'Image movement active',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2402,
         problem_id: 240,
         input: '',
         expected_output: 'Image movement active',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2403,
-        problem_id: 240,
-        input: '',
-        expected_output: 'Image movement active',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2404,
-        problem_id: 240,
-        input: '',
-        expected_output: 'Image movement active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2405,
-        problem_id: 240,
-        input: '',
-        expected_output: 'Image movement active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2406,
-        problem_id: 240,
-        input: '',
-        expected_output: 'Image movement active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2407,
-        problem_id: 240,
-        input: '',
-        expected_output: 'Image movement active',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

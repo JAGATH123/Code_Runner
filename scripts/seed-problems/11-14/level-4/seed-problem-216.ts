@@ -26,10 +26,7 @@ Learn Machine Learning
 Master Data Structures
 Build Real Projects
 
-Use readlines() to get all lines as a list, and print each item with numbering using a loop. Format each line as "Item 1: [content]", "Item 2: [content]", "Item 3: [content]" where [content] is stripped of extra whitespace.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Use readlines() to get all lines as a list, and print each item with numbering using a loop. Format each line as "Item 1: [content]", "Item 2: [content]", "Item 3: [content]" where [content] is stripped of extra whitespace.`,      sample_input: '',
       sample_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
 
       age_group: '11-14',

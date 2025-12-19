@@ -21,10 +21,7 @@ async function seedProblem82() {
       title: 'Removing Items with .pop() and del',
       description: 'Learn to remove items from dictionaries using .pop() method and del keyword.',
       difficulty: 'Easy',
-      question: `Create a dictionary from N systems. Remove one item using .pop() and print its value. Remove another item using del. Try removing a third item with .pop() and default "Not Found". Print remaining items in format "system: status".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '4\nShields\n100\nEngines\n80\nWeapons\n60\nSensors\n90\nEngines\nWeapons\nNavigation',
+      question: `Create a dictionary from N systems. Remove one item using .pop() and print its value. Remove another item using del. Try removing a third item with .pop() and default "Not Found". Print remaining items in format "system: status".`,      sample_input: '4\nShields\n100\nEngines\n80\nWeapons\n60\nSensors\n90\nEngines\nWeapons\nNavigation',
       sample_output: '80\nNot Found\nShields: 100\nSensors: 90',
 
       age_group: '11-14',

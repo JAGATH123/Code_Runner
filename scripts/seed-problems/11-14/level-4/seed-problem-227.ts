@@ -21,10 +21,7 @@ async function seedProblem227() {
       title: 'Deleting a File Using os.remove()',
       description: 'Learn to delete files safely using os.remove() with exception handling for missing files.',
       difficulty: 'Medium',
-      question: `Create a file named "delete_me.txt" with any content. Then write code to delete it using os.remove(). Use try-except to handle FileNotFoundError. Print "delete_me.txt deleted successfully." if deletion succeeds. Print "File not found, cannot delete." if the file doesn't exist.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a file named "delete_me.txt" with any content. Then write code to delete it using os.remove(). Use try-except to handle FileNotFoundError. Print "delete_me.txt deleted successfully." if deletion succeeds. Print "File not found, cannot delete." if the file doesn't exist.`,      sample_input: '',
       sample_output: 'delete_me.txt deleted successfully.',
 
       age_group: '11-14',

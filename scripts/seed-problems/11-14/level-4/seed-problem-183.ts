@@ -21,10 +21,7 @@ async function seedProblem183() {
       title: 'Basic Try-Except Block',
       description: 'Use try-except blocks to handle common runtime errors and prevent program crashes.',
       difficulty: 'Easy',
-      question: `Can you calculate velocity using try-except to handle errors? Take inputs for speed and time. Handle ZeroDivisionError by printing "Division by zero: Adjusting time." and ValueError by printing "Invalid input: Time must be a number." For successful calculations, print the velocity.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '100\n0',
+      question: `Can you calculate velocity using try-except to handle errors? Take inputs for speed and time. Handle ZeroDivisionError by printing "Division by zero: Adjusting time." and ValueError by printing "Invalid input: Time must be a number." For successful calculations, print the velocity.`,      sample_input: '100\n0',
       sample_output: 'Division by zero: Adjusting time.',
 
       age_group: '11-14',

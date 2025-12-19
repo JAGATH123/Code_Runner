@@ -21,10 +21,7 @@ async function seedProblem125() {
       title: 'Module Aliasing and Selective Imports in Missions',
       description: 'Optimize mission scripts using module aliasing and selective imports to shorten code and improve readability.',
       difficulty: 'Medium',
-      question: `The engineering team has a base value, an exponent, and sensor measurements. Can you calculate the exponential power value and find the median of the measurements to optimize the energy distribution system?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5\n3\n120,135,150,160',
+      question: `The engineering team has a base value, an exponent, and sensor measurements. Can you calculate the exponential power value and find the median of the measurements to optimize the energy distribution system?`,      sample_input: '5\n3\n120,135,150,160',
       sample_output: '125.00\n142.5',
 
       age_group: '11-14',

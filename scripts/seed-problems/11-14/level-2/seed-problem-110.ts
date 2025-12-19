@@ -21,10 +21,7 @@ async function seedProblem110() {
       title: 'Understanding Local Scope',
       description: 'Learn that variables inside functions are local and not accessible outside.',
       difficulty: 'Easy',
-      question: `Take a rank as input. Define a function pilot() that creates a local variable with the input value and prints "Rank: <rank>". Call the function.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Captain',
+      question: `Take a rank as input. Define a function pilot() that creates a local variable with the input value and prints "Rank: <rank>". Call the function.`,      sample_input: 'Captain',
       sample_output: 'Rank: Captain',
 
       age_group: '11-14',

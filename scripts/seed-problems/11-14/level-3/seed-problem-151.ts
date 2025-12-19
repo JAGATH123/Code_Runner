@@ -21,10 +21,7 @@ async function seedProblem151() {
       title: 'Using __init__() to Set Up an Object',
       description: 'The __init__() method is called automatically when creating an object, setting initial values like a profile setup, making code cleaner and reusable.',
       difficulty: 'Easy',
-      question: `Can you create a Person class with name and age attributes using __init__()? Print with rank prefix: age>=12+even='Senior:', age>=12+odd='Cadet:', age<12+even='Junior:', age<12+odd='Recruit:', followed by 'Name: [name], Age: [age]'.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Arjun\n12',
+      question: `Can you create a Person class with name and age attributes using __init__()? Print with rank prefix: age>=12+even='Senior:', age>=12+odd='Cadet:', age<12+even='Junior:', age<12+odd='Recruit:', followed by 'Name: [name], Age: [age]'.`,      sample_input: 'Arjun\n12',
       sample_output: 'Senior: Name: Arjun, Age: 12',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem101() {
       title: 'Functions Without Return Statements',
       description: 'Learn that functions can perform actions without returning values.',
       difficulty: 'Intro',
-      question: `Take a message as input. Define a function display_message(msg) that prints the message. Call the function with the input message.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Never give up, astronaut!',
+      question: `Take a message as input. Define a function display_message(msg) that prints the message. Call the function with the input message.`,      sample_input: 'Never give up, astronaut!',
       sample_output: 'Never give up, astronaut!',
 
       age_group: '11-14',

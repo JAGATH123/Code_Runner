@@ -21,10 +21,7 @@ async function seedProblem158() {
       title: 'Validating Fuel Updates',
       description: 'Since private attributes cannot be accessed directly, getters and setters are used to safely retrieve and update values. These special methods help in managing how data is exposed, ensuring that only valid or authorized operations are allowed.',
       difficulty: 'Easy',
-      question: `Your spacecraft's fuel management system needs controlled access to prevent invalid fuel amounts. Can you create a FuelTank class that safely retrieves the current fuel level and only updates it when the new amount is valid (non-negative)?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '1000\n1500',
+      question: `Your spacecraft's fuel management system needs controlled access to prevent invalid fuel amounts. Can you create a FuelTank class that safely retrieves the current fuel level and only updates it when the new amount is valid (non-negative)?`,      sample_input: '1000\n1500',
       sample_output: '1000\n1500',
 
       age_group: '11-14',

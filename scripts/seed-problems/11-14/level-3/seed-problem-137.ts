@@ -21,10 +21,7 @@ async function seedProblem137() {
       title: 'Sorting Signal Packets',
       description: 'The operator.itemgetter creates efficient functions for extracting specific fields from data structures, essential for sorting complex data.',
       difficulty: 'Easy',
-      question: `Can you read N packets as 'priority,timestamp' pairs and output them sorted by priority (ascending), then by timestamp (ascending) if priorities match?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\n5,100\n2,150\n5,90',
+      question: `Can you read N packets as 'priority,timestamp' pairs and output them sorted by priority (ascending), then by timestamp (ascending) if priorities match?`,      sample_input: '3\n5,100\n2,150\n5,90',
       sample_output: '2,150\n5,90\n5,100',
 
       age_group: '11-14',

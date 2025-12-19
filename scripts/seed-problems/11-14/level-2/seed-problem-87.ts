@@ -21,10 +21,7 @@ async function seedProblem87() {
       title: 'Index and Slicing Tuples',
       description: 'Learn to use index() to find element position and slice tuples to extract portions.',
       difficulty: 'Easy',
-      question: `Create a tuple with N strings from input. Find and print the index of string S using index(). Print the sliced tuple from start to end index.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '4\nred\nblue\ngreen\nblue\nblue\n1\n3',
+      question: `Create a tuple with N strings from input. Find and print the index of string S using index(). Print the sliced tuple from start to end index.`,      sample_input: '4\nred\nblue\ngreen\nblue\nblue\n1\n3',
       sample_output: '1\n(\'blue\', \'green\')',
 
       age_group: '11-14',

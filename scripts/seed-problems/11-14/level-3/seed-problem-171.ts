@@ -21,10 +21,7 @@ async function seedProblem171() {
       title: 'Method Overriding',
       description: 'Discover how child classes can replace parent methods with customized versions.',
       difficulty: 'Medium',
-      question: `Can you create a ThermalSensor that overrides its parent Sensor's status() method with specialized behavior?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Celsius',
+      question: `Can you create a ThermalSensor that overrides its parent Sensor's status() method with specialized behavior?`,      sample_input: 'Celsius',
       sample_output: 'TempSensor: Thermal sensor activated.',
 
       age_group: '11-14',

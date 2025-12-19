@@ -27,10 +27,7 @@ My Goals:
 2. Complete homework
 3. Practice coding
 
-Print only the second line (the first actual goal entry, not the header) using two readline() calls. The first call skips the header "My Goals:", and the second call reads "1. Read a book". Print in format: "Second line: [content]" where [content] is stripped of extra whitespace.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Print only the second line (the first actual goal entry, not the header) using two readline() calls. The first call skips the header "My Goals:", and the second call reads "1. Read a book". Print in format: "Second line: [content]" where [content] is stripped of extra whitespace.`,      sample_input: '',
       sample_output: 'Second line: 1. Read a book',
 
       age_group: '11-14',

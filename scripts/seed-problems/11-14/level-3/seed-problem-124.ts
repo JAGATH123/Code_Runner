@@ -21,10 +21,7 @@ async function seedProblem124() {
       title: 'Exploring Built-in Utility Modules',
       description: 'Use Python\'s datetime and random modules to track mission time and simulate unpredictable space events.',
       difficulty: 'Medium',
-      question: `A deep-space probe sends a mission date and power system parameters. Can you parse the date to extract the year, month, and day, then simulate a power reading to predict system performance?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2024-03-15\n50\n100',
+      question: `A deep-space probe sends a mission date and power system parameters. Can you parse the date to extract the year, month, and day, then simulate a power reading to predict system performance?`,      sample_input: '2024-03-15\n50\n100',
       sample_output: '2024\n3\n15\n80',
 
       age_group: '11-14',

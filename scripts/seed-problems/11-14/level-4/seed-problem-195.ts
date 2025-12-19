@@ -21,10 +21,7 @@ async function seedProblem195() {
       title: 'Triggering Custom Anomalies with Raise',
       description: 'Learn to manually trigger exceptions using the raise statement when specific conditions are met.',
       difficulty: 'Easy',
-      question: `Create a pressure monitoring system that checks if pressure exceeds safe limits (150). If the pressure value exceeds 150, use raise to trigger an Exception with the message "Critical Alert: Pressure exceeds safe limits!"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '180',
+      question: `Create a pressure monitoring system that checks if pressure exceeds safe limits (150). If the pressure value exceeds 150, use raise to trigger an Exception with the message "Critical Alert: Pressure exceeds safe limits!"`,      sample_input: '180',
       sample_output: 'Critical Alert: Pressure exceeds safe limits!',
 
       age_group: '11-14',

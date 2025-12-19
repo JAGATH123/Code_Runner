@@ -23,10 +23,7 @@ async function seedProblem114() {
 
 Create the Mission Core orchestrator with nested helper functions (adjust thrusters, cool radiators) that work together through shared scope, returning a single callable controller to stabilize the ship.`,
       difficulty: 'Hard',
-      question: `The orbital stabilization system needs coordinated inner routines sharing mission state. Write a program with nested functions that encapsulate helper operations, use scope management to share status between layers, and orchestrate multiple subsystem controls through a unified interface.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Apollo',
+      question: `The orbital stabilization system needs coordinated inner routines sharing mission state. Write a program with nested functions that encapsulate helper operations, use scope management to share status between layers, and orchestrate multiple subsystem controls through a unified interface.`,      sample_input: 'Apollo',
       sample_output: 'Mission Ready for: Apollo\nStatus: Launched',
 
       age_group: '11-14',

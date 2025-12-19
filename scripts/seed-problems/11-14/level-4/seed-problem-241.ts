@@ -35,7 +35,6 @@ Display a text input area at position (50, 400) with prompt "Enter command:". Al
 
 Print appropriate status messages for initialization, emergency triggers, and system checks.`,
 
-      compiler_comment: '# Write your code here\n',
       sample_input: '',
       sample_output: 'Interface initialized\nSystem check performed\nAuto-check active',
 
@@ -71,7 +70,7 @@ Print appropriate status messages for initialization, emergency triggers, and sy
     const problemResult = await problemsCollection.insertOne(problem241);
     console.log('Problem 241 inserted');
 
-    // Test cases for Problem 241 (7 test cases)
+    // Test cases for Problem 241 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
       // Visible test case
       {
@@ -80,56 +79,16 @@ Print appropriate status messages for initialization, emergency triggers, and sy
         input: '',
         expected_output: 'Interface initialized\nSystem check performed\nAuto-check active',
         is_hidden: false,
-        weight: 15
+        weight: 50
       },
-      // Hidden test cases
+      // Hidden test case
       {
         test_case_id: 2412,
         problem_id: 241,
         input: '',
         expected_output: 'Interface initialized\nSystem check performed\nAuto-check active',
         is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2413,
-        problem_id: 241,
-        input: '',
-        expected_output: 'Interface initialized\nSystem check performed\nAuto-check active',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2414,
-        problem_id: 241,
-        input: '',
-        expected_output: 'Interface initialized\nSystem check performed\nAuto-check active',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2415,
-        problem_id: 241,
-        input: '',
-        expected_output: 'Interface initialized\nSystem check performed\nAuto-check active',
-        is_hidden: true,
-        weight: 10
-      },
-      {
-        test_case_id: 2416,
-        problem_id: 241,
-        input: '',
-        expected_output: 'Interface initialized\nSystem check performed\nAuto-check active',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2417,
-        problem_id: 241,
-        input: '',
-        expected_output: 'Interface initialized\nSystem check performed\nAuto-check active',
-        is_hidden: true,
-        weight: 15
+        weight: 50
       }
     ];
 

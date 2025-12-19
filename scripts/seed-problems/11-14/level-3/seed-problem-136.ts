@@ -21,10 +21,7 @@ async function seedProblem136() {
       title: 'Function Composition with reduce and partial',
       description: 'Advanced functools features enable function composition and partial application for creating specialized functions from general ones.',
       difficulty: 'Medium',
-      question: `Can you read comma-separated integers and output the sum of all values multiplied by 3?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '10,20,30,40',
+      question: `Can you read comma-separated integers and output the sum of all values multiplied by 3?`,      sample_input: '10,20,30,40',
       sample_output: '300',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem77() {
       title: 'Checking Keys and Using get()',
       description: 'Learn to safely check if keys exist in dictionaries and use the get() method.',
       difficulty: 'Easy',
-      question: `Create a dictionary 'asteroid' with keys "name", "size", and "hazardous" from three inputs. Use dict.get(lookup_key, "Key not found") to safely retrieve the value for the fourth input. Print the result.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Bennu\n500\nYes\nname',
+      question: `Create a dictionary 'asteroid' with keys "name", "size", and "hazardous" from three inputs. Use dict.get(lookup_key, "Key not found") to safely retrieve the value for the fourth input. Print the result.`,      sample_input: 'Bennu\n500\nYes\nname',
       sample_output: 'Bennu',
 
       age_group: '11-14',

@@ -14,7 +14,7 @@ async function ensurePoolInitialized() {
 // GPU-enabled Python execution endpoint
 export async function POST(request: Request) {
   try {
-    const { code, input, language } = await request.json();
+    const { code, input, language, images, userSessionId } = await request.json();
 
     if (language !== 'python') {
       return NextResponse.json({ error: 'Only Python is supported' }, { status: 400 });
@@ -29,7 +29,8 @@ export async function POST(request: Request) {
 
     // Execute code using GPU-aware container pool
     // Automatically detects GPU requirements and uses appropriate container
-    const result = await GPUContainerPool.executeCode(code, input || '');
+    // Pass images for Pygame support and userSessionId for persistent file storage
+    const result = await GPUContainerPool.executeCode(code, input || '', images || [], userSessionId);
 
     // Add pool statistics for monitoring
     const poolStats = GPUContainerPool.getPoolStats();

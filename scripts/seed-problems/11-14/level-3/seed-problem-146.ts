@@ -21,10 +21,7 @@ async function seedProblem146() {
       title: 'Adding Methods for Actions',
       description: 'Methods are functions inside a class that describe object behavior, using self to access and modify attributes, promoting cleaner and reusable code.',
       difficulty: 'Medium',
-      question: `Can you create a Student class with name and grade attributes, and an update_grade method? Extract grade numbers from both grades. If sum of grade numbers is even, print 'Level Up: [name] is in grade [grade].' and 'Level Up: [name] is now in grade [new_grade].' If odd, use 'Promotion: ' prefix.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Ravi\n7th\n8th',
+      question: `Can you create a Student class with name and grade attributes, and an update_grade method? Extract grade numbers from both grades. If sum of grade numbers is even, print 'Level Up: [name] is in grade [grade].' and 'Level Up: [name] is now in grade [new_grade].' If odd, use 'Promotion: ' prefix.`,      sample_input: 'Ravi\n7th\n8th',
       sample_output: 'Promotion: Ravi is in grade 7th.\nPromotion: Ravi is now in grade 8th.',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem121() {
       title: 'Understanding and Using Python Modules',
       description: 'Learn to use Python\'s built-in math module to perform trigonometric calculations.',
       difficulty: 'Easy',
-      question: `A spacecraft has traveled a certain distance at a specific angle from its starting point. Can you calculate how far horizontally the spacecraft has moved using Python's math module?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '1000\n45',
+      question: `A spacecraft has traveled a certain distance at a specific angle from its starting point. Can you calculate how far horizontally the spacecraft has moved using Python's math module?`,      sample_input: '1000\n45',
       sample_output: '707.11',
 
       age_group: '11-14',

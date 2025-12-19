@@ -21,10 +21,7 @@ async function seedProblem76() {
       title: 'Iterating over Dictionaries',
       description: 'Learn to iterate through dictionary keys and values using loops.',
       difficulty: 'Easy',
-      question: `Create a dictionary 'planets' where each planet name maps to its moon count. Use a for loop with dict.items() to iterate through all key-value pairs and print "[planet] has [moons] moons" for each entry.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\nMars 2\nJupiter 79\nSaturn 82',
+      question: `Create a dictionary 'planets' where each planet name maps to its moon count. Use a for loop with dict.items() to iterate through all key-value pairs and print "[planet] has [moons] moons" for each entry.`,      sample_input: '3\nMars 2\nJupiter 79\nSaturn 82',
       sample_output: 'Mars has 2 moons\nJupiter has 79 moons\nSaturn has 82 moons',
 
       age_group: '11-14',

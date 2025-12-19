@@ -21,10 +21,7 @@ async function seedProblem175() {
       title: 'Function Overriding – Making AI Think Differently',
       description: 'Explore how different AI classes can share the same method name but behave uniquely based on their specialization.',
       difficulty: 'Medium',
-      question: `Can you create a base Animal class with a speak() method, then build specialized Dog and Cat classes that override this method with their own unique sounds? Take 2 inputs for animal types ("Dog" or "Cat"), create objects for each, and call their speak() methods in order.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Dog\nCat',
+      question: `Can you create a base Animal class with a speak() method, then build specialized Dog and Cat classes that override this method with their own unique sounds? Take 2 inputs for animal types ("Dog" or "Cat"), create objects for each, and call their speak() methods in order.`,      sample_input: 'Dog\nCat',
       sample_output: 'The dog barks.\nThe cat meows.',
 
       age_group: '11-14',

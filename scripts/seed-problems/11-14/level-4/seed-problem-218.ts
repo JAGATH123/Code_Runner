@@ -26,10 +26,7 @@ async function seedProblem218() {
 2. "NAV ONLINE"
 3. "CABIN SEALED"
 
-After writing each entry on a new line, print the position in format: "Position after [entry name]: [byte position]"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+After writing each entry on a new line, print the position in format: "Position after [entry name]: [byte position]"`,      sample_input: '',
       sample_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
 
       age_group: '11-14',

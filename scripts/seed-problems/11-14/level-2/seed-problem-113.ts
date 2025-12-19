@@ -21,10 +21,7 @@ async function seedProblem113() {
       title: 'Returning a Nested Function',
       description: 'Learn to return nested functions and call them as objects.',
       difficulty: 'Medium',
-      question: `Take a message as input. Define a function create_alert() that contains a nested function show() which returns the input message. Return the show function object (not calling it). Assign the returned function to a variable and call it to print the message.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Caution: System Overload',
+      question: `Take a message as input. Define a function create_alert() that contains a nested function show() which returns the input message. Return the show function object (not calling it). Assign the returned function to a variable and call it to print the message.`,      sample_input: 'Caution: System Overload',
       sample_output: 'Caution: System Overload',
 
       age_group: '11-14',

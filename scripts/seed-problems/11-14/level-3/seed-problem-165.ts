@@ -21,10 +21,7 @@ async function seedProblem165() {
       title: 'Method Overloading – Same Name, Different Job',
       description: 'Learn how a single method can perform different actions based on the parameters provided.',
       difficulty: 'Medium',
-      question: `Can you create a Sensor class with a flexible record() method that works with or without a duration parameter?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Thermal',
+      question: `Can you create a Sensor class with a flexible record() method that works with or without a duration parameter?`,      sample_input: 'Thermal',
       sample_output: 'Beta: Thermal Recording data indefinitely.\nBeta: Thermal Recording data for 10 seconds.',
 
       age_group: '11-14',

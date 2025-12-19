@@ -21,10 +21,7 @@ async function seedProblem159() {
       title: 'Protecting Sensitive Data with Encapsulation',
       description: 'Encapsulation helps reduce code errors and makes programs more secure. It hides internal data that does not need to be exposed and ensures that changes only happen in controlled ways.',
       difficulty: 'Easy',
-      question: `Your space station's security system stores sensitive PIN codes that must never be exposed directly. Can you create a SecurityModule class where the PIN remains private but can be retrieved through a secure getter method?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '1234',
+      question: `Your space station's security system stores sensitive PIN codes that must never be exposed directly. Can you create a SecurityModule class where the PIN remains private but can be retrieved through a secure getter method?`,      sample_input: '1234',
       sample_output: '1234',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem190() {
       title: 'Try-Except-Else – Success Check',
       description: 'Learn to use the else clause with try-except to execute code only when no exceptions occur.',
       difficulty: 'Medium',
-      question: `Create a signal verification system that accepts signal strength input. Use try-except to catch ValueError for invalid input. If input is valid, use else to print "Signal strength verified:" followed by the strength value.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '75',
+      question: `Create a signal verification system that accepts signal strength input. Use try-except to catch ValueError for invalid input. If input is valid, use else to print "Signal strength verified:" followed by the strength value.`,      sample_input: '75',
       sample_output: 'Processing signal...\nSignal strength verified: 75',
 
       age_group: '11-14',

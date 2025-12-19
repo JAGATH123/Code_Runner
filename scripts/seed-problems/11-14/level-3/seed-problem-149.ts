@@ -21,10 +21,7 @@ async function seedProblem149() {
       title: 'Coordinating Multiple Behaviors in a Class',
       description: 'Multiple methods work together in AI systems, with attributes and methods interacting to create intelligent, coordinated behavior based on internal conditions.',
       difficulty: 'Hard',
-      question: `Can you create an AICrewMember class with name, role, and energy attributes, a show_status method, and a perform_task method? If energy >= 50, perform task (reduce energy by 30), otherwise print error. Call show_status before and after perform_task.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Robo1\nEngineer\n80\nRepairing engine',
+      question: `Can you create an AICrewMember class with name, role, and energy attributes, a show_status method, and a perform_task method? If energy >= 50, perform task (reduce energy by 30), otherwise print error. Call show_status before and after perform_task.`,      sample_input: 'Robo1\nEngineer\n80\nRepairing engine',
       sample_output: 'Name: Robo1 | Role: Engineer | Energy: 80\nRobo1 is performing task: Repairing engine\nName: Robo1 | Role: Engineer | Energy: 50',
 
       age_group: '11-14',

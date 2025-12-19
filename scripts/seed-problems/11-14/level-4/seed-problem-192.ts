@@ -21,10 +21,7 @@ async function seedProblem192() {
       title: 'Nested Try-Except – Complex Systems',
       description: 'Learn to use nested try-except blocks to handle errors at multiple levels, such as decoding and logging operations.',
       difficulty: 'Medium',
-      question: `Create a signal logging system with nested exception handling. The outer try should decode a signal code (convert to integer), and the inner try should write it to "log.txt". Handle ValueError for decoding failure and general exceptions for logging failure independently.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '12345',
+      question: `Create a signal logging system with nested exception handling. The outer try should decode a signal code (convert to integer), and the inner try should write it to "log.txt". Handle ValueError for decoding failure and general exceptions for logging failure independently.`,      sample_input: '12345',
       sample_output: 'Signal logged successfully!',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem156() {
       title: 'Spacecraft Media System – Complete Magic Methods Integration',
       description: 'Build a comprehensive media management system using all magic methods to create smart, fully-functional objects for spacecraft entertainment.',
       difficulty: 'Hard',
-      question: `Your spacecraft media library manages multiple movies with full functionality. Can you build a complete media management system that handles multiple movies, each with all four magic methods, creating a powerful and intuitive interface for the crew?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\nInterstellar\n169\nplaying\nGravity\n91\nstreaming',
+      question: `Your spacecraft media library manages multiple movies with full functionality. Can you build a complete media management system that handles multiple movies, each with all four magic methods, creating a powerful and intuitive interface for the crew?`,      sample_input: '2\nInterstellar\n169\nplaying\nGravity\n91\nstreaming',
       sample_output: 'Movie: Interstellar\n169\nNow playing the movie: Interstellar\nMovie: Gravity\n91\nNow streaming the movie: Gravity',
 
       age_group: '11-14',

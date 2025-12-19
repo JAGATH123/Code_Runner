@@ -21,10 +21,7 @@ async function seedProblem179() {
       title: 'Same Method in Different Classes – Classic Polymorphism',
       description: 'Understand how unrelated classes can share method names with different implementations.',
       difficulty: 'Medium',
-      question: `Can you create three unrelated classes (Fan, Car, Computer) that all have a start() method but perform completely different actions? Take 3 inputs for object types ("Fan", "Car", or "Computer"), create objects based on input, and call their start() methods in order to demonstrate polymorphism.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Fan\nCar\nComputer',
+      question: `Can you create three unrelated classes (Fan, Car, Computer) that all have a start() method but perform completely different actions? Take 3 inputs for object types ("Fan", "Car", or "Computer"), create objects based on input, and call their start() methods in order to demonstrate polymorphism.`,      sample_input: 'Fan\nCar\nComputer',
       sample_output: 'Fan is spinning.\nCar engine started.\nComputer booting up.',
 
       age_group: '11-14',

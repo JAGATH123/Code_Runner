@@ -21,10 +21,7 @@ async function seedProblem100() {
       title: 'Functions with Multiple Parameters',
       description: 'Learn to create functions that accept multiple parameters in a specific order.',
       difficulty: 'Easy',
-      question: `Take two strings fruit and color as input. Define a function favorite_fruit(fruit, color) that prints "My favorite fruit is a <color> <fruit>!". Call the function with the input values.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'apple\nred',
+      question: `Take two strings fruit and color as input. Define a function favorite_fruit(fruit, color) that prints "My favorite fruit is a <color> <fruit>!". Call the function with the input values.`,      sample_input: 'apple\nred',
       sample_output: 'My favorite fruit is a red apple!',
 
       age_group: '11-14',

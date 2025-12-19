@@ -21,10 +21,7 @@ async function seedProblem86() {
       title: 'Tuple Length and Count',
       description: 'Learn to use len() to get tuple size and count() to find occurrences of a value.',
       difficulty: 'Easy',
-      question: `Create a tuple with N integers from input. Print the tuple's length using len(). Print how many times value V appears using count().`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5\n2\n4\n2\n8\n2\n2',
+      question: `Create a tuple with N integers from input. Print the tuple's length using len(). Print how many times value V appears using count().`,      sample_input: '5\n2\n4\n2\n8\n2\n2',
       sample_output: '5\n3',
 
       age_group: '11-14',

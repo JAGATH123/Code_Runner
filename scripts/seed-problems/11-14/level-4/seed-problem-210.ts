@@ -26,10 +26,7 @@ async function seedProblem210() {
 2. Reads the binary data back from the file
 3. Prints the decoded content
 
-Print "Binary data logged successfully" after writing, then print the decoded content after reading.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Print "Binary data logged successfully" after writing, then print the decoded content after reading.`,      sample_input: '',
       sample_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
 
       age_group: '11-14',

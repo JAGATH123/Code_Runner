@@ -21,10 +21,7 @@ async function seedProblem97() {
       title: 'Creating and Calling a Simple Function',
       description: 'Learn to define and call simple functions using def keyword.',
       difficulty: 'Intro',
-      question: `Take a greeting message as input. Define a function greet(message) that prints the message. Call the function with the input message.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Welcome to the Space Station!',
+      question: `Take a greeting message as input. Define a function greet(message) that prints the message. Call the function with the input message.`,      sample_input: 'Welcome to the Space Station!',
       sample_output: 'Welcome to the Space Station!',
 
       age_group: '11-14',

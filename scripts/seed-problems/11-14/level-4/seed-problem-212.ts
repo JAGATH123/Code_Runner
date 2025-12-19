@@ -21,10 +21,7 @@ async function seedProblem212() {
       title: 'Writing with write()',
       description: 'Learn to save single messages into files using the write() function for simple data storage.',
       difficulty: 'Easy',
-      question: `Create a file named "myinfo.txt" and write your name "John Doe" and your favorite subject "Python Programming" into it using write(). Write them as a single line separated by a space and a dash like this: "John Doe - Python Programming". Print "File created successfully" when done.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a file named "myinfo.txt" and write your name "John Doe" and your favorite subject "Python Programming" into it using write(). Write them as a single line separated by a space and a dash like this: "John Doe - Python Programming". Print "File created successfully" when done.`,      sample_input: '',
       sample_output: 'File created successfully',
 
       age_group: '11-14',

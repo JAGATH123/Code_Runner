@@ -21,10 +21,7 @@ async function seedProblem112() {
       title: 'Using Global Scope',
       description: 'Learn to use global keyword to modify variables defined at module level.',
       difficulty: 'Medium',
-      question: `Take two strings (old_mission and new_mission) as input. Create a global variable with old_mission value. Define a function update() that uses global keyword to change it to new_mission. Call update(), then print "Mission: <new_mission>".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Mars\nJupiter',
+      question: `Take two strings (old_mission and new_mission) as input. Create a global variable with old_mission value. Define a function update() that uses global keyword to change it to new_mission. Call update(), then print "Mission: <new_mission>".`,      sample_input: 'Mars\nJupiter',
       sample_output: 'Mission: Jupiter',
 
       age_group: '11-14',

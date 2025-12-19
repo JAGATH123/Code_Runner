@@ -35,10 +35,7 @@ Step 4: Read Logs Line by Line - Use readline() twice to skip the header and rea
 
 Step 5: Display All Lines with Numbering - Use readlines() to get all lines. Print each with format "Log 1: [content]", "Log 2: [content]", etc. (strip each line)
 
-Step 6: Add a User Log Entry - Append the text "Emergency alert activated" to the file (with newline). Print "New log saved successfully"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Step 6: Add a User Log Entry - Append the text "Emergency alert activated" to the file (with newline). Print "New log saved successfully"`,      sample_input: '',
       sample_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
 
       age_group: '11-14',

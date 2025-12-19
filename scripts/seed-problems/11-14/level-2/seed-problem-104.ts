@@ -21,10 +21,7 @@ async function seedProblem104() {
       title: 'Default Arguments',
       description: 'Learn to create functions with default values that can be overridden when needed.',
       difficulty: 'Easy',
-      question: `Take a string input. Define a function fuel_check(level="Full") with a default parameter that prints "Fuel level: <level>". Call it twice: first without arguments, then with the input value.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Half',
+      question: `Take a string input. Define a function fuel_check(level="Full") with a default parameter that prints "Fuel level: <level>". Call it twice: first without arguments, then with the input value.`,      sample_input: 'Half',
       sample_output: 'Fuel level: Full\nFuel level: Half',
 
       age_group: '11-14',

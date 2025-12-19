@@ -23,7 +23,6 @@ async function seedProblem162() {
       difficulty: 'Hard',
       question: `Create a Vault class with private __pin_code, protected _access_level, and public vault_id. Implement get_pin(), set_pin() (validate 4-digit only), and unlock_vault(). Create vault1, set vault2=vault1, update via vault2, print both PINs, then unlock.`,
 
-      compiler_comment: '# Write your code here\n',
       sample_input: '1234\nTop-Secret\nVX-01\n9999\n9999',
       sample_output: 'PIN updated successfully.\nVault1 PIN: 9999\nVault2 PIN: 9999\nAccess Granted',
 

@@ -23,10 +23,7 @@ async function seedProblem66() {
 
 Create the path-planner that navigates NOVA-12 through the sector grid to a collision-free parking orbit.`,
       difficulty: 'Hard',
-      question: `NOVA-12's navigation matrix displays mission phases with their orbital stages. Write a program that takes the number of missions and stages, then displays each mission number followed by its stage numbers indented with 2 spaces.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\n3',
+      question: `NOVA-12's navigation matrix displays mission phases with their orbital stages. Write a program that takes the number of missions and stages, then displays each mission number followed by its stage numbers indented with 2 spaces.`,      sample_input: '2\n3',
       sample_output: `Mission 1
   Stage 1
   Stage 2

@@ -21,10 +21,7 @@ async function seedProblem81() {
       title: 'Using .update() and .setdefault()',
       description: 'Learn to use .update() to merge dictionaries and .setdefault() to safely add keys with default values.',
       difficulty: 'Easy',
-      question: `Create a dictionary from N items. Use .update() to add/update M more items. Use .setdefault() to ensure one more item exists with default value 0. Print all items in format "item: quantity".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\nFuel\n1000\nFood\n500\n2\nWater\n300\nFuel\n1500\nOxygen',
+      question: `Create a dictionary from N items. Use .update() to add/update M more items. Use .setdefault() to ensure one more item exists with default value 0. Print all items in format "item: quantity".`,      sample_input: '2\nFuel\n1000\nFood\n500\n2\nWater\n300\nFuel\n1500\nOxygen',
       sample_output: 'Fuel: 1500\nFood: 500\nWater: 300\nOxygen: 0',
 
       age_group: '11-14',

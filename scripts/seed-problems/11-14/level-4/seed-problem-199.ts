@@ -35,10 +35,7 @@ Step 3: Define User-Defined Exceptions - Create SensorMalfunction, TransmissionC
 
 Step 4: Multi-Layered Exception Recovery - Nested try-except where primary recovery fails, trigger secondary error, handle both with "Fallback System Activated" and "Mission Abort Initiated".
 
-Step 5: File Logging with Guaranteed Execution - Update log.txt with status entries using finally to always log outcomes with timestamps.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '50\n120\nsensor_fail\nrecovery_fail\nsuccess',
+Step 5: File Logging with Guaranteed Execution - Update log.txt with status entries using finally to always log outcomes with timestamps.`,      sample_input: '50\n120\nsensor_fail\nrecovery_fail\nsuccess',
       sample_output: 'Solar panels deployed\nPower lines disconnected safely\nCooling System Overload!\nSensorMalfunction raised\nFallback System Activated\nMission Abort Initiated\nLog entry recorded: success\nAll operations complete',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem147() {
       title: 'Creating Multiple Objects',
       description: 'A class can create multiple independent objects, each with unique attributes, managed efficiently using lists and loops to model real-world entities.',
       difficulty: 'Medium',
-      question: `Your space academy needs to process multiple student enrollments efficiently. Can you design a Student class and use it to manage a collection of students, displaying each one in a standardized format?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\nAnya 7th\nRavi 8th\nLeena 6th',
+      question: `Your space academy needs to process multiple student enrollments efficiently. Can you design a Student class and use it to manage a collection of students, displaying each one in a standardized format?`,      sample_input: '3\nAnya 7th\nRavi 8th\nLeena 6th',
       sample_output: 'Student: Anya, Grade: 7th\nStudent: Ravi, Grade: 8th\nStudent: Leena, Grade: 6th',
 
       age_group: '11-14',

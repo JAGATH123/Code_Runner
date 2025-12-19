@@ -33,10 +33,7 @@ Step 3: Add Timestamped Entry - Import datetime module and append a timestamped 
 
 Step 4: Modify an Entry (r+ Mode) - Read the file, replace "NAVIGATION STABLE" with "NAVIGATION FAILED", write the updated content back. Print "Log entry modified"
 
-Step 5: Log Binary Sensor Data - Write binary sensor data b"SENSOR_RAW: TEMP=22 RAD=0.5" to "sensor_archive.bin", read it back, and print the decoded content. Print "Binary telemetry archived"`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Step 5: Log Binary Sensor Data - Write binary sensor data b"SENSOR_RAW: TEMP=22 RAD=0.5" to "sensor_archive.bin", read it back, and print the decoded content. Print "Binary telemetry archived"`,      sample_input: '',
       sample_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
 
       age_group: '11-14',

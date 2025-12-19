@@ -21,10 +21,7 @@ async function seedProblem105() {
       title: 'Keyword Arguments',
       description: 'Learn to pass arguments by parameter name for improved readability and flexibility.',
       difficulty: 'Easy',
-      question: `Take two strings name and orbit as input. Define a function satellite_info(name, orbit) that prints "<name> orbits at <orbit>". Call the function using keyword arguments in reversed order (orbit=..., name=...).`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Hubble\nLow Earth Orbit',
+      question: `Take two strings name and orbit as input. Define a function satellite_info(name, orbit) that prints "<name> orbits at <orbit>". Call the function using keyword arguments in reversed order (orbit=..., name=...).`,      sample_input: 'Hubble\nLow Earth Orbit',
       sample_output: 'Hubble orbits at Low Earth Orbit',
 
       age_group: '11-14',

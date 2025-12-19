@@ -121,12 +121,20 @@ export interface Level {
   sessions: Session[];
 }
 
+export interface FileInfo {
+  name: string;
+  size: number;
+  path: string;
+}
+
 export interface ExecutionResult {
   stdout: string;
   stderr: string;
   status: 'Success' | 'Error' | 'Timeout' | 'Running' | 'Submitting' | '';
   executionTime: number | null;
   plots?: string[]; // Array of base64-encoded plot images
+  files?: FileInfo[]; // Array of created files (for file handling problems)
+  executionDir?: string; // Execution directory ID for file retrieval
 
   // Pygame interactive bundle (WebAssembly)
   pygameBundle?: {

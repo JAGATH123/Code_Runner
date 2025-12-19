@@ -21,10 +21,7 @@ async function seedProblem74() {
       title: 'Adding and Updating Entries',
       description: 'Learn to add new key-value pairs to dictionaries and update existing values.',
       difficulty: 'Easy',
-      question: `Create a dictionary called 'rocket' with keys "name" and "launches" from the first two inputs. Add a new key "status" with the third input value. Then print all three values.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Falcon\n15\nActive',
+      question: `Create a dictionary called 'rocket' with keys "name" and "launches" from the first two inputs. Add a new key "status" with the third input value. Then print all three values.`,      sample_input: 'Falcon\n15\nActive',
       sample_output: 'Falcon\n15\nActive',
 
       age_group: '11-14',

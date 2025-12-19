@@ -21,10 +21,7 @@ async function seedProblem79() {
       title: 'Accessing and Updating Values with .get() and []',
       description: 'Learn to safely access dictionary values using both square bracket notation and the .get() method.',
       difficulty: 'Easy',
-      question: `Create a dictionary 'spacecraft' with three keys: "name" (first input), "speed" (2500), and "crew" (5). Read second input as key1, access spacecraft[key1] and print it. Read third input as key2, access spacecraft.get(key2) and print it. Read fourth input as new_speed, convert to integer, update spacecraft["speed"] with it and print spacecraft["speed"].`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Phoenix\nname\ncrew\n3000',
+      question: `Create a dictionary 'spacecraft' with three keys: "name" (first input), "speed" (2500), and "crew" (5). Read second input as key1, access spacecraft[key1] and print it. Read third input as key2, access spacecraft.get(key2) and print it. Read fourth input as new_speed, convert to integer, update spacecraft["speed"] with it and print spacecraft["speed"].`,      sample_input: 'Phoenix\nname\ncrew\n3000',
       sample_output: 'Phoenix\n5\n3000',
 
       age_group: '11-14',

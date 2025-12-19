@@ -21,10 +21,7 @@ async function seedProblem71() {
       title: 'While Loop with Else Block',
       description: 'Learn to use the else clause with while loops for cleanup code that runs when the loop completes normally.',
       difficulty: 'Easy',
-      question: `Create a rocket stage separation tracker. Take an integer input for the number of stages. Count up from 1 to that number, displaying "Stage [number] active". After the loop completes normally, print "Mission complete!".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5',
+      question: `Create a rocket stage separation tracker. Take an integer input for the number of stages. Count up from 1 to that number, displaying "Stage [number] active". After the loop completes normally, print "Mission complete!".`,      sample_input: '5',
       sample_output: 'Stage 1 active\nStage 2 active\nStage 3 active\nStage 4 active\nStage 5 active\nMission complete!',
 
       age_group: '11-14',

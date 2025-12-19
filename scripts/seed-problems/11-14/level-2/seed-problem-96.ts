@@ -23,10 +23,7 @@ async function seedProblem96() {
 
 Create the Astronaut Skill Analyzer that compares certification sets, adds newly acquired skills, and checks for essential navigation expertise to ensure mission readiness.`,
       difficulty: 'Hard',
-      question: `Build a program that reads skills for two astronauts, adds a new skill to Astronaut A, then analyzes their skill sets. Display common skills between both astronauts, skills unique to Astronaut A, skills unique to Astronaut B, all updated skills for Astronaut A, and whether navigation expertise is present.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\nPiloting\nEngineering\nNavigation\n3\nNavigation\nMedicine\nCommunications\nRobotics',
+      question: `Build a program that reads skills for two astronauts, adds a new skill to Astronaut A, then analyzes their skill sets. Display common skills between both astronauts, skills unique to Astronaut A, skills unique to Astronaut B, all updated skills for Astronaut A, and whether navigation expertise is present.`,      sample_input: '3\nPiloting\nEngineering\nNavigation\n3\nNavigation\nMedicine\nCommunications\nRobotics',
       sample_output: "Common skills: ['Navigation']\nSkills unique to Astronaut A: ['Engineering', 'Piloting', 'Robotics']\nSkills unique to Astronaut B: ['Communications', 'Medicine']\nUpdated Astronaut A skills: ['Engineering', 'Navigation', 'Piloting', 'Robotics']\nNavigation skill found",
 
       age_group: '11-14',

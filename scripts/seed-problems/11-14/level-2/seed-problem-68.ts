@@ -21,10 +21,7 @@ async function seedProblem68() {
       title: 'Using While Loop with Input',
       description: 'Create an interactive program that waits for a specific command using a while loop.',
       difficulty: 'Intro',
-      question: `Create a security scanner program. Take multiple space readings as input (one per line) until the user enters "0". Display each reading as "Reading: [value]". When "0" is entered, print "Scan complete!" and stop.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '125\n340\n0',
+      question: `Create a security scanner program. Take multiple space readings as input (one per line) until the user enters "0". Display each reading as "Reading: [value]". When "0" is entered, print "Scan complete!" and stop.`,      sample_input: '125\n340\n0',
       sample_output: 'Reading: 125\nReading: 340\nScan complete!',
 
       age_group: '11-14',

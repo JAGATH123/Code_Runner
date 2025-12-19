@@ -26,10 +26,7 @@ async function seedProblem222() {
 Format:
 File Name: [filename]
 Encoding: [encoding]
-Transmission ready`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Transmission ready`,      sample_input: '',
       sample_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
 
       age_group: '11-14',

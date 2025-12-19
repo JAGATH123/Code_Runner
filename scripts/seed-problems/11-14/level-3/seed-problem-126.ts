@@ -21,10 +21,7 @@ async function seedProblem126() {
       title: 'Cosmic Data Relay – Deep Space Command Module',
       description: 'NOVA-12 holds position above Erevos-7. Raw bursts of code hit the antenna—fragments of alien logic that need decoding. Your relay system must tag transmissions, measure signal degradation, and route messages through multiple stations before the data stream collapses.',
       difficulty: 'Hard',
-      question: `The NOVA-12 relay system needs three functions: transmit (adds station tags to messages), signal_strength (calculates signal decay as 100/distance), and relay_chain (routes messages through stations with [ENTRY], [RELAY], [EXIT] markers). Can you implement this system to process incoming transmissions based on the function name provided?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'transmit\nHello World\nStation-A',
+      question: `The NOVA-12 relay system needs three functions: transmit (adds station tags to messages), signal_strength (calculates signal decay as 100/distance), and relay_chain (routes messages through stations with [ENTRY], [RELAY], [EXIT] markers). Can you implement this system to process incoming transmissions based on the function name provided?`,      sample_input: 'transmit\nHello World\nStation-A',
       sample_output: 'Hello World [Station-A]',
 
       age_group: '11-14',

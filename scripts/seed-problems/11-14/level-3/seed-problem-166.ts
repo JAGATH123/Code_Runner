@@ -21,10 +21,7 @@ async function seedProblem166() {
       title: 'Overriding Inherited Methods – Changing Behavior',
       description: 'Discover how child classes can replace inherited methods with their own specialized versions.',
       difficulty: 'Medium',
-      question: `Can you create a MarsRover that overrides its parent Rover's identify() method with specialized behavior and conditional prefixes?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Spirit',
+      question: `Can you create a MarsRover that overrides its parent Rover's identify() method with specialized behavior and conditional prefixes?`,      sample_input: 'Spirit',
       sample_output: 'Advanced Rover: Generic Rover\nAdvanced Rover: Mars Exploration Rover',
 
       age_group: '11-14',

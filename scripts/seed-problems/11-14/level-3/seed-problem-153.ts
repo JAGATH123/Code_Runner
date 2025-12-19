@@ -21,10 +21,7 @@ async function seedProblem153() {
       title: 'Returning Values with __len__()',
       description: 'The __len__() method allows len() to work on custom objects, returning a meaningful count like pages in a book or items in a collection.',
       difficulty: 'Easy',
-      question: `Can you create a Notebook class with pages attribute and implement __len__()? Print with prefix based on page count: pages>=100+even='Large Notebook:', pages>=100+odd='Extended Notebook:', pages<100+even='Small Notebook:', pages<100+odd='Compact Notebook:', followed by the number of pages.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '150',
+      question: `Can you create a Notebook class with pages attribute and implement __len__()? Print with prefix based on page count: pages>=100+even='Large Notebook:', pages>=100+odd='Extended Notebook:', pages<100+even='Small Notebook:', pages<100+odd='Compact Notebook:', followed by the number of pages.`,      sample_input: '150',
       sample_output: 'Large Notebook: 150',
 
       age_group: '11-14',

@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { writeFile, unlink, mkdir, readFile } from 'fs/promises';
+import { writeFile, unlink, mkdir, readFile, readdir, stat } from 'fs/promises';
 import { join } from 'path';
 import { tmpdir } from 'os';
 import { parsePythonError, formatErrorForDisplay } from '../parsers/python-error-parser';
@@ -15,6 +15,12 @@ interface PoolContainer {
   temporary: boolean; // Track if this is a temporary container to be deleted after use
 }
 
+export interface FileInfo {
+  name: string;
+  size: number;
+  path: string;
+}
+
 interface ExecutionResult {
   stdout: string;
   stderr: string;
@@ -22,6 +28,8 @@ interface ExecutionResult {
   executionTime: number;
   plots?: string[];
   usedGPU?: boolean;
+  files?: FileInfo[];
+  executionDir?: string;
   pygameBundle?: {
     html: string;
     wasm: string;
@@ -227,7 +235,7 @@ export class GPUContainerPool {
     console.log(`Pool initialized - CPU: ${this.cpuContainers.size}, GPU: ${this.gpuContainers.size}`);
   }
 
-  static async executeCode(code: string, input: string = '', images: Array<{ name: string; data: string }> = []): Promise<ExecutionResult> {
+  static async executeCode(code: string, input: string = '', images: Array<{ name: string; data: string }> = [], userSessionId?: string): Promise<ExecutionResult> {
     const startTime = Date.now();
 
     try {
@@ -239,14 +247,14 @@ export class GPUContainerPool {
       const requiresGPU = this.detectGPUUsage(code);
       const useGPU = requiresGPU && this.gpuAvailable;
 
-      console.log(`Execution request - GPU required: ${requiresGPU}, GPU available: ${this.gpuAvailable}, Using GPU: ${useGPU}`);
+      console.log(`Execution request - GPU required: ${requiresGPU}, GPU available: ${this.gpuAvailable}, Using GPU: ${useGPU}, Session: ${userSessionId || 'none'}`);
 
       // Get appropriate container
       const container = await this.getAvailableContainer(useGPU ? 'gpu' : 'cpu');
 
       try {
         // Execute code in container
-        const result = await this.runCodeInContainer(container.id, code, input, useGPU, images);
+        const result = await this.runCodeInContainer(container.id, code, input, useGPU, images, userSessionId);
 
         const executionTime = Date.now() - startTime;
         return {
@@ -387,9 +395,17 @@ export class GPUContainerPool {
     code: string,
     input: string,
     isGPU: boolean,
-    images: Array<{ name: string; data: string }> = []
+    images: Array<{ name: string; data: string }> = [],
+    userSessionId?: string
   ): Promise<Omit<ExecutionResult, 'executionTime' | 'usedGPU'>> {
     const sessionId = `exec_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+    // Create or use persistent directory for user session
+    const persistentDir = userSessionId ? join(tmpdir(), `user_files_${userSessionId}`) : null;
+    if (persistentDir) {
+      await mkdir(persistentDir, { recursive: true });
+      console.log(`[Persistent] Using directory: ${persistentDir}`);
+    }
 
     try {
       // Detect matplotlib usage and inject plot saving code if needed
@@ -507,6 +523,59 @@ export class GPUContainerPool {
         processedCode = this.injectGPUVerificationCode(processedCode);
       }
 
+      // Create unique working directory for this execution
+      const workDir = `/tmp/${sessionId}_work`;
+      await execAsync(`docker exec ${containerId} sh -c "mkdir -p ${workDir}"`).catch(() => {});
+
+      // If using persistent directory, copy all existing files from host to container
+      if (persistentDir) {
+        try {
+          const files = await readdir(persistentDir).catch(() => []);
+          if (files.length > 0) {
+            console.log(`[Persistent] Found ${files.length} existing file(s) to copy to container`);
+
+            // Determine the correct command for piping file content (Windows vs Unix)
+            const isWindows = process.platform === 'win32';
+            const catCommand = isWindows ? 'type' : 'cat';
+
+            for (const file of files) {
+              const hostFile = join(persistentDir, file);
+              try {
+                // Get file size for logging
+                const fileStats = await stat(hostFile);
+                console.log(`[Persistent] Copying ${file} (${fileStats.size} bytes) from host to container`);
+                console.log(`[Persistent]   Host path: ${hostFile}`);
+                console.log(`[Persistent]   Container target: ${workDir}/${file}`);
+
+                // Use stdin piping instead of docker cp (more reliable on Windows)
+                // Read file content and pipe it into the container
+                await execAsync(`${catCommand} "${hostFile}" | docker exec -i ${containerId} sh -c "cat > ${workDir}/${file}"`);
+
+                // Verify the file exists in the container and check size
+                const { stdout: verifyOutput } = await execAsync(
+                  `docker exec ${containerId} sh -c "test -f ${workDir}/${file} && wc -c < ${workDir}/${file} || echo '0'"`
+                );
+
+                const containerSize = parseInt(verifyOutput.trim());
+                if (containerSize > 0 && containerSize === fileStats.size) {
+                  console.log(`[Persistent] ✅ Successfully copied ${file} (verified: ${containerSize} bytes in container)`);
+                } else if (containerSize > 0) {
+                  console.log(`[Persistent] ⚠️ Warning: ${file} size mismatch (host: ${fileStats.size}, container: ${containerSize})`);
+                } else {
+                  console.log(`[Persistent] ❌ Failed: ${file} was not found in container after copy`);
+                }
+              } catch (error) {
+                console.log(`[Persistent] ❌ Failed to copy ${file}:`, error);
+              }
+            }
+          } else {
+            console.log(`[Persistent] No existing files to copy (empty persistent directory)`);
+          }
+        } catch (error) {
+          console.log(`[Persistent] Error during file copy operation:`, error);
+        }
+      }
+
       // Create code file in container using stdin piping
       // This avoids Windows "command line too long" error and works with read-only containers
       const hostCodePath = join(tmpdir(), `${sessionId}.py`);
@@ -517,7 +586,7 @@ export class GPUContainerPool {
         // On Windows, use type instead of cat
         const isWindows = process.platform === 'win32';
         const catCommand = isWindows ? 'type' : 'cat';
-        await execAsync(`${catCommand} "${hostCodePath}" | docker exec -i ${containerId} sh -c "cat > /tmp/${sessionId}.py"`);
+        await execAsync(`${catCommand} "${hostCodePath}" | docker exec -i ${containerId} sh -c "cat > ${workDir}/${sessionId}.py"`);
 
         // Create input file if needed
         if (input) {
@@ -526,7 +595,7 @@ export class GPUContainerPool {
 
           try {
             // Use stdin piping for input file as well
-            await execAsync(`${catCommand} "${hostInputPath}" | docker exec -i ${containerId} sh -c "cat > /tmp/${sessionId}.txt"`);
+            await execAsync(`${catCommand} "${hostInputPath}" | docker exec -i ${containerId} sh -c "cat > ${workDir}/${sessionId}.txt"`);
           } finally {
             // Clean up host input file
             await unlink(hostInputPath).catch(() => {});
@@ -537,11 +606,11 @@ export class GPUContainerPool {
         await unlink(hostCodePath).catch(() => {});
       }
 
-      // Execute Python code with timeout
+      // Execute Python code with timeout in the unique working directory
       const timeout = isGPU ? this.EXECUTION_TIMEOUT : 5000; // 5 seconds for simple student code
       const execCommand = input
-        ? `docker exec ${containerId} sh -c "cd /tmp && cat ${sessionId}.txt | timeout ${timeout / 1000}s python ${sessionId}.py"`
-        : `docker exec ${containerId} sh -c "cd /tmp && timeout ${timeout / 1000}s python ${sessionId}.py"`;
+        ? `docker exec ${containerId} sh -c "cd ${workDir} && cat ${sessionId}.txt | timeout ${timeout / 1000}s python ${sessionId}.py"`
+        : `docker exec ${containerId} sh -c "cd ${workDir} && timeout ${timeout / 1000}s python ${sessionId}.py"`;
 
       let stdout = '';
       let stderr = '';
@@ -584,8 +653,87 @@ export class GPUContainerPool {
         stdout = stdout.replace(/\[PYGAME_FRAME:\d+\]data:image\/png;base64,[^\[]+\[\/PYGAME_FRAME\]/g, '');
       }
 
-      // Cleanup files
-      await execAsync(`docker exec ${containerId} rm -f /tmp/${sessionId}.*`).catch(() => {});
+      // Scan for files and handle persistence
+      let files: FileInfo[] | undefined;
+      let executionDir: string | undefined;
+      try {
+        // Wait a moment for file operations to complete and buffers to flush
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        // Get file list from the working directory (excluding the session Python script and input file)
+        const { stdout: filePathsOutput } = await execAsync(
+          `docker exec ${containerId} sh -c "find ${workDir} -maxdepth 1 -type f ! -name '${sessionId}.py' ! -name '${sessionId}.txt' 2>/dev/null || true"`
+        ).catch(() => ({ stdout: '' }));
+
+        console.log('[File Scan] Raw find output:', filePathsOutput);
+
+        // If using persistent directory, copy all files from container to persistent host directory
+        if (persistentDir && filePathsOutput.trim()) {
+          const filePaths = filePathsOutput.trim().split('\n').filter(p => p.length > 0 && p.trim() !== '');
+          console.log(`[Persistent] Copying ${filePaths.length} files back to host`);
+
+          for (const containerPath of filePaths) {
+            const fileName = containerPath.split('/').pop() || containerPath;
+            const hostPath = join(persistentDir, fileName);
+
+            try {
+              // Read file content from container
+              const { stdout: fileContent } = await execAsync(
+                `docker exec ${containerId} sh -c "cat ${containerPath}"`
+              ).catch(() => ({ stdout: '' }));
+
+              if (fileContent) {
+                // Write to persistent directory
+                await writeFile(hostPath, fileContent, 'utf8');
+                console.log(`[Persistent] Saved: ${fileName} (${fileContent.length} bytes)`);
+              }
+            } catch (error) {
+              console.log(`[Persistent] Error saving ${fileName}:`, error);
+            }
+          }
+        }
+
+        // List all files from persistent directory (if exists) or working directory
+        const hostDir = persistentDir || join(tmpdir(), `files_${sessionId}`);
+
+        if (persistentDir) {
+          // List all files from persistent directory
+          try {
+            const fileNames = await readdir(persistentDir).catch(() => []);
+            if (fileNames.length > 0) {
+              console.log(`[Persistent] Found ${fileNames.length} total files in persistent directory`);
+
+              const fileInfos: FileInfo[] = [];
+              for (const fileName of fileNames) {
+                const hostPath = join(persistentDir, fileName);
+                try {
+                  const fileStats = await stat(hostPath);
+                  const size = fileStats.size;
+
+                  if (size <= 5 * 1024 * 1024) {
+                    fileInfos.push({ name: fileName, size, path: hostPath });
+                  }
+                } catch (error) {
+                  console.log(`[Persistent] Error reading ${fileName}:`, error);
+                }
+              }
+
+              if (fileInfos.length > 0) {
+                files = fileInfos;
+                executionDir = persistentDir;
+                console.log(`[Persistent] ✅ ${fileInfos.length} file(s) available`);
+              }
+            }
+          } catch (error) {
+            console.log(`[Persistent] Error listing files:`, error);
+          }
+        }
+      } catch (error) {
+        console.log('[File Scan] Error during file scan:', error);
+      }
+
+      // Cleanup working directory in container
+      await execAsync(`docker exec ${containerId} rm -rf ${workDir}`).catch(() => {});
 
       // Parse and format Python errors for better user experience
       let formattedStderr = stderr.trim();
@@ -601,6 +749,8 @@ export class GPUContainerPool {
         stderr: formattedStderr,
         status: formattedStderr ? 'Error' : 'Success',
         plots,
+        files,
+        executionDir,
         pygameBundle
       };
 
@@ -1086,6 +1236,20 @@ except: pass
       gpu: getCounts(this.gpuContainers),
       gpuAvailable: this.gpuAvailable
     };
+  }
+
+  /**
+   * Retrieve file contents from host filesystem
+   */
+  static async getFileContent(filePath: string): Promise<string> {
+    try {
+      // Read file content from host filesystem
+      const content = await readFile(filePath, 'utf8');
+      return content;
+    } catch (error) {
+      console.error('Error retrieving file content:', error);
+      throw new Error(`Failed to retrieve file: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
   }
 
   /**

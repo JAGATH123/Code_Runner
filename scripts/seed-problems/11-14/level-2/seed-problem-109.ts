@@ -21,10 +21,7 @@ async function seedProblem109() {
       title: 'Defining a Function Inside Another',
       description: 'Learn how to define a function inside another function and call it internally.',
       difficulty: 'Easy',
-      question: `Take a message as input. Define a function spaceship() that contains an inner function launch() which prints the message. Call the inner function from within the outer function, then call spaceship().`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Launching spaceship.',
+      question: `Take a message as input. Define a function spaceship() that contains an inner function launch() which prints the message. Call the inner function from within the outer function, then call spaceship().`,      sample_input: 'Launching spaceship.',
       sample_output: 'Launching spaceship.',
 
       age_group: '11-14',

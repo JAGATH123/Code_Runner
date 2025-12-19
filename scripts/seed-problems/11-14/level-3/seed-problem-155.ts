@@ -21,10 +21,7 @@ async function seedProblem155() {
       title: 'Combining Multiple Magic Methods',
       description: 'Combining __init__(), __str__(), __len__(), and __call__() in one class creates powerful, smart objects that are easy to use, readable, and functional.',
       difficulty: 'Hard',
-      question: `Can you create a Movie class with title and duration attributes, implementing __init__, __str__, __len__, and __call__()? For __str__, print with prefix based on duration: dur>=120+even='Epic Movie:', dur>=120+odd='Long Film:', dur<120+even='Short Movie:', dur<120+odd='Quick Film:', followed by '[title]'. Then print len(movie). Then call movie(action) to print 'Now [action] the movie: [title]'.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Interstellar\n169\nplaying',
+      question: `Can you create a Movie class with title and duration attributes, implementing __init__, __str__, __len__, and __call__()? For __str__, print with prefix based on duration: dur>=120+even='Epic Movie:', dur>=120+odd='Long Film:', dur<120+even='Short Movie:', dur<120+odd='Quick Film:', followed by '[title]'. Then print len(movie). Then call movie(action) to print 'Now [action] the movie: [title]'.`,      sample_input: 'Interstellar\n169\nplaying',
       sample_output: 'Long Film: Interstellar\n169\nNow playing the movie: Interstellar',
 
       age_group: '11-14',

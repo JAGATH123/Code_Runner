@@ -21,10 +21,7 @@ async function seedProblem145() {
       title: 'Creating a Class with Attributes',
       description: 'A class holds related data using attributes, which represent the state or properties of an object and are initialized using the __init__() method.',
       difficulty: 'Easy',
-      question: `Can you create a Student class with name and grade attributes, and a display method? Extract the grade number from grade (e.g., '7th' -> 7). If grade number is even, print 'Even Grade: [name] - [grade]'. If odd, print 'Odd Grade: [name] - [grade]'.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Anya\n7th',
+      question: `Can you create a Student class with name and grade attributes, and a display method? Extract the grade number from grade (e.g., '7th' -> 7). If grade number is even, print 'Even Grade: [name] - [grade]'. If odd, print 'Odd Grade: [name] - [grade]'.`,      sample_input: 'Anya\n7th',
       sample_output: 'Odd Grade: Anya - 7th',
 
       age_group: '11-14',

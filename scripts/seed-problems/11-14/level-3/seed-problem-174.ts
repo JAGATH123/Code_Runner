@@ -21,10 +21,7 @@ async function seedProblem174() {
       title: 'Galactic AI Architects – Engineering Multi-Tiered Intelligence',
       description: 'Multiple data streams are arriving at the bridge simultaneously. The Galactic Command needs composite AI minds that can blend translation, navigation, and defense operations seamlessly. Your mission is to architect an advanced HybridAI system that demonstrates the full power of multiple inheritance, hybrid hierarchies, method overriding, and intelligent behavior extension using super(). This AI must prove it can handle complex multi-tiered operations by choosing smarter strategies when needed.',
       difficulty: 'Hard',
-      question: `Can you build a complete composite AI system demonstrating multiple inheritance, hybrid hierarchies, method overriding, and super()?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Nova-1\nAsteroid Belt\nAlien Signals',
+      question: `Can you build a complete composite AI system demonstrating multiple inheritance, hybrid hierarchies, method overriding, and super()?`,      sample_input: 'Nova-1\nAsteroid Belt\nAlien Signals',
       sample_output: 'Navigating through space: Nova-1\nAnalyzing data streams: Nova-1\nBooting base AI system...\nPilot mode: Flying through Asteroid Belt\nScience mode: Researching Alien Signals\nHybridAI Report: Multi-stream analysis complete.\nInitializing systems...\nAdvanced protocols loaded.',
 
       age_group: '11-14',

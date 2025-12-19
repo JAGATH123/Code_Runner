@@ -21,10 +21,7 @@ async function seedProblem184() {
       title: 'Handling Multiple Exceptions',
       description: 'Learn to catch multiple exception types in a single program using separate except blocks.',
       difficulty: 'Medium',
-      question: `Can you access sensor data safely? Take 3 inputs for sensor readings to create a list, then take an index input. Try to access and print the sensor reading at that index. Handle IndexError by printing "Error: Sensor index out of range!" and ValueError by printing "Error: Please enter a valid number for index!" If successful, print "Sensor Reading:" followed by the value.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '10\n20\n30\n5',
+      question: `Can you access sensor data safely? Take 3 inputs for sensor readings to create a list, then take an index input. Try to access and print the sensor reading at that index. Handle IndexError by printing "Error: Sensor index out of range!" and ValueError by printing "Error: Please enter a valid number for index!" If successful, print "Sensor Reading:" followed by the value.`,      sample_input: '10\n20\n30\n5',
       sample_output: 'Error: Sensor index out of range!',
 
       age_group: '11-14',

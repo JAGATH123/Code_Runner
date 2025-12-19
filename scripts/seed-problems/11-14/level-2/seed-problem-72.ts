@@ -23,10 +23,7 @@ async function seedProblem72() {
 
 Create the autonomous navigation system that keeps NOVA-12 on course with command validation and abort functionality.`,
       difficulty: 'Medium',
-      question: `Create a command system that accepts commands continuously until "launch" or "abort" is received. Valid commands: "check", "prepare", "ready", "launch", "abort". For each iteration: print "Enter command: ", read input, count it (valid or invalid), check if valid - if invalid print "Invalid command!", if "launch" print "Mission complete! Total commands: X", if "abort" print "Mission aborted!".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'check\nprepare\nlaunch',
+      question: `Create a command system that accepts commands continuously until "launch" or "abort" is received. Valid commands: "check", "prepare", "ready", "launch", "abort". For each iteration: print "Enter command: ", read input, count it (valid or invalid), check if valid - if invalid print "Invalid command!", if "launch" print "Mission complete! Total commands: X", if "abort" print "Mission aborted!".`,      sample_input: 'check\nprepare\nlaunch',
       sample_output: 'Enter command: \nEnter command: \nEnter command: \nMission complete! Total commands: 3',
 
       age_group: '11-14',

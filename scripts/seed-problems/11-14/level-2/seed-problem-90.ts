@@ -23,10 +23,7 @@ async function seedProblem90() {
 
 Create the Cosmic Data Archives system that stores mission-critical data in immutable tuple snapshots with integrity verification and redundancy.`,
       difficulty: 'Hard',
-      question: `Read 5 inputs: name (string), year (convert to int), target (string), crew (convert to int), status (string). Create a tuple with these values and print it. Print the length of tuple. Print last 2 elements using slicing. Read query and check if it's in the tuple - print "Found" if yes, "Not Found" if no. Read R (int) and print the tuple repeated R times using * operator.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Apollo11\n1969\nMoon\n3\nCompleted\nMoon\n2',
+      question: `Read 5 inputs: name (string), year (convert to int), target (string), crew (convert to int), status (string). Create a tuple with these values and print it. Print the length of tuple. Print last 2 elements using slicing. Read query and check if it's in the tuple - print "Found" if yes, "Not Found" if no. Read R (int) and print the tuple repeated R times using * operator.`,      sample_input: 'Apollo11\n1969\nMoon\n3\nCompleted\nMoon\n2',
       sample_output: '(\'Apollo11\', 1969, \'Moon\', 3, \'Completed\')\n5\n(3, \'Completed\')\nFound\n(\'Apollo11\', 1969, \'Moon\', 3, \'Completed\', \'Apollo11\', 1969, \'Moon\', 3, \'Completed\')',
 
       age_group: '11-14',

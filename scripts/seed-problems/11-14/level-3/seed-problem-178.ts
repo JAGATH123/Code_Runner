@@ -21,10 +21,7 @@ async function seedProblem178() {
       title: 'Overriding __str__() – Custom Object Output',
       description: 'Master how to extend parent functionality while preserving original behavior.',
       difficulty: 'Medium',
-      question: `Can you create a SystemCheck class with a run() method that prints a diagnostic message, then an AdvancedCheck child class that uses super() to call the parent method and adds its own message? Take input for the system name and call run().`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Server',
+      question: `Can you create a SystemCheck class with a run() method that prints a diagnostic message, then an AdvancedCheck child class that uses super() to call the parent method and adds its own message? Take input for the system name and call run().`,      sample_input: 'Server',
       sample_output: 'Server: Running diagnostics.\nServer: Advanced check complete.',
 
       age_group: '11-14',

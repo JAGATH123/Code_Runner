@@ -21,10 +21,7 @@ async function seedProblem70() {
       title: 'While Loop with Counters and Conditions',
       description: 'Combine counters and conditions in a while loop to limit the number of attempts.',
       difficulty: 'Easy',
-      question: `Create a power-up collector program. Take two inputs: maximum power level and increment value. Start from 0 and display "Power: 0". Keep adding the increment and displaying each new power level. Continue while the current power is less than or equal to the maximum. After the loop ends, print "Full power!".`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '12\n3',
+      question: `Create a power-up collector program. Take two inputs: maximum power level and increment value. Start from 0 and display "Power: 0". Keep adding the increment and displaying each new power level. Continue while the current power is less than or equal to the maximum. After the loop ends, print "Full power!".`,      sample_input: '12\n3',
       sample_output: 'Power: 0\nPower: 3\nPower: 6\nPower: 9\nPower: 12\nFull power!',
 
       age_group: '11-14',

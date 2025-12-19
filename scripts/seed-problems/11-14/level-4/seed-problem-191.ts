@@ -21,10 +21,7 @@ async function seedProblem191() {
       title: 'Try-Except-Finally – Always Execute Cleanup',
       description: 'Learn to use the finally clause to ensure cleanup code always runs, regardless of whether an error occurred.',
       difficulty: 'Medium',
-      question: `Create a sample storage system that accepts chamber temperature. Use try-except to handle ValueError, and use finally to always print "Closing storage chamber." whether an error occurs or not.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '25',
+      question: `Create a sample storage system that accepts chamber temperature. Use try-except to handle ValueError, and use finally to always print "Closing storage chamber." whether an error occurs or not.`,      sample_input: '25',
       sample_output: 'Storing sample at 25 °C\nClosing storage chamber.',
 
       age_group: '11-14',

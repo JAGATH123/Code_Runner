@@ -21,10 +21,7 @@ async function seedProblem117() {
       title: 'Math Functions',
       description: 'Learn to use max(), min(), sum(), and abs() for mathematical operations.',
       difficulty: 'Easy',
-      question: `Take 5 integers as input (one per line). Create a list with these numbers, then print the maximum using max(), minimum using min(), and their sum using sum().`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '10\n5\n-3\n8\n0',
+      question: `Take 5 integers as input (one per line). Create a list with these numbers, then print the maximum using max(), minimum using min(), and their sum using sum().`,      sample_input: '10\n5\n-3\n8\n0',
       sample_output: '10\n-3\n20',
 
       age_group: '11-14',

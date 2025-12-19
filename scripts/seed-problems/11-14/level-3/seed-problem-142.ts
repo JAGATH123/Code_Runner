@@ -21,10 +21,7 @@ async function seedProblem142() {
       title: 'Updating Object Information',
       description: 'Objects can manage and change their own state through custom methods, allowing information to be updated while the program runs.',
       difficulty: 'Easy',
-      question: `Can you create a Computer class with brand and status attributes, and an update_status method to change and display the status?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Lenovo\nOffline\nOnline',
+      question: `Can you create a Computer class with brand and status attributes, and an update_status method to change and display the status?`,      sample_input: 'Lenovo\nOffline\nOnline',
       sample_output: 'Lenovo computer is now: Online',
 
       age_group: '11-14',

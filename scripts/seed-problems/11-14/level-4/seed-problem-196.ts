@@ -21,10 +21,7 @@ async function seedProblem196() {
       title: 'Creating Custom Exception Classes',
       description: 'Learn to create custom exception classes to simulate specific space anomalies with class-based exception structures.',
       difficulty: 'Medium',
-      question: `Define a custom exception class called TransmissionCorrupted that inherits from Exception. Check if a data packet status is "corrupted". If it is, raise the TransmissionCorrupted exception with the message "Data transmission corrupted!". If status is "clear", print "Transmission successful."`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'corrupted',
+      question: `Define a custom exception class called TransmissionCorrupted that inherits from Exception. Check if a data packet status is "corrupted". If it is, raise the TransmissionCorrupted exception with the message "Data transmission corrupted!". If status is "clear", print "Transmission successful."`,      sample_input: 'corrupted',
       sample_output: 'Data transmission corrupted!',
 
       age_group: '11-14',

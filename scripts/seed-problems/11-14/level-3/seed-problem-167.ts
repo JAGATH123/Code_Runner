@@ -21,10 +21,7 @@ async function seedProblem167() {
       title: 'Building a Space Inheritance System',
       description: 'Combine multilevel inheritance with method overriding to build an intelligent navigation system.',
       difficulty: 'Medium',
-      question: `Can you build a complete navigation system using multilevel inheritance with method overriding and conditional prefixes?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'NaviCore',
+      question: `Can you build a complete navigation system using multilevel inheritance with method overriding and conditional prefixes?`,      sample_input: 'NaviCore',
       sample_output: 'NavSys: Precision mode enabled\nNavSys: Calibrating star tracker...',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem172() {
       title: 'Using super() to Access Parent Methods',
       description: 'Learn how to extend parent class behavior while keeping the original functionality intact.',
       difficulty: 'Medium',
-      question: `Can you create an AdvancedCheck that extends SystemCheck's behavior using super() to call the parent method?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Validator',
+      question: `Can you create an AdvancedCheck that extends SystemCheck's behavior using super() to call the parent method?`,      sample_input: 'Validator',
       sample_output: 'ExtendCheck: Running system diagnostics.\nExtendCheck: All systems functional.',
 
       age_group: '11-14',

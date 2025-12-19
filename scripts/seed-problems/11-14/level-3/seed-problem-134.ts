@@ -21,10 +21,7 @@ async function seedProblem134() {
       title: 'Optimizing Calculations with Caching',
       description: 'The functools module provides higher-order functions for functional programming, including caching decorators that store results of expensive computations.',
       difficulty: 'Medium',
-      question: `Can you calculate orbital velocities using velocity = sqrt(distance * 1000 + distance ** 2) / 3.5 for comma-separated distances and output them rounded to 2 decimals, separated by spaces?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '7000,8000,7000,9000,8000',
+      question: `Can you calculate orbital velocities using velocity = sqrt(distance * 1000 + distance ** 2) / 3.5 for comma-separated distances and output them rounded to 2 decimals, separated by spaces?`,      sample_input: '7000,8000,7000,9000,8000',
       sample_output: '2138.09 2424.37 2138.09 2710.52 2424.37',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem200() {
       title: 'Writing to a File',
       description: 'Learn to create files and write content to them using Python file handling basics.',
       difficulty: 'Easy',
-      question: `Create a file handling system that opens a file called "diary.txt" in write mode, writes the message "My favorite hobby is coding!", and closes the file properly.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a file handling system that opens a file called "diary.txt" in write mode, writes the message "My favorite hobby is coding!", and closes the file properly.`,      sample_input: '',
       sample_output: 'File created successfully',
 
       age_group: '11-14',

@@ -23,7 +23,6 @@ async function seedProblem239() {
       difficulty: 'Medium',
       question: `Create a Pygame window (500x300) that allows users to type text dynamically. Display a prompt "Enter your name: " at position (50, 80). Below it at position (50, 120), display the text being typed by the user. Handle BACKSPACE to delete the last character. Use event.unicode to capture typed characters. Print "Text input active" when initialized.`,
 
-      compiler_comment: '# Write your code here\n',
       sample_input: '',
       sample_output: 'Text input active',
 
@@ -59,65 +58,25 @@ async function seedProblem239() {
     const problemResult = await problemsCollection.insertOne(problem239);
     console.log('Problem 239 inserted');
 
-    // Test cases for Problem 239
+    // Test cases for Problem 239 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2391,
         problem_id: 239,
         input: '',
         expected_output: 'Text input active',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2392,
         problem_id: 239,
         input: '',
         expected_output: 'Text input active',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2393,
-        problem_id: 239,
-        input: '',
-        expected_output: 'Text input active',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2394,
-        problem_id: 239,
-        input: '',
-        expected_output: 'Text input active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2395,
-        problem_id: 239,
-        input: '',
-        expected_output: 'Text input active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2396,
-        problem_id: 239,
-        input: '',
-        expected_output: 'Text input active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2397,
-        problem_id: 239,
-        input: '',
-        expected_output: 'Text input active',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

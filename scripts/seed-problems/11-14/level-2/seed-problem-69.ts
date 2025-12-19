@@ -21,10 +21,7 @@ async function seedProblem69() {
       title: 'Using Break in a While Loop',
       description: 'Learn to use the break statement to exit a while loop when a specific condition is met.',
       difficulty: 'Intro',
-      question: `Build a navigation system that tracks coordinates. Keep taking X and Y coordinates as input (two numbers per line). When X equals 0, print "Destination reached!" and stop. Otherwise, display "Position: X Y" for each coordinate pair.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5\n3\n0\n0',
+      question: `Build a navigation system that tracks coordinates. Keep taking X and Y coordinates as input (two numbers per line). When X equals 0, print "Destination reached!" and stop. Otherwise, display "Position: X Y" for each coordinate pair.`,      sample_input: '5\n3\n0\n0',
       sample_output: 'Position: 5 3\nDestination reached!',
 
       age_group: '11-14',

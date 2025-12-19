@@ -21,10 +21,7 @@ async function seedProblem188() {
       title: 'Basic Try-Except – Shield Against Crashes',
       description: 'Learn to protect your program from crashes using basic try-except blocks to handle division by zero errors.',
       difficulty: 'Easy',
-      question: `Your space control panel needs to divide data into packets. Can you create a system that asks for the number of packets, divides 100 units of data by that number, and handles division by zero errors gracefully using try-except?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '0',
+      question: `Your space control panel needs to divide data into packets. Can you create a system that asks for the number of packets, divides 100 units of data by that number, and handles division by zero errors gracefully using try-except?`,      sample_input: '0',
       sample_output: 'Error: Cannot divide by zero!',
 
       age_group: '11-14',

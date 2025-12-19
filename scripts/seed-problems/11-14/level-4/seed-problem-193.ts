@@ -21,10 +21,7 @@ async function seedProblem193() {
       title: 'Cosmic Fault Resilience – Mastering Spacecraft System Stability',
       description: 'Build a complete fault-resilient spacecraft system using all advanced exception handling techniques learned in this session.',
       difficulty: 'Hard',
-      question: `Build a fault-resilient spacecraft system that handles multiple subsystem checks with comprehensive exception handling. Your program must validate atmospheric pressure readings, execute command calculations with error handling, log operations to a file, process mission status with guaranteed cleanup, and distribute space rations with safety checks. Handle ValueError for invalid inputs, ZeroDivisionError for division by zero, IndexError for invalid list access, and other errors appropriately. Ensure all systems shut down safely and distribution completes regardless of errors encountered.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '75\n2\n5\n10\nOK\n100\n5',
+      question: `Build a fault-resilient spacecraft system that handles multiple subsystem checks with comprehensive exception handling. Your program must validate atmospheric pressure readings, execute command calculations with error handling, log operations to a file, process mission status with guaranteed cleanup, and distribute space rations with safety checks. Handle ValueError for invalid inputs, ZeroDivisionError for division by zero, IndexError for invalid list access, and other errors appropriately. Ensure all systems shut down safely and distribution completes regardless of errors encountered.`,      sample_input: '75\n2\n5\n10\nOK\n100\n5',
       sample_output: 'Atmospheric pressure: 75\nCommand result: 0.4\nOperation result logged!\nStatus: OK\nSystems shutdown safely.\nRation per crew: 20.0 kg\nDistribution complete.',
 
       age_group: '11-14',

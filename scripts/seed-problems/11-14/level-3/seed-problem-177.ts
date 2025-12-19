@@ -21,10 +21,7 @@ async function seedProblem177() {
       title: 'Overloading > – Compare Object Attributes',
       description: 'Discover how to enable comparison operators for custom objects.',
       difficulty: 'Medium',
-      question: `Can you create a Student class that allows comparing students based on their marks using the > operator? Take 6 inputs for 3 students (name, marks for each), create objects, use > to find the highest scorer, and print their name.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Alice\n85\nBob\n90\nCarol\n88',
+      question: `Can you create a Student class that allows comparing students based on their marks using the > operator? Take 6 inputs for 3 students (name, marks for each), create objects, use > to find the highest scorer, and print their name.`,      sample_input: 'Alice\n85\nBob\n90\nCarol\n88',
       sample_output: 'Bob',
 
       age_group: '11-14',

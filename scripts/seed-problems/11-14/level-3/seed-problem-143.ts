@@ -21,10 +21,7 @@ async function seedProblem143() {
       title: 'Using Data to Make Calculations',
       description: 'Objects can use their stored data to perform calculations automatically, organizing code and avoiding formula repetition.',
       difficulty: 'Easy',
-      question: `Can you create a Rectangle class with length and width attributes, and an area method that returns the calculated area?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '8\n4',
+      question: `Can you create a Rectangle class with length and width attributes, and an area method that returns the calculated area?`,      sample_input: '8\n4',
       sample_output: 'The area of the rectangle is: 32',
 
       age_group: '11-14',

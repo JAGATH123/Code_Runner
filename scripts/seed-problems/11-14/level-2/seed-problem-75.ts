@@ -21,10 +21,7 @@ async function seedProblem75() {
       title: 'Removing Entries',
       description: 'Learn to remove key-value pairs from dictionaries using the del keyword.',
       difficulty: 'Easy',
-      question: `Create a dictionary called 'station' with keys "name", "capacity", and "altitude" from three inputs. Use the del keyword to remove the key specified by the fourth input. Then print the remaining values (name and the value that wasn't removed).`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'ISS\n6\n408\ncapacity',
+      question: `Create a dictionary called 'station' with keys "name", "capacity", and "altitude" from three inputs. Use the del keyword to remove the key specified by the fourth input. Then print the remaining values (name and the value that wasn't removed).`,      sample_input: 'ISS\n6\n408\ncapacity',
       sample_output: 'ISS\n408',
 
       age_group: '11-14',

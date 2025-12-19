@@ -21,10 +21,7 @@ async function seedProblem88() {
       title: 'Concatenating and Repeating Tuples',
       description: 'Learn to combine tuples using + operator and repeat tuples using * operator.',
       difficulty: 'Easy',
-      question: `Create two tuples with N1 and N2 integers from input. Concatenate them using + and print. Repeat the first tuple R times using * and print.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\n1\n2\n2\n3\n4\n3',
+      question: `Create two tuples with N1 and N2 integers from input. Concatenate them using + and print. Repeat the first tuple R times using * and print.`,      sample_input: '2\n1\n2\n2\n3\n4\n3',
       sample_output: '(1, 2, 3, 4)\n(1, 2, 1, 2, 1, 2)',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem226() {
       title: 'Reading a File with Error Handling',
       description: 'Learn to read files safely using try-except to handle FileNotFoundError gracefully.',
       difficulty: 'Easy',
-      question: `Write a program that attempts to read "mylog.txt". Use try-except to handle FileNotFoundError. If the file exists, print "File Content: [content]" where [content] is the file's text. If the file doesn't exist, print "File not found. Please check the name."`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Write a program that attempts to read "mylog.txt". Use try-except to handle FileNotFoundError. If the file exists, print "File Content: [content]" where [content] is the file's text. If the file doesn't exist, print "File not found. Please check the name."`,      sample_input: '',
       sample_output: 'File Content: Name: John Doe - Subject: Python Programming',
 
       age_group: '11-14',

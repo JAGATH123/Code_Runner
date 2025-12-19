@@ -21,10 +21,7 @@ async function seedProblem62() {
       title: 'Nested Loop with Conditional Logic',
       description: 'Combine nested loops with conditional statements to make decisions during iteration.',
       difficulty: 'Medium',
-      question: `Build a program that prints orbit-sensor combinations and marks sensor #2 as checked. Take two inputs (orbits and sensors per orbit). Display "Orbit [number] - [number]" for each pair. When sensor is 2, print "  OK" on the next line (2 spaces before OK).`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\n3',
+      question: `Build a program that prints orbit-sensor combinations and marks sensor #2 as checked. Take two inputs (orbits and sensors per orbit). Display "Orbit [number] - [number]" for each pair. When sensor is 2, print "  OK" on the next line (2 spaces before OK).`,      sample_input: '2\n3',
       sample_output: `Orbit 1 - 1
 Orbit 1 - 2
   OK

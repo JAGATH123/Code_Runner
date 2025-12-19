@@ -21,10 +21,7 @@ async function seedProblem133() {
       title: 'Generating Infinite Signal Streams',
       description: 'The itertools module generates efficient iterators for processing sequences, enabling infinite streams and advanced iteration patterns.',
       difficulty: 'Easy',
-      question: `Can you create an infinite cycle from comma-separated signal frequencies and output the first 20 values separated by spaces?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '100,200,150,175',
+      question: `Can you create an infinite cycle from comma-separated signal frequencies and output the first 20 values separated by spaces?`,      sample_input: '100,200,150,175',
       sample_output: '100 200 150 175 100 200 150 175 100 200 150 175 100 200 150 175 100 200 150 175',
 
       age_group: '11-14',

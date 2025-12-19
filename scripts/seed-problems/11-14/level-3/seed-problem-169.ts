@@ -21,10 +21,7 @@ async function seedProblem169() {
       title: 'Multiple Inheritance',
       description: 'Explore how a single class can inherit capabilities from multiple parent classes simultaneously.',
       difficulty: 'Medium',
-      question: `Can you create a MissionAI that inherits from multiple parent classes with conditional prefixes?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Nexus',
+      question: `Can you create a MissionAI that inherits from multiple parent classes with conditional prefixes?`,      sample_input: 'Nexus',
       sample_output: 'MixAI: Navigating space.\nMixAI: Sending signal.',
 
       age_group: '11-14',

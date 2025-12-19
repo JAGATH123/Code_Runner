@@ -21,10 +21,7 @@ async function seedProblem141() {
       title: 'Using Multiple Objects',
       description: 'One class can create many independent objects, each with its own data, like using one cookie cutter to make many unique cookies.',
       difficulty: 'Medium',
-      question: `Can you create N Product objects with name and price attributes, and display each using a show method?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\nPencil 2.5\nNotebook 5.0',
+      question: `Can you create N Product objects with name and price attributes, and display each using a show method?`,      sample_input: '2\nPencil 2.5\nNotebook 5.0',
       sample_output: 'Pencil costs $2.5.\nNotebook costs $5.0.',
 
       age_group: '11-14',

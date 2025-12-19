@@ -37,10 +37,7 @@ Step 2: Append System Updates - Add "Oxygen levels stable" and "Engines checked"
 
 Step 3: Read All Mission Logs - Open the file in read mode and print all updates saved so far using the with statement.
 
-Step 4: Add User-Entered Logs - Take user input for a new log message, append it to the file, and print "Log saved!" after writing.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Solar panels deployed',
+Step 4: Add User-Entered Logs - Take user input for a new log message, append it to the file, and print "Log saved!" after writing.`,      sample_input: 'Solar panels deployed',
       sample_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
 
       age_group: '11-14',

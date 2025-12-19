@@ -21,10 +21,7 @@ async function seedProblem106() {
       title: 'Variable-Length Arguments',
       description: 'Learn to create functions that accept any number of positional arguments using *args.',
       difficulty: 'Medium',
-      question: `Take integer N and N integers (frequencies) as input. Define a function record_signals(*frequencies) that accepts any number of arguments and prints "Signal: <frequency>" for each. Call the function with all input frequencies.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\n100\n200\n300',
+      question: `Take integer N and N integers (frequencies) as input. Define a function record_signals(*frequencies) that accepts any number of arguments and prints "Signal: <frequency>" for each. Call the function with all input frequencies.`,      sample_input: '3\n100\n200\n300',
       sample_output: 'Signal: 100\nSignal: 200\nSignal: 300',
 
       age_group: '11-14',

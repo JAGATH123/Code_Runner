@@ -21,10 +21,7 @@ async function seedProblem228() {
       title: 'Making a Folder and Saving a File Inside',
       description: 'Learn to create folders and save files inside them using os.mkdir() and os.path.join().',
       difficulty: 'Medium',
-      question: `Create a folder named "projects" using os.mkdir() (only if it doesn't exist - check with os.path.exists()), and inside it save a file "science.txt" that contains "My science project". Use os.path.join() to combine the folder and file path. Print "File saved in new folder." when done.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a folder named "projects" using os.mkdir() (only if it doesn't exist - check with os.path.exists()), and inside it save a file "science.txt" that contains "My science project". Use os.path.join() to combine the folder and file path. Print "File saved in new folder." when done.`,      sample_input: '',
       sample_output: 'File saved in new folder.',
 
       age_group: '11-14',

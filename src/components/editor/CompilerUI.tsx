@@ -1,6 +1,6 @@
 'use client';
 
-import type { Problem, ExecutionResult, SubmissionResult, TestCase } from '@/lib/types';
+import type { Problem, ExecutionResult, SubmissionResult, TestCase, FileInfo } from '@/lib/types';
 import { useState, useTransition, useEffect, useCallback } from 'react';
 import { CodeEditor } from './CodeEditor';
 import { PygameCanvas } from './PygameCanvas';
@@ -11,7 +11,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { useGlobalAudio } from '@/contexts/AudioContext';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Loader, Play, Send, CheckCircle, XCircle, Clock, FileInput, FileOutput, Terminal, Target, Zap, Database, Activity, Cpu, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Loader, Play, Send, CheckCircle, XCircle, Clock, FileInput, FileOutput, Terminal, Target, Zap, Database, Activity, Cpu, ArrowLeft, ArrowRight, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Separator } from '@/components/ui/separator';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -38,7 +39,7 @@ const difficultyColor: { [key in Problem['difficulty']]: string } = {
 };
 
 export function CompilerUI({ problem }: CompilerUIProps) {
-  const [code, setCode] = useState<string>(problem.compiler_comment);
+  const [code, setCode] = useState<string>(problem.compiler_comment || '# Write your code here\n');
   const [customInput, setCustomInput] = useState<string>(problem.sample_input);
   const [result, setResult] = useState<ExecutionResult>({
     stdout: '',
@@ -48,11 +49,161 @@ export function CompilerUI({ problem }: CompilerUIProps) {
   });
   const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
   const [pygameConsoleOutput, setPygameConsoleOutput] = useState<string[]>([]);
+  const [uploadedImages, setUploadedImages] = useState<File[]>([]);
+  const [selectedFile, setSelectedFile] = useState<{ name: string; content: string } | null>(null);
+  const [isFileViewerOpen, setIsFileViewerOpen] = useState(false);
+  const [userSessionId, setUserSessionId] = useState<string>('');
+
+  // Initialize or retrieve user session ID from localStorage
+  useEffect(() => {
+    const getOrCreateSessionId = () => {
+      let sessionId = localStorage.getItem('user_file_session_id');
+      if (!sessionId) {
+        sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        localStorage.setItem('user_file_session_id', sessionId);
+      }
+      return sessionId;
+    };
+
+    setUserSessionId(getOrCreateSessionId());
+  }, []);
 
   // Memoize console output handler to prevent duplicate event listeners
+  // Also prevent duplicate messages from appearing in console output
   const handleConsoleOutput = useCallback((message: string) => {
-    setPygameConsoleOutput(prev => [...prev, message]);
+    setPygameConsoleOutput(prev => {
+      // Only add message if it's not already in the output (deduplication)
+      if (prev.includes(message)) {
+        return prev;
+      }
+      return [...prev, message];
+    });
   }, []);
+
+  // Handle image upload
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+      setUploadedImages(prev => [...prev, ...files]);
+    }
+  };
+
+  // Remove uploaded image
+  const removeImage = (index: number) => {
+    setUploadedImages(prev => prev.filter((_, i) => i !== index));
+  };
+
+  // Handle file click to view contents
+  const handleFileClick = async (fileName: string, filePath: string) => {
+    try {
+      const response = await fetch('/api/files', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filePath }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSelectedFile({ name: fileName, content: data.content });
+        setIsFileViewerOpen(true);
+      } else {
+        toast({
+          title: 'Error',
+          description: data.error || 'Failed to load file',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to load file content',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  // Handle file download
+  const handleFileDownload = async (fileName: string, filePath: string) => {
+    try {
+      const response = await fetch('/api/files', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filePath }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Create a blob and download link
+        const blob = new Blob([data.content], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+
+        toast({
+          title: 'Success',
+          description: `Downloaded ${fileName}`,
+        });
+      } else {
+        toast({
+          title: 'Error',
+          description: data.error || 'Failed to download file',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to download file',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  // Handle file deletion
+  const handleFileDelete = async (fileName: string, filePath: string) => {
+    if (!confirm(`Are you sure you want to delete "${fileName}"? This cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/files/delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filePath }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Reload persistent files
+        await loadPersistentFiles();
+
+        toast({
+          title: 'Success',
+          description: `Deleted ${fileName}`,
+        });
+      } else {
+        toast({
+          title: 'Error',
+          description: data.error || 'Failed to delete file',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to delete file',
+        variant: 'destructive',
+      });
+    }
+  };
 
   const { playProjectTextSound } = useGlobalAudio();
   const [isPending, startTransition] = useTransition();
@@ -60,6 +211,43 @@ export function CompilerUI({ problem }: CompilerUIProps) {
   const [problemTestCases, setProblemTestCases] = useState<TestCase[]>([]);
   const { toast } = useToast();
   const progress = useProgress();
+
+  // Check if this is a file handling session (Level 4, Sessions 4-8: session_ids 37-41)
+  const isFileHandlingSession = problem.session_id >= 37 && problem.session_id <= 41;
+
+  // Load persistent files for file handling sessions
+  const loadPersistentFiles = useCallback(async () => {
+    if (!isFileHandlingSession || !userSessionId) return;
+
+    try {
+      const response = await fetch('/api/files/list', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userSessionId }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.files && data.files.length > 0) {
+          setResult(prev => ({ ...prev, files: data.files }));
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load persistent files:', error);
+    }
+  }, [isFileHandlingSession, userSessionId]);
+
+  // Load persistent files on mount
+  useEffect(() => {
+    loadPersistentFiles();
+  }, [loadPersistentFiles]);
+
+  // Auto-switch to FILES tab when files are detected
+  useEffect(() => {
+    if (isFileHandlingSession && result.files && result.files.length > 0) {
+      setActiveTab('files');
+    }
+  }, [isFileHandlingSession, result.files]);
 
   useEffect(() => {
     async function loadTestCases() {
@@ -85,10 +273,31 @@ export function CompilerUI({ problem }: CompilerUIProps) {
       setPygameConsoleOutput([]); // Clear previous pygame console output
       setActiveTab('result');
 
+      // Convert uploaded images to base64
+      const images = await Promise.all(
+        uploadedImages.map(async (file) => {
+          const base64 = await new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.readAsDataURL(file);
+          });
+          return {
+            name: file.name,
+            data: base64
+          };
+        })
+      );
+
       const response = await fetch('/api/run', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code, input: customInput, language: 'python' }),
+        body: JSON.stringify({
+          code,
+          input: customInput,
+          language: 'python',
+          images,
+          userSessionId: isFileHandlingSession ? userSessionId : undefined
+        }),
       });
       const data: ExecutionResult = await response.json();
       setResult(data);
@@ -204,7 +413,8 @@ export function CompilerUI({ problem }: CompilerUIProps) {
             <Terminal className="h-4 w-4 text-primary/60" />
           </div>
 
-          {result.stdout && !result.pygameBundle && (
+          {/* SYSTEM OUTPUT - Shows Docker-captured print output */}
+          {result.stdout && (
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs font-space text-neon-green">
                 <FileOutput className="h-3 w-3" />
@@ -267,17 +477,16 @@ export function CompilerUI({ problem }: CompilerUIProps) {
                 bundle={result.pygameBundle}
                 onConsoleOutput={handleConsoleOutput}
               />
-              {pygameConsoleOutput.length > 0 && (
-                <div className="mt-4">
-                  <div className="flex items-center gap-2 text-xs font-space text-foreground mb-2">
-                    <Terminal className="h-3 w-3" />
-                    <span>CONSOLE OUTPUT</span>
-                  </div>
-                  <pre className="font-mono text-sm bg-black p-4 rounded border border-gray-700 overflow-auto max-h-40 text-white">
-                    {pygameConsoleOutput.join('\n')}
-                  </pre>
+              {/* Always show CONSOLE OUTPUT for Pygame sessions */}
+              <div className="mt-4">
+                <div className="flex items-center gap-2 text-xs font-space text-foreground mb-2">
+                  <Terminal className="h-3 w-3" />
+                  <span>CONSOLE OUTPUT</span>
                 </div>
-              )}
+                <pre className="font-mono text-sm bg-black p-4 rounded border border-gray-700 overflow-auto max-h-40 text-white">
+                  {pygameConsoleOutput.length > 0 ? pygameConsoleOutput.join('\n') : '(Waiting for print output...)'}
+                </pre>
+              </div>
             </div>
           )}
         </div>
@@ -641,6 +850,38 @@ export function CompilerUI({ problem }: CompilerUIProps) {
             </div>
           </div>
           <div className="p-4 border-t border-primary/20 bg-card/20">
+            {/* Image Upload Section for Pygame - Only show if compiler_comment exists */}
+            {problem.compiler_comment && (
+              <div className="mb-4">
+                <label className="block text-xs font-space font-bold text-foreground mb-2">
+                  Upload Images (for Pygame - .png, .jpg)
+                </label>
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="file"
+                    accept="image/png,image/jpeg,image/jpg"
+                    multiple
+                    onChange={handleImageUpload}
+                    className="text-sm text-foreground file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-neon-purple/20 file:text-neon-purple hover:file:bg-neon-purple/30"
+                  />
+                </div>
+                {uploadedImages.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {uploadedImages.map((file, index) => (
+                      <div key={index} className="flex items-center gap-2 bg-card/40 px-3 py-1 rounded border border-neon-purple/30">
+                        <span className="text-xs text-foreground">{file.name}</span>
+                        <button
+                          onClick={() => removeImage(index)}
+                          className="text-red-400 hover:text-red-300"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
             <div className="flex justify-end gap-3 mb-3">
             <Button
               variant="secondary"
@@ -686,20 +927,29 @@ export function CompilerUI({ problem }: CompilerUIProps) {
             </div>
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="bg-space-gray/30 border border-primary/20">
-              <TabsTrigger 
-                value="customInput" 
+              <TabsTrigger
+                value="customInput"
                 className="font-space data-[state=active]:bg-neon-cyan/20 data-[state=active]:text-neon-cyan"
               >
                 <FileInput className="w-4 h-4 mr-1" />
                 INPUT
               </TabsTrigger>
-              <TabsTrigger 
-                value="result" 
+              <TabsTrigger
+                value="result"
                 className="font-space data-[state=active]:bg-neon-green/20 data-[state=active]:text-neon-green"
               >
                 <FileOutput className="w-4 h-4 mr-1" />
                 OUTPUT
               </TabsTrigger>
+              {isFileHandlingSession && (
+                <TabsTrigger
+                  value="files"
+                  className="font-space data-[state=active]:bg-neon-purple/20 data-[state=active]:text-neon-purple"
+                >
+                  <Database className="w-4 h-4 mr-1" />
+                  FILES {result.files && result.files.length > 0 ? `(${result.files.length})` : ''}
+                </TabsTrigger>
+              )}
             </TabsList>
             <TabsContent value="customInput" className="mt-3">
               <div>
@@ -728,10 +978,106 @@ export function CompilerUI({ problem }: CompilerUIProps) {
                 </Card>
               </div>
             </TabsContent>
+            {isFileHandlingSession && (
+              <TabsContent value="files" className="mt-3">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Database className="h-3 w-3 text-neon-purple" />
+                    <span className="font-space text-xs text-neon-purple uppercase tracking-wide">FILE EXPLORER</span>
+                  </div>
+                  <Card className="flex-grow overflow-hidden bg-card">
+                    <CardContent className="p-4 h-full">
+                      {result.files && result.files.length > 0 ? (
+                        <div className="space-y-2">
+                          {result.files.map((file, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center justify-between p-3 rounded-lg bg-space-gray/30 border border-neon-purple/30"
+                            >
+                              <div className="flex items-center gap-3 flex-1">
+                                <div className="w-8 h-8 flex items-center justify-center bg-neon-purple/20 rounded border border-neon-purple/40">
+                                  <FileOutput className="h-4 w-4 text-neon-purple" />
+                                </div>
+                                <div className="text-left flex-1">
+                                  <div className="font-mono text-sm text-foreground">
+                                    {file.name}
+                                  </div>
+                                  <div className="font-mono text-xs text-muted-foreground">
+                                    {(file.size / 1024).toFixed(2)} KB
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => handleFileClick(file.name, file.path)}
+                                  className="h-8 px-2 text-xs hover:bg-neon-cyan/20 hover:text-neon-cyan"
+                                >
+                                  <FileOutput className="h-3 w-3 mr-1" />
+                                  View
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => handleFileDownload(file.name, file.path)}
+                                  className="h-8 px-2 text-xs hover:bg-neon-green/20 hover:text-neon-green"
+                                >
+                                  <ArrowRight className="h-3 w-3 mr-1 rotate-90" />
+                                  Download
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => handleFileDelete(file.name, file.path)}
+                                  className="h-8 px-2 text-xs hover:bg-red-500/20 hover:text-red-400"
+                                >
+                                  <X className="h-3 w-3 mr-1" />
+                                  Delete
+                                </Button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center p-8 text-center">
+                          <Database className="h-12 w-12 text-muted-foreground/40 mb-3" />
+                          <p className="font-space text-sm text-muted-foreground">
+                            No files created yet
+                          </p>
+                          <p className="font-mono text-xs text-muted-foreground/60 mt-1">
+                            Run your code to create files
+                          </p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </div>
+              </TabsContent>
+            )}
             </Tabs>
           </div>
         </div>
       </div>
+
+      {/* File Viewer Modal */}
+      <Dialog open={isFileViewerOpen} onOpenChange={setIsFileViewerOpen}>
+        <DialogContent className="max-w-3xl max-h-[80vh] bg-card border-neon-purple/50">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 font-space text-neon-purple">
+              <FileOutput className="h-5 w-5" />
+              {selectedFile?.name}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            <div className="bg-deep-space border border-neon-purple/30 rounded-lg p-4 max-h-[60vh] overflow-auto">
+              <pre className="font-code text-sm text-foreground whitespace-pre-wrap">
+                {selectedFile?.content}
+              </pre>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

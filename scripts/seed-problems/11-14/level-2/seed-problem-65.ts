@@ -21,10 +21,7 @@ async function seedProblem65() {
       title: 'Countdown with Condition',
       description: 'Combine nested loops with countdown (negative steps) and conditional logic.',
       difficulty: 'Medium',
-      question: `Create a program that monitors satellite signal strength during countdown. Take five inputs: number of satellites, starting signal, ending signal (exclusive), step value (negative), and threshold. Display satellite number and signal strength for each reading. When signal strength drops to or below threshold, print "  Weak" on the next line (2 spaces before Weak).`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\n100\n60\n-20\n80',
+      question: `Create a program that monitors satellite signal strength during countdown. Take five inputs: number of satellites, starting signal, ending signal (exclusive), step value (negative), and threshold. Display satellite number and signal strength for each reading. When signal strength drops to or below threshold, print "  Weak" on the next line (2 spaces before Weak).`,      sample_input: '2\n100\n60\n-20\n80',
       sample_output: `1 100
 1 80
   Weak

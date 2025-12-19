@@ -33,10 +33,7 @@ Rename "diagnostics.txt" to "diagnostics_archive.txt" using os.rename() with try
 
 Append the text "Emergency alert activated\\n" to "diagnostics_archive.txt". Print "Update saved!"
 
-Try to delete "Command_Center/temp_log.txt" using os.remove() with try-except. If successful, print "Temp log deleted." If FileNotFoundError, print "Temp log not found."`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+Try to delete "Command_Center/temp_log.txt" using os.remove() with try-except. If successful, print "Temp log deleted." If FileNotFoundError, print "Temp log not found."`,      sample_input: '',
       sample_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
 
       age_group: '11-14',

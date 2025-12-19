@@ -23,10 +23,7 @@ async function seedProblem120() {
 
 Create the System Status Reporter that analyzes streaming module data using Python's built-in functions to catch the pattern in time.`,
       difficulty: 'Hard',
-      question: `Build a program that takes a mission name and module count as input, then collects each module name. Display the mission name, total module count, data type of the collection, all modules in alphabetical order, and the total character count across all module names.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Apollo\n3\nNavigation\nCommunication\nPropulsion',
+      question: `Build a program that takes a mission name and module count as input, then collects each module name. Display the mission name, total module count, data type of the collection, all modules in alphabetical order, and the total character count across all module names.`,      sample_input: 'Apollo\n3\nNavigation\nCommunication\nPropulsion',
       sample_output: 'Mission: Apollo\nTotal modules: 3\nData type: <class \'list\'>\nSorted modules: [\'Communication\', \'Navigation\', \'Propulsion\']\nTotal letters: 33',
 
       age_group: '11-14',

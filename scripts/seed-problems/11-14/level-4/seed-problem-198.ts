@@ -21,11 +21,20 @@ async function seedProblem198() {
       title: 'Nested Try Blocks for Cascading Failures',
       description: 'Learn to handle failures inside failures using nested try-except blocks for multi-stage anomaly simulation.',
       difficulty: 'Medium',
-      question: `Create a nested exception system. Outer try prints "Main Engine Check". Inner try raises RuntimeError("Sensor glitch detected"). Inner except catches it and prints "Inner Recovery: Sensor glitch detected", then raises Exception("Mission abort initiated"). Outer except catches it and prints "Outer System Response: Mission abort initiated". Finally always prints "Mission Report Filed."`,
+      question: `Create a nested exception system. Outer try prints "Main Engine Check". Inner try raises RuntimeError("Sensor glitch detected"). Inner except catches it and prints "Inner Recovery: Sensor glitch detected", then raises Exception("Mission abort initiated"). Outer except catches it and prints "Outer System Response: Mission abort initiated". Finally always prints "Mission Report Filed."`,      sample_input: '',
+      sample_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
 
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
-      sample_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+      compiler_comment: `try:
+    print("Main Engine Check")
+    try:
+        raise RuntimeError("Sensor glitch detected")
+    except RuntimeError:
+        print("Inner Recovery: Sensor glitch detected")
+        raise Exception("Mission abort initiated")
+except Exception:
+    print("Outer System Response: Mission abort initiated")
+finally:
+    print("Mission Report Filed.")`,
 
       age_group: '11-14',
       level_number: 4,
@@ -66,58 +75,58 @@ async function seedProblem198() {
         test_case_id: 1981,
         problem_id: 198,
         input: '',
-        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
         is_hidden: false,
-        weight: 10
+        weight: 14
       },
       {
         test_case_id: 1982,
         problem_id: 198,
         input: '',
-        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
         is_hidden: false,
-        weight: 10
+        weight: 14
       },
       // Hidden test cases
       {
         test_case_id: 1983,
         problem_id: 198,
         input: '',
-        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
         is_hidden: true,
-        weight: 16
+        weight: 14
       },
       {
         test_case_id: 1984,
         problem_id: 198,
         input: '',
-        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
         is_hidden: true,
-        weight: 16
+        weight: 15
       },
       {
         test_case_id: 1985,
         problem_id: 198,
         input: '',
-        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
         is_hidden: true,
-        weight: 16
+        weight: 14
       },
       {
         test_case_id: 1986,
         problem_id: 198,
         input: '',
-        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
         is_hidden: true,
-        weight: 16
+        weight: 15
       },
       {
         test_case_id: 1987,
         problem_id: 198,
         input: '',
-        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.',
+        expected_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
         is_hidden: true,
-        weight: 16
+        weight: 14
       }
     ];
 

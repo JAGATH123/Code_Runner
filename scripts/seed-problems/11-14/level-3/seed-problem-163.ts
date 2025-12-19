@@ -21,10 +21,7 @@ async function seedProblem163() {
       title: 'Single Inheritance – Extending Base Features',
       description: 'Learn how child classes can inherit features from parent classes while adding their own specialized functionality.',
       difficulty: 'Medium',
-      question: `Can you build a Satellite that inherits from Spacecraft, where both classes use conditional prefixes based on the spacecraft name?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Hubble',
+      question: `Can you build a Satellite that inherits from Spacecraft, where both classes use conditional prefixes based on the spacecraft name?`,      sample_input: 'Hubble',
       sample_output: 'Advanced: Hubble Launching into space!\nAdvanced: Hubble Transmitting data to Earth.',
 
       age_group: '11-14',

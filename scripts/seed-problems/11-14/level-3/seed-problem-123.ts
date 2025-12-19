@@ -21,10 +21,7 @@ async function seedProblem123() {
       title: 'Creating and Using Your Own Modules',
       description: 'Just like NASA engineers create specialized tools, create your own module with a function to calculate spacecraft acceleration.',
       difficulty: 'Medium',
-      question: `A spacecraft engine produces thrust force in Newtons, and the spacecraft has a certain mass in kilograms. Can you create a function to calculate the engine's acceleration using Newton's Second Law?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5000\n2500',
+      question: `A spacecraft engine produces thrust force in Newtons, and the spacecraft has a certain mass in kilograms. Can you create a function to calculate the engine's acceleration using Newton's Second Law?`,      sample_input: '5000\n2500',
       sample_output: '2.00',
 
       age_group: '11-14',

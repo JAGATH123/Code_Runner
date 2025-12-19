@@ -21,10 +21,7 @@ async function seedProblem91() {
       title: 'Creating Sets and Adding Items',
       description: 'Learn to create sets and use .add() to insert new unique elements into a set.',
       difficulty: 'Easy',
-      question: `Create a set with N satellite names from input. Add M more satellite names using .add(). Print all satellites sorted alphabetically, one per line.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\nHubble\nISS\nVoyager\n2\nGalileo\nISS',
+      question: `Create a set with N satellite names from input. Add M more satellite names using .add(). Print all satellites sorted alphabetically, one per line.`,      sample_input: '3\nHubble\nISS\nVoyager\n2\nGalileo\nISS',
       sample_output: 'Galileo\nHubble\nISS\nVoyager',
 
       age_group: '11-14',

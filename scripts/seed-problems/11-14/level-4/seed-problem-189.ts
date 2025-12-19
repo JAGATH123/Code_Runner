@@ -21,10 +21,7 @@ async function seedProblem189() {
       title: 'Multiple Exceptions – Handle More Than One Error',
       description: 'Learn to handle different types of errors using multiple except blocks for more precise error handling.',
       difficulty: 'Easy',
-      question: `Create a command decoder that accepts a command code, divides 50 by it, and handles both ValueError (invalid input like letters) and ZeroDivisionError (zero input) with specific error messages. For invalid input, display an error message about entering a number. For zero input, display that the command code cannot be zero. For successful division, display the result.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5',
+      question: `Create a command decoder that accepts a command code, divides 50 by it, and handles both ValueError (invalid input like letters) and ZeroDivisionError (zero input) with specific error messages. For invalid input, display an error message about entering a number. For zero input, display that the command code cannot be zero. For successful division, display the result.`,      sample_input: '5',
       sample_output: 'Result: 10.0',
 
       age_group: '11-14',

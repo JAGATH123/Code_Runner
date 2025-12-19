@@ -21,10 +21,7 @@ async function seedProblem111() {
       title: 'Using Nonlocal Variables',
       description: 'Learn to use nonlocal keyword to modify variables from the outer function.',
       difficulty: 'Medium',
-      question: `Take two strings (old_name and new_name) as input. Define a function satellite() with a variable holding old_name. Inside it, define rename() that uses nonlocal to change the variable to new_name. Call rename(), then print "Satellite: <new_name>". Call satellite().`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: 'Hubble\nJames Webb',
+      question: `Take two strings (old_name and new_name) as input. Define a function satellite() with a variable holding old_name. Inside it, define rename() that uses nonlocal to change the variable to new_name. Call rename(), then print "Satellite: <new_name>". Call satellite().`,      sample_input: 'Hubble\nJames Webb',
       sample_output: 'Satellite: James Webb',
 
       age_group: '11-14',

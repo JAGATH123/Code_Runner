@@ -21,10 +21,7 @@ async function seedProblem131() {
       title: 'Statistics module',
       description: 'The statistics module analyzes numerical data to find patterns like mean, median, and mode—essential for making data-driven decisions.',
       difficulty: 'Easy',
-      question: `The environmental control system monitors temperature readings from multiple sensors across the spacecraft. Given comma-separated temperature values, can you calculate the median to determine the stable operating temperature?`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5,3,8,9,2',
+      question: `The environmental control system monitors temperature readings from multiple sensors across the spacecraft. Given comma-separated temperature values, can you calculate the median to determine the stable operating temperature?`,      sample_input: '5,3,8,9,2',
       sample_output: '5',
 
       age_group: '11-14',

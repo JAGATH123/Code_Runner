@@ -23,7 +23,6 @@ async function seedProblem237() {
       difficulty: 'Medium',
       question: `Create a Pygame window (400x300) with a rectangle (100x100) at position (150, 100). Use a custom event to automatically change the rectangle's color every 1 second (not 2 seconds). Colors should be randomly generated using random.randint(0, 255) for RGB values. Create the custom event using pygame.USEREVENT + 1 and set_timer(). Print "Auto color change active" when initialized.`,
 
-      compiler_comment: '# Write your code here\n',
       sample_input: '',
       sample_output: 'Auto color change active',
 
@@ -59,65 +58,25 @@ async function seedProblem237() {
     const problemResult = await problemsCollection.insertOne(problem237);
     console.log('Problem 237 inserted');
 
-    // Test cases for Problem 237
+    // Test cases for Problem 237 - Pygame problems only need 2 test cases (no input variation)
     const testCases = [
-      // Visible test cases
+      // Visible test case
       {
         test_case_id: 2371,
         problem_id: 237,
         input: '',
         expected_output: 'Auto color change active',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
+      // Hidden test case
       {
         test_case_id: 2372,
         problem_id: 237,
         input: '',
         expected_output: 'Auto color change active',
-        is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2373,
-        problem_id: 237,
-        input: '',
-        expected_output: 'Auto color change active',
         is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2374,
-        problem_id: 237,
-        input: '',
-        expected_output: 'Auto color change active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2375,
-        problem_id: 237,
-        input: '',
-        expected_output: 'Auto color change active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2376,
-        problem_id: 237,
-        input: '',
-        expected_output: 'Auto color change active',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2377,
-        problem_id: 237,
-        input: '',
-        expected_output: 'Auto color change active',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

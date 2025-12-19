@@ -21,10 +21,7 @@ async function seedProblem67() {
       title: 'Basic While Loop',
       description: 'Learn the fundamentals of while loops by printing numbers from 1 to 10.',
       difficulty: 'Intro',
-      question: `Create a program that prints countdown numbers from a starting value down to 1. Take one integer input as the starting number and display each number on a new line.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '5',
+      question: `Create a program that prints countdown numbers from a starting value down to 1. Take one integer input as the starting number and display each number on a new line.`,      sample_input: '5',
       sample_output: '5\n4\n3\n2\n1',
 
       age_group: '11-14',

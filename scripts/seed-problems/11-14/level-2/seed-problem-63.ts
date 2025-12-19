@@ -21,10 +21,7 @@ async function seedProblem63() {
       title: 'Nested Loops with Variable Steps',
       description: 'Master nested loops using custom step values including negative steps for countdown sequences.',
       difficulty: 'Medium',
-      question: `Create a program that displays engine-thrust combinations with custom intervals. Take three inputs: number of engines, maximum thrust level, and step value. Display "Engine [number] - [thrust]" for each combination, where thrust goes from 0 to maximum using the step interval.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2\n20\n10',
+      question: `Create a program that displays engine-thrust combinations with custom intervals. Take three inputs: number of engines, maximum thrust level, and step value. Display "Engine [number] - [thrust]" for each combination, where thrust goes from 0 to maximum using the step interval.`,      sample_input: '2\n20\n10',
       sample_output: `Engine 1 - 0
 Engine 1 - 10
 Engine 1 - 20

@@ -21,10 +21,7 @@ async function seedProblem93() {
       title: 'Set Union and Intersection',
       description: 'Learn to combine sets using .union() to get all unique elements and .intersection() to find common elements.',
       difficulty: 'Medium',
-      question: `Create two sets with N1 and N2 strings from input. Find and print their union sorted alphabetically. Find and print their intersection sorted alphabetically (or "No common elements" if empty).`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '3\nHubble\nISS\nVoyager\n3\nISS\nGalileo\nVoyager',
+      question: `Create two sets with N1 and N2 strings from input. Find and print their union sorted alphabetically. Find and print their intersection sorted alphabetically (or "No common elements" if empty).`,      sample_input: '3\nHubble\nISS\nVoyager\n3\nISS\nGalileo\nVoyager',
       sample_output: 'Galileo\nHubble\nISS\nVoyager\nISS\nVoyager',
 
       age_group: '11-14',

@@ -21,10 +21,7 @@ async function seedProblem103() {
       title: 'Required Arguments',
       description: 'Learn about functions that require all arguments to be passed in the correct position.',
       difficulty: 'Easy',
-      question: `Take two strings date and location as input. Define a function mission_log(date, location) that prints "<date> <location>". Call the function with the input values.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '2024-12-01\nCape Canaveral',
+      question: `Take two strings date and location as input. Define a function mission_log(date, location) that prints "<date> <location>". Call the function with the input values.`,      sample_input: '2024-12-01\nCape Canaveral',
       sample_output: '2024-12-01 Cape Canaveral',
 
       age_group: '11-14',

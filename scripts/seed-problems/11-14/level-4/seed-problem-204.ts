@@ -21,10 +21,7 @@ async function seedProblem204() {
       title: 'Writing Multiple Lines with Lists',
       description: 'Learn to write multiple lines to a file efficiently using lists and the writelines() method.',
       difficulty: 'Medium',
-      question: `Create a file "shopping.txt" and write multiple lines from a list using writelines(). The list should contain: ["Shopping List:\\n", "1. Apples\\n", "2. Bananas\\n", "3. Milk\\n"]. Print "Shopping list created" when done.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '',
+      question: `Create a file "shopping.txt" and write multiple lines from a list using writelines(). The list should contain: ["Shopping List:\\n", "1. Apples\\n", "2. Bananas\\n", "3. Milk\\n"]. Print "Shopping list created" when done.`,      sample_input: '',
       sample_output: 'Shopping list created',
 
       age_group: '11-14',

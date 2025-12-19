@@ -21,10 +21,7 @@ async function seedProblem185() {
       title: 'Understanding Exception Class Hierarchy',
       description: 'Explore the exception class hierarchy and use base Exception class for generalized error handling.',
       difficulty: 'Medium',
-      question: `Can you catch any exception and print its type? Take two inputs (dividend and divisor), perform division, and catch any exception using the base Exception class. Print the result if successful. If an error occurs, print "Error:" followed by the error message on one line, then "Error Type:" followed by the exception class type on the next line.`,
-
-      compiler_comment: '# Write your code here\n',
-      sample_input: '10\n0',
+      question: `Can you catch any exception and print its type? Take two inputs (dividend and divisor), perform division, and catch any exception using the base Exception class. Print the result if successful. If an error occurs, print "Error:" followed by the error message on one line, then "Error Type:" followed by the exception class type on the next line.`,      sample_input: '10\n0',
       sample_output: 'Error: float division by zero\nError Type: <class \'ZeroDivisionError\'>',
 
       age_group: '11-14',
