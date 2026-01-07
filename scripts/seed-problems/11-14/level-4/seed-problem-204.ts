@@ -21,8 +21,9 @@ async function seedProblem204() {
       title: 'Writing Multiple Lines with Lists',
       description: 'Learn to write multiple lines to a file efficiently using lists and the writelines() method.',
       difficulty: 'Medium',
-      question: `Create a file "shopping.txt" and write multiple lines from a list using writelines(). The list should contain: ["Shopping List:\\n", "1. Apples\\n", "2. Bananas\\n", "3. Milk\\n"]. Print "Shopping list created" when done.`,      sample_input: '',
-      sample_output: 'Shopping list created',
+      question: `Read 3 lines from input. Create a list with these 3 lines (add \\n to each line). Use writelines() to write all lines to "shopping.txt" in one operation. Then read the file back and print its entire contents.`,
+      sample_input: 'Shopping List:\n1. Apples\n2. Bananas',
+      sample_output: 'Shopping List:\n1. Apples\n2. Bananas\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -58,63 +59,21 @@ async function seedProblem204() {
 
     // Test cases for Problem 204
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2041,
         problem_id: 204,
-        input: '',
-        expected_output: 'Shopping list created',
+        input: 'Shopping List:\n1. Apples\n2. Bananas',
+        expected_output: 'Shopping List:\n1. Apples\n2. Bananas\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2042,
         problem_id: 204,
-        input: '',
-        expected_output: 'Shopping list created',
+        input: 'Mission Log:\nDay 1: Launch successful\nDay 2: Orbit achieved',
+        expected_output: 'Mission Log:\nDay 1: Launch successful\nDay 2: Orbit achieved\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2043,
-        problem_id: 204,
-        input: '',
-        expected_output: 'Shopping list created',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2044,
-        problem_id: 204,
-        input: '',
-        expected_output: 'Shopping list created',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2045,
-        problem_id: 204,
-        input: '',
-        expected_output: 'Shopping list created',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2046,
-        problem_id: 204,
-        input: '',
-        expected_output: 'Shopping list created',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2047,
-        problem_id: 204,
-        input: '',
-        expected_output: 'Shopping list created',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

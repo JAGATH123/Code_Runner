@@ -8,16 +8,12 @@ async function seedCodeConvergenceL2() {
 
   try {
     await client.connect();
-    console.log('Connected to MongoDB');
-
     const db = client.db(MONGODB_DB);
     const problemsCollection = db.collection('problems');
     const testCasesCollection = db.collection('test_cases');
-
-    // Code Convergence L2: Project ORBITRON - Mission Control Dashboard
     const codeConvergenceL2 = {
       problem_id: 1000,
-      session_id: 22, // Level 2, Code Convergence
+      session_id: 22, 
       title: 'Project ORBITRON - Mission Control Dashboard',
       description: `NOVA-12 is caught in a massive storm. Systems are failing and signals are fragmenting. You must build ORBITRON—a unified Mission Control Dashboard that processes spacecraft telemetry in real-time. Integrate power monitoring, signal filtering, and event tracking to stabilize the spacecraft and decode an urgent message hidden in the chaos.`,
 
@@ -66,11 +62,9 @@ Mission NOVA-12 is active with max fuel level 95 and 4 signals received.`,
         narrative_beat: 'ORBITRON decodes distress call from VORAX-9'
       },
 
-      // Session-level content
       session_title: 'Code Convergence: Project ORBITRON',
       session_introduction: `The ultimate test of your Python mastery. Project ORBITRON demands you integrate every concept learned across Level 2—from basic variables to complex data structures, from simple loops to sophisticated functions. This is where theory becomes practice, where individual skills converge into a unified system that can save lives in the depths of space. ORBITRON must process real-time data, filter noise, and decode critical messages while managing spacecraft systems under extreme conditions.`,
 
-      // Case-specific content
       case_number: 6,
       case_title: 'Project ORBITRON - Mission Control Dashboard',
       case_explanation: `Define mission_dashboard() function with 4 parameters. Use max() for fuel_levels, len() for signals count, and events[-1] for last event. For input processing: split fuel_input and map to int for list, split signal_input into set for unique values, split events_input by comma and strip whitespace. Call the function and print its return value.`,
@@ -79,17 +73,11 @@ Mission NOVA-12 is active with max fuel level 95 and 4 signals received.`,
       updated_at: new Date()
     };
 
-    // Delete existing Code Convergence L2 if it exists
     await problemsCollection.deleteOne({ problem_id: 1000 });
     await testCasesCollection.deleteMany({ problem_id: 1000 });
 
-    // Insert Code Convergence L2
     const problemResult = await problemsCollection.insertOne(codeConvergenceL2);
-    console.log('Code Convergence L2 inserted');
-
-    // Test cases for Code Convergence L2 (8 test cases total)
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 10001,
         problem_id: 1000,
@@ -191,26 +179,18 @@ Mission ASTRA-COMMAND is active with max fuel level 95 and 5 signals received.`,
 
     // Insert test cases
     await testCasesCollection.insertMany(testCases);
-    console.log(`${testCases.length} test cases inserted for Code Convergence L2`);
-
-    console.log('\n✅ Code Convergence L2 (Project ORBITRON - Mission Control Dashboard) seeded successfully!');
-
   } catch (error) {
-    console.error('Error seeding database:', error);
     throw error;
   } finally {
     await client.close();
-    console.log('MongoDB connection closed');
   }
 }
 
 // Run the seed function
 seedCodeConvergenceL2()
   .then(() => {
-    console.log('\n🚀 Database seeding completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('\n❌ Database seeding failed:', error);
     process.exit(1);
   });

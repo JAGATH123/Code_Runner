@@ -21,8 +21,9 @@ async function seedProblem203() {
       title: 'Using With Statement for Safe File Handling',
       description: 'Learn to use the with statement for safer file handling that automatically closes files.',
       difficulty: 'Medium',
-      question: `Use the with statement to open "mynote.txt" in read mode, read its content, and print it. The file should automatically close after reading. The file contains "Hello, this is my first note!"`,      sample_input: '',
-      sample_output: 'Hello, this is my first note!',
+      question: `Read a message from input. Use the with statement to create "mynote.txt" in write mode and write the message. Then use another with statement to open "mynote.txt" in read mode, read its content, and print it. Files should automatically close after each operation.`,
+      sample_input: 'Hello, this is my first note!',
+      sample_output: 'Hello, this is my first note!\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -58,63 +59,21 @@ async function seedProblem203() {
 
     // Test cases for Problem 203
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2031,
         problem_id: 203,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
+        input: 'Hello, this is my first note!',
+        expected_output: 'Hello, this is my first note!\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2032,
         problem_id: 203,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
+        input: 'With statement makes file handling safer',
+        expected_output: 'With statement makes file handling safer\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2033,
-        problem_id: 203,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2034,
-        problem_id: 203,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2035,
-        problem_id: 203,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2036,
-        problem_id: 203,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2037,
-        problem_id: 203,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

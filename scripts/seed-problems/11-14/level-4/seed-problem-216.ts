@@ -21,12 +21,8 @@ async function seedProblem216() {
       title: 'Reading All Lines with readlines()',
       description: 'Learn to read all file lines as a list using readlines() for easy iteration and processing.',
       difficulty: 'Medium',
-      question: `Open your "wishlist.txt" file which contains:
-Learn Machine Learning
-Master Data Structures
-Build Real Projects
-
-Use readlines() to get all lines as a list, and print each item with numbering using a loop. Format each line as "Item 1: [content]", "Item 2: [content]", "Item 3: [content]" where [content] is stripped of extra whitespace.`,      sample_input: '',
+      question: `Read 3 items from input (one per line). Write them to "wishlist.txt" with newlines. Then use readlines() to get all lines as a list, and print each item with numbering using a loop. Format each line as "Item 1: [content]", "Item 2: [content]", "Item 3: [content]" where [content] is stripped of extra whitespace.`,
+      sample_input: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
       sample_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
 
       age_group: '11-14',
@@ -63,63 +59,21 @@ Use readlines() to get all lines as a list, and print each item with numbering u
 
     // Test cases for Problem 216
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2161,
         problem_id: 216,
-        input: '',
+        input: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
         expected_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2162,
         problem_id: 216,
-        input: '',
-        expected_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
+        input: 'Practice Coding Daily\nRead Tech Books\nJoin Hackathons',
+        expected_output: 'Item 1: Practice Coding Daily\nItem 2: Read Tech Books\nItem 3: Join Hackathons',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2163,
-        problem_id: 216,
-        input: '',
-        expected_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2164,
-        problem_id: 216,
-        input: '',
-        expected_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2165,
-        problem_id: 216,
-        input: '',
-        expected_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2166,
-        problem_id: 216,
-        input: '',
-        expected_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2167,
-        problem_id: 216,
-        input: '',
-        expected_output: 'Item 1: Learn Machine Learning\nItem 2: Master Data Structures\nItem 3: Build Real Projects',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

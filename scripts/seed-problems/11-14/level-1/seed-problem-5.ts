@@ -8,8 +8,6 @@ async function seedProblem5() {
 
   try {
     await client.connect();
-    console.log('Connected to MongoDB');
-
     const db = client.db(MONGODB_DB);
     const problemsCollection = db.collection('problems');
     const testCasesCollection = db.collection('test_cases');
@@ -23,7 +21,6 @@ async function seedProblem5() {
       question: `Create two variables:
 - planet = "Jupiter"
 - moons = 79
-
 Then use an f-string to print: Jupiter has 79 known moons.`,
       difficulty: 'Intro',
       example_code: '# Write your code here\n',
@@ -40,36 +37,17 @@ Then use an f-string to print: Jupiter has 79 known moons.`,
       case_number: 5,
       case_title: 'Fancy Output using f-strings',
       case_overview: `Learn to use f-strings for professional, clean output formatting. This is the modern Python way!`,
-      case_code: `# Regular way with commas:
-name = "Alice"
-age = 25
-print("My name is", name, "and I am", age)
-
-# Modern way with f-strings:
-print(f"My name is {name} and I am {age}")
-
-# Both produce the same output, but f-strings are cleaner!
-
-# F-string format: print(f"text {variable} more text")
+      case_code: `# F-string format: print(f"text {variable} more text")
 # Put 'f' before the quotes and use {} for variables
 
 city = "Paris"
-print(f"Welcome to {city}!")
-
-# Now try creating an f-string with your own variables!`,
+print(f"Welcome to {city}!")`,
       case_explanation: `F-Strings (Formatted String Literals):
-
 ● F-strings are the modern way to format text with variables
 ● Syntax: print(f"text {variable} text")
 ● Put 'f' before the opening quote
 ● Insert variables inside curly braces {}
-● Much cleaner than using commas!
-
-Input Format:
-You do not need to read any input for this challenge.
-
-Output Format:
-Create the variables and use an f-string to print the exact message shown in the question.`,
+● Much cleaner than using commas!`,
 
       created_at: new Date(),
       updated_at: new Date()

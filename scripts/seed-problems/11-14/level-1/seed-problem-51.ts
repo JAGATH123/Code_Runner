@@ -21,12 +21,11 @@ async function seedProblem51() {
       title: 'Space Log Report Generator',
       description: `The sealed doors open, revealing NOVA-12—dormant for decades. The ship's panels flicker to life.
 
-Astra: *"NOVA-12 needs to recognize you as authorized cadets. Generate your mission log to establish your identity in the ship's database."*
+Astra: "NOVA-12 needs to recognize you as authorized cadets. Generate your mission log to establish your identity in the ship's database."
 
 Create the Mission Control boot screen that confirms your terminal is linked.`,
 
       question: `Write a Python program that generates a Space Log Report for a cadet's mission:
-
 Your program should:
 1. Ask the user for their name using \`input()\`
 2. Display a welcome message: \`"Welcome, Cadet [Name]! Preparing your mission log..."\`
@@ -67,6 +66,17 @@ Mission Duration: 360 hours. Good luck, Leo!`,
       case_number: 6,
       case_title: 'Space Log Report Generator - Final Mission Task',
       // case_overview removed for final tasks (Case 6)
+      case_code: `# Get user input
+name = input()
+
+# Calculate mission duration
+duration = 15 * 24
+
+# Display welcome message
+print(f"Welcome, Cadet {name}! Preparing your mission log...")
+
+# Display mission duration
+print(f"Mission Duration: {duration} hours. Good luck, {name}!")`,
       case_explanation: `Use \`input()\` to get the cadet's name, print a welcome message with their name, calculate mission duration (15 days × 24 hours = 360 hours), and display the final message with the duration and name.`,
 
       created_at: new Date(),

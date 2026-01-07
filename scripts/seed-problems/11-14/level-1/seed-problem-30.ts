@@ -20,7 +20,6 @@ async function seedProblem30() {
       title: 'Nested If-Else with External Flags',
       description: 'Combine nested if-else statements with flag variables to control program flow based on multiple sequential checks.',
       difficulty: 'Medium',
-      tags: ['conditionals', 'nested-if', 'flags', 'boolean-logic', 'final-task'],
       question: `Use input() to get power (convert to integer).
 Use input() to get cooling (convert to integer).
 Use input() to get pressure_ok (string: "True" or "False").
@@ -32,20 +31,34 @@ Else print "Reactor Startup Denied."`,
       example_code: '# Write your code here\n',
       sample_input: '95\n75\nTrue\nTrue',
       sample_output: 'Reactor Startup Approved.',
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect power, cooling, pressure, and radiation safety data
+- Convert input to integers using int()
+- Create and use a boolean flag variable to track state
+- Use deeply nested if statements (three levels) for sequential checks
+- Use logical operator (and) to combine multiple conditions
+- Set flag to True only when all conditions are met
+- Make final decision based on flag value`,
+
+      concepts: `- Flag Variables: Using boolean variables to track state across nested conditions
+- Nested If Statements: Creating three-level decision structures
+- Logical AND Operator: Combining multiple conditions with 'and'
+- State Tracking: Storing the result of multiple checks in a variable
+- Sequential Validation: Checking conditions one after another
+- Final Decision Logic: Using the flag to make the ultimate decision`,
+
       metadata: {
         concepts: ['nested-if', 'flags', 'boolean-logic', 'state-tracking', 'final-task'],
         space_theme: true,
-        estimated_time_minutes: 18,
-        test_protocol: 'Students should use flag variable with nested conditionals to track state'
+        estimated_time_minutes: 18
       },
       // Case-specific content
       case_number: 5,
       case_title: 'Nested If-Else with External Flags',
-      case_overview: `Case 5: Nested If-Else with External Flags (Final Task)
-
-In this final task, you'll combine everything you've learned about nested if-else statements with flag variables. A flag is a boolean variable that stores the result of multiple condition checks.`,
+      case_overview: `In this final task, you'll combine everything you've learned about nested if-else statements with flag variables. A flag is a boolean variable that stores the result of multiple condition checks.`,
       case_explanation: `Use a boolean variable (flag) to track if all conditions pass. Start with flag = False. Use nested ifs to check conditions. If all pass, set flag = True. After checks, use the flag to make final decision.`,
       case_code: `# Sample Example:
 fuel = int(input())
@@ -62,10 +75,7 @@ if fuel > 60:
 if launch_ready:
     print("Launch Approved.")
 else:
-    print("Launch Denied.")
-
-# Now you try for our task`,
-      expected_output: 'Reactor Startup Approved.',
+    print("Launch Denied.")`,
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -77,6 +87,7 @@ else:
         input: '95\n75\nTrue\nTrue',
         expected_output: 'Reactor Startup Approved.',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

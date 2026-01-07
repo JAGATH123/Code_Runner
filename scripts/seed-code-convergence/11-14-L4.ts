@@ -8,7 +8,6 @@ async function seedCodeConvergenceL4() {
 
   try {
     await client.connect();
-    console.log('Connected to MongoDB');
 
     const db = client.db(MONGODB_DB);
     const problemsCollection = db.collection('problems');
@@ -82,17 +81,11 @@ async function seedCodeConvergenceL4() {
       updated_at: new Date()
     };
 
-    // Delete existing Code Convergence L4 if it exists
     await problemsCollection.deleteOne({ problem_id: 242 });
     await testCasesCollection.deleteMany({ problem_id: 242 });
 
-    // Insert Code Convergence L4
     const problemResult = await problemsCollection.insertOne(codeConvergenceL4);
-    console.log('Code Convergence L4 inserted');
-
-    // Test cases for Code Convergence L4 (7 test cases)
     const testCases = [
-      // Visible test case
       {
         test_case_id: 2421,
         problem_id: 242,
@@ -101,7 +94,6 @@ async function seedCodeConvergenceL4() {
         is_hidden: false,
         weight: 20
       },
-      // Hidden test cases
       {
         test_case_id: 2422,
         problem_id: 242,
@@ -151,29 +143,18 @@ async function seedCodeConvergenceL4() {
         weight: 10
       }
     ];
-
-    // Insert test cases
     await testCasesCollection.insertMany(testCases);
-    console.log(`${testCases.length} test cases inserted for Code Convergence L4`);
-
-    console.log('\n✅ Code Convergence L4 (Project GALACTIC COMMAND) seeded successfully!');
-
   } catch (error) {
-    console.error('Error seeding database:', error);
     throw error;
   } finally {
     await client.close();
-    console.log('MongoDB connection closed');
   }
 }
 
-// Run the seed function
 seedCodeConvergenceL4()
   .then(() => {
-    console.log('\n🚀 Database seeding completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('\n❌ Database seeding failed:', error);
     process.exit(1);
   });

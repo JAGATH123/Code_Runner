@@ -215,12 +215,6 @@ async function displayTitleScreen() {
     title.setAttribute("style", `border: 5px solid rgb(${window.theme.r}, ${window.theme.g}, ${window.theme.b});`);
 
     await _delay(1000);
-
-    // Boot sequence complete - you can add your own callback here
-    console.log("Boot sequence complete!");
-
-    // Optional: Remove boot screen after completion
-    // bootScreen.remove();
 }
 
 // Start the boot sequence

@@ -21,7 +21,8 @@ async function seedProblem228() {
       title: 'Making a Folder and Saving a File Inside',
       description: 'Learn to create folders and save files inside them using os.mkdir() and os.path.join().',
       difficulty: 'Medium',
-      question: `Create a folder named "projects" using os.mkdir() (only if it doesn't exist - check with os.path.exists()), and inside it save a file "science.txt" that contains "My science project". Use os.path.join() to combine the folder and file path. Print "File saved in new folder." when done.`,      sample_input: '',
+      question: `Read folder name, filename, and content from input (3 lines). Create the folder using os.mkdir() if it doesn't exist (check with os.path.exists()). Use os.path.join() to create the full file path and save the content to the file. Print "File saved in new folder." when done.`,
+      sample_input: 'projects\nscience.txt\nMy science project',
       sample_output: 'File saved in new folder.',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem228() {
 
     // Test cases for Problem 228
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2281,
         problem_id: 228,
-        input: '',
+        input: 'projects\nscience.txt\nMy science project',
         expected_output: 'File saved in new folder.',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2282,
         problem_id: 228,
-        input: '',
+        input: 'documents\nreport.txt\nQuarterly Report',
         expected_output: 'File saved in new folder.',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2283,
-        problem_id: 228,
-        input: '',
-        expected_output: 'File saved in new folder.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2284,
-        problem_id: 228,
-        input: '',
-        expected_output: 'File saved in new folder.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2285,
-        problem_id: 228,
-        input: '',
-        expected_output: 'File saved in new folder.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2286,
-        problem_id: 228,
-        input: '',
-        expected_output: 'File saved in new folder.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2287,
-        problem_id: 228,
-        input: '',
-        expected_output: 'File saved in new folder.',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

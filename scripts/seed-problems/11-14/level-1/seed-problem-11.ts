@@ -43,16 +43,9 @@ Then print "Hello, " followed by the name.`,
 astronaut = input()
 print("Welcome aboard,", astronaut)`,
       case_explanation: `How to get user input:
-
 ● Use input() to get data from the user
 ● Store it in a variable: name = input()
-● Print a greeting with the name
-
-Input Format:
-One line containing the user's name (e.g., Alice)
-
-Output Format:
-Print "Hello, " followed by the name (e.g., Hello, Alice)`,
+● Print a greeting with the name`,
 
       created_at: new Date(),
       updated_at: new Date()

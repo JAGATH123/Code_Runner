@@ -20,7 +20,6 @@ async function seedProblem26() {
       title: 'Simple Nested If',
       description: 'Learn to use nested if statements to make multi-level decisions based on multiple conditions.',
       difficulty: 'Easy',
-      tags: ['conditionals', 'nested-if', 'multi-level-decisions'],
       question: `Use input() to get fuel_level (convert to integer).
 Check if fuel_level > 50.
 If true, print "Fuel level is sufficient."
@@ -29,34 +28,43 @@ If true, print "Fuel level is excellent."`,
       example_code: '# Write your code here\n',
       sample_input: '80',
       sample_output: 'Fuel level is sufficient.\nFuel level is excellent.',
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect fuel level data
+- Convert input to integer using int()
+- Use nested if statements for multi-level decisions
+- Use comparison operators (>) to check conditions
+- Print appropriate messages based on nested conditions`,
+
+      concepts: `- Nested Conditionals: Placing if statements inside other if statements
+- Multi-level Decisions: Making sequential decisions based on conditions
+- Comparison Operators: Using > to compare values
+- Input/Output: Reading user input and displaying results
+- Code Indentation: Understanding how indentation defines nested blocks`,
+
       metadata: {
         concepts: ['nested-if', 'conditionals', 'multi-level-decisions', 'comparison-operators'],
         space_theme: true,
-        estimated_time_minutes: 12,
-        test_protocol: 'Students should use nested if statements to check fuel_level conditions'
+        estimated_time_minutes: 12
       },
+
       // Case-specific content
       case_number: 1,
       case_title: 'Simple Nested If',
-      case_overview: `Case 1: Simple Nested If
-
-Learn to use nested if statements to check conditions within conditions, creating multi-level decision-making logic.`,
+      case_overview: `Learn to use nested if statements to check conditions within conditions, creating multi-level decision-making logic.`,
+      case_code: `# Sample Example:
+temperature = int(input())
+if temperature > 20:
+    print("Temperature is comfortable.")
+    if temperature > 30:
+        print("It's getting hot!")`,
       case_explanation: `Nested If Structure:
 ● Outer if checks first condition
 ● If outer condition is True, its code block runs
 ● Inside that block, you can have another if (nested if)
 ● The nested if only runs if the outer if was True`,
-      case_code: `# Sample Example:
-temperature = int(input("Enter temperature: "))
-if temperature > 20:
-    print("Temperature is comfortable.")
-    if temperature > 30:
-        print("It's getting hot!")
-
-# Now you try for our task`,
-      expected_output: 'Fuel level is sufficient.\nFuel level is excellent.',
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -68,6 +76,7 @@ if temperature > 20:
         input: '80',
         expected_output: 'Fuel level is sufficient.\nFuel level is excellent.',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

@@ -21,12 +21,8 @@ async function seedProblem218() {
       title: 'Locating the Cursor with tell()',
       description: 'Learn to track file pointer position using tell() to monitor where data is written in the log.',
       difficulty: 'Easy',
-      question: `Write three new log entries to "galactic_log.txt" and track the file pointer position after each entry:
-1. "ENGINE IGNITED"
-2. "NAV ONLINE"
-3. "CABIN SEALED"
-
-After writing each entry on a new line, print the position in format: "Position after [entry name]: [byte position]"`,      sample_input: '',
+      question: `Read 3 log entries from input (one per line). Write them to "galactic_log.txt" and track the file pointer position after writing each entry. After writing each entry on a new line, print the position in format: "Position after [entry]: [byte position]" where [entry] is the log entry name.`,
+      sample_input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED',
       sample_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
 
       age_group: '11-14',
@@ -63,63 +59,21 @@ After writing each entry on a new line, print the position in format: "Position 
 
     // Test cases for Problem 218
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2181,
         problem_id: 218,
-        input: '',
+        input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED',
         expected_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2182,
         problem_id: 218,
-        input: '',
-        expected_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
+        input: 'FUEL CHECK\nLIFE SUPPORT\nCOMMUNICATIONS',
+        expected_output: 'Position after FUEL CHECK: 11\nPosition after LIFE SUPPORT: 24\nPosition after COMMUNICATIONS: 39',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2183,
-        problem_id: 218,
-        input: '',
-        expected_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2184,
-        problem_id: 218,
-        input: '',
-        expected_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2185,
-        problem_id: 218,
-        input: '',
-        expected_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2186,
-        problem_id: 218,
-        input: '',
-        expected_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2187,
-        problem_id: 218,
-        input: '',
-        expected_output: 'Position after ENGINE IGNITED: 15\nPosition after NAV ONLINE: 26\nPosition after CABIN SEALED: 39',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

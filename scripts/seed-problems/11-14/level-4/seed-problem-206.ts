@@ -21,13 +21,9 @@ async function seedProblem206() {
       title: 'Writing Mission Logs to Text Files',
       description: 'Learn to create files and write structured mission data using write mode for logging launch sequences.',
       difficulty: 'Easy',
-      question: `Create a program that writes 3 log entries for a mission launch sequence into a file called "mission_log.txt". The entries should be:
-1. "PREP CHECKED"
-2. "IGNITION STARTED"
-3. "LAUNCHED"
-
-Each entry should be on a new line. Print "Mission log created successfully" when done.`,      sample_input: '',
-      sample_output: 'Mission log created successfully',
+      question: `Read 3 log entries from input (one per line). Write them to a file called "mission_log.txt" with each entry on a new line. Then read the file back and print its entire contents.`,
+      sample_input: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
+      sample_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -63,63 +59,21 @@ Each entry should be on a new line. Print "Mission log created successfully" whe
 
     // Test cases for Problem 206
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2061,
         problem_id: 206,
-        input: '',
-        expected_output: 'Mission log created successfully',
+        input: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
+        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2062,
         problem_id: 206,
-        input: '',
-        expected_output: 'Mission log created successfully',
+        input: 'SYSTEMS ONLINE\nCOURSE PLOTTED\nENGINES READY',
+        expected_output: 'SYSTEMS ONLINE\nCOURSE PLOTTED\nENGINES READY\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2063,
-        problem_id: 206,
-        input: '',
-        expected_output: 'Mission log created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2064,
-        problem_id: 206,
-        input: '',
-        expected_output: 'Mission log created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2065,
-        problem_id: 206,
-        input: '',
-        expected_output: 'Mission log created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2066,
-        problem_id: 206,
-        input: '',
-        expected_output: 'Mission log created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2067,
-        problem_id: 206,
-        input: '',
-        expected_output: 'Mission log created successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

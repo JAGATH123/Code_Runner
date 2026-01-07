@@ -33,6 +33,12 @@ export async function GET(
       test_cases: testCases,
       visible_test_cases: visibleTestCases,
       data_source: DataService.getDataSourceInfo()
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
     });
 
   } catch (error) {

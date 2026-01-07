@@ -24,17 +24,7 @@ async function seedProblem198() {
       question: `Create a nested exception system. Outer try prints "Main Engine Check". Inner try raises RuntimeError("Sensor glitch detected"). Inner except catches it and prints "Inner Recovery: Sensor glitch detected", then raises Exception("Mission abort initiated"). Outer except catches it and prints "Outer System Response: Mission abort initiated". Finally always prints "Mission Report Filed."`,      sample_input: '',
       sample_output: 'Main Engine Check\nInner Recovery: Sensor glitch detected\nOuter System Response: Mission abort initiated\nMission Report Filed.\n',
 
-      compiler_comment: `try:
-    print("Main Engine Check")
-    try:
-        raise RuntimeError("Sensor glitch detected")
-    except RuntimeError:
-        print("Inner Recovery: Sensor glitch detected")
-        raise Exception("Mission abort initiated")
-except Exception:
-    print("Outer System Response: Mission abort initiated")
-finally:
-    print("Mission Report Filed.")`,
+      compiler_comment: `# Write your code here\n`,
 
       age_group: '11-14',
       level_number: 4,

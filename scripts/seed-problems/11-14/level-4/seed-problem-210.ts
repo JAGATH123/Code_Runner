@@ -21,13 +21,9 @@ async function seedProblem210() {
       title: 'Binary Data Transmission Logs',
       description: 'Learn to handle binary file operations for storing and retrieving encoded sensor data.',
       difficulty: 'Medium',
-      question: `Create a program that:
-1. Writes the binary message b"TELEMETRY: SYSTEM OK - TEMP 22C" to a file called "sensor_data.bin" using binary write mode
-2. Reads the binary data back from the file
-3. Prints the decoded content
-
-Print "Binary data logged successfully" after writing, then print the decoded content after reading.`,      sample_input: '',
-      sample_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
+      question: `Read a message from input. Convert it to binary using encode(). Write it to "sensor_data.bin" using binary write mode (wb). Then read the file back using binary read mode (rb), decode the content, and print it.`,
+      sample_input: 'TELEMETRY: SYSTEM OK - TEMP 22C',
+      sample_output: 'TELEMETRY: SYSTEM OK - TEMP 22C\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -63,63 +59,21 @@ Print "Binary data logged successfully" after writing, then print the decoded co
 
     // Test cases for Problem 210
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2101,
         problem_id: 210,
-        input: '',
-        expected_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
+        input: 'TELEMETRY: SYSTEM OK - TEMP 22C',
+        expected_output: 'TELEMETRY: SYSTEM OK - TEMP 22C\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2102,
         problem_id: 210,
-        input: '',
-        expected_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
+        input: 'SENSOR DATA: PRESSURE 101.3 KPA',
+        expected_output: 'SENSOR DATA: PRESSURE 101.3 KPA\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2103,
-        problem_id: 210,
-        input: '',
-        expected_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2104,
-        problem_id: 210,
-        input: '',
-        expected_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2105,
-        problem_id: 210,
-        input: '',
-        expected_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2106,
-        problem_id: 210,
-        input: '',
-        expected_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2107,
-        problem_id: 210,
-        input: '',
-        expected_output: 'Binary data logged successfully\nTELEMETRY: SYSTEM OK - TEMP 22C',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

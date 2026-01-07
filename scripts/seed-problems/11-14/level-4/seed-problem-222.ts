@@ -8,8 +8,6 @@ async function seedProblem222() {
 
   try {
     await client.connect();
-    console.log('Connected to MongoDB');
-
     const db = client.db(MONGODB_DB);
     const problemsCollection = db.collection('problems');
     const testCasesCollection = db.collection('test_cases');
@@ -17,16 +15,17 @@ async function seedProblem222() {
     // Problem 222: Level 4, Session 7, Case 5 - Accessing File Metadata
     const problem222 = {
       problem_id: 222,
-      session_id: 40, // Level 4, Session 7
+      session_id: 40, 
       title: 'Accessing File Metadata',
       description: 'Learn to retrieve file properties using file.name and file.encoding attributes for compatibility verification.',
       difficulty: 'Medium',
-      question: `Open "galactic_log.txt" in read mode with UTF-8 encoding. Print the file's name and encoding format. Then append a final log entry "LOG READY FOR TRANSMISSION" to the file.
+      question: `Read 2 log entries from input (one per line). Write them to "galactic_log.txt". Then open the file in read mode with UTF-8 encoding and print the file's name and encoding format. Finally, append "LOG READY FOR TRANSMISSION" to the file and print "Transmission ready".
 
 Format:
 File Name: [filename]
 Encoding: [encoding]
-Transmission ready`,      sample_input: '',
+Transmission ready`,
+      sample_input: 'ENGINE IGNITED\nNAV ONLINE',
       sample_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
 
       age_group: '11-14',
@@ -39,10 +38,8 @@ Transmission ready`,      sample_input: '',
         concepts: ['file.name', 'file.encoding', 'file attributes', 'metadata retrieval', 'append mode'],
         estimated_time_minutes: 12
       },
-
       // Session-level content
       session_title: 'Session 7: File Position and Operations',
-
       // Case-specific content
       case_number: 5,
       case_title: 'Accessing File Metadata (name, encoding)',
@@ -52,99 +49,46 @@ Transmission ready`,      sample_input: '',
       created_at: new Date(),
       updated_at: new Date()
     };
-
     // Delete existing problem 222 if it exists
     await problemsCollection.deleteOne({ problem_id: 222 });
     await testCasesCollection.deleteMany({ problem_id: 222 });
-
     // Insert problem 222
     const problemResult = await problemsCollection.insertOne(problem222);
-    console.log('Problem 222 inserted');
-
     // Test cases for Problem 222
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2221,
         problem_id: 222,
-        input: '',
+        input: 'ENGINE IGNITED\nNAV ONLINE',
         expected_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2222,
         problem_id: 222,
-        input: '',
+        input: 'SYSTEMS CHECK\nFUEL LOADED',
         expected_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2223,
-        problem_id: 222,
-        input: '',
-        expected_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2224,
-        problem_id: 222,
-        input: '',
-        expected_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2225,
-        problem_id: 222,
-        input: '',
-        expected_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2226,
-        problem_id: 222,
-        input: '',
-        expected_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2227,
-        problem_id: 222,
-        input: '',
-        expected_output: 'File Name: galactic_log.txt\nEncoding: utf-8\nTransmission ready',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 
     // Insert test cases
     await testCasesCollection.insertMany(testCases);
-    console.log(`${testCases.length} test cases inserted for Problem 222`);
-
-    console.log('\n✅ Problem 222 (Level 4, Session 7, Case 5: Accessing File Metadata) seeded successfully!');
 
   } catch (error) {
-    console.error('Error seeding database:', error);
     throw error;
   } finally {
     await client.close();
-    console.log('MongoDB connection closed');
   }
 }
 
 // Run the seed function
 seedProblem222()
   .then(() => {
-    console.log('\n🚀 Database seeding completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('\n❌ Database seeding failed:', error);
     process.exit(1);
   });

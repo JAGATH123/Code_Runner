@@ -21,17 +21,15 @@ async function seedProblem59() {
       title: 'Satellite Launch Countdown',
       description: `NOVA-12's engines ignite and the ship lifts off from its dormant position. In low orbit, minor attitude and thrust corrections are required while systems settle after years of sleep. The ship's stabilization module needs a precise countdown sequence to coordinate the orbital maneuver systems.
 
-Astra: *"Commander, we're approaching launch sequence. The orbital stabilization requires a precise countdown protocol—each second is critical for the engines to fire in perfect synchronization. We need a for loop to iterate through the countdown and ensure all systems engage at the right moment."*
+Astra: "Commander, we're approaching launch sequence. The orbital stabilization requires a precise countdown protocol—each second is critical for the engines to fire in perfect synchronization. We need a for loop to iterate through the countdown and ensure all systems engage at the right moment."
 
 Your mission is to demonstrate the countdown sequence for NOVA-12's orbital launch.`,
 
       question: `Commander, initiate the Satellite Launch Countdown!
-
 Your program should execute the orbital launch sequence:
 - Create a countdown from 10 to 1 using a for loop with range()
 - Print "T-minus [seconds] seconds" for each countdown number
 - After the countdown completes, print "Launch initiated!"
-
 The countdown loop must iterate in reverse order to properly synchronize the engine firing sequence.`,
 
       difficulty: 'Medium',
@@ -53,6 +51,20 @@ Launch initiated!`,
       age_group: '11-14',
       level_number: 1,
 
+      objectives: `- Use a for loop to iterate through a sequence
+- Use range() with three parameters (start, stop, step)
+- Understand reverse iteration with negative step values
+- Print formatted countdown messages using string concatenation
+- Execute code after loop completion
+- Display countdown sequence in descending order`,
+
+      concepts: `- For Loops: Iterating through sequences with for loop syntax
+- range() Function: Creating number sequences with start, stop, and step parameters
+- Reverse Iteration: Using negative step (-1) to count backwards
+- Loop Variables: Using loop counter in print statements
+- String Formatting: Creating dynamic messages with variables
+- Sequential Execution: Understanding that code after loop runs when loop completes`,
+
       metadata: {
         concepts: ['for loops', 'range', 'countdown', 'iteration', 'reverse order'],
         space_theme: true,
@@ -60,10 +72,26 @@ Launch initiated!`,
         estimated_time_minutes: 25,
         is_final_task: true
       },
+
       // Case-specific content (Final Task)
       case_number: 6,
       case_title: 'Satellite Launch Countdown - Orbital Maneuver System',
-      case_explanation: `Use for loop with range(10, 0, -1) to count down from 10 to 1. The range function needs three arguments: start, stop, step. range(10, 0, -1) means: start at 10, stop before 0, step by -1 (counting backwards). Inside the loop, print "T-minus [seconds] seconds" for each iteration. After the loop completes, print "Launch initiated!" to confirm sequence completion.`,
+      // case_overview removed for final tasks (Case 6)
+
+      case_code: `# Create countdown from 10 to 1
+for seconds in range(10, 0, -1):
+    print(f"T-minus {seconds} seconds")
+
+# Print launch message after countdown
+print("Launch initiated!")`,
+
+      case_explanation: `- Use \`for\` loop with \`range(10, 0, -1)\` to count down from 10 to 1
+- \`range(10, 0, -1)\` means: start at 10, stop before 0, step by -1 (counting backwards)
+- Inside the loop, print "T-minus [seconds] seconds" for each iteration
+- After the loop completes, print "Launch initiated!" to confirm sequence completion`,
+
+      created_at: new Date(),
+      updated_at: new Date()
     };
 
     await problemsCollection.deleteOne({ problem_id: 59 });
@@ -88,7 +116,9 @@ T-minus 2 seconds
 T-minus 1 seconds
 Launch initiated!`,
         is_hidden: false,
-        weight: 1.0
+        is_sample: true,
+        weight: 1.0,
+        created_at: new Date()
       },
       {
         test_case_id: 'tc_59_2',
@@ -106,7 +136,8 @@ T-minus 2 seconds
 T-minus 1 seconds
 Launch initiated!`,
         is_hidden: true,
-        weight: 1.0
+        weight: 1.0,
+        created_at: new Date()
       }
     ];
 

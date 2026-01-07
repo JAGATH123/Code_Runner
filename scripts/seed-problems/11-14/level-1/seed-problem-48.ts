@@ -31,22 +31,53 @@ Inside the loop, print "Temperature: " followed by the current temperature.`,
       sample_output: 'Temperature: 100\nTemperature: 90\nTemperature: 80\nTemperature: 70',
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Convert string input to integers using int()
+- Use range() with three parameters (start, stop, step)
+- Understand positive step values for counting up
+- Understand negative step values for counting down
+- Print formatted output with specific spacing
+- Understand how step determines the increment/decrement between numbers`,
+
+      concepts: `- For Loops: Iterating through custom sequences with step values
+- range(start, stop, step): Creating sequences with custom increments
+- Positive Step: Counting up with specified intervals
+- Negative Step: Counting down with specified intervals
+- Step Value: The difference between consecutive numbers in the sequence
+- Stop Value Exclusion: range still excludes the stop value regardless of step
+- Increment/Decrement Control: Using step to control sequence progression`,
+
       metadata: {
         concepts: ['range', 'for-loop', 'loops', 'step', 'iteration', 'increment-decrement'],
         space_theme: true,
-        estimated_time_minutes: 15,
-        test_protocol: 'Students should use range(start, stop, step) with positive or negative step values'
+        estimated_time_minutes: 15
       },
       // Case-specific content
       case_number: 3,
       case_title: 'Using Step in Range',
       case_overview: `Use range(start, stop, step) to control the increment or decrement between numbers.`,
-      case_code: `# Sample Example:
-for temp in range(100, 60, -10):
-    print("Cooling system: Temperature =", temp)
 
-# Now you try this for our task`,
-      case_explanation: `range(start, stop, step) controls the increment/decrement. Positive step: counts up (e.g., range(0, 10, 2) → 0, 2, 4, 6, 8). Negative step: counts down (e.g., range(100, 60, -10) → 100, 90, 80, 70). Step determines the difference between consecutive numbers. Stop value is still excluded. Use input() three times for start, stop, step. Convert all to integers. Use: for temp in range(start, stop, step):. Inside loop (indented): print("Temperature:", temp). Negative step makes the sequence count backwards. Make sure to use exact output format with space after colon.`,
+      case_code: `# Get start, stop, and step from user
+start = int(input())
+stop = int(input())
+step = int(input())
+
+# Loop with custom step value
+for temp in range(start, stop, step):
+    print("Temperature:", temp)`,
+
+      case_explanation: `- \`range(start, stop, step)\` controls the increment/decrement
+- Positive step: counts up (e.g., \`range(0, 10, 2)\` → 0, 2, 4, 6, 8)
+- Negative step: counts down (e.g., \`range(100, 60, -10)\` → 100, 90, 80, 70)
+- Step determines the difference between consecutive numbers
+- Stop value is still excluded
+- Use \`input()\` three times for start, stop, step
+- Convert all to integers
+- Use \`for temp in range(start, stop, step):\` to iterate
+- Inside loop (indented): \`print("Temperature:", temp)\`
+- Negative step makes the sequence count backwards
+- Make sure to use exact output format with space after colon`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -60,6 +91,7 @@ for temp in range(100, 60, -10):
         input: '100\n60\n-10',
         expected_output: 'Temperature: 100\nTemperature: 90\nTemperature: 80\nTemperature: 70',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

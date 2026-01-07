@@ -1,33 +1,27 @@
-import { createClient } from 'redis';
+import { OptimizedDatabaseService } from '../src/lib/database/db-service-optimized';
 
 async function clearCache() {
-  const client = createClient({
-    url: process.env.REDIS_URL || 'redis://localhost:6379'
-  });
-
   try {
-    await client.connect();
-    console.log('Connected to Redis');
+    console.log('Clearing all problem caches...');
 
-    // Clear all cache keys
-    await client.flushAll();
+    // Invalidate all problem-related caches
+    await OptimizedDatabaseService.invalidateCache('problem');
+
     console.log('✅ Cache cleared successfully!');
+    console.log('Cache stats:', OptimizedDatabaseService.getCacheStats());
 
   } catch (error) {
-    console.error('Error clearing cache:', error);
-    console.log('ℹ️  Redis might not be running, which is fine for development');
-  } finally {
-    await client.quit();
-    console.log('Redis connection closed');
+    console.error('❌ Error clearing cache:', error);
+    process.exit(1);
   }
 }
 
 clearCache()
   .then(() => {
-    console.log('\n🚀 Cache clear completed!');
+    console.log('\n✅ Cache clearing completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('Error:', error);
-    process.exit(0); // Exit with 0 even on error since Redis might not be running
+    console.error('\n❌ Cache clearing failed:', error);
+    process.exit(1);
   });

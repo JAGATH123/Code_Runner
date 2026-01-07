@@ -21,24 +21,17 @@ async function seedProblem205() {
       title: 'Cosmic Data Vault – Archiving Mission Logs for Deep-Space Exploration',
       description: 'Build a comprehensive fault-free logging system using all file handling basics to archive mission logs permanently.',
       difficulty: 'Hard',
-      question: `Welcome to the Cosmic Data Vault! You are the Data Archivist responsible for building a fault-free logging system. During repair operations, Astra orders a permanent log of every attempt with time-stamps so nothing is lost if the core blinks.
+      question: `Build a mission logging system with 4 steps:
 
-Your spacecraft must:
-- Log messages into mission_log.txt
-- Retrieve logs for analysis
-- Add new entries without removing old ones
-- Display all mission history cleanly
+Step 1: Create mission_log.txt and write "Mission started successfully.\\n" Print "Mission log created"
 
-Complete 4 steps:
+Step 2: Append "Oxygen levels stable\\n" and "Engines checked\\n" to the file. Print "System updates appended"
 
-Step 1: Create Mission Log File - Create mission_log.txt and write "Mission started successfully." using write mode.
+Step 3: Read the entire file and print its contents (3 lines)
 
-Step 2: Append System Updates - Add "Oxygen levels stable" and "Engines checked" to the file without deleting the first message using append mode with \\n.
-
-Step 3: Read All Mission Logs - Open the file in read mode and print all updates saved so far using the with statement.
-
-Step 4: Add User-Entered Logs - Take user input for a new log message, append it to the file, and print "Log saved!" after writing.`,      sample_input: 'Solar panels deployed',
-      sample_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
+Step 4: Read a message from input, append it with \\n to the file, then print "Log saved!"`,
+      sample_input: 'Solar panels deployed',
+      sample_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -57,8 +50,8 @@ Step 4: Add User-Entered Logs - Take user input for a new log message, append it
       // Case-specific content
       case_number: 6,
       case_title: 'Cosmic Data Vault – Archiving Mission Logs for Deep-Space Exploration',
-      case_overview: `A comprehensive mission logging system that combines all file handling techniques: creating files with write mode, appending updates without data loss, reading logs for analysis, and accepting user-entered logs. Creates time-stamped permanent records for deep-space repair operations.`,
-      case_explanation: `Implement 4 interconnected steps: Create mission_log.txt with opening message, append system updates with newlines, read and display all logs using with statement, accept user input and append to log file. Demonstrates complete file handling mastery for mission-critical data archival.`,
+      case_overview: `Build a logging system that writes, appends, and reads mission data. Combine write mode, append mode, and read operations to create permanent mission records.`,
+      case_explanation: `Create mission_log.txt with write mode. Append system updates. Read and display all logs. Accept user input and append to file. Print "Log saved!" when done.`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -72,65 +65,23 @@ Step 4: Add User-Entered Logs - Take user input for a new log message, append it
     const problemResult = await problemsCollection.insertOne(problem205);
     console.log('Problem 205 inserted');
 
-    // Test cases for Problem 205 (7 test cases)
+    // Test cases for Problem 205
     const testCases = [
-      // Visible test case
       {
         test_case_id: 2051,
         problem_id: 205,
         input: 'Solar panels deployed',
-        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
+        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!\n',
         is_hidden: false,
-        weight: 15
+        weight: 50
       },
-      // Hidden test cases
       {
         test_case_id: 2052,
         problem_id: 205,
         input: 'Navigation systems online',
-        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2053,
-        problem_id: 205,
-        input: 'Communication restored',
-        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2054,
-        problem_id: 205,
-        input: 'Life support functional',
-        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2055,
-        problem_id: 205,
-        input: 'Shields activated',
-        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
-        is_hidden: true,
-        weight: 10
-      },
-      {
-        test_case_id: 2056,
-        problem_id: 205,
-        input: 'Thrusters calibrated',
-        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2057,
-        problem_id: 205,
-        input: 'Sensors initialized',
-        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!',
-        is_hidden: true,
-        weight: 15
+        expected_output: 'Mission log created\nSystem updates appended\nMission started successfully.\nOxygen levels stable\nEngines checked\nLog saved!\n',
+        is_hidden: false,
+        weight: 50
       }
     ];
 

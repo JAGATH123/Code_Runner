@@ -21,7 +21,8 @@ async function seedProblem224() {
       title: 'Listing All Files in a Folder',
       description: 'Learn to list directory contents using os.listdir() and check folder existence with os.path.exists().',
       difficulty: 'Easy',
-      question: `Create a folder on your computer named "mydata" and add two text files in it (can be blank files named "file1.txt" and "file2.txt"). Write a Python program that checks if the folder exists using os.path.exists(), then lists all files inside "mydata" using os.listdir(). If the folder exists, print "Files in folder: [list]". If the folder doesn't exist, print "Folder not found."`,      sample_input: '',
+      question: `Read 2 filenames from input. Create a folder named "mydata", then create the 2 files inside it (can be blank files). Check if the folder exists using os.path.exists(), then list all files inside "mydata" using os.listdir(). Print "Files in folder: [sorted list]".`,
+      sample_input: 'file1.txt\nfile2.txt',
       sample_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem224() {
 
     // Test cases for Problem 224
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2241,
         problem_id: 224,
-        input: '',
+        input: 'file1.txt\nfile2.txt',
         expected_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2242,
         problem_id: 224,
-        input: '',
-        expected_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
+        input: 'data.txt\nlog.txt',
+        expected_output: 'Files in folder: [\'data.txt\', \'log.txt\']',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2243,
-        problem_id: 224,
-        input: '',
-        expected_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2244,
-        problem_id: 224,
-        input: '',
-        expected_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2245,
-        problem_id: 224,
-        input: '',
-        expected_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2246,
-        problem_id: 224,
-        input: '',
-        expected_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2247,
-        problem_id: 224,
-        input: '',
-        expected_output: 'Files in folder: [\'file1.txt\', \'file2.txt\']',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

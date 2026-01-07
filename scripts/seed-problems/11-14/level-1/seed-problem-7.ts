@@ -25,7 +25,6 @@ async function seedProblem7() {
 - oxygen_level = 98.6 (float)
 - rover_name = "Explorer-1" (string)
 - mission_active = True (boolean)
-
 Print all four variables, each on a new line.`,
       difficulty: 'Intro',
       example_code: '# Write your code here\n',
@@ -46,39 +45,27 @@ Print all four variables, each on a new line.`,
 
 # Integer (int) - whole numbers
 count = 5
-age = 25
 
 # Float - decimal numbers
 temperature = 36.6
-price = 19.99
 
 # String (str) - text in quotes
 name = "Alice"
-city = "Paris"
 
 # Boolean (bool) - True or False
 is_active = True
-is_complete = False
 
 # Print them:
 print(count)
 print(temperature)
 print(name)
-print(is_active)
+print(is_active)`,
+      case_explanation: `Python Data Types:
 
-# Now create your own variables with different types!`,
-      case_explanation: `**Python Data Types:**
-
-● **int (integer)**: Whole numbers like 30, -5, 1000
-● **float**: Decimal numbers like 98.6, 3.14, -0.5
-● **str (string)**: Text in quotes like "Explorer-1"
-● **bool (boolean)**: True or False (capital first letter, no quotes)
-
-**Input Format:**
-You do not need to read any input for this challenge.
-
-**Output Format:**
-Print each variable on a separate line as shown in the question.`,
+● int (integer): Whole numbers like 30, -5
+● float: Decimal numbers like 98.6, 3.14
+● str (string): Text in quotes like "Explorer-1"
+● bool (boolean): True or False`,
 
       created_at: new Date(),
       updated_at: new Date()

@@ -46,17 +46,10 @@ crew_num = int(crew_str)
 suits = crew_num * 2
 print("Suits needed:", suits)`,
       case_explanation: `Inline Conversion:
-
 ● Combine input() and int() in one line
 ● Syntax: days = int(input())
 ● This is shorter than doing it in two steps
-● Same works with float: price = float(input())
-
-Input Format:
-One line containing an integer (number of days)
-
-Output Format:
-Print "Mission Duration: " followed by hours and " hours"`,
+● Same works with float: price = float(input())`,
 
       created_at: new Date(),
       updated_at: new Date()

@@ -21,21 +21,15 @@ async function seedProblem199() {
       title: 'Cosmic Fault Resilience System – Fortifying Space Systems Against Anomalies',
       description: 'Build a comprehensive fault-resilient spacecraft system using finally blocks and custom user-defined exceptions.',
       difficulty: 'Hard',
-      question: `Welcome to the Cosmic Fault Resilience System! A sudden surge has tripped the security gate. You must design procedures that always release locks and close files even on failure.
+      question: `Build a fault-resilient system with custom exceptions and finally blocks.
 
-Create custom exceptions (OverloadError, SealLockError) and use guaranteed cleanup with finally to ensure the relay doesn't get stuck half-open.
+1. Define custom exceptions: SensorMalfunction, TransmissionCorrupted, ComputationError
+2. Use try-finally: print "Solar panels deployed", ensure "Power lines disconnected safely"
+3. Check temperature > 100: print "Cooling System Overload!" else "Cooling temperature normal"
+4. Raise exception based on error_type, handle with recovery_status (recovery_fail prints "Fallback System Activated" + "Mission Abort Initiated")
+5. Print "Log entry recorded: {log_status}" and "All operations complete"
 
-Complete 5 steps:
-
-Step 1: Critical Operation with Guaranteed Execution - Deploy solar panels with finally block ensuring "Power lines disconnected safely".
-
-Step 2: Raise Custom Errors Based on Conditions - Check cooling system temperature > 100 and raise Exception("Cooling System Overload!").
-
-Step 3: Define User-Defined Exceptions - Create SensorMalfunction, TransmissionCorrupted, and ComputationError classes and raise them based on conditions.
-
-Step 4: Multi-Layered Exception Recovery - Nested try-except where primary recovery fails, trigger secondary error, handle both with "Fallback System Activated" and "Mission Abort Initiated".
-
-Step 5: File Logging with Guaranteed Execution - Update log.txt with status entries using finally to always log outcomes with timestamps.`,      sample_input: '50\n120\nsensor_fail\nrecovery_fail\nsuccess',
+Inputs: value, temperature, error_type, recovery_status, log_status`,      sample_input: '50\n120\nsensor_fail\nrecovery_fail\nsuccess',
       sample_output: 'Solar panels deployed\nPower lines disconnected safely\nCooling System Overload!\nSensorMalfunction raised\nFallback System Activated\nMission Abort Initiated\nLog entry recorded: success\nAll operations complete',
 
       age_group: '11-14',

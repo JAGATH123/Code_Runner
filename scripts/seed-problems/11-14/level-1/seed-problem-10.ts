@@ -23,12 +23,9 @@ async function seedProblem10() {
       question: `Use input() to get two values from the user:
 1. Get the user's name and store it in a variable called astronaut_name
 2. Get the mission time in days and store it in a variable called mission_time
-
 Then print two lines:
 1. "Welcome, Commander " followed by the astronaut_name
-2. "Mission duration is " followed by mission_time and " days"
-
-`,
+2. "Mission duration is " followed by mission_time and " days"`,
       difficulty: 'Intro',
       example_code: '# Write your code here\n',
       sample_input: 'Alex\n7',
@@ -46,42 +43,14 @@ Then print two lines:
       case_overview: `Variables become even more useful when we get values from the user. Python's input() function lets you type something during the program's run — perfect for interactive missions, games, or data collection.`,
       case_code: `# The input() function gets data from the user
 # It always returns a string (text)
-
-# Basic syntax:
-variable_name = input()
-
 # You can also provide a prompt message:
 name = input("What is your name? ")
-print("Hello,", name)
-
-# More examples:
-planet = input("Enter planet name: ")
-print("Destination:", planet)
-
-distance = input("Enter distance in km: ")
-print("Travel distance:", distance, "km")
-
-age = input("Enter your age: ")
-print("You are", age, "years old")
-
-# Remember:
-# - input() returns a string
-# - You can print multiple values with commas
-# - Example: print("Welcome,", name)`,
-      case_explanation: `**How input() works:**
-
+print("Hello,", name)`,
+      case_explanation: `How input() works:
 ● Syntax: variable = input()
 ● The program pauses and waits for the user to type something
 ● The user presses Enter to submit their input
-● input() always returns a string (text type)
-
-**Input Format:**
-Line 1: The astronaut's name (e.g., Alex)
-Line 2: Mission duration in days (e.g., 7)
-
-**Output Format:**
-Line 1: Welcome, Commander [name]
-Line 2: Mission duration is [days] days`,
+● input() always returns a string (text type)`,
 
       created_at: new Date(),
       updated_at: new Date()

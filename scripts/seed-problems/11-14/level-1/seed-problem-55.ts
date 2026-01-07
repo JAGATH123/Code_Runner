@@ -21,14 +21,13 @@ async function seedProblem55() {
       title: 'Launch Authorization Protocol',
       description: `Before NOVA-12 transitions from standby to taxi power, the crew must verify all personnel meet mission requirements.
 
-Astra: *"Build the Launch Authorization Protocol to check crew eligibility. Every cadet must meet the minimum age requirement for deep space operations. Space agencies enforce strict age limits—cadets under 18 cannot serve in primary flight positions."*
+Astra: "Build the Launch Authorization Protocol to check crew eligibility. Every cadet must meet the minimum age requirement for deep space operations. Space agencies enforce strict age limits—cadets under 18 cannot serve in primary flight positions."
 
 Create the protocol that validates crew member eligibility.`,
 
       question: `Commander, it's time to build the Launch Authorization Protocol!
-
 Your program should:
-1. Ask for the crew member's age (integer)
+1. Ask for the crew member's age
 2. Check if the age meets the minimum requirement:
    - If age is 18 or more, print: \`"Cadet approved for mission!"\`
    - If age is less than 18, print: \`"Cadet too young for this mission!"\``,
@@ -69,32 +68,34 @@ Your program should:
       case_number: 6,
       case_title: 'Launch Authorization Protocol - Crew Eligibility Gateway',
       // case_overview removed for final tasks (Case 6)
-      case_explanation: `How to Approach This Problem:
+      case_code: `# Get crew member age
+age = int(input())
 
+# Check eligibility
+if age >= 18:
+    print("Cadet approved for mission!")
+else:
+    print("Cadet too young for this mission!")`,
+      case_explanation: `How to Approach This Problem:
 1. Get Crew Member Age:
    - Use \`input()\` to read the age value
-
 2. Understand the Age Requirement:
    - Minimum age for mission crew: 18 years
-
 3. Implement the Decision Logic:
    - Use \`if\` statement to check: \`age >= 18\`
    - If True: print "Cadet approved for mission!"
    - Use \`else\` to handle the False case
    - If False: print "Cadet too young for this mission!"
-
 4. Understanding Comparison Operators:
    - \`>=\` means "greater than or equal to"
    - \`age >= 18\` returns True if age is 18, 19, 20, etc.
    - \`age >= 18\` returns False if age is 17, 16, 15, etc.
    - The \`<\` operator works oppositely (less than)
-
 5. How If/Else Works:
    - The \`if\` block runs when the condition is True
    - The \`else\` block runs when the condition is False
    - Only ONE of these blocks will execute
    - No need to check \`age < 18\` in else—it's automatic`,
-
       created_at: new Date(),
       updated_at: new Date()
     };
@@ -168,26 +169,18 @@ Your program should:
 
     // Insert test cases
     const testCasesResult = await testCasesCollection.insertMany(testCases55);
-    console.log(`${testCasesResult.insertedCount} test cases inserted for Problem 55`);
-
-    console.log('\n✅ Problem 55 (Session 5, Final Task: Launch Authorization Protocol) seeded successfully!');
-
   } catch (error) {
-    console.error('Error seeding database:', error);
     throw error;
   } finally {
     await client.close();
-    console.log('MongoDB connection closed');
   }
 }
 
 // Run the seed function
 seedProblem55()
   .then(() => {
-    console.log('\n🚀 Database seeding completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('\n❌ Database seeding failed:', error);
     process.exit(1);
   });

@@ -21,7 +21,8 @@ async function seedProblem220() {
       title: 'Using next() to Read a Line',
       description: 'Learn to read files line-by-line using next() for sequential stream processing.',
       difficulty: 'Easy',
-      question: `Open "galactic_log.txt" which contains multiple log entries. Use next() to skip the first two lines, then print only the third and fourth log entries. Format: "Third Entry: [content]" and "Fourth Entry: [content]" on separate lines.`,      sample_input: '',
+      question: `Read 4 log entries from input (one per line). Write them to "galactic_log.txt" (each on a new line). Then reopen the file in read mode and use next() to skip the first two lines, then print the third and fourth entries. Format: "Third Entry: [content]" and "Fourth Entry: [content]" on separate lines where [content] is stripped.`,
+      sample_input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED\nLAUNCH SEQUENCE STARTED',
       sample_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem220() {
 
     // Test cases for Problem 220
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2201,
         problem_id: 220,
-        input: '',
+        input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED\nLAUNCH SEQUENCE STARTED',
         expected_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2202,
         problem_id: 220,
-        input: '',
-        expected_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
+        input: 'SYSTEMS CHECK\nFUEL LOADED\nCREW READY\nIGNITION ACTIVE',
+        expected_output: 'Third Entry: CREW READY\nFourth Entry: IGNITION ACTIVE',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2203,
-        problem_id: 220,
-        input: '',
-        expected_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2204,
-        problem_id: 220,
-        input: '',
-        expected_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2205,
-        problem_id: 220,
-        input: '',
-        expected_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2206,
-        problem_id: 220,
-        input: '',
-        expected_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2207,
-        problem_id: 220,
-        input: '',
-        expected_output: 'Third Entry: CABIN SEALED\nFourth Entry: LAUNCH SEQUENCE STARTED',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

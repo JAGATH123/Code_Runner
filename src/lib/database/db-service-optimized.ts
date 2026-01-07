@@ -32,8 +32,8 @@ export class OptimizedDatabaseService {
     const dbProblems = await collection.find({}).sort({ problem_id: 1 }).toArray();
     const problems = dbProblems.map(dbProblemToProblem);
 
-    // Cache for 1 hour
-    await cache.set(cacheKey, problems, 3600);
+    // Cache for 30 seconds in development (was 3600)
+    await cache.set(cacheKey, problems, 30);
 
     return problems;
   }
@@ -41,20 +41,22 @@ export class OptimizedDatabaseService {
   static async getProblemById(problemId: number): Promise<Problem | null> {
     const cacheKey = createCacheKey('problem', problemId);
 
-    const cached = await cache.get<Problem>(cacheKey);
-    if (cached) {
-      console.log(`Cache hit: getProblemById(${problemId})`);
-      return cached;
-    }
+    // CACHE DISABLED - always fetch from DB
+    // const cached = await cache.get<Problem>(cacheKey);
+    // if (cached) {
+    //   console.log(`Cache hit: getProblemById(${problemId})`);
+    //   return cached;
+    // }
 
-    console.log(`Cache miss: getProblemById(${problemId}) - fetching from DB`);
+    console.log(`[DIRECT] Problem ${problemId} - fresh MongoDB fetch`);
     const collection = await getCollection<DBProblem>(COLLECTIONS.PROBLEMS);
     const dbProblem = await collection.findOne({ problem_id: problemId });
 
     if (!dbProblem) return null;
 
     const problem = dbProblemToProblem(dbProblem);
-    await cache.set(cacheKey, problem, 3600);
+    // NO CACHE - always fetch fresh from DB
+    // await cache.set(cacheKey, problem, 0);
 
     return problem;
   }
@@ -73,8 +75,8 @@ export class OptimizedDatabaseService {
     const dbProblems = await collection.find({ session_id: sessionId }).sort({ problem_id: 1 }).toArray();
     const problems = dbProblems.map(dbProblemToProblem);
 
-    // Cache for 2 hours (sessions change rarely)
-    await cache.set(cacheKey, problems, 7200);
+    // Cache for 30 seconds in development (was 7200)
+    await cache.set(cacheKey, problems, 30);
 
     return problems;
   }
@@ -96,8 +98,8 @@ export class OptimizedDatabaseService {
     }).sort({ session_id: 1, problem_id: 1 }).toArray();
     const problems = dbProblems.map(dbProblemToProblem);
 
-    // Cache for 2 hours
-    await cache.set(cacheKey, problems, 7200);
+    // Cache for 30 seconds in development (was 7200)
+    await cache.set(cacheKey, problems, 30);
 
     return problems;
   }

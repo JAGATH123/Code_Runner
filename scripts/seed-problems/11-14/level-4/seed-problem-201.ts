@@ -21,8 +21,9 @@ async function seedProblem201() {
       title: 'Reading from a File',
       description: 'Learn to open and read content from existing files to retrieve saved information.',
       difficulty: 'Easy',
-      question: `Create a program that opens "mynote.txt" in read mode, reads its content, prints the content to the screen, and closes the file. Assume the file contains "Hello, this is my first note!"`,      sample_input: '',
-      sample_output: 'Hello, this is my first note!',
+      question: `Read a message from input, create a file called "mynote.txt" in write mode, write that message to it, and close the file. Then open "mynote.txt" in read mode, read its content, print the content, and close the file.`,
+      sample_input: 'Hello, this is my first note!',
+      sample_output: 'Hello, this is my first note!\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -58,63 +59,21 @@ async function seedProblem201() {
 
     // Test cases for Problem 201
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2011,
         problem_id: 201,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
+        input: 'Hello, this is my first note!',
+        expected_output: 'Hello, this is my first note!\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2012,
         problem_id: 201,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
+        input: 'Today I learned file handling!',
+        expected_output: 'Today I learned file handling!\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2013,
-        problem_id: 201,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2014,
-        problem_id: 201,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2015,
-        problem_id: 201,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2016,
-        problem_id: 201,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2017,
-        problem_id: 201,
-        input: '',
-        expected_output: 'Hello, this is my first note!',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

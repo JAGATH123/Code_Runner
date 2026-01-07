@@ -34,24 +34,56 @@ If true, print "Warning: Low Battery!".`,
       sample_output: 'Battery Level: 100\nBattery Level: 90\nBattery Level: 80\nBattery Level: 70\nBattery Level: 60\nWarning: Low Battery!\nBattery Level: 50\nWarning: Low Battery!',
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Convert string input to integers using int()
+- Combine for loops with if statements
+- Use range() with three parameters (start, stop, step)
+- Make decisions based on loop variable values
+- Print different outputs based on conditions
+- Understand nested indentation for if statements inside loops`,
+
+      concepts: `- For Loops with Conditionals: Combining iteration with decision-making
+- range() Function: Creating sequences with custom parameters
+- Nested Control Structures: Placing if statements inside for loops
+- Conditional Execution: Code that runs only when conditions are met
+- Indentation Levels: Understanding multiple levels of indentation
+- Loop Variable Testing: Using loop counter in conditional checks
+- Dynamic Output: Printing different messages based on conditions`,
+
       metadata: {
         concepts: ['range', 'for-loop', 'loops', 'conditionals', 'if-statements', 'step', 'nested-control'],
         space_theme: true,
-        estimated_time_minutes: 15,
-        test_protocol: 'Students should combine range() with conditional logic using if statements'
+        estimated_time_minutes: 15
       },
       // Case-specific content
       case_number: 4,
       case_title: 'Range with Conditional Logic',
       case_overview: `Combine range() with if statements to add decision-making logic inside loops.`,
-      case_code: `# Sample Example:
-for battery in range(100, 49, -10):
-    print("Battery Level:", battery)
-    if battery < 70:
-        print("Warning: Low Battery!")
 
-# Now you try this for our task`,
-      case_explanation: `Combine for loops using range() with if statements. Each iteration can make decisions based on current value. Indentation is critical: if statement inside loop needs 8 spaces. Print statements inside if need 12 spaces (nested twice). Use input() four times for start, stop, step, threshold. Convert all to integers. Use: for battery in range(start, stop, step):. First print (indented 4 spaces): print("Battery Level:", battery). Check condition (indented 4 spaces): if battery < threshold:. Conditional print (indented 8 spaces): print("Warning: Low Battery!"). Warning only prints when condition is true.`,
+      case_code: `# Get start, stop, step, and threshold from user
+start = int(input())
+stop = int(input())
+step = int(input())
+threshold = int(input())
+
+# Loop through battery levels
+for battery in range(start, stop, step):
+    print("Battery Level:", battery)
+    if battery < threshold:
+        print("Warning: Low Battery!")`,
+
+      case_explanation: `- Combine for loops using \`range()\` with if statements
+- Each iteration can make decisions based on current value
+- Indentation is critical: if statement inside loop needs 8 spaces
+- Print statements inside if need 12 spaces (nested twice)
+- Use \`input()\` four times for start, stop, step, threshold
+- Convert all to integers
+- Use \`for battery in range(start, stop, step):\` to iterate
+- First print (indented 4 spaces): \`print("Battery Level:", battery)\`
+- Check condition (indented 4 spaces): \`if battery < threshold:\`
+- Conditional print (indented 8 spaces): \`print("Warning: Low Battery!")\`
+- Warning only prints when condition is true`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -65,6 +97,7 @@ for battery in range(100, 49, -10):
         input: '100\n49\n-10\n70',
         expected_output: 'Battery Level: 100\nBattery Level: 90\nBattery Level: 80\nBattery Level: 70\nBattery Level: 60\nWarning: Low Battery!\nBattery Level: 50\nWarning: Low Battery!',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

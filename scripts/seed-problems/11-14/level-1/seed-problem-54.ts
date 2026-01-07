@@ -19,19 +19,11 @@ async function seedProblem54() {
       problem_id: 54,
       session_id: 4,
       title: 'Mission Logic System',
-      description: `Commander, it's time to build the automated Mission Logic System!
+      description: `NOVA-12's control panels glow with readiness. The ship is almost ready for its first flight in decades.
 
-Your program should:
-1. Ask for initial fuel_level (integer)
-2. Ask for oxygen_level (integer)
-3. Create a boolean variable: \`engine_ready = True\`
-4. Simulate pre-ignition fuel consumption by reducing fuel_level by 25 using the \`-=\` operator
-5. Check if ALL three conditions are met:
-   - \`fuel_level > 50\` (minimum safe fuel after pre-ignition)
-   - \`oxygen_level > 60\` (minimum crew life support)
-   - \`engine_ready == True\` (engine systems operational)
-6. If all conditions are True, print: \`"Launch approved"\`
-7. If any condition is False, print: \`"Launch denied"\``,
+Astra: "Final step, Cadets. The ship needs a Launch Authorization System—automated logic that verifies ALL safety conditions before ignition. One failed check means mission abort. Let's build it."
+
+Create the Mission Logic System that validates launch readiness.`,
 
       question: `Commander, it's time to build the automated Mission Logic System!
 
@@ -83,32 +75,38 @@ Your program should:
       case_number: 6,
       case_title: 'Mission Logic System - Launch Authorization Gateway',
       // case_overview removed for final tasks (Case 6)
-      case_explanation: `How to Approach This Problem:
+      case_code: `# Get system status
+fuel_level = int(input())
+oxygen_level = int(input())
+engine_ready = True
 
+# Simulate pre-ignition fuel consumption
+fuel_level -= 25
+
+# Check all launch conditions
+if fuel_level > 50 and oxygen_level > 60 and engine_ready:
+    print("Launch approved")
+else:
+    print("Launch denied")`,
+      case_explanation: `How to Approach This Problem:
 1. Get Initial Fuel Level:
    - Use \`int(input())\` to read fuel level
-
 2. Get Oxygen Level:
    - Use \`int(input())\` to read oxygen percentage
-
 3. Set Engine Status:
    - Create boolean: \`engine_ready = True\`
-
 4. Simulate Pre-Ignition Consumption:
    - Use compound assignment: \`fuel_level -= 25\`
    - This is equivalent to: \`fuel_level = fuel_level - 25\`
-
 5. Evaluate Launch Conditions:
    - Check three conditions using \`and\`:
      - \`fuel_level > 50\` - Ensures enough fuel remains after consumption
      - \`oxygen_level > 60\` - Ensures adequate life support
      - \`engine_ready\` - Confirms engine systems are operational
    - ALL conditions must be True for launch approval
-
 6. Output Authorization:
    - If all conditions are True: print \`"Launch approved"\`
    - If any condition is False: print \`"Launch denied"\``,
-
       created_at: new Date(),
       updated_at: new Date()
     };

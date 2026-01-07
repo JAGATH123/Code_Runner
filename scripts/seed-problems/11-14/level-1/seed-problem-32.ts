@@ -29,23 +29,44 @@ async function seedProblem32() {
       example_code: '# Write your code here\n',
       sample_input: 'Alice\nBob\nCharlie\nDiana',
       sample_output: "['Alice', 'Bob', 'Charlie', 'Diana']",
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Create a list using square brackets []
+- Store multiple values in a list variable
+- Use the .append() method to add items to a list
+- Understand that .append() adds items to the end of the list
+- Print the complete list to display all elements`,
+
+      concepts: `- List Methods: Using built-in methods to modify lists
+- .append() Method: Adding new elements to the end of a list
+- List Modification: Changing list contents after creation
+- Dynamic Lists: Lists that grow as items are added
+- Method Syntax: Using list_name.append(item) format
+- Data Structures: Managing collections that can change in size`,
+
       metadata: {
         concepts: ['lists', 'append', 'list-methods', 'data-structures'],
         space_theme: true,
-        estimated_time_minutes: 10,
-        test_protocol: 'Students should use .append() method to add items to list'
+        estimated_time_minutes: 10
       },
       // Case-specific content
       case_number: 2,
       case_title: 'Adding Items to a List',
       case_overview: `Use .append() to add a new item at the end of a list.`,
-      case_code: `• The list must be named \`crew\`
-• Collect exactly 3 initial crew member names from user input
-• Collect 1 additional crew member name from user input
-• The fourth member must be added to the existing list
-• Print the complete list showing all 4 members`,
+      case_code: `# Create a list and collect 3 crew members
+crew = []
+crew.append(input())
+crew.append(input())
+crew.append(input())
+
+# Add one more crew member to the list
+crew.append(input())
+
+# Print the complete crew list
+print(crew)`,
       case_explanation: `.append(item) adds the item to the end of the list. The method modifies the original list. Syntax: list_name.append(new_item). After appending, the list size increases by 1.`,
 
       created_at: new Date(),
@@ -60,6 +81,7 @@ async function seedProblem32() {
         input: 'Alice\nBob\nCharlie\nDiana',
         expected_output: "['Alice', 'Bob', 'Charlie', 'Diana']",
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

@@ -21,27 +21,21 @@ async function seedProblem52() {
       title: 'Mission Setup: Preparing Rover Data',
       description: `NOVA-12's power rails awaken. Now it's time to initialize the spacecraft's essential subsystems.
 
-Astra: *"The ship needs to remember its identity. Initialize the core status log with current values—spaceship name, target distance, crew count, and system status."*
+Astra: "The ship needs to remember its identity. Initialize the core status log with current values—spaceship name, target distance, crew count, and system status."
 
 Create the mission report using the correct data types for each parameter.`,
 
       question: `Write a Python program that asks the user to enter:
-
-1. The name of their spaceship (string)
-2. The distance to their target planet (in million km, as a decimal → float)
-3. The number of astronauts onboard (integer)
-4. Whether the systems are online (enter True or False → boolean)
-
+1. The name of their spaceship
+2. The distance to their target planet
+3. The number of astronauts onboard
+4. Whether the systems are online
 After collecting all inputs, print each value on a separate line in the same order.`,
-
       difficulty: 'Intro',
       example_code: `# Mission Setup: Preparing Rover Data
 # Get spaceship name (string)
 spaceship_name = input()
-
-# Your code here to get the remaining inputs
-`,
-
+print(spaceship_name)`,
       sample_input: `NOVA-12
 384.4
 3
@@ -75,23 +69,34 @@ True`,
       case_number: 6,
       case_title: 'Mission Setup: Preparing Rover Data - Final Mission Task',
       // case_overview removed for final tasks (Case 6)
-      case_explanation: `How to Approach This Problem:
+      case_code: `# Get spaceship name (string)
+spaceship_name = input()
 
+# Get distance (float)
+distance = input()
+
+# Get crew count (integer)
+crew_count = input()
+
+# Get systems status (boolean)
+systems_online = input()
+
+# Print all values
+print(spaceship_name)
+print(distance)
+print(crew_count)
+print(systems_online)`,
+      case_explanation: `How to Approach This Problem:
 1. Get Spaceship Name (String):
    - Use \`input()\` to read the spaceship name
-
 2. Get Distance (Float):
    - Use \`input()\` to read the distance
-
 3. Get Number of Astronauts (Integer):
    - Use \`input()\` to read the crew size
-
 4. Get Systems Status (Boolean):
    - Use \`input()\` to read "True" or "False"
-
 5. Print All Values:
    - Print each variable on a separate line`,
-
       created_at: new Date(),
       updated_at: new Date()
     };

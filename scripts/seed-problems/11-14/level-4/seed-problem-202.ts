@@ -21,8 +21,9 @@ async function seedProblem202() {
       title: 'Appending to a File',
       description: 'Learn to add new content to an existing file without deleting the old content using append mode.',
       difficulty: 'Medium',
-      question: `A file "mynote.txt" contains "Hello, this is my first note!". Open it in append mode and add a new line "\\nHere's something new I learned today." without erasing the original content. Print "Content appended successfully" when done.`,      sample_input: '',
-      sample_output: 'Content appended successfully',
+      question: `Read two messages from input (initial message and new message to append). First, create "mynote.txt" in write mode and write the initial message. Close it. Then open "mynote.txt" in append mode, write a newline followed by the new message, and close it. Finally, read the entire file content and print it.`,
+      sample_input: 'Hello, this is my first note!\nHere\'s something new I learned today.',
+      sample_output: 'Hello, this is my first note!\nHere\'s something new I learned today.\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -58,63 +59,21 @@ async function seedProblem202() {
 
     // Test cases for Problem 202
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2021,
         problem_id: 202,
-        input: '',
-        expected_output: 'Content appended successfully',
+        input: 'Hello, this is my first note!\nHere\'s something new I learned today.',
+        expected_output: 'Hello, this is my first note!\nHere\'s something new I learned today.\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2022,
         problem_id: 202,
-        input: '',
-        expected_output: 'Content appended successfully',
+        input: 'Mission log day 1\nUpdate: All systems operational',
+        expected_output: 'Mission log day 1\nUpdate: All systems operational\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2023,
-        problem_id: 202,
-        input: '',
-        expected_output: 'Content appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2024,
-        problem_id: 202,
-        input: '',
-        expected_output: 'Content appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2025,
-        problem_id: 202,
-        input: '',
-        expected_output: 'Content appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2026,
-        problem_id: 202,
-        input: '',
-        expected_output: 'Content appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2027,
-        problem_id: 202,
-        input: '',
-        expected_output: 'Content appended successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

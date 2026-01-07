@@ -21,14 +21,13 @@ async function seedProblem53() {
       title: 'Mission Control Calculator',
       description: `NOVA-12's main command console is locked. Security protocols demand proof of authorization.
 
-Astra: *"To unlock the console, calculate mission-critical fuel parameters. Only authorized personnel can perform these calculations correctly."*
+Astra: "To unlock the console, calculate mission-critical fuel parameters. Only authorized personnel can perform these calculations correctly."
 
 Build the Mission Control Calculator to prove your capability and unlock access.`,
-
       question: `Your program should:
-1. Ask for the user's name (string)
-2. Ask for number of mission days (integer)
-3. Ask for daily fuel consumption in liters (float)
+1. Ask for the user's name
+2. Ask for number of mission days
+3. Ask for daily fuel consumption in liters
 4. Calculate total fuel: total_fuel = days × consumption
 5. Print the authentication message:
    \`"Cadet [Name], your spacecraft will need [total] liters of fuel for [days] days."\``,
@@ -70,23 +69,31 @@ Build the Mission Control Calculator to prove your capability and unlock access.
       case_number: 6,
       case_title: 'Mission Control Calculator - Authentication Gateway',
       // case_overview removed for final tasks (Case 6)
-      case_explanation: `How to Approach This Problem:
+      case_code: `# Get cadet name
+name = input()
 
+# Get mission days and convert to integer
+days = int(input())
+
+# Get daily fuel consumption and convert to float
+daily_fuel = float(input())
+
+# Calculate total fuel
+total_fuel = days * daily_fuel
+
+# Print authentication message
+print("Cadet", name, "authenticated. Mission fuel required:", total_fuel, "liters")`,
+      case_explanation: `How to Approach This Problem:
 1. Get Cadet Name:
    - Use \`input()\` to read the name
-
 2. Get Mission Days:
    - Use \`input()\` to read the days
-
 3. Get Daily Fuel Consumption:
    - Use \`input()\` to read consumption
-
 4. Calculate Total Fuel:
    - Multiply days by consumption
-
 5. Print Authentication Message:
    - Use string formatting or concatenation`,
-
       created_at: new Date(),
       updated_at: new Date()
     };

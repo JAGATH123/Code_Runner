@@ -21,13 +21,9 @@ async function seedProblem213() {
       title: 'Writing Multiple Lines with writelines()',
       description: 'Learn to write multiple lines at once using writelines() for batch data storage.',
       difficulty: 'Medium',
-      question: `Create a file called "wishlist.txt" and write three things you wish to learn this year using writelines(). The items should be:
-1. "Learn Machine Learning"
-2. "Master Data Structures"
-3. "Build Real Projects"
-
-Each item should be on a new line (use \\n). Print "Wishlist saved successfully" when done.`,      sample_input: '',
-      sample_output: 'Wishlist saved successfully',
+      question: `Read 3 items from input (one per line). Create a list with these items (add \\n to each). Use writelines() to write all items to "wishlist.txt" in one operation. Then read the file back and print its entire contents.`,
+      sample_input: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
+      sample_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -63,63 +59,21 @@ Each item should be on a new line (use \\n). Print "Wishlist saved successfully"
 
     // Test cases for Problem 213
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2131,
         problem_id: 213,
-        input: '',
-        expected_output: 'Wishlist saved successfully',
+        input: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
+        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2132,
         problem_id: 213,
-        input: '',
-        expected_output: 'Wishlist saved successfully',
+        input: 'Practice Coding Daily\nRead Tech Books\nJoin Hackathons',
+        expected_output: 'Practice Coding Daily\nRead Tech Books\nJoin Hackathons\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2133,
-        problem_id: 213,
-        input: '',
-        expected_output: 'Wishlist saved successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2134,
-        problem_id: 213,
-        input: '',
-        expected_output: 'Wishlist saved successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2135,
-        problem_id: 213,
-        input: '',
-        expected_output: 'Wishlist saved successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2136,
-        problem_id: 213,
-        input: '',
-        expected_output: 'Wishlist saved successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2137,
-        problem_id: 213,
-        input: '',
-        expected_output: 'Wishlist saved successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

@@ -20,19 +20,43 @@ async function seedProblem25() {
       title: 'Decision Chain',
       description: 'Combine multiple if-elif-else statements to make complex decisions based on multiple conditions.',
       difficulty: 'Easy',
-      tags: ['conditionals', 'elif', 'multiple-conditions', 'decision-making', 'final-task'],
       question: `Write a program that asks the user for fuel level and altitude. Check the following conditions in order:
 - If fuel >= 80 AND altitude >= 5000, print "Launch approved."
 - If fuel >= 50 AND altitude >= 3000, print "Launch on standby."
 - If fuel < 50, print "Insufficient fuel."
 - Otherwise, print "Altitude too low."`,
-      case_overview: `Case 5: Decision Chain (Final Task)
+      example_code: '# Write your code here\n',
+      sample_input: '85\n5500',
+      sample_output: 'Launch approved.',
 
-Create a decision chain that checks multiple conditions to determine if a spacecraft can launch.`,
-      case_explanation: `Check multiple conditions in sequence. Each condition leads to different messages. Use if-elif-else for multiple paths.`,
+      age_group: '11-14',
+      level_number: 1,
+
+      objectives: `- Use input() to collect fuel and altitude data
+- Convert inputs to integers using int()
+- Use logical operator (and) to combine conditions
+- Use if-elif-else statement to handle multiple decision paths
+- Print appropriate output for each condition`,
+
+      concepts: `- Conditionals: Making complex decisions with if-elif-else
+- Logical Operators: Using 'and' to combine multiple conditions
+- Comparison Operators: Using >= and < to compare values
+- Input/Output: Reading multiple user inputs and displaying results
+- Type Conversion: Converting strings to integers`,
+
+      metadata: {
+        concepts: ['conditionals', 'elif', 'multiple-conditions', 'logical-operators', 'decision-making'],
+        space_theme: true,
+        estimated_time_minutes: 20
+      },
+
+      // Case-specific content
+      case_number: 5,
+      case_title: 'Decision Chain',
+      case_overview: `Create a decision chain that checks multiple conditions to determine if a spacecraft can launch.`,
       case_code: `# Sample Example:
-speed = int(input("Enter speed: "))
-weather = input("Enter weather: ")
+speed = int(input())
+weather = input()
 if speed >= 100 and weather == "clear":
     print("Flight ready")
 elif speed >= 100:
@@ -40,55 +64,58 @@ elif speed >= 100:
 elif weather == "clear":
     print("Increase speed")
 else:
-    print("Not ready")
-
-# Now you try this for our task`,
-      sample_input: '85\n5500',
-      sample_output: 'Launch approved.',
-      expected_output: 'Launch approved.',
+    print("Not ready")`,
+      case_explanation: `Check multiple conditions in sequence. Each condition leads to different messages. Use if-elif-else for multiple paths.`,
       created_at: new Date(),
       updated_at: new Date(),
     };
 
+    // Test cases for Problem 25
     const testCases = [
       {
         problem_id: 25,
-        case_number: 1,
+        test_case_id: 1,
         input: '85\n5500',
         expected_output: 'Launch approved.',
         is_hidden: false,
+        is_sample: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 25,
-        case_number: 2,
+        test_case_id: 2,
         input: '60\n4000',
         expected_output: 'Launch on standby.',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 25,
-        case_number: 3,
+        test_case_id: 3,
         input: '40\n6000',
         expected_output: 'Insufficient fuel.',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 25,
-        case_number: 4,
+        test_case_id: 4,
         input: '90\n2000',
         expected_output: 'Altitude too low.',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 25,
-        case_number: 5,
+        test_case_id: 5,
         input: '80\n5000',
         expected_output: 'Launch approved.',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
     ];

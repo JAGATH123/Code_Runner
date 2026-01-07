@@ -8,7 +8,6 @@ async function seedCodeConvergenceL3() {
 
   try {
     await client.connect();
-    console.log('Connected to MongoDB');
 
     const db = client.db(MONGODB_DB);
     const problemsCollection = db.collection('problems');
@@ -63,8 +62,6 @@ async function seedCodeConvergenceL3() {
 
     // Insert code convergence problem
     const problemResult = await problemsCollection.insertOne(codeConvergence);
-    console.log('Code Convergence L3 inserted');
-
     // Test cases for Code Convergence L3 (7 test cases: 2 visible, 5 hidden)
     const testCases = [
       // Visible test cases
@@ -129,26 +126,19 @@ async function seedCodeConvergenceL3() {
 
     // Insert test cases
     await testCasesCollection.insertMany(testCases);
-    console.log(`${testCases.length} test cases inserted for Code Convergence L3`);
-
-    console.log('\n✅ Code Convergence L3 (Project COSMIC LINK) seeded successfully!');
 
   } catch (error) {
-    console.error('Error seeding database:', error);
     throw error;
   } finally {
     await client.close();
-    console.log('MongoDB connection closed');
   }
 }
 
 // Run the seed function
 seedCodeConvergenceL3()
   .then(() => {
-    console.log('\n🚀 Database seeding completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('\n❌ Database seeding failed:', error);
     process.exit(1);
   });

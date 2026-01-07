@@ -29,23 +29,47 @@ async function seedProblem33() {
       example_code: '# Write your code here\n',
       sample_input: 'hammer\nwrench\nscrewdriver\nwrench',
       sample_output: "['hammer', 'screwdriver']",
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Create a list using square brackets []
+- Store multiple values in a list variable
+- Use the .remove() method to delete items from a list
+- Understand that .remove() deletes by value (not by index)
+- Print the updated list after removal`,
+
+      concepts: `- List Methods: Using built-in methods to modify lists
+- .remove() Method: Deleting specific elements by value
+- List Modification: Changing list contents by removing items
+- Value-Based Removal: Removing items by their value, not position
+- Method Syntax: Using list_name.remove(item) format
+- Dynamic Lists: Lists that shrink as items are removed`,
+
       metadata: {
         concepts: ['lists', 'remove', 'list-methods', 'data-structures'],
         space_theme: true,
-        estimated_time_minutes: 10,
-        test_protocol: 'Students should use .remove() method to delete items from list'
+        estimated_time_minutes: 10
       },
       // Case-specific content
       case_number: 3,
       case_title: 'Removing Items from a List',
       case_overview: `Use .remove() to delete a specific item by value.`,
-      case_code: `• The list must be named \`tools\`
-• Collect exactly 3 tool names from user input
-• Collect 1 tool name to be removed from user input
-• Remove the specified tool from the list
-• Print the updated list showing remaining tools`,
+      case_code: `# Create a list and collect 3 tool names
+tools = []
+tools.append(input())
+tools.append(input())
+tools.append(input())
+
+# Get the tool name to remove
+tool_to_remove = input()
+
+# Remove the specified tool from the list
+tools.remove(tool_to_remove)
+
+# Print the updated list
+print(tools)`,
       case_explanation: `.remove("item") deletes the first occurrence of the item. The method modifies the original list. If item doesn't exist, it causes an error. Syntax: list_name.remove(item_to_delete).`,
 
       created_at: new Date(),
@@ -60,6 +84,7 @@ async function seedProblem33() {
         input: 'hammer\nwrench\nscrewdriver\nwrench',
         expected_output: "['hammer', 'screwdriver']",
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

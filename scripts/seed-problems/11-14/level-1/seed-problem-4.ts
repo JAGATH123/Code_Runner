@@ -8,7 +8,6 @@ async function seedProblem4() {
 
   try {
     await client.connect();
-    console.log('Connected to MongoDB');
 
     const db = client.db(MONGODB_DB);
     const problemsCollection = db.collection('problems');
@@ -23,7 +22,6 @@ async function seedProblem4() {
       question: `Create two variables:
 - astronaut = "Commander Ray"
 - mission = "Lunar Orbiter 1"
-
 Then print: Commander Ray is leading the Lunar Orbiter 1`,
       difficulty: 'Intro',
       example_code: '# Write your code here\n',
@@ -40,32 +38,17 @@ Then print: Commander Ray is leading the Lunar Orbiter 1`,
       case_number: 4,
       case_title: 'Using Variables in Output',
       case_overview: `Learn to store values in variables and use them in print statements. Variables make your code reusable and dynamic!`,
-      case_code: `# Store a value in a variable:
-name = "Alice"
-
-# Print the variable:
-print(name)
-
-# Combine variables with text:
+      case_code: `# Combine variables with text:
 age = 25
 print("My name is", name, "and I am", age, "years old")
 
-# The above prints: My name is Alice and I am 25 years old
-
-# Now create your own variables and print them!`,
+# The above prints: My name is Alice and I am 25 years old`,
       case_explanation: `Variables in Python:
-
 ● Variables store values that you can reuse
 ● Create a variable: variable_name = value
 ● Text values need quotes: name = "Alice"
 ● Numbers don't need quotes: age = 25
-● Use variables in print() just like any other value
-
-Input Format:
-You do not need to read any input for this challenge.
-
-Output Format:
-Create the required variables and print them as shown in the question.`,
+● Use variables in print() just like any other value`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -91,33 +74,25 @@ Create the required variables and print them as shown in the question.`,
       { upsert: true }
     );
 
-    console.log('Problem 4 upserted:', problemResult.upsertedId || 'Updated existing');
 
     // Delete existing test cases for problem 4
     await testCasesCollection.deleteMany({ problem_id: 4 });
 
     // Insert test cases
     const testCasesResult = await testCasesCollection.insertMany(testCases4);
-    console.log('Test cases inserted:', testCasesResult.insertedCount);
-
-    console.log('\n✅ Problem 4 (Case 4: Using Variables in Output) seeded successfully!');
 
   } catch (error) {
-    console.error('Error seeding database:', error);
     throw error;
   } finally {
     await client.close();
-    console.log('MongoDB connection closed');
   }
 }
 
 // Run the seed function
 seedProblem4()
   .then(() => {
-    console.log('\n🚀 Database seeding completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('\n❌ Database seeding failed:', error);
     process.exit(1);
   });

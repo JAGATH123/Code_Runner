@@ -23,7 +23,6 @@ async function seedProblem6() {
       question: `Create two variables:
 - planet_name = "Mars"
 - temperature = -63
-
 Print both variables, each on a new line.`,
       difficulty: 'Intro',
       example_code: '# Write your code here\n',
@@ -42,11 +41,8 @@ Print both variables, each on a new line.`,
       case_overview: `Learn to create variables and store different types of values. Variables are the foundation of programming!`,
       case_code: `# Variables store values that you can use later
 # Examples of creating variables:
-
-rocket_name = "Apollo"     # Text (string) - needs quotes
-launch_year = 1969         # Number (integer) - no quotes
-fuel_level = 85.5          # Decimal number (float)
-is_ready = True            # Boolean (True/False)
+rocket_name = "Apollo"    
+launch_year = 1969                 
 
 # Print variables:
 print(rocket_name)
@@ -54,22 +50,13 @@ print(launch_year)
 
 # This prints:
 # Apollo
-# 1969
-
-# Now create your own variables and print them!`,
-      case_explanation: `**Creating Variables:**
-
+# 1969`,
+      case_explanation: `Creating Variables:
 ● Use the = sign to assign a value: variable_name = value
 ● Text (strings) need quotes: "Mars"
 ● Numbers don't need quotes: -63 or 85.5
 ● Variable names should be descriptive (use lowercase with underscores)
-● Python automatically detects the data type
-
-**Input Format:**
-You do not need to read any input for this challenge.
-
-**Output Format:**
-Print each variable on a separate line as shown in the question.`,
+● Python automatically detects the data type`,
 
       created_at: new Date(),
       updated_at: new Date()

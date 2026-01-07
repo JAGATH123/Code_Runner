@@ -20,72 +20,90 @@ async function seedProblem21() {
       title: 'Simple If Statement',
       description: 'Learn to use the if statement to check a condition and run code only when it is true.',
       difficulty: 'Easy',
-      tags: ['conditionals', 'if-statement', 'comparison-operators', 'input'],
       question: `Write a program that asks the user for the temperature in degrees Celsius. If the temperature is greater than 30, print "It's a hot day!"`,
-      case_overview: `Case 1: Simple If Statement
-
-Check a condition and run a block of code only if it's true.`,
-      case_explanation: `| Operator | Symbol | Description |
-|----------|--------|-------------|
-| Equal to | == | Checks if two values are equal |
-| Not equal | != | Checks if two values are different |
-| Greater than | > | Checks if left is greater than right |
-| Less than | < | Checks if left is less than right |
-| Greater or equal | >= | Checks if left is greater or equal |
-| Less or equal | <= | Checks if left is less or equal |`,
-      case_code: `# Sample Example:
-speed = int(input("Enter rover speed: "))
-if speed > 50:
-    print("Speed is too high!")
-
-# Now you try for our task`,
+      example_code: '# Write your code here\n',
       sample_input: '35',
       sample_output: "It's a hot day!",
-      expected_output: "It's a hot day!",
+
+      age_group: '11-14',
+      level_number: 1,
+
+      objectives: `- Use input() to collect temperature data
+- Convert input to integer using int()
+- Use comparison operator (>) to check conditions
+- Use if statement to execute code conditionally
+- Print output only when condition is met`,
+
+      concepts: `- Conditionals: Making decisions with if statements
+- Comparison Operators: Using > to compare values
+- Input/Output: Reading user input and displaying results
+- Type Conversion: Converting strings to integers`,
+
+      metadata: {
+        concepts: ['conditionals', 'if-statement', 'comparison-operators', 'input', 'type-conversion'],
+        space_theme: true,
+        estimated_time_minutes: 15
+      },
+
+      // Case-specific content
+      case_number: 1,
+      case_title: 'Simple If Statement',
+      case_overview: `Check a condition and run a block of code only if it's true.`,
+      case_code: `# Sample Example:
+speed = int(input())
+if speed > 50:
+    print("Speed is too high!")`,
+      case_explanation: `The if statement executes code only when a condition is True.`,
       created_at: new Date(),
       updated_at: new Date(),
     };
 
-    // Multiple test cases to prevent hardcoding
+    // Test cases for Problem 21
     const testCases = [
       {
         problem_id: 21,
-        case_number: 1,
+        test_case_id: 1,
         input: '35',
         expected_output: "It's a hot day!",
         is_hidden: false,
+        is_sample: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 21,
-        case_number: 2,
+        test_case_id: 2,
         input: '31',
         expected_output: "It's a hot day!",
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 21,
-        case_number: 3,
+        test_case_id: 3,
         input: '25',
         expected_output: '',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 21,
-        case_number: 4,
+        test_case_id: 4,
         input: '100',
         expected_output: "It's a hot day!",
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 21,
-        case_number: 5,
+        test_case_id: 5,
         input: '30',
         expected_output: '',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
     ];

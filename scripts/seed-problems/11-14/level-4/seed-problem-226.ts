@@ -21,7 +21,8 @@ async function seedProblem226() {
       title: 'Reading a File with Error Handling',
       description: 'Learn to read files safely using try-except to handle FileNotFoundError gracefully.',
       difficulty: 'Easy',
-      question: `Write a program that attempts to read "mylog.txt". Use try-except to handle FileNotFoundError. If the file exists, print "File Content: [content]" where [content] is the file's text. If the file doesn't exist, print "File not found. Please check the name."`,      sample_input: '',
+      question: `Read a filename and content from input (2 lines). Create the file and write the content to it. Then attempt to read the file using try-except to handle FileNotFoundError. If the file exists, print "File Content: [content]". If the file doesn't exist, print "File not found. Please check the name."`,
+      sample_input: 'mylog.txt\nName: John Doe - Subject: Python Programming',
       sample_output: 'File Content: Name: John Doe - Subject: Python Programming',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem226() {
 
     // Test cases for Problem 226
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2261,
         problem_id: 226,
-        input: '',
+        input: 'mylog.txt\nName: John Doe - Subject: Python Programming',
         expected_output: 'File Content: Name: John Doe - Subject: Python Programming',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2262,
         problem_id: 226,
-        input: '',
-        expected_output: 'File Content: Name: John Doe - Subject: Python Programming',
+        input: 'report.txt\nMission Status: Complete - Crew: Safe',
+        expected_output: 'File Content: Mission Status: Complete - Crew: Safe',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2263,
-        problem_id: 226,
-        input: '',
-        expected_output: 'File Content: Name: John Doe - Subject: Python Programming',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2264,
-        problem_id: 226,
-        input: '',
-        expected_output: 'File Content: Name: John Doe - Subject: Python Programming',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2265,
-        problem_id: 226,
-        input: '',
-        expected_output: 'File Content: Name: John Doe - Subject: Python Programming',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2266,
-        problem_id: 226,
-        input: '',
-        expected_output: 'File Content: Name: John Doe - Subject: Python Programming',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2267,
-        problem_id: 226,
-        input: '',
-        expected_output: 'File Content: Name: John Doe - Subject: Python Programming',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

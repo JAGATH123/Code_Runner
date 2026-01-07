@@ -21,7 +21,8 @@ async function seedProblem219() {
       title: 'Navigating Logs Using seek()',
       description: 'Learn to jump directly to specific byte positions in files using seek() for fast data access.',
       difficulty: 'Medium',
-      question: `A file "galactic_log.txt" contains multiple log entries. Use seek() to jump to byte position 50 (the third entry) and print that line using readline(). Strip any extra whitespace. Print in format: "Third entry: [content]"`,      sample_input: '',
+      question: `Read 3 log entries from input (one per line). First, write them to "galactic_log.txt" (each on a new line). Then reopen the file in read mode, use seek() to jump to byte position 26 (where the third entry starts), and read that line using readline(). Strip whitespace and print in format: "Third entry: [content]"`,
+      sample_input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED',
       sample_output: 'Third entry: CABIN SEALED',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem219() {
 
     // Test cases for Problem 219
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2191,
         problem_id: 219,
-        input: '',
+        input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED',
         expected_output: 'Third entry: CABIN SEALED',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2192,
         problem_id: 219,
-        input: '',
-        expected_output: 'Third entry: CABIN SEALED',
+        input: 'SYSTEMS CHECK\nFUEL STATUS\nLAUNCH READY',
+        expected_output: 'Third entry: LAUNCH READY',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2193,
-        problem_id: 219,
-        input: '',
-        expected_output: 'Third entry: CABIN SEALED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2194,
-        problem_id: 219,
-        input: '',
-        expected_output: 'Third entry: CABIN SEALED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2195,
-        problem_id: 219,
-        input: '',
-        expected_output: 'Third entry: CABIN SEALED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2196,
-        problem_id: 219,
-        input: '',
-        expected_output: 'Third entry: CABIN SEALED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2197,
-        problem_id: 219,
-        input: '',
-        expected_output: 'Third entry: CABIN SEALED',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

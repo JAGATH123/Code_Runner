@@ -64,14 +64,13 @@ Print only the second line (the first actual goal entry, not the header) using t
 
     // Test cases for Problem 215
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2151,
         problem_id: 215,
         input: '',
         expected_output: 'Second line: 1. Read a book',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2152,
@@ -79,48 +78,7 @@ Print only the second line (the first actual goal entry, not the header) using t
         input: '',
         expected_output: 'Second line: 1. Read a book',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2153,
-        problem_id: 215,
-        input: '',
-        expected_output: 'Second line: 1. Read a book',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2154,
-        problem_id: 215,
-        input: '',
-        expected_output: 'Second line: 1. Read a book',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2155,
-        problem_id: 215,
-        input: '',
-        expected_output: 'Second line: 1. Read a book',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2156,
-        problem_id: 215,
-        input: '',
-        expected_output: 'Second line: 1. Read a book',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2157,
-        problem_id: 215,
-        input: '',
-        expected_output: 'Second line: 1. Read a book',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

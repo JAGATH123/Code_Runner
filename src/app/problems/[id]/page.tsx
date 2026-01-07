@@ -25,12 +25,24 @@ export default function ProblemPage({ params }: ProblemPageProps) {
         const resolvedParams = await params;
         const { id } = resolvedParams;
 
-        const response = await fetch(`/api/problems/${id}`);
+        const response = await fetch(`/api/problems/${id}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+          }
+        });
         if (!response.ok) {
           notFound();
         }
 
         const data = await response.json();
+        console.log('Problem data loaded:', {
+          problem_id: data.problem.problem_id,
+          title: data.problem.title,
+          has_case_code: !!data.problem.case_code,
+          case_code_preview: data.problem.case_code?.substring(0, 50)
+        });
         setProblem(data.problem);
 
         // Store age group in localStorage for theme persistence

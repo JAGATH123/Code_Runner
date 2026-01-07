@@ -26,15 +26,12 @@ Astra: Commander, we need to establish proper data logging procedures. These ste
 Your mission is to demonstrate proper data management for the ship's sensor archive system.`,
 
       question: `Commander, time to set up the Satellite Data Logger!
-
 Your program should manage satellite sensor data that:
 - Starts with three initial sensor readings: 230, 245, 260
 - Inserts a new reading (250) at index 2
 - Removes the last reading from the archive
 - Creates a backup copy of the current readings and sorts them
-- Displays both the original reading sequence and the sorted backup
-
-The archive system needs both versions: the original timeline of readings and an organized sorted view for pattern analysis.`,
+- Displays both the original reading sequence and the sorted backup`,
 
       difficulty: 'Medium',
       example_code: `# Satellite Data Logger
@@ -76,15 +73,22 @@ Copied & Sorted: [230, 245, 250]`,
       case_title: 'Satellite Data Logger - Sensor Archive System',
       // case_overview removed for final tasks (Case 6)
 
-      case_code: `Constraints:
+      case_code: `# Create initial sensor readings
+readings = [230, 245, 260]
 
-• The list must be named \`readings\`
-• Starting values: [230, 245, 260]
-• Insert 250 at index position 2
-• Remove the last element from the list
-• Create a copy before sorting
-• Sort only the copied list, not the original
-• Print format: "Original Readings: [list]" and "Copied & Sorted: [list]"`,
+# Insert new reading at index 2
+readings.insert(2, 250)
+
+# Remove the last element
+readings.pop()
+
+# Create a backup copy and sort it
+sorted_readings = readings.copy()
+sorted_readings.sort()
+
+# Display both versions
+print("Original Readings:", readings)
+print("Copied & Sorted:", sorted_readings)`,
 
       case_explanation: `Use .insert(2, 250) to add an item at index 2. Use .pop() to remove the last element. Use .copy() to create an independent copy of the list. Use .sort() on the copied list only. Print the original list first, then print the sorted copy. The original list should remain in insertion order while the copy is sorted.`,
 
@@ -105,7 +109,9 @@ Copied & Sorted: [230, 245, 250]`,
         expected_output: `Original Readings: [230, 245, 250]
 Copied & Sorted: [230, 245, 250]`,
         is_hidden: false,
-        weight: 1.0
+        is_sample: true,
+        weight: 1.0,
+        created_at: new Date()
       },
       {
         test_case_id: 'tc_58_2',
@@ -114,7 +120,8 @@ Copied & Sorted: [230, 245, 250]`,
         expected_output: `Original Readings: [230, 245, 250]
 Copied & Sorted: [230, 245, 250]`,
         is_hidden: true,
-        weight: 1.0
+        weight: 1.0,
+        created_at: new Date()
       }
     ];
 

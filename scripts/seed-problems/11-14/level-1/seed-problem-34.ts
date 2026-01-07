@@ -29,23 +29,47 @@ async function seedProblem34() {
       example_code: '# Write your code here\n',
       sample_input: '25\n18\n30\n22',
       sample_output: 'Sorted: [18, 22, 25, 30]\nReversed: [30, 25, 22, 18]',
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Convert string input to integers using int()
+- Create a list and store multiple integer values
+- Use the .sort() method to arrange list items in ascending order
+- Use the .reverse() method to flip the list order
+- Print formatted output with labels`,
+
+      concepts: `- List Methods: Using built-in methods to organize lists
+- .sort() Method: Arranging items in ascending order (smallest to largest)
+- .reverse() Method: Flipping the entire list order
+- In-Place Modification: Methods that change the original list directly
+- Ascending/Descending Order: Understanding sorted data organization
+- Formatted Output: Displaying results with descriptive labels`,
+
       metadata: {
         concepts: ['lists', 'sort', 'reverse', 'list-methods', 'data-structures'],
         space_theme: true,
-        estimated_time_minutes: 12,
-        test_protocol: 'Students should use .sort() and .reverse() methods on lists'
+        estimated_time_minutes: 12
       },
       // Case-specific content
       case_number: 4,
       case_title: 'Sorting and Reversing a List',
       case_overview: `Use .sort() to arrange items in order and .reverse() to flip the list.`,
-      case_code: `• The list must be named \`temperatures\`
-• Collect exactly 4 temperature values from user input (convert to integers)
-• Display the list in ascending order with label "Sorted:"
-• Display the list in descending order with label "Reversed:"
-• Use proper output format with labels`,
+      case_code: `# Create a list and collect 4 temperature values
+temperatures = []
+temperatures.append(int(input()))
+temperatures.append(int(input()))
+temperatures.append(int(input()))
+temperatures.append(int(input()))
+
+# Sort the list in ascending order
+temperatures.sort()
+print("Sorted:", temperatures)
+
+# Reverse the list to descending order
+temperatures.reverse()
+print("Reversed:", temperatures)`,
       case_explanation: `.sort() arranges items in ascending order (smallest to largest). .reverse() flips the entire list order. Both methods modify the original list in-place. .sort() works on numbers and strings.`,
 
       created_at: new Date(),
@@ -60,6 +84,7 @@ async function seedProblem34() {
         input: '25\n18\n30\n22',
         expected_output: 'Sorted: [18, 22, 25, 30]\nReversed: [30, 25, 22, 18]',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

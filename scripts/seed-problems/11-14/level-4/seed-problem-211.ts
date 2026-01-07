@@ -21,20 +21,19 @@ async function seedProblem211() {
       title: 'Galactic Data Archives – Building the Space Mission Log Core',
       description: 'Build a comprehensive logging system using all file handling modes to store and retrieve mission data.',
       difficulty: 'Hard',
-      question: `Build a comprehensive Galactic Data Archives system that logs mission data using both text and binary files. The team reviews earlier trials and loads binary sensor frames from the relay buffer. Create a dual-mode logger that appends textual summaries and stores raw binary payloads for later replay.
+      question: `Build a comprehensive Galactic Data Archives system with 5 steps:
 
-Complete 5 steps:
+Step 1: Read 2 lines from input (header and initial status). Create "galactic_archive.txt" and write both lines with newlines. Print "Archive initialized"
 
-Step 1: Initialize Mission Log (Write Mode) - Create "galactic_archive.txt" and write the header "=== MISSION START ===" followed by "Initial system check: PASSED" on a new line. Print "Archive initialized"
+Step 2: Read 3 mission events from input. Append them to the file with newlines. Print "Mission events logged"
 
-Step 2: Log Mid-Mission Events (Append Mode) - Append these three events to the file: "ENGINES IGNITED", "NAVIGATION STABLE", "SHIELDS ACTIVE" (each on a new line). Print "Mission events logged"
+Step 3: Read 2 more inputs: word to find and word to replace. Use r+ mode to modify the file content. Print "Log entry modified"
 
-Step 3: Add Timestamped Entry - Import datetime module and append a timestamped entry in format: "TIMESTAMP: [current time in HH:MM:SS format] - STATUS UPDATE". Print "Timestamped entry added"
+Step 4: Read a binary message from input. Encode and write it to "sensor_archive.bin" using binary write mode. Print "Binary telemetry archived"
 
-Step 4: Modify an Entry (r+ Mode) - Read the file, replace "NAVIGATION STABLE" with "NAVIGATION FAILED", write the updated content back. Print "Log entry modified"
-
-Step 5: Log Binary Sensor Data - Write binary sensor data b"SENSOR_RAW: TEMP=22 RAD=0.5" to "sensor_archive.bin", read it back, and print the decoded content. Print "Binary telemetry archived"`,      sample_input: '',
-      sample_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
+Step 5: Read both files and print their complete contents (text file first, then decoded binary file)`,
+      sample_input: '=== MISSION START ===\nInitial system check: PASSED\nENGINES IGNITED\nNAVIGATION STABLE\nSHIELDS ACTIVE\nSTABLE\nFAILED\nSENSOR_RAW: TEMP=22 RAD=0.5',
+      sample_output: 'Archive initialized\nMission events logged\nLog entry modified\nBinary telemetry archived\n=== MISSION START ===\nInitial system check: PASSED\nENGINES IGNITED\nNAVIGATION FAILED\nSHIELDS ACTIVE\nSENSOR_RAW: TEMP=22 RAD=0.5\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -68,65 +67,23 @@ Step 5: Log Binary Sensor Data - Write binary sensor data b"SENSOR_RAW: TEMP=22 
     const problemResult = await problemsCollection.insertOne(problem211);
     console.log('Problem 211 inserted');
 
-    // Test cases for Problem 211 (7 test cases)
+    // Test cases for Problem 211
     const testCases = [
-      // Visible test case
       {
         test_case_id: 2111,
         problem_id: 211,
-        input: '',
-        expected_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
+        input: '=== MISSION START ===\nInitial system check: PASSED\nENGINES IGNITED\nNAVIGATION STABLE\nSHIELDS ACTIVE\nSTABLE\nFAILED\nSENSOR_RAW: TEMP=22 RAD=0.5',
+        expected_output: 'Archive initialized\nMission events logged\nLog entry modified\nBinary telemetry archived\n=== MISSION START ===\nInitial system check: PASSED\nENGINES IGNITED\nNAVIGATION FAILED\nSHIELDS ACTIVE\nSENSOR_RAW: TEMP=22 RAD=0.5\n',
         is_hidden: false,
-        weight: 15
+        weight: 50
       },
-      // Hidden test cases
       {
         test_case_id: 2112,
         problem_id: 211,
-        input: '',
-        expected_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2113,
-        problem_id: 211,
-        input: '',
-        expected_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2114,
-        problem_id: 211,
-        input: '',
-        expected_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2115,
-        problem_id: 211,
-        input: '',
-        expected_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
-        is_hidden: true,
-        weight: 10
-      },
-      {
-        test_case_id: 2116,
-        problem_id: 211,
-        input: '',
-        expected_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2117,
-        problem_id: 211,
-        input: '',
-        expected_output: 'Archive initialized\nMission events logged\nTimestamped entry added\nLog entry modified\nBinary telemetry archived\nSENSOR_RAW: TEMP=22 RAD=0.5',
-        is_hidden: true,
-        weight: 15
+        input: '=== FLIGHT LOG ===\nPreflight check: COMPLETE\nFUEL LOADED\nCREW READY\nLAUNCH PENDING\nREADY\nGO\nDATA: ALTITUDE=350KM SPEED=28000',
+        expected_output: 'Archive initialized\nMission events logged\nLog entry modified\nBinary telemetry archived\n=== FLIGHT LOG ===\nPreflight check: COMPLETE\nFUEL LOADED\nCREW GO\nLAUNCH PENDING\nDATA: ALTITUDE=350KM SPEED=28000\n',
+        is_hidden: false,
+        weight: 50
       }
     ];
 

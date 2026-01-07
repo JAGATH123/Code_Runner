@@ -49,21 +49,12 @@ hours = float(input())
 total_hours = missions * hours
 print("Pilot", pilot, "will fly for", total_hours, "hours")`,
       case_explanation: `Multi-Input Program:
-
 ● Collect 3 different inputs
 ● Name: string (no conversion)
 ● Days: integer (use int())
 ● Fuel: float (use float())
 ● Calculate: total = days × consumption
-● Print in exact format
-
-Input Format:
-Line 1: Name (string)
-Line 2: Mission days (integer)
-Line 3: Daily fuel consumption (float)
-
-Output Format:
-Cadet [Name], your spacecraft will need [total] liters of fuel for [days] days.`,
+● Print in exact format`,
 
       created_at: new Date(),
       updated_at: new Date()

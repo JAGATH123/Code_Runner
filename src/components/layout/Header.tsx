@@ -20,8 +20,8 @@ export function Header() {
     if (typeof window === 'undefined' || !pathname) return;
 
     // Check pathname first
-    if (pathname.includes('/11-14') || pathname === '/missions' || pathname.includes('/introduction') || pathname.includes('/code-convergence') || pathname.includes('/cheat-sheet')) {
-      // Apply blue theme for 11-14 age group pages, missions page, introduction pages, code convergence, and cheat sheet
+    if (pathname.includes('/11-14') || pathname === '/missions' || pathname.includes('/introduction') || pathname.includes('/code-convergence') || pathname.includes('/cheat-sheet') || pathname.includes('/profile')) {
+      // Apply blue theme for 11-14 age group pages, missions page, introduction pages, code convergence, cheat sheet, and profile page
       setCurrentAgeGroup('11-14');
       localStorage.setItem('currentAgeGroup', '11-14');
     } else if (pathname === '/home' || pathname === '/' || pathname === '/compiler') {

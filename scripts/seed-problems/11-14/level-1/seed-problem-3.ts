@@ -36,18 +36,11 @@ async function seedProblem3() {
       case_number: 3,
       case_title: 'Output with Calculations',
       case_overview: `Learn to let Python perform calculations automatically inside print statements. This makes your programs more dynamic and powerful!`,
-      case_code: `# Python can do math inside print():
-print(5 + 3)
-
-# You can combine text with calculations:
-print("Total is", 5 + 3)
-
-# Python calculates before printing:
+      case_code: `# Python calculates before printing:
 print("Distance:", 100 * 2.5, "km")
 
 # The above prints: Distance: 250.0 km
-
-# Now try printing text with a calculation!`,
+`,
       case_explanation: `Calculations in Print:
 
 ● Python can perform math operations directly inside print()
@@ -103,7 +96,7 @@ Print the exact message with the calculated result as shown in the question.`,
     await client.close();
     console.log('MongoDB connection closed');
   }
-}
+}           
 
 // Run the seed function
 seedProblem3()

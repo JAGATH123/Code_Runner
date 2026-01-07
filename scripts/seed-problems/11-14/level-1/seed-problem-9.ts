@@ -41,44 +41,14 @@ Print the sample variable again`,
       case_overview: `Variables can change value during the program. Python also lets you reassign a variable to a different type — but be careful with this flexibility!`,
       case_code: `# Variables can be reassigned to new values
 # Python even allows changing the data type!
-
 # Example 1: Changing values (same type)
 countdown = 10
-print(countdown)       # Prints: 10
-
-countdown = 5
-print(countdown)       # Prints: 5
-
-# Example 2: Changing types (string to number)
-status = "Launching"
-print(status)          # Prints: Launching
-
-status = 100           # Now it's a number!
-print(status)          # Prints: 100
-
-# Example 3: Number to string
-score = 99
-print(score)           # Prints: 99
-
-score = "Perfect!"
-print(score)           # Prints: Perfect!
-
-# To reassign: variable_name = new_value
-# Python will replace the old value with the new one`,
-      case_explanation: `**How Variable Reassignment Works:**
-
+print(countdown)`,
+      case_explanation: `How Variable Reassignment Works:
 ● Use the same syntax as creating a variable: variable_name = new_value
 ● The old value is replaced with the new value
 ● Python allows changing data types (dynamic typing)
-● This is powerful but requires careful tracking
-
-**Input Format:**
-You do not need to read any input for this challenge.
-
-**Output Format:**
-Print the variable twice (once before reassignment, once after):
-Line 1: rock
-Line 2: 42`,
+● This is powerful but requires careful tracking`,
 
       created_at: new Date(),
       updated_at: new Date()

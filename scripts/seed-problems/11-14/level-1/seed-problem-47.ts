@@ -31,23 +31,52 @@ Outside the loop (no indentation), print "Scan complete".`,
       sample_output: 'Deck Clear 5\nDeck Clear 6\nDeck Clear 7\nDeck Clear 8\nDeck Clear 9\nScan complete',
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Convert string input to integers using int()
+- Use range() with two parameters (start, stop)
+- Understand that range(start, stop) includes start but excludes stop
+- Print formatted output inside a loop
+- Execute code outside the loop after all iterations
+- Understand indentation and scope (inside vs outside loop)`,
+
+      concepts: `- For Loops: Iterating through custom number ranges
+- range(start, stop): Creating sequences from start to stop-1
+- Start and Stop Values: Understanding inclusion and exclusion in range
+- Loop Scope: Code inside loop runs multiple times, code outside runs once
+- Indentation: Determining what code is inside or outside the loop
+- Sequential Execution: Loop completes all iterations before continuing`,
+
       metadata: {
         concepts: ['range', 'for-loop', 'loops', 'start-stop', 'iteration', 'loop-scope'],
         space_theme: true,
-        estimated_time_minutes: 12,
-        test_protocol: 'Students should use range(start, stop) and understand loop vs outside scope'
+        estimated_time_minutes: 12
       },
       // Case-specific content
       case_number: 2,
       case_title: 'Range with Start and Stop',
       case_overview: `Use range(start, stop) to control where the sequence begins and ends.`,
-      case_code: `# Sample Example:
-for level in range(2, 7):
-    print("Scanning Deck", level)
-print("Done")
 
-# Now you try this for our task`,
-      case_explanation: `range(start, stop) includes start but excludes stop. range(5, 10) produces: 5, 6, 7, 8, 9. Code outside the loop runs once after all iterations. Indentation determines scope (inside vs outside loop). Use input() twice for start and stop. Convert both to integers. Use: for level in range(start, stop):. Inside loop (indented 4 spaces): print("Deck Clear", level). Outside loop (no indentation): print("Scan complete"). The "Scan complete" message appears only once at the end.`,
+      case_code: `# Get start and stop numbers from user
+start = int(input())
+stop = int(input())
+
+# Loop from start to stop-1
+for level in range(start, stop):
+    print("Deck Clear", level)
+
+# This runs once after the loop completes
+print("Scan complete")`,
+
+      case_explanation: `- \`range(start, stop)\` includes start but excludes stop
+- \`range(5, 10)\` produces: 5, 6, 7, 8, 9
+- Code outside the loop runs once after all iterations
+- Indentation determines scope (inside vs outside loop)
+- Use \`input()\` twice for start and stop, convert both to integers
+- Use \`for level in range(start, stop):\` to iterate
+- Inside loop (indented 4 spaces): \`print("Deck Clear", level)\`
+- Outside loop (no indentation): \`print("Scan complete")\`
+- The "Scan complete" message appears only once at the end`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -61,6 +90,7 @@ print("Done")
         input: '5\n10',
         expected_output: 'Deck Clear 5\nDeck Clear 6\nDeck Clear 7\nDeck Clear 8\nDeck Clear 9\nScan complete',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

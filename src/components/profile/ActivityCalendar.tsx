@@ -1,11 +1,11 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, GitCommit, TrendingUp, Activity } from 'lucide-react';
+import { Calendar, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 interface SubmissionDay {
   date: string;
@@ -33,8 +33,8 @@ const mockSubmissionData: SubmissionDay[] = [
 
 export function ActivityCalendar() {
   const [mounted, setMounted] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [hoveredDate, setHoveredDate] = useState<string | null>(null);
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth()); // 0-11
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
     setMounted(true);
@@ -42,12 +42,38 @@ export function ActivityCalendar() {
 
   if (!mounted) return null;
 
-  const generateYearData = () => {
+  const goToPreviousMonth = () => {
+    if (currentMonth === 0) {
+      setCurrentMonth(11);
+      setCurrentYear(currentYear - 1);
+    } else {
+      setCurrentMonth(currentMonth - 1);
+    }
+  };
+
+  const goToNextMonth = () => {
+    if (currentMonth === 11) {
+      setCurrentMonth(0);
+      setCurrentYear(currentYear + 1);
+    } else {
+      setCurrentMonth(currentMonth + 1);
+    }
+  };
+
+  const goToPreviousYear = () => {
+    setCurrentYear(currentYear - 1);
+  };
+
+  const goToNextYear = () => {
+    setCurrentYear(currentYear + 1);
+  };
+
+  const generateMonthData = (year: number, month: number) => {
     const data: SubmissionDay[] = [];
-    const startDate = new Date('2024-01-01');
-    const endDate = new Date('2024-12-31');
-    
-    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+
+    for (let d = new Date(firstDay); d <= lastDay; d.setDate(d.getDate() + 1)) {
       const dateStr = d.toISOString().split('T')[0];
       const existing = mockSubmissionData.find(item => item.date === dateStr);
       data.push(existing || {
@@ -56,195 +82,190 @@ export function ActivityCalendar() {
         problems: []
       });
     }
-    
+
     return data;
   };
 
-  const yearData = generateYearData();
-  const totalSubmissions = yearData.reduce((sum, day) => sum + day.count, 0);
-  const activeDays = yearData.filter(day => day.count > 0).length;
-  const currentStreak = calculateCurrentStreak(yearData);
+  const monthData = generateMonthData(currentYear, currentMonth);
+  const totalSubmissions = monthData.reduce((sum, day) => sum + day.count, 0);
+  const activeDays = monthData.filter(day => day.count > 0).length;
+  const monthStreak = calculateMonthStreak(monthData);
 
-  function calculateCurrentStreak(data: SubmissionDay[]): number {
-    let streak = 0;
-    const sortedData = [...data].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    
-    for (const day of sortedData) {
+  function calculateMonthStreak(data: SubmissionDay[]): number {
+    let maxStreak = 0;
+    let currentStreakCount = 0;
+
+    for (const day of data) {
       if (day.count > 0) {
-        streak++;
+        currentStreakCount++;
+        maxStreak = Math.max(maxStreak, currentStreakCount);
       } else {
-        break;
+        currentStreakCount = 0;
       }
     }
-    
-    return streak;
+
+    return maxStreak;
   }
 
   const getIntensityClass = (count: number) => {
-    if (count === 0) return 'bg-card/30 border-primary/20';
-    if (count === 1) return 'bg-neon-green/20 border-neon-green/40 glow-border-sm';
-    if (count === 2) return 'bg-neon-green/40 border-neon-green/60 glow-border-sm';
-    if (count === 3) return 'bg-neon-green/60 border-neon-green/80 glow-border';
-    if (count >= 4) return 'bg-neon-green border-neon-green glow-border shadow-lg shadow-neon-green/30';
-    return 'bg-card/30 border-primary/20';
+    if (count === 0) return 'bg-white border-gray-200';
+    return 'bg-blue-500 border-blue-600';
   };
 
-  const getWeekNumber = (date: Date) => {
-    const startOfYear = new Date(date.getFullYear(), 0, 1);
-    const pastDaysOfYear = (date.getTime() - startOfYear.getTime()) / 86400000;
-    return Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
-  };
-
-  const organizeDataByWeeks = () => {
+  const organizeMonthByWeeks = () => {
     const weeks: SubmissionDay[][] = [];
     let currentWeek: SubmissionDay[] = [];
-    
-    yearData.forEach((day, index) => {
-      const date = new Date(day.date);
-      const dayOfWeek = date.getDay();
-      
-      if (index === 0) {
-        for (let i = 0; i < dayOfWeek; i++) {
-          currentWeek.push({ date: '', count: 0, problems: [] });
-        }
-      }
-      
+
+    // Get the first day of the month and its day of week
+    const firstDate = new Date(monthData[0].date);
+    const firstDayOfWeek = firstDate.getDay();
+
+    // Fill empty days at the start of the first week
+    for (let i = 0; i < firstDayOfWeek; i++) {
+      currentWeek.push({ date: '', count: 0, problems: [] });
+    }
+
+    // Add all days of the month
+    monthData.forEach((day) => {
       currentWeek.push(day);
-      
+
       if (currentWeek.length === 7) {
         weeks.push([...currentWeek]);
         currentWeek = [];
       }
     });
-    
+
+    // Fill empty days at the end of the last week
     if (currentWeek.length > 0) {
       while (currentWeek.length < 7) {
         currentWeek.push({ date: '', count: 0, problems: [] });
       }
       weeks.push(currentWeek);
     }
-    
+
     return weeks;
   };
 
-  const weeks = organizeDataByWeeks();
-  const displayDate = hoveredDate || selectedDate;
-  const displayDay = displayDate ? yearData.find(d => d.date === displayDate) : null;
+  const weeks = organizeMonthByWeeks();
 
   return (
-    <Card className="mission-card enhanced-hologram cyber-card glow-border">
-      <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-neon-green/60"></div>
-      <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-neon-green/60"></div>
-      <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-neon-green/60"></div>
-      <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-neon-green/60"></div>
+    <div className="w-full h-full relative">
+      <div className="p-3 sm:p-4 md:p-5 space-y-3 sm:space-y-4">
+        {/* Header with Month and Year Navigation */}
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 flex items-center gap-2">
+            <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
+            Activity
+          </h3>
 
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-xl font-space font-bold text-primary flex items-center gap-2">
-            <GitCommit className="w-5 h-5 text-neon-green" />
-            SUBMISSION MATRIX
-          </CardTitle>
-          <Badge className="bg-neon-green/20 text-neon-green border-neon-green/50 font-space text-xs">
-            2024 CYCLE
-          </Badge>
-        </div>
-      </CardHeader>
+          {/* Month and Year Navigation */}
+          <div className="flex items-center gap-3">
+            {/* Month Navigation */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={goToPreviousMonth}
+                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                aria-label="Previous month"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+              </button>
 
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-3 gap-4 text-center">
-          <div>
-            <div className="text-lg font-space font-bold text-neon-green">{totalSubmissions}</div>
-            <div className="text-xs font-space text-muted-foreground">TOTAL COMMITS</div>
-          </div>
-          <div>
-            <div className="text-lg font-space font-bold text-neon-cyan">{activeDays}</div>
-            <div className="text-xs font-space text-muted-foreground">ACTIVE DAYS</div>
-          </div>
-          <div>
-            <div className="text-lg font-space font-bold text-neon-purple">{currentStreak}</div>
-            <div className="text-xs font-space text-muted-foreground">CURRENT STREAK</div>
-          </div>
-        </div>
+              <Badge className="bg-blue-50 text-blue-600 border border-blue-200 text-xs px-3 py-1 font-medium min-w-[100px] text-center">
+                {monthNames[currentMonth]}
+              </Badge>
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="text-sm font-space text-muted-foreground">2024</div>
-            <div className="flex items-center gap-2 text-xs font-space text-muted-foreground">
-              <span>Less</span>
-              <div className="flex gap-1">
-                {[0, 1, 2, 3, 4].map(level => (
-                  <div
-                    key={level}
-                    className={`w-3 h-3 rounded-sm border ${getIntensityClass(level)}`}
-                  />
-                ))}
-              </div>
-              <span>More</span>
+              <button
+                onClick={goToNextMonth}
+                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                aria-label="Next month"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+              </button>
+            </div>
+
+            {/* Year Navigation */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={goToPreviousYear}
+                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                aria-label="Previous year"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+              </button>
+
+              <Badge className="bg-purple-50 text-purple-600 border border-purple-200 text-xs px-3 py-1 font-medium min-w-[60px] text-center">
+                {currentYear}
+              </Badge>
+
+              <button
+                onClick={goToNextYear}
+                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                aria-label="Next year"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+              </button>
             </div>
           </div>
+        </div>
 
-          <div className="relative overflow-x-auto">
-            <div className="flex gap-1 min-w-max">
-              <div className="flex flex-col gap-1 text-xs font-space text-muted-foreground mr-2">
-                <div className="h-3"></div>
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                  <div key={day} className="h-3 flex items-center">
-                    {day}
-                  </div>
-                ))}
-              </div>
-              
+        {/* Stats Overview */}
+        <div className="grid grid-cols-3 gap-2">
+          <div className="p-2 rounded-lg bg-gradient-to-br from-green-50 to-green-100/50 border border-green-200">
+            <div className="text-lg sm:text-xl font-bold text-green-600">{totalSubmissions}</div>
+            <div className="text-[10px] sm:text-xs text-green-700 mt-0.5">Submissions</div>
+          </div>
+          <div className="p-2 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200">
+            <div className="text-lg sm:text-xl font-bold text-blue-600">{activeDays}</div>
+            <div className="text-[10px] sm:text-xs text-blue-700 mt-0.5">Active Days</div>
+          </div>
+          <div className="p-2 rounded-lg bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-200">
+            <div className="text-lg sm:text-xl font-bold text-purple-600">{monthStreak}</div>
+            <div className="text-[10px] sm:text-xs text-purple-700 mt-0.5">Best Streak</div>
+          </div>
+        </div>
+
+        {/* Calendar Grid */}
+        <div className="space-y-3">
+          {/* Calendar as Calendar Month View */}
+          <div className="w-full">
+            {/* Day Headers */}
+            <div className="grid grid-cols-7 gap-1 sm:gap-1.5 mb-1.5">
+              {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+                <div key={day} className="text-center text-xs sm:text-sm font-medium text-gray-600">
+                  {day}
+                </div>
+              ))}
+            </div>
+
+            {/* Calendar Grid */}
+            <div className="space-y-1 sm:space-y-1.5">
               {weeks.map((week, weekIndex) => (
-                <div key={weekIndex} className="flex flex-col gap-1">
-                  <div className="h-3 text-xs font-space text-muted-foreground text-center">
-                    {weekIndex % 4 === 0 && week[0]?.date ? (
-                      monthNames[new Date(week[0].date).getMonth()]
-                    ) : ''}
-                  </div>
-                  {week.map((day, dayIndex) => (
-                    <div
-                      key={`${weekIndex}-${dayIndex}`}
-                      className={`w-3 h-3 rounded-sm border cursor-pointer transition-all duration-200 hover:scale-110 ${
-                        day.date ? getIntensityClass(day.count) : 'invisible'
-                      } ${selectedDate === day.date ? 'ring-2 ring-neon-cyan' : ''}`}
-                      onMouseEnter={() => day.date && setHoveredDate(day.date)}
-                      onMouseLeave={() => setHoveredDate(null)}
-                      onClick={() => day.date && setSelectedDate(day.date === selectedDate ? null : day.date)}
-                      title={day.date ? `${day.date}: ${day.count} submissions` : ''}
-                    />
-                  ))}
+                <div key={weekIndex} className="grid grid-cols-7 gap-1 sm:gap-1.5">
+                  {week.map((day, dayIndex) => {
+                    const dayNumber = day.date ? new Date(day.date).getDate() : '';
+                    return (
+                      <div
+                        key={`${weekIndex}-${dayIndex}`}
+                        className={`aspect-square rounded border flex flex-col items-center justify-center ${
+                          day.date
+                            ? getIntensityClass(day.count)
+                            : 'invisible'
+                        }`}
+                      >
+                        {day.date && (
+                          <span className={`text-xs sm:text-sm font-medium ${
+                            day.count > 0 ? 'text-white' : 'text-gray-700'
+                          }`}>{dayNumber}</span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        {displayDay && (
-          <div className="mt-4 pt-4 border-t border-primary/20">
-            <div className="bg-card/50 border border-neon-cyan/30 rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-2">
-                <Activity className="w-4 h-4 text-neon-cyan" />
-                <span className="font-space text-sm text-neon-cyan">
-                  {new Date(displayDay.date).toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </span>
-              </div>
-              <div className="text-lg font-space font-bold text-primary">
-                {displayDay.count} {displayDay.count === 1 ? 'Problem' : 'Problems'} Solved
-              </div>
-              {displayDay.count > 0 && (
-                <div className="text-xs font-mono text-muted-foreground mt-1">
-                  Problems: {displayDay.problems.join(', ')}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

@@ -20,71 +20,90 @@ async function seedProblem23() {
       title: 'Using Comparison Operators',
       description: 'Learn to use comparison operators like != to check if values are different.',
       difficulty: 'Easy',
-      tags: ['conditionals', 'comparison-operators', 'not-equal', 'input'],
       question: `Write a program that asks the user for a system_status. If the status is not equal to "OK", print "System malfunction detected!"`,
-      case_overview: `Case 3: Using Comparison Operators
-
-Learn to use different comparison operators, focusing on != (not equal).`,
-      case_explanation: `| Operator | Symbol | Description |
-|----------|--------|-------------|
-| Equal to | == | Checks if two values are equal |
-| Not equal | != | Checks if two values are different |
-| Greater than | > | Checks if left is greater than right |
-| Less than | < | Checks if left is less than right |
-| Greater or equal | >= | Checks if left is greater or equal |
-| Less or equal | <= | Checks if left is less or equal |`,
-      case_code: `# Sample Example:
-password = input("Enter password: ")
-if password != "1234":
-    print("Access denied!")
-
-# Now you try for our task`,
+      example_code: '# Write your code here\n',
       sample_input: 'ERROR',
       sample_output: 'System malfunction detected!',
-      expected_output: 'System malfunction detected!',
+
+      age_group: '11-14',
+      level_number: 1,
+
+      objectives: `- Use input() to collect system status data
+- Use comparison operator (!=) to check inequality
+- Use if statement to execute code conditionally
+- Work with string comparisons
+- Print output when condition is met`,
+
+      concepts: `- Conditionals: Making decisions with if statements
+- Comparison Operators: Using != to check if values are different
+- Input/Output: Reading user input and displaying results
+- String Comparison: Comparing text values`,
+
+      metadata: {
+        concepts: ['conditionals', 'comparison-operators', 'not-equal', 'input', 'string-comparison'],
+        space_theme: true,
+        estimated_time_minutes: 15
+      },
+
+      // Case-specific content
+      case_number: 3,
+      case_title: 'Using Comparison Operators',
+      case_overview: `Learn to use different comparison operators, focusing on != (not equal).`,
+      case_code: `# Sample Example:
+password = input()
+if password != "1234":
+    print("Access denied!")`,
+      case_explanation: `The != operator checks if two values are NOT equal. If they're different, the condition is True.`,
       created_at: new Date(),
       updated_at: new Date(),
     };
 
+    // Test cases for Problem 23
     const testCases = [
       {
         problem_id: 23,
-        case_number: 1,
+        test_case_id: 1,
         input: 'ERROR',
         expected_output: 'System malfunction detected!',
         is_hidden: false,
+        is_sample: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 23,
-        case_number: 2,
+        test_case_id: 2,
         input: 'FAIL',
         expected_output: 'System malfunction detected!',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 23,
-        case_number: 3,
+        test_case_id: 3,
         input: 'OK',
         expected_output: '',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 23,
-        case_number: 4,
+        test_case_id: 4,
         input: 'WARNING',
         expected_output: 'System malfunction detected!',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 23,
-        case_number: 5,
+        test_case_id: 5,
         input: 'ok',
         expected_output: 'System malfunction detected!',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
     ];

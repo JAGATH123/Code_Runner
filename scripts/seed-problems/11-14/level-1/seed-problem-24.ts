@@ -20,86 +20,114 @@ async function seedProblem24() {
       title: 'Using Multiple Conditions with elif',
       description: 'Learn to handle multiple conditions using elif statements.',
       difficulty: 'Easy',
-      tags: ['conditionals', 'elif', 'multiple-conditions', 'input'],
       question: `Write a program that asks the user for a test score (0-100). Print the grade based on these conditions:
 - If score >= 90, print "Grade: A"
 - If score >= 80, print "Grade: B"
 - If score >= 70, print "Grade: C"
 - If score >= 60, print "Grade: D"
 - Otherwise, print "Grade: F"`,
-      case_overview: `Case 4: Using Multiple Conditions with elif
+      example_code: '# Write your code here\n',
+      sample_input: '95',
+      sample_output: 'Grade: A',
 
-Handle multiple conditions using if-elif-else chains.`,
+      age_group: '11-14',
+      level_number: 1,
+
+      objectives: `- Use input() to collect test score data
+- Convert input to integer using int()
+- Use comparison operators (>=) to check multiple conditions
+- Use if-elif-else statement to handle multiple cases
+- Print appropriate output for each condition`,
+
+      concepts: `- Conditionals: Making decisions with if-elif-else statements
+- Comparison Operators: Using >= to compare values
+- Input/Output: Reading user input and displaying results
+- Type Conversion: Converting strings to integers
+- Control Flow: Choosing between multiple code paths`,
+
+      metadata: {
+        concepts: ['conditionals', 'elif', 'multiple-conditions', 'input', 'type-conversion'],
+        space_theme: true,
+        estimated_time_minutes: 20
+      },
+
+      // Case-specific content
+      case_number: 4,
+      case_title: 'Using Multiple Conditions with elif',
+      case_overview: `Handle multiple conditions using if-elif-else chains.`,
+      case_code: `# Sample Example:
+altitude = int(input())
+if altitude > 10000:
+    print("High altitude")
+elif altitude > 5000:
+    print("Medium altitude")
+else:
+    print("Low altitude")`,
       case_explanation: `if condition1:
     # Runs if condition1 is True
 elif condition2:
     # Runs if condition1 is False and condition2 is True
 else:
     # Runs if all conditions are False`,
-      case_code: `# Sample Example:
-altitude = int(input("Enter altitude: "))
-if altitude > 10000:
-    print("High altitude")
-elif altitude > 5000:
-    print("Medium altitude")
-else:
-    print("Low altitude")
-
-# Now you try this for our task`,
-      sample_input: '95',
-      sample_output: 'Grade: A',
-      expected_output: 'Grade: A',
       created_at: new Date(),
       updated_at: new Date(),
     };
 
+    // Test cases for Problem 24
     const testCases = [
       {
         problem_id: 24,
-        case_number: 1,
+        test_case_id: 1,
         input: '95',
         expected_output: 'Grade: A',
         is_hidden: false,
+        is_sample: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 24,
-        case_number: 2,
+        test_case_id: 2,
         input: '85',
         expected_output: 'Grade: B',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 24,
-        case_number: 3,
+        test_case_id: 3,
         input: '75',
         expected_output: 'Grade: C',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 24,
-        case_number: 4,
+        test_case_id: 4,
         input: '65',
         expected_output: 'Grade: D',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 24,
-        case_number: 5,
+        test_case_id: 5,
         input: '50',
         expected_output: 'Grade: F',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
       {
         problem_id: 24,
-        case_number: 6,
+        test_case_id: 6,
         input: '90',
         expected_output: 'Grade: A',
         is_hidden: true,
+        weight: 1.0,
         created_at: new Date(),
       },
     ];

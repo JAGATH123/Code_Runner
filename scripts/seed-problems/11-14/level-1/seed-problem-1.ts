@@ -8,7 +8,6 @@ async function seedProblem1() {
 
   try {
     await client.connect();
-    console.log('Connected to MongoDB');
 
     const db = client.db(MONGODB_DB);
     const problemsCollection = db.collection('problems');
@@ -39,15 +38,8 @@ async function seedProblem1() {
       case_code: `# Here is a sample line of code that prints text:
 print("Hello, World!")
 
-# You can also store text in a variable and print it:
-my_message = "Hello, World!"
-print(my_message)
-
-# The above code will print: Hello, World!
-
-# Now it's your turn! Use print() to display the required message.`,
+# The above code will print: Hello, World!`,
       case_explanation: `How print() works:
-
 ● The print() function displays text on the screen
 ● Text must be wrapped in quotes: "like this"
 ● The message inside the quotes will appear exactly as written
@@ -82,33 +74,24 @@ Print the exact message shown in the question.`,
       { upsert: true }
     );
 
-    console.log('Problem 1 upserted:', problemResult.upsertedId || 'Updated existing');
-
     // Delete existing test cases for problem 1
     await testCasesCollection.deleteMany({ problem_id: 1 });
 
     // Insert test cases
     const testCasesResult = await testCasesCollection.insertMany(testCases1);
-    console.log('Test cases inserted:', testCasesResult.insertedCount);
-
-    console.log('\n✅ Problem 1 (Case 1: Simple Output Message) seeded successfully!');
 
   } catch (error) {
-    console.error('Error seeding database:', error);
     throw error;
   } finally {
     await client.close();
-    console.log('MongoDB connection closed');
   }
 }
 
 // Run the seed function
 seedProblem1()
   .then(() => {
-    console.log('\n🚀 Database seeding completed!');
     process.exit(0);
   })
   .catch((error) => {
-    console.error('\n❌ Database seeding failed:', error);
     process.exit(1);
   });

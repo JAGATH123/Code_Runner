@@ -40,35 +40,15 @@ Print the result using print(type(gravity))`,
       case_overview: `Want to know what type a variable is? Use the type() function.`,
       case_code: `# The type() function tells you the data type of a variable
 # Examples:
-
 speed = 25000
-print(type(speed))        # Prints: <class 'int'>
-
-name = "Astronaut"
-print(type(name))         # Prints: <class 'str'>
-
-temperature = -270.15
-print(type(temperature))  # Prints: <class 'float'>
-
-active = True
-print(type(active))       # Prints: <class 'bool'>
-
+print(type(speed))       
 # Syntax: type(variable_name)
-# Use it inside print() to see the result
-
-# Now create your variable and check its type!`,
-      case_explanation: `**How type() works:**
-
+# Use it inside print() to see the result`,
+      case_explanation: `How type() works:
 ● The type() function returns the data type of any variable
 ● Syntax: type(variable_name)
 ● Always use it inside print() to see the result
-● Python shows types as: <class 'type_name'>
-
-**Input Format:**
-You do not need to read any input for this challenge.
-
-**Output Format:**
-Print the type of the gravity variable (should be <class 'float'>)`,
+● Python shows types as: <class 'type_name'>`,
 
       created_at: new Date(),
       updated_at: new Date()

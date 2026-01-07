@@ -21,12 +21,9 @@ async function seedProblem207() {
       title: 'Appending Emergency Entries to Mission Logs',
       description: 'Learn to append critical updates to existing logs without deleting previous entries using append mode.',
       difficulty: 'Medium',
-      question: `A file "mission_log.txt" already contains launch sequence entries. Append two emergency updates to it without deleting the existing content:
-1. "ALERT: OXYGEN DROP at 14:55"
-2. "RECOVERY: BACKUP SYSTEM ACTIVATED"
-
-Each entry should be on a new line. Print "Emergency entries appended successfully" when done.`,      sample_input: '',
-      sample_output: 'Emergency entries appended successfully',
+      question: `Read 2 initial log entries from input (one per line). Create "mission_log.txt" and write these entries with newlines. Then read 2 emergency updates from input. Append them to the file with newlines. Finally, read the entire file and print its contents (should show all 4 entries).`,
+      sample_input: 'LAUNCH SEQUENCE INITIATED\nENGINES ONLINE\nALERT: OXYGEN DROP at 14:55\nRECOVERY: BACKUP SYSTEM ACTIVATED',
+      sample_output: 'LAUNCH SEQUENCE INITIATED\nENGINES ONLINE\nALERT: OXYGEN DROP at 14:55\nRECOVERY: BACKUP SYSTEM ACTIVATED\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -62,63 +59,21 @@ Each entry should be on a new line. Print "Emergency entries appended successful
 
     // Test cases for Problem 207
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2071,
         problem_id: 207,
-        input: '',
-        expected_output: 'Emergency entries appended successfully',
+        input: 'LAUNCH SEQUENCE INITIATED\nENGINES ONLINE\nALERT: OXYGEN DROP at 14:55\nRECOVERY: BACKUP SYSTEM ACTIVATED',
+        expected_output: 'LAUNCH SEQUENCE INITIATED\nENGINES ONLINE\nALERT: OXYGEN DROP at 14:55\nRECOVERY: BACKUP SYSTEM ACTIVATED\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2072,
         problem_id: 207,
-        input: '',
-        expected_output: 'Emergency entries appended successfully',
+        input: 'SYSTEMS CHECK COMPLETE\nNAVIGATION READY\nWARNING: FUEL LOW\nUPDATE: REFUELING INITIATED',
+        expected_output: 'SYSTEMS CHECK COMPLETE\nNAVIGATION READY\nWARNING: FUEL LOW\nUPDATE: REFUELING INITIATED\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2073,
-        problem_id: 207,
-        input: '',
-        expected_output: 'Emergency entries appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2074,
-        problem_id: 207,
-        input: '',
-        expected_output: 'Emergency entries appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2075,
-        problem_id: 207,
-        input: '',
-        expected_output: 'Emergency entries appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2076,
-        problem_id: 207,
-        input: '',
-        expected_output: 'Emergency entries appended successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2077,
-        problem_id: 207,
-        input: '',
-        expected_output: 'Emergency entries appended successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

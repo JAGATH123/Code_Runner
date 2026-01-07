@@ -21,13 +21,9 @@ async function seedProblem209() {
       title: 'Modifying Mission Logs with r+ Mode',
       description: 'Learn to read and update existing log entries using r+ mode for in-place file modifications.',
       difficulty: 'Medium',
-      question: `Read a mission log file "mission_log.txt" that contains the entry "LAUNCHED" and update it to "COMPLETED" wherever it appears. Use r+ mode to read and write in the same operation. Print "Log status modified successfully" when done.
-
-The file initially contains:
-PREP CHECKED
-IGNITION STARTED
-LAUNCHED`,      sample_input: '',
-      sample_output: 'Log status modified successfully',
+      question: `Read 3 log entries from input (one per line). Create "mission_log.txt" with these entries. Then read 2 more inputs: a word to find and a word to replace it with. Use r+ mode to read the file, replace all occurrences of the find word with the replace word, seek back to the start, write the modified content, and truncate. Finally, read the file and print its contents.`,
+      sample_input: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED\nLAUNCHED\nCOMPLETED',
+      sample_output: 'PREP CHECKED\nIGNITION STARTED\nCOMPLETED\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -63,63 +59,21 @@ LAUNCHED`,      sample_input: '',
 
     // Test cases for Problem 209
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2091,
         problem_id: 209,
-        input: '',
-        expected_output: 'Log status modified successfully',
+        input: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED\nLAUNCHED\nCOMPLETED',
+        expected_output: 'PREP CHECKED\nIGNITION STARTED\nCOMPLETED\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2092,
         problem_id: 209,
-        input: '',
-        expected_output: 'Log status modified successfully',
+        input: 'SYSTEMS ONLINE\nENGINES READY\nPENDING\nPENDING\nACTIVE',
+        expected_output: 'SYSTEMS ONLINE\nENGINES READY\nACTIVE\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2093,
-        problem_id: 209,
-        input: '',
-        expected_output: 'Log status modified successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2094,
-        problem_id: 209,
-        input: '',
-        expected_output: 'Log status modified successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2095,
-        problem_id: 209,
-        input: '',
-        expected_output: 'Log status modified successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2096,
-        problem_id: 209,
-        input: '',
-        expected_output: 'Log status modified successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2097,
-        problem_id: 209,
-        input: '',
-        expected_output: 'Log status modified successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

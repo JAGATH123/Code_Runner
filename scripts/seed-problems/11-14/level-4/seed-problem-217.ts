@@ -70,65 +70,23 @@ Step 6: Add a User Log Entry - Append the text "Emergency alert activated" to th
     const problemResult = await problemsCollection.insertOne(problem217);
     console.log('Problem 217 inserted');
 
-    // Test cases for Problem 217 (7 test cases)
+    // Test cases for Problem 217
     const testCases = [
-      // Visible test case
       {
         test_case_id: 2171,
         problem_id: 217,
         input: '',
         expected_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
         is_hidden: false,
-        weight: 15
+        weight: 50
       },
-      // Hidden test cases
       {
         test_case_id: 2172,
         problem_id: 217,
         input: '',
         expected_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2173,
-        problem_id: 217,
-        input: '',
-        expected_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2174,
-        problem_id: 217,
-        input: '',
-        expected_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2175,
-        problem_id: 217,
-        input: '',
-        expected_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
-        is_hidden: true,
-        weight: 10
-      },
-      {
-        test_case_id: 2176,
-        problem_id: 217,
-        input: '',
-        expected_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2177,
-        problem_id: 217,
-        input: '',
-        expected_output: 'Log initialized\nMission entries added\n--- Galactic Mission Log ---\nNavigation system initialized\nResource scan complete\nSignal received from satellite\nSecond entry: Navigation system initialized\nLog 1: --- Galactic Mission Log ---\nLog 2: Navigation system initialized\nLog 3: Resource scan complete\nLog 4: Signal received from satellite\nNew log saved successfully',
-        is_hidden: true,
-        weight: 15
+        is_hidden: false,
+        weight: 50
       }
     ];
 

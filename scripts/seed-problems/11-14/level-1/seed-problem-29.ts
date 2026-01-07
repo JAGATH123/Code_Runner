@@ -20,7 +20,6 @@ async function seedProblem29() {
       title: 'Deeply Nested If-Else Chain',
       description: 'Master deeply nested if-else chains to create multi-layered decision structures that check multiple conditions in sequence.',
       difficulty: 'Medium',
-      tags: ['conditionals', 'nested-if', 'if-else-chain', 'multi-level-decisions'],
       question: `Use input() to get speed (convert to integer).
 Use input() to get altitude (convert to integer).
 Use input() to get systems_check (string: "True" or "False").
@@ -30,20 +29,33 @@ If true, check if systems_check == "True", print "Flight approved.", else print 
       example_code: '# Write your code here\n',
       sample_input: '120\n5000\nTrue',
       sample_output: 'Flight approved.',
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect speed, altitude, and system status data
+- Convert input to integers using int()
+- Use deeply nested if-else statements for multi-level decisions
+- Use comparison operators (>, ==) to check conditions at each level
+- Print specific error messages based on which condition fails
+- Understand sequential checkpoint validation logic`,
+
+      concepts: `- Deeply Nested If-Else: Creating multi-level decision structures with three levels
+- Sequential Validation: Checking conditions one after another like checkpoints
+- Multi-level Decisions: Making decisions based on previous condition results
+- Comparison Operators: Using > and == to evaluate conditions
+- Error-Specific Output: Providing different messages for different failure points
+- Code Indentation: Understanding how deep nesting affects code structure`,
+
       metadata: {
         concepts: ['nested-if', 'if-else-chain', 'multi-level-decisions', 'sequential-checks'],
         space_theme: true,
-        estimated_time_minutes: 15,
-        test_protocol: 'Students should use deeply nested if-else chains with three levels of conditions'
+        estimated_time_minutes: 15
       },
       // Case-specific content
       case_number: 4,
       case_title: 'Deeply Nested If-Else Chain',
-      case_overview: `Case 4: Deeply Nested If-Else Chain
-
-Learn how to create deeply nested if-else chains with multiple levels of decision-making. Like a series of security checkpoints before a rocket launch, each condition must pass before moving to the next check.`,
+      case_overview: `Learn how to create deeply nested if-else chains with multiple levels of decision-making. Like a series of security checkpoints before a rocket launch, each condition must pass before moving to the next check.`,
       case_explanation: `Three levels of if-else conditions. Each level checks a different condition. Only proceeds to next level if current passes. Provides specific error messages for each failure.`,
       case_code: `# Sample Example:
 fuel = int(input())
@@ -58,10 +70,7 @@ if fuel > 60:
     else:
         print("Oxygen too low.")
 else:
-    print("Fuel insufficient.")
-
-# Now you try for our task`,
-      expected_output: 'Flight approved.',
+    print("Fuel insufficient.")`,
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -73,6 +82,7 @@ else:
         input: '120\n5000\nTrue',
         expected_output: 'Flight approved.',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

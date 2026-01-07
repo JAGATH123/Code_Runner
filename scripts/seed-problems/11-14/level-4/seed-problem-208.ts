@@ -21,13 +21,9 @@ async function seedProblem208() {
       title: 'Reading Recovery Data from Mission Logs',
       description: 'Learn to retrieve and display mission data by reading files line-by-line for analysis and review.',
       difficulty: 'Easy',
-      question: `Open an existing file called "mission_log.txt" in read mode and print each entry in a clean format (one entry per line, no extra whitespace). The file contains these entries:
-PREP CHECKED
-IGNITION STARTED
-LAUNCHED
-
-Print each entry on a separate line.`,      sample_input: '',
-      sample_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
+      question: `Read 3 log entries from input (one per line). Create "mission_log.txt" and write these entries with newlines. Then read the file back line by line and print each line using strip() to remove extra whitespace.`,
+      sample_input: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
+      sample_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -63,63 +59,21 @@ Print each entry on a separate line.`,      sample_input: '',
 
     // Test cases for Problem 208
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2081,
         problem_id: 208,
-        input: '',
-        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
+        input: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
+        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2082,
         problem_id: 208,
-        input: '',
-        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
+        input: 'SYSTEMS ONLINE\nCREW READY\nLIFTOFF COMPLETE',
+        expected_output: 'SYSTEMS ONLINE\nCREW READY\nLIFTOFF COMPLETE\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2083,
-        problem_id: 208,
-        input: '',
-        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2084,
-        problem_id: 208,
-        input: '',
-        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2085,
-        problem_id: 208,
-        input: '',
-        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2086,
-        problem_id: 208,
-        input: '',
-        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2087,
-        problem_id: 208,
-        input: '',
-        expected_output: 'PREP CHECKED\nIGNITION STARTED\nLAUNCHED',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

@@ -21,7 +21,8 @@ async function seedProblem221() {
       title: 'Truncating Mission Logs',
       description: 'Learn to cut files to a safe size using truncate() to preserve only essential data.',
       difficulty: 'Medium',
-      question: `A file "galactic_log.txt" contains multiple log entries. Truncate the file to retain only the first two full log entries (approximately 50 bytes). Use r+ mode. Print "Log file truncated to safe size" after truncation. Then read and print the remaining content to confirm.`,      sample_input: '',
+      question: `Read 4 log entries from input (one per line). Write them to "galactic_log.txt" (each on a new line). Then reopen the file in r+ mode, truncate it to 26 bytes (keeping only first two entries), print "Log file truncated to safe size", then read and print the remaining content without trailing newline.`,
+      sample_input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED\nLAUNCH SEQUENCE STARTED',
       sample_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem221() {
 
     // Test cases for Problem 221
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2211,
         problem_id: 221,
-        input: '',
+        input: 'ENGINE IGNITED\nNAV ONLINE\nCABIN SEALED\nLAUNCH SEQUENCE STARTED',
         expected_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2212,
         problem_id: 221,
-        input: '',
-        expected_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
+        input: 'SYSTEMS CHECK\nFUEL LOADED\nCREW READY\nIGNITION ACTIVE',
+        expected_output: 'Log file truncated to safe size\nSYSTEMS CHECK\nFUEL LOADED',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2213,
-        problem_id: 221,
-        input: '',
-        expected_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2214,
-        problem_id: 221,
-        input: '',
-        expected_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2215,
-        problem_id: 221,
-        input: '',
-        expected_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2216,
-        problem_id: 221,
-        input: '',
-        expected_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2217,
-        problem_id: 221,
-        input: '',
-        expected_output: 'Log file truncated to safe size\nENGINE IGNITED\nNAV ONLINE',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

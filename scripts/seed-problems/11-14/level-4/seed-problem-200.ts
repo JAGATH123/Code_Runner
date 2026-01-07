@@ -21,8 +21,8 @@ async function seedProblem200() {
       title: 'Writing to a File',
       description: 'Learn to create files and write content to them using Python file handling basics.',
       difficulty: 'Easy',
-      question: `Create a file handling system that opens a file called "diary.txt" in write mode, writes the message "My favorite hobby is coding!", and closes the file properly.`,      sample_input: '',
-      sample_output: 'File created successfully',
+      question: `Read a message from input, create a file called "diary.txt" in write mode, write that message to it, and close the file. Then read the file back, print its contents, and print the character count on a new line.`,      sample_input: 'My favorite hobby is coding!',
+      sample_output: 'My favorite hobby is coding!\n28\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -58,63 +58,21 @@ async function seedProblem200() {
 
     // Test cases for Problem 200
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2001,
         problem_id: 200,
-        input: '',
-        expected_output: 'File created successfully',
+        input: 'My favorite hobby is coding!',
+        expected_output: 'My favorite hobby is coding!\n28\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2002,
         problem_id: 200,
-        input: '',
-        expected_output: 'File created successfully',
+        input: 'Python is awesome!',
+        expected_output: 'Python is awesome!\n18\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2003,
-        problem_id: 200,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2004,
-        problem_id: 200,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2005,
-        problem_id: 200,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2006,
-        problem_id: 200,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2007,
-        problem_id: 200,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

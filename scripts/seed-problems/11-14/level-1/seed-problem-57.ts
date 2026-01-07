@@ -21,19 +21,17 @@ async function seedProblem57() {
       title: 'Astronaut Supply Checklist',
       description: `The team compiles repair tasks and subsystem checkpoints as they finalize engine and stabilizer calibration for NOVA-12.
 
-Astra: *"Create the Astronaut Supply Checklist to track essential mission equipment. Start with core items, add new supplies as needed, remove items no longer required, and organize the final inventory. Every astronaut mission depends on precise supply management."*
+Astra: "Create the Astronaut Supply Checklist to track essential mission equipment. Start with core items, add new supplies as needed, remove items no longer required, and organize the final inventory. Every astronaut mission depends on precise supply management."
 
 Build the automated supply tracking system that ensures nothing critical is left behind.`,
 
       question: `Commander, it's time to build the Astronaut Supply Checklist!
-
 You need to manage a supply inventory that:
 - Starts with initial equipment: "oxygen tank", "food pack", "space suit"
 - Gets updated with new equipment: "helmet" and "water bottle"
 - Has "food pack" removed from inventory
 - Shows the final inventory in alphabetical order
 - Displays the total count of items
-
 Your program should output the organized supply list and the total number of items.`,
 
       difficulty: 'Medium',
@@ -80,26 +78,22 @@ Your program should output the organized supply list and the total number of ite
       case_title: 'Astronaut Supply Checklist - Equipment Inventory System',
       // case_overview removed for final tasks (Case 6)
 
-      case_code: `Constraints:
+      case_code: `# Create initial supply list
+supplies = ["oxygen tank", "food pack", "space suit"]
 
-• The list must be named \`supplies\`
-• Starting items: ["oxygen tank", "food pack", "space suit"]
-• Items to add: "helmet", "water bottle"
-• Item to remove: "food pack"
-• Final output must show the sorted list and item count
-• Use list methods: .append(), .remove(), .sort()
-• Use len() function to count items
+# Add new items to the list
+supplies.append("helmet")
+supplies.append("water bottle")
 
-Expected Output:
-['helmet', 'oxygen tank', 'space suit', 'water bottle']
-4
+# Remove item no longer needed
+supplies.remove("food pack")
 
-Input Format:
-No input required (all values are hardcoded)
+# Sort the list alphabetically
+supplies.sort()
 
-Output Format:
-Line 1: Sorted list with square brackets and quotes
-Line 2: Total number of items (integer)`,
+# Display the final inventory
+print(supplies)
+print(len(supplies))`,
 
       case_explanation: `Create a list using square brackets. Use .append() to add items to the end. Use .remove() to delete the first occurrence of an item. Use .sort() to arrange items alphabetically. Use len() to count items. List methods modify the list in place. Print the list to display all items with brackets and quotes.`,
 

@@ -21,7 +21,8 @@ async function seedProblem225() {
       title: 'Creating a New File Safely',
       description: 'Learn to create files safely using x mode with exception handling to prevent overwriting.',
       difficulty: 'Medium',
-      question: `Try creating a file named "mylog.txt" using "x" mode (exclusive creation). Inside the file, write "Name: John Doe - Subject: Python Programming". Use try-except to handle FileExistsError. If the file is created successfully, print "File created successfully." If it already exists, print "File already exists."`,      sample_input: '',
+      question: `Read a filename and content from input (2 lines). Remove the file if it exists. Try creating the file using "x" mode (exclusive creation) and write the content. Use try-except to handle FileExistsError. If created successfully, print "File created successfully." If it already exists, print "File already exists."`,
+      sample_input: 'mylog.txt\nName: John Doe - Subject: Python Programming',
       sample_output: 'File created successfully.',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem225() {
 
     // Test cases for Problem 225
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2251,
         problem_id: 225,
-        input: '',
+        input: 'mylog.txt\nName: John Doe - Subject: Python Programming',
         expected_output: 'File created successfully.',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2252,
         problem_id: 225,
-        input: '',
+        input: 'data.txt\nTemperature: 25C - Status: Normal',
         expected_output: 'File created successfully.',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2253,
-        problem_id: 225,
-        input: '',
-        expected_output: 'File created successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2254,
-        problem_id: 225,
-        input: '',
-        expected_output: 'File created successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2255,
-        problem_id: 225,
-        input: '',
-        expected_output: 'File created successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2256,
-        problem_id: 225,
-        input: '',
-        expected_output: 'File created successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2257,
-        problem_id: 225,
-        input: '',
-        expected_output: 'File created successfully.',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

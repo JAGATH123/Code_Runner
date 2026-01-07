@@ -25,28 +25,55 @@ async function seedProblem35() {
 - Collects four supply item names from user input
 - Stores them in a list called supplies
 - Displays the total count of items in the inventory
-- Checks if the first requested item exists in the inventory (displays True/False)
-- Checks if the second requested item exists in the inventory (displays True/False)`,
+- Checks if the first requested item exists in the inventory
+- Checks if the second requested item exists in the inventory`,
       example_code: '# Write your code here\n',
       sample_input: 'fuel\noxygen\nwater\nfood\noxygen\nbattery',
       sample_output: '4\nTrue\nFalse',
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Create a list and store multiple values
+- Use len() function to count the number of items in a list
+- Use the 'in' operator to check if an item exists in a list
+- Understand that 'in' returns True or False (boolean values)
+- Print multiple results including count and membership checks`,
+
+      concepts: `- len() Function: Built-in function that returns the count of items in a list
+- Membership Testing: Using 'in' operator to check if a value exists in a list
+- Boolean Values: Understanding True and False as return values
+- List Properties: Checking list characteristics (length, contents)
+- in Operator: Syntax is "item in list" which returns True/False
+- Case Sensitivity: 'in' operator checks for exact matches`,
+
       metadata: {
         concepts: ['lists', 'len', 'membership', 'in-operator', 'final-task'],
         space_theme: true,
-        estimated_time_minutes: 12,
-        test_protocol: 'Students should use len() function and in operator to check list membership'
+        estimated_time_minutes: 12
       },
       // Case-specific content
       case_number: 5,
       case_title: 'Finding Length and Checking Membership',
       case_overview: `Use len() to count items and in to check if an item exists in the list.`,
-      case_code: `• The list must be named \`supplies\`
-• Collect exactly 4 supply item names from user input
-• Display the total count of items in the list
-• Collect 2 item names to check for membership
-• For each item, display True if it exists in the list, False otherwise`,
+      case_code: `# Create a list and collect 4 supply items
+supplies = []
+supplies.append(input())
+supplies.append(input())
+supplies.append(input())
+supplies.append(input())
+
+# Display the total count of items
+print(len(supplies))
+
+# Check if first item exists in the list
+item1 = input()
+print(item1 in supplies)
+
+# Check if second item exists in the list
+item2 = input()
+print(item2 in supplies)`,
       case_explanation: `len(list) returns the number of items in the list. "item" in list returns True if item exists, False otherwise. len() is a built-in function, not a method. The 'in' operator is case-sensitive.`,
 
       created_at: new Date(),
@@ -61,6 +88,7 @@ async function seedProblem35() {
         input: 'fuel\noxygen\nwater\nfood\noxygen\nbattery',
         expected_output: '4\nTrue\nFalse',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

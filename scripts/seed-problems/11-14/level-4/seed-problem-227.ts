@@ -21,7 +21,8 @@ async function seedProblem227() {
       title: 'Deleting a File Using os.remove()',
       description: 'Learn to delete files safely using os.remove() with exception handling for missing files.',
       difficulty: 'Medium',
-      question: `Create a file named "delete_me.txt" with any content. Then write code to delete it using os.remove(). Use try-except to handle FileNotFoundError. Print "delete_me.txt deleted successfully." if deletion succeeds. Print "File not found, cannot delete." if the file doesn't exist.`,      sample_input: '',
+      question: `Read a filename and content from input (2 lines). Create the file and write the content to it. Then delete it using os.remove(). Use try-except to handle FileNotFoundError. Print "[filename] deleted successfully." if deletion succeeds. Print "File not found, cannot delete." if the file doesn't exist.`,
+      sample_input: 'delete_me.txt\nTemporary data',
       sample_output: 'delete_me.txt deleted successfully.',
 
       age_group: '11-14',
@@ -58,63 +59,21 @@ async function seedProblem227() {
 
     // Test cases for Problem 227
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2271,
         problem_id: 227,
-        input: '',
+        input: 'delete_me.txt\nTemporary data',
         expected_output: 'delete_me.txt deleted successfully.',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2272,
         problem_id: 227,
-        input: '',
-        expected_output: 'delete_me.txt deleted successfully.',
+        input: 'temp.txt\nCache information',
+        expected_output: 'temp.txt deleted successfully.',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2273,
-        problem_id: 227,
-        input: '',
-        expected_output: 'delete_me.txt deleted successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2274,
-        problem_id: 227,
-        input: '',
-        expected_output: 'delete_me.txt deleted successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2275,
-        problem_id: 227,
-        input: '',
-        expected_output: 'delete_me.txt deleted successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2276,
-        problem_id: 227,
-        input: '',
-        expected_output: 'delete_me.txt deleted successfully.',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2277,
-        problem_id: 227,
-        input: '',
-        expected_output: 'delete_me.txt deleted successfully.',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

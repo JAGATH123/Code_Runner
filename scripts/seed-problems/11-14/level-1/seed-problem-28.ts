@@ -20,9 +20,8 @@ async function seedProblem28() {
       title: 'Multiple Conditions in Inner If',
       description: 'Learn to combine logical operators with nested if statements to evaluate multiple conditions within inner decision blocks.',
       difficulty: 'Easy',
-      tags: ['conditionals', 'nested-if', 'logical-operators', 'multiple-conditions'],
-      question: `Use input() to get temperature (convert to integer).
-Use input() to get pressure_stable (string: "True" or "False").
+      question: `Use input() to get temperature.
+Use input() to get pressure_stable.
 Check if temperature > 20.
 If true, print "Temperature acceptable."
 Inside that if block, check if pressure_stable == "True" AND temperature > 25.
@@ -31,31 +30,42 @@ If either false, print "Additional checks needed."`,
       example_code: '# Write your code here\n',
       sample_input: '30\nTrue',
       sample_output: 'Temperature acceptable.\nAll systems go for launch.',
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect temperature and pressure data
+- Convert temperature input to integer using int()
+- Use nested if statements for multi-level decisions
+- Use logical operator (and) to combine conditions in inner if
+- Use comparison operators (>, ==) to check conditions
+- Print appropriate messages based on nested conditions with multiple checks`,
+
+      concepts: `- Nested Conditionals with Logical Operators: Combining and operator with nested if
+- Multi-level Decisions: Making sequential decisions with additional checks
+- Logical AND Operator: Using 'and' to combine multiple conditions
+- Comparison Operators: Using > and == to compare values
+- Input/Output: Reading multiple user inputs and displaying results
+- Code Indentation: Understanding nested block structure`,
+
       metadata: {
         concepts: ['nested-if', 'logical-operators', 'multiple-conditions', 'and-operator'],
         space_theme: true,
-        estimated_time_minutes: 15,
-        test_protocol: 'Students should use nested if with AND operator to check multiple conditions'
+        estimated_time_minutes: 15
       },
+
       // Case-specific content
       case_number: 3,
       case_title: 'Multiple Conditions in Inner If',
-      case_overview: `Case 3: Multiple Conditions in Inner If
-
-Learn how to use logical operators (and, or) within nested if statements to check multiple conditions at the same time in your inner decision blocks.`,
-      case_explanation: `Outer if checks first condition. Inner if uses AND/OR to check multiple conditions together. Both conditions must be true for AND. At least one must be true for OR.`,
+      case_overview: `Learn how to use logical operators (and, or) within nested if statements to check multiple conditions at the same time in your inner decision blocks.`,
       case_code: `# Sample Example:
-fuel_level = int(input("Enter fuel level: "))
-engine_ready = input("Engine ready? (True/False): ")
+fuel_level = int(input())
+engine_ready = input()
 if fuel_level > 60:
     print("Fuel OK.")
     if engine_ready == "True" and fuel_level > 65:
-        print("Engine ready and fuel sufficient for launch.")
-
-# Now you try for our task`,
-      expected_output: 'Temperature acceptable.\nAll systems go for launch.',
+        print("Engine ready and fuel sufficient for launch.")`,
+      case_explanation: `Outer if checks first condition. Inner if uses AND/OR to check multiple conditions together. Both conditions must be true for AND. At least one must be true for OR.`,
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -67,6 +77,7 @@ if fuel_level > 60:
         input: '30\nTrue',
         expected_output: 'Temperature acceptable.\nAll systems go for launch.',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

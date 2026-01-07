@@ -21,8 +21,9 @@ async function seedProblem212() {
       title: 'Writing with write()',
       description: 'Learn to save single messages into files using the write() function for simple data storage.',
       difficulty: 'Easy',
-      question: `Create a file named "myinfo.txt" and write your name "John Doe" and your favorite subject "Python Programming" into it using write(). Write them as a single line separated by a space and a dash like this: "John Doe - Python Programming". Print "File created successfully" when done.`,      sample_input: '',
-      sample_output: 'File created successfully',
+      question: `Read a name and a favorite subject from input (two separate lines). Create a file named "myinfo.txt" and write them as a single line separated by a space and a dash (format: "Name - Subject"). Then read the file back and print its contents.`,
+      sample_input: 'John Doe\nPython Programming',
+      sample_output: 'John Doe - Python Programming\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -58,63 +59,21 @@ async function seedProblem212() {
 
     // Test cases for Problem 212
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2121,
         problem_id: 212,
-        input: '',
-        expected_output: 'File created successfully',
+        input: 'John Doe\nPython Programming',
+        expected_output: 'John Doe - Python Programming\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2122,
         problem_id: 212,
-        input: '',
-        expected_output: 'File created successfully',
+        input: 'Alice Smith\nMathematics',
+        expected_output: 'Alice Smith - Mathematics\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2123,
-        problem_id: 212,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2124,
-        problem_id: 212,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2125,
-        problem_id: 212,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2126,
-        problem_id: 212,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2127,
-        problem_id: 212,
-        input: '',
-        expected_output: 'File created successfully',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

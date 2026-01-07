@@ -21,29 +21,27 @@ async function seedProblem56() {
       title: 'Multi-System Decision Matrix',
       description: `First engine power-up is NOVA-12's most dangerous moment. The crew needs an emergency decision system to prevent catastrophic failures.
 
-Astra: *"Build the Multi-System Decision Matrix. Check fuel, oxygen, engine, weather, and battery in sequence—all must pass for launch approval. Each parameter acts as a gate. If any single check fails, identify the specific issue immediately."*
+Astra: "Build the Multi-System Decision Matrix. Check fuel, oxygen, engine, weather, and battery in sequence—all must pass for launch approval. Each parameter acts as a gate. If any single check fails, identify the specific issue immediately."
 
 Create the system that validates all critical parameters before engine fire.`,
 
-      question: `Commander, it's time to build the Multi-System Decision Matrix!
-
-Your program should check the following systems in this exact order:
-1. Ask for fuel level (integer)
+      question: `Your program should check the following systems in this exact order:
+1. Ask for fuel level
 2. Check if fuel > 60
-   - If fuel fails, print: \`"Launch denied: Insufficient fuel"\`
-3. If fuel passes, ask for oxygen level (integer)
+   - If fuel fails, print: \"Launch denied: Insufficient fuel"\
+3. If fuel passes, ask for oxygen level
 4. Check if oxygen > 70
-   - If oxygen fails, print: \`"Launch denied: Low oxygen"\`
-5. If oxygen passes, ask for engine_ready (string: "True" or "False")
+   - If oxygen fails, print: \"Launch denied: Low oxygen"\
+5. If oxygen passes, ask for engine_ready
 6. Check if engine_ready == "True"
-   - If engine fails, print: \`"Launch denied: Engine not ready"\`
-7. If engine passes, ask for weather_clear (string: "True" or "False")
+   - If engine fails, print: \"Launch denied: Engine not ready"\
+7. If engine passes, ask for weather_clear
 8. Check if weather_clear == "True"
-   - If weather fails, print: \`"Launch denied: Bad weather"\`
-9. If weather passes, ask for battery level (integer)
+   - If weather fails, print: \"Launch denied: Bad weather"\
+9. If weather passes, ask for battery level
 10. Check if battery > 50
-    - If battery fails, print: \`"Launch denied: Low battery"\`
-11. If ALL checks pass, print: \`"Launch Approved"\``,
+    - If battery fails, print: \"Launch denied: Low battery"\
+11. If ALL checks pass, print: \"Launch Approved"\"`,
 
       difficulty: 'Easy',
       example_code: `# Multi-System Decision Matrix
@@ -88,7 +86,57 @@ True
       case_number: 6,
       case_title: 'Multi-System Decision Matrix - Launch Safety Gateway',
       // case_overview removed for final tasks (Case 6)
-      case_explanation: `Check fuel first. Only if fuel passes, ask for and check oxygen. Only if oxygen passes, ask for and check engine. Continue this pattern for all systems. This is called "early exit" - we stop as soon as something fails. Each level of nesting creates a deeper requirement. Use int(input()) for numbers (fuel, oxygen, battery) and input() for strings (engine_ready, weather_clear). String comparisons need quotes: == "True" not == True. Each else block must print the specific failure message. Only the innermost successful check prints "Launch Approved".`,
+      case_explanation: `fuel = int(input())
+if fuel > 60:
+    oxygen = int(input())
+    if oxygen > 70:
+        engine_ready = input()
+        if engine_ready == "True":
+            weather_clear = input()
+            if weather_clear == "True":
+                battery = int(input())
+                if battery > 50:
+                    print("Launch Approved")
+                else:
+                    print("Launch denied: Low battery")
+            else:
+                print("Launch denied: Bad weather")
+        else:
+            print("Launch denied: Engine not ready")
+    else:
+        print("Launch denied: Low oxygen")
+else:
+    print("Launch denied: Insufficient fuel")`,
+
+      case_code: `# Example: Multi-System Decision Matrix
+# Get fuel level
+fuel = int(input())
+# Check fuel first
+if fuel > 60:
+    # Fuel passed, check oxygen
+    oxygen = int(input())
+    if oxygen > 70:
+        # Oxygen passed, check engine
+        engine_ready = input()
+        if engine_ready == "True":
+            # Engine passed, check weather
+            weather_clear = input()
+            if weather_clear == "True":
+                # Weather passed, check battery
+                battery = int(input())
+                if battery > 50:
+                    # All checks passed!
+                    print("Launch Approved")
+                else:
+                    print("Launch denied: Low battery")
+            else:
+                print("Launch denied: Bad weather")
+        else:
+            print("Launch denied: Engine not ready")
+    else:
+        print("Launch denied: Low oxygen")
+else:
+    print("Launch denied: Insufficient fuel")`,
 
       created_at: new Date(),
       updated_at: new Date()

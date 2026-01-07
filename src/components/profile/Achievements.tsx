@@ -1,15 +1,14 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Trophy, 
-  Star, 
-  Crown, 
-  Shield, 
-  Award, 
-  Target, 
-  Zap, 
+import {
+  Trophy,
+  Star,
+  Crown,
+  Shield,
+  Award,
+  Target,
+  Zap,
   Clock,
   Code,
   TrendingUp,
@@ -109,31 +108,31 @@ export function Achievements() {
 
   const getRarityColor = (rarity: Achievement['rarity']) => {
     switch (rarity) {
-      case 'COMMON': return 'text-gray-400 border-gray-400/50 bg-gray-400/10';
-      case 'RARE': return 'text-neon-cyan border-neon-cyan/50 bg-neon-cyan/10';
-      case 'EPIC': return 'text-neon-purple border-neon-purple/50 bg-neon-purple/10';
-      case 'LEGENDARY': return 'text-plasma-pink border-plasma-pink/50 bg-plasma-pink/10';
-      default: return 'text-primary border-primary/50 bg-primary/10';
+      case 'COMMON': return 'text-gray-600 border-gray-300 bg-gray-50';
+      case 'RARE': return 'text-blue-600 border-blue-300 bg-blue-50';
+      case 'EPIC': return 'text-purple-600 border-purple-300 bg-purple-50';
+      case 'LEGENDARY': return 'text-pink-600 border-pink-300 bg-pink-50';
+      default: return 'text-gray-700 border-gray-300 bg-gray-50';
     }
   };
 
   const getRarityIconColor = (rarity: Achievement['rarity']) => {
     switch (rarity) {
-      case 'COMMON': return 'text-gray-400';
-      case 'RARE': return 'text-neon-cyan';
-      case 'EPIC': return 'text-neon-purple';
-      case 'LEGENDARY': return 'text-plasma-pink';
-      default: return 'text-primary';
+      case 'COMMON': return 'text-gray-600';
+      case 'RARE': return 'text-blue-600';
+      case 'EPIC': return 'text-purple-600';
+      case 'LEGENDARY': return 'text-pink-600';
+      default: return 'text-gray-700';
     }
   };
 
   const getRarityGlow = (rarity: Achievement['rarity']) => {
     switch (rarity) {
-      case 'COMMON': return 'hover:shadow-lg hover:shadow-gray-400/20';
-      case 'RARE': return 'hover:shadow-lg hover:shadow-neon-cyan/30 glow-border-sm';
-      case 'EPIC': return 'hover:shadow-lg hover:shadow-neon-purple/30 glow-border';
-      case 'LEGENDARY': return 'hover:shadow-xl hover:shadow-plasma-pink/40 glow-border shadow-lg shadow-plasma-pink/20';
-      default: return 'hover:shadow-lg';
+      case 'COMMON': return 'hover:shadow-md hover:border-gray-400';
+      case 'RARE': return 'hover:shadow-md hover:border-blue-400';
+      case 'EPIC': return 'hover:shadow-md hover:border-purple-400';
+      case 'LEGENDARY': return 'hover:shadow-lg hover:border-pink-400';
+      default: return 'hover:shadow-md';
     }
   };
 
@@ -164,68 +163,58 @@ export function Achievements() {
   }, {} as Record<Achievement['rarity'], number>);
 
   return (
-    <Card className="mission-card enhanced-hologram cyber-card glow-border">
-      <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-plasma-pink/60"></div>
-      <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-plasma-pink/60"></div>
-      <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-plasma-pink/60"></div>
-      <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-plasma-pink/60"></div>
+    <div className="w-full relative">
+      <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
+        {/* Header */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600" />
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900">Achievements</h3>
+        </div>
 
-      <CardHeader>
-        <CardTitle className="text-xl font-space font-bold text-primary flex items-center gap-2">
-          <Trophy className="w-5 h-5 text-plasma-pink" />
-          ACHIEVEMENTS
-        </CardTitle>
-      </CardHeader>
-
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-2 gap-2">
-          <div className="text-center p-2 rounded bg-card/50 border border-plasma-pink/30">
-            <div className="text-lg font-space font-bold text-plasma-pink">{achievements.length}</div>
-            <div className="text-xs font-space text-muted-foreground">UNLOCKED</div>
+        {/* Stats Overview */}
+        <div className="grid grid-cols-2 gap-3 md:gap-4">
+          <div className="p-3 md:p-4 rounded-lg bg-gradient-to-br from-yellow-50 to-yellow-100/50 border border-yellow-200">
+            <div className="text-xl md:text-2xl font-bold text-yellow-600">{achievements.length}</div>
+            <div className="text-[10px] md:text-xs text-yellow-700 mt-1">Unlocked</div>
           </div>
-          <div className="text-center p-2 rounded bg-card/50 border border-neon-purple/30">
-            <div className="text-lg font-space font-bold text-neon-purple">{totalPoints}</div>
-            <div className="text-xs font-space text-muted-foreground">POINTS</div>
+          <div className="p-3 md:p-4 rounded-lg bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-200">
+            <div className="text-xl md:text-2xl font-bold text-purple-600">{totalPoints}</div>
+            <div className="text-[10px] md:text-xs text-purple-700 mt-1">Points</div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {achievements.map((achievement) => (
             <div
               key={achievement.id}
-              className={`p-3 rounded-lg bg-card/30 border cursor-pointer transition-all duration-300 ${
-                getRarityColor(achievement.rarity).includes('border-') 
-                  ? getRarityColor(achievement.rarity).split(' ').find(c => c.includes('border-'))
-                  : 'border-primary/30'
-              } ${getRarityGlow(achievement.rarity)} hover:scale-105 ${
-                selectedAchievement?.id === achievement.id ? 'ring-2 ring-neon-cyan scale-105' : ''
+              className={`relative p-3 md:p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
+                getRarityColor(achievement.rarity)
+              } ${getRarityGlow(achievement.rarity)} ${
+                selectedAchievement?.id === achievement.id ? 'ring-2 ring-blue-500 scale-105' : 'hover:scale-105'
               }`}
               onClick={() => setSelectedAchievement(
                 selectedAchievement?.id === achievement.id ? null : achievement
               )}
             >
-              <div className="flex flex-col items-center text-center space-y-2">
+              <div className="flex flex-col items-center text-center space-y-2 md:space-y-3">
                 <div className="relative">
                   {getAchievementIcon(achievement.icon, achievement.rarity)}
-                  {achievement.rarity === 'LEGENDARY' && (
-                    <div className="absolute inset-0 animate-pulse rounded-full bg-plasma-pink/20"></div>
-                  )}
                 </div>
-                
-                <div>
-                  <div className="text-sm font-space font-semibold text-primary mb-1">
+
+                <div className="w-full">
+                  <div className="text-sm md:text-base font-semibold text-gray-900 mb-1 md:mb-2">
                     {achievement.name}
                   </div>
-                  
-                  <div className="flex items-center justify-center gap-1 mb-1">
-                    <Badge className={`font-space text-xs ${getRarityColor(achievement.rarity)}`}>
+
+                  <div className="flex items-center justify-center gap-1 mb-1 md:mb-2">
+                    <Badge className={`text-[10px] md:text-xs ${getRarityColor(achievement.rarity)}`}>
                       {achievement.rarity}
                     </Badge>
                   </div>
-                  
-                  <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
+
+                  <div className="flex items-center justify-center gap-1 text-[10px] md:text-xs text-gray-600">
                     {getCategoryIcon(achievement.category)}
-                    <span className="font-mono">{achievement.category}</span>
+                    <span>{achievement.category}</span>
                   </div>
                 </div>
               </div>
@@ -234,55 +223,38 @@ export function Achievements() {
         </div>
 
         {selectedAchievement && (
-          <div className="mt-4 pt-4 border-t border-primary/20">
-            <div className={`bg-card/50 border rounded-lg p-3 ${
-              getRarityColor(selectedAchievement.rarity).includes('border-')
-                ? getRarityColor(selectedAchievement.rarity).split(' ').find(c => c.includes('border-'))
-                : 'border-primary/30'
-            }`}>
-              <div className="flex items-center gap-3 mb-2">
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className={`relative rounded-lg border p-3 md:p-4 ${getRarityColor(selectedAchievement.rarity)}`}>
+              <div className="flex items-start gap-3 mb-3">
                 {getAchievementIcon(selectedAchievement.icon, selectedAchievement.rarity)}
-                <div>
-                  <h3 className="font-space font-bold text-primary">{selectedAchievement.name}</h3>
-                  <p className="text-sm text-muted-foreground">{selectedAchievement.description}</p>
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 text-sm md:text-base">{selectedAchievement.name}</h3>
+                  <p className="text-xs md:text-sm text-gray-600 mt-1">{selectedAchievement.description}</p>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between text-xs">
+
+              <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] md:text-xs">
                 <div className="flex items-center gap-2">
-                  <Badge className={`font-space ${getRarityColor(selectedAchievement.rarity)}`}>
+                  <Badge className={`${getRarityColor(selectedAchievement.rarity)}`}>
                     {selectedAchievement.rarity}
                   </Badge>
-                  <div className="flex items-center gap-1 text-muted-foreground">
+                  <div className="flex items-center gap-1 text-gray-600">
                     {getCategoryIcon(selectedAchievement.category)}
-                    <span className="font-mono">{selectedAchievement.category}</span>
+                    <span>{selectedAchievement.category}</span>
                   </div>
                 </div>
-                <span className="font-mono text-muted-foreground">
+                <span className="text-gray-600">
                   {selectedAchievement.unlockedAt.toLocaleDateString('en-US', {
                     month: 'short',
-                    day: 'numeric'
+                    day: 'numeric',
+                    year: 'numeric'
                   })}
                 </span>
               </div>
             </div>
           </div>
         )}
-
-        <div className="mt-4 pt-4 border-t border-primary/20">
-          <div className="text-xs font-space text-muted-foreground mb-2">RARITY BREAKDOWN</div>
-          <div className="space-y-1">
-            {Object.entries(rarityCount).map(([rarity, count]) => (
-              <div key={rarity} className="flex items-center justify-between text-xs">
-                <span className={`font-space ${getRarityIconColor(rarity as Achievement['rarity'])}`}>
-                  {rarity}
-                </span>
-                <span className="font-mono text-primary">{count}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

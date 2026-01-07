@@ -29,23 +29,44 @@ async function seedProblem31() {
       example_code: '# Write your code here\n',
       sample_input: 'Mercury\nVenus\nEarth',
       sample_output: 'Mercury\nEarth',
+
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Create a list using square brackets []
+- Store multiple values in a list variable
+- Access list elements using index numbers
+- Understand zero-based indexing (first element is index 0)
+- Print specific elements from a list`,
+
+      concepts: `- Lists: Ordered collections that store multiple values
+- List Creation: Using square brackets [] to create lists
+- Zero-Based Indexing: First element is at index 0, second at index 1, etc.
+- List Access: Using list_name[index] to get specific elements
+- Index Numbers: Positions start at 0, not 1
+- Data Structures: Organizing related data together`,
+
       metadata: {
         concepts: ['lists', 'indexing', 'data-structures', 'list-access'],
         space_theme: true,
-        estimated_time_minutes: 10,
-        test_protocol: 'Students should create a list and access elements by index'
+        estimated_time_minutes: 10
       },
       // Case-specific content
       case_number: 1,
       case_title: 'Creating and Accessing List Elements',
       case_overview: `Learn how to create a list and access its items using index numbers.`,
-      case_code: `• The list must be named \`planets\`
-• Collect exactly 3 planet names from user input
-• Access and print the element at index 0
-• Access and print the element at index 2
-• Each output should be on a separate line`,
+      case_code: `# Create a list and collect 3 planet names
+planets = []
+planets.append(input())
+planets.append(input())
+planets.append(input())
+
+# Access and print first planet (index 0)
+print(planets[0])
+
+# Access and print third planet (index 2)
+print(planets[2])`,
       case_explanation: `Lists use square brackets []. Index starts from 0, so planets[0] is the first item. planets[2] gives the third item. Negative indexing works too: planets[-1] is the last item.`,
 
       created_at: new Date(),
@@ -60,6 +81,7 @@ async function seedProblem31() {
         input: 'Mercury\nVenus\nEarth',
         expected_output: 'Mercury\nEarth',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

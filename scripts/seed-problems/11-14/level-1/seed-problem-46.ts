@@ -29,22 +29,45 @@ Inside the loop, print "Step " followed by the current number.`,
       sample_output: 'Step 0\nStep 1\nStep 2\nStep 3',
       age_group: '11-14',
       level_number: 1,
+
+      objectives: `- Use input() to collect user data
+- Convert string input to integers using int()
+- Use for loops to iterate through sequences
+- Use range(n) to generate numbers from 0 to n-1
+- Print formatted output with variables
+- Understand zero-based counting in Python`,
+
+      concepts: `- For Loops: Iterating through sequences with for loop syntax
+- range() Function: Generating number sequences from 0 to n-1
+- Zero-Based Counting: Understanding that range(n) starts at 0
+- Loop Variables: Using the loop counter in print statements
+- String Formatting: Creating output with text and numbers
+- Stop Value Exclusion: range(n) excludes n itself`,
+
       metadata: {
         concepts: ['range', 'for-loop', 'loops', 'basics', 'iteration'],
         space_theme: true,
-        estimated_time_minutes: 10,
-        test_protocol: 'Students should use range(n) with for loop starting from 0'
+        estimated_time_minutes: 10
       },
       // Case-specific content
       case_number: 1,
       case_title: 'Basic Range Loop',
       case_overview: `Use range() to generate a sequence of numbers for iteration.`,
-      case_code: `# Sample Example:
-for i in range(5):
-    print("Mission Check", i)
 
-# Now you try this for our task`,
-      case_explanation: `range(n) generates numbers from 0 to n-1. range(5) produces: 0, 1, 2, 3, 4. Always starts from 0 by default. Excludes the stop value. Use input() to get the number. Convert to integer: n = int(input()). Use: for i in range(n):. Inside loop (indented): print("Step", i). Make sure to use exact output format with space after "Step".`,
+      case_code: `# Get the number from user
+n = int(input())
+
+# Loop from 0 to n-1
+for i in range(n):
+    print("Step", i)`,
+
+      case_explanation: `- \`range(n)\` generates numbers from 0 to n-1
+- \`range(5)\` produces: 0, 1, 2, 3, 4 (always starts from 0 by default)
+- Excludes the stop value (n is not included)
+- Use \`n = int(input())\` to get and convert the number
+- Use \`for i in range(n):\` to iterate
+- Inside loop (indented): \`print("Step", i)\`
+- Make sure to use exact output format with space after "Step"`,
 
       created_at: new Date(),
       updated_at: new Date()
@@ -58,6 +81,7 @@ for i in range(5):
         input: '4',
         expected_output: 'Step 0\nStep 1\nStep 2\nStep 3',
         is_hidden: false,
+        is_sample: true,
         weight: 1.0,
         created_at: new Date()
       },

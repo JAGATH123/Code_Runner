@@ -21,13 +21,9 @@ async function seedProblem214() {
       title: 'Reading Everything with read()',
       description: 'Learn to read entire file contents at once using the read() function for complete data retrieval.',
       difficulty: 'Easy',
-      question: `Open the file "wishlist.txt" that contains three learning goals on separate lines:
-Learn Machine Learning
-Master Data Structures
-Build Real Projects
-
-Print the full content using read(). Display all lines as they appear in the file.`,      sample_input: '',
-      sample_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
+      question: `Read 3 items from input (one per line). Write them to "wishlist.txt" with newlines. Then read the entire file content using read() and print it.`,
+      sample_input: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
+      sample_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects\n',
 
       age_group: '11-14',
       level_number: 4,
@@ -63,63 +59,21 @@ Print the full content using read(). Display all lines as they appear in the fil
 
     // Test cases for Problem 214
     const testCases = [
-      // Visible test cases
       {
         test_case_id: 2141,
         problem_id: 214,
-        input: '',
-        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
+        input: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
+        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects\n',
         is_hidden: false,
-        weight: 10
+        weight: 50
       },
       {
         test_case_id: 2142,
         problem_id: 214,
-        input: '',
-        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
+        input: 'Practice Coding Daily\nRead Tech Books\nJoin Hackathons',
+        expected_output: 'Practice Coding Daily\nRead Tech Books\nJoin Hackathons\n',
         is_hidden: false,
-        weight: 10
-      },
-      // Hidden test cases
-      {
-        test_case_id: 2143,
-        problem_id: 214,
-        input: '',
-        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2144,
-        problem_id: 214,
-        input: '',
-        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2145,
-        problem_id: 214,
-        input: '',
-        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2146,
-        problem_id: 214,
-        input: '',
-        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
-        is_hidden: true,
-        weight: 16
-      },
-      {
-        test_case_id: 2147,
-        problem_id: 214,
-        input: '',
-        expected_output: 'Learn Machine Learning\nMaster Data Structures\nBuild Real Projects',
-        is_hidden: true,
-        weight: 16
+        weight: 50
       }
     ];
 

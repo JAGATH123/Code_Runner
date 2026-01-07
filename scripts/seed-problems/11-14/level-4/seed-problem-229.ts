@@ -21,19 +21,20 @@ async function seedProblem229() {
       title: 'Galactic Data Command Center – Navigating the Cosmic Archives',
       description: 'Build a comprehensive file management system using OS module and exception handling for mission-critical operations.',
       difficulty: 'Hard',
-      question: `Design the Galactic Data Command Center—a secure system to manage mission files, diagnostics, and data logs using the OS module and exception handling.
+      question: `Read folder name, filename, and 3 updates from input (5 lines). Build file management system:
 
-Create a folder named "Command_Center" using os.mkdir() if it doesn't exist (check with os.path.exists()). Print "Command Center created." or "Folder already exists."
+1. Create folder with os.mkdir() if it doesn't exist (check os.path.exists()). Print "Command Center created." or "Folder already exists."
 
-Inside Command_Center, create a file named "diagnostics.txt" and use writelines() to write three system updates: "Engine check complete\\n", "Fuel levels optimal\\n", "Navigation system aligned\\n". Print "Mission entries added."
+2. Inside folder, create file using writelines() with the 3 updates (add \\n to each). Print "Mission entries added."
 
-Use try-except to safely read and print the content of "Command_Center/diagnostics.txt". If FileNotFoundError occurs, print "File not found."
+3. Read and print file content with try-except. If FileNotFoundError, print "File not found."
 
-Rename "diagnostics.txt" to "diagnostics_archive.txt" using os.rename() with try-except error handling. Print "File renamed successfully."
+4. Rename file to add "_archive" before .txt using os.rename(). Print "File renamed successfully."
 
-Append the text "Emergency alert activated\\n" to "diagnostics_archive.txt". Print "Update saved!"
+5. Append "Emergency alert activated\\n" to renamed file. Print "Update saved!"
 
-Try to delete "Command_Center/temp_log.txt" using os.remove() with try-except. If successful, print "Temp log deleted." If FileNotFoundError, print "Temp log not found."`,      sample_input: '',
+6. Try deleting "[folder]/temp_log.txt" with os.remove() and try-except. Print "Temp log deleted." or "Temp log not found."`,
+      sample_input: 'Command_Center\ndiagnostics.txt\nEngine check complete\nFuel levels optimal\nNavigation system aligned',
       sample_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
 
       age_group: '11-14',
@@ -68,65 +69,23 @@ Try to delete "Command_Center/temp_log.txt" using os.remove() with try-except. I
     const problemResult = await problemsCollection.insertOne(problem229);
     console.log('Problem 229 inserted');
 
-    // Test cases for Problem 229 (7 test cases)
+    // Test cases for Problem 229
     const testCases = [
-      // Visible test case
       {
         test_case_id: 2291,
         problem_id: 229,
-        input: '',
+        input: 'Command_Center\ndiagnostics.txt\nEngine check complete\nFuel levels optimal\nNavigation system aligned',
         expected_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
         is_hidden: false,
-        weight: 15
+        weight: 50
       },
-      // Hidden test cases
       {
         test_case_id: 2292,
         problem_id: 229,
-        input: '',
-        expected_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2293,
-        problem_id: 229,
-        input: '',
-        expected_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2294,
-        problem_id: 229,
-        input: '',
-        expected_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2295,
-        problem_id: 229,
-        input: '',
-        expected_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
-        is_hidden: true,
-        weight: 10
-      },
-      {
-        test_case_id: 2296,
-        problem_id: 229,
-        input: '',
-        expected_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
-        is_hidden: true,
-        weight: 15
-      },
-      {
-        test_case_id: 2297,
-        problem_id: 229,
-        input: '',
-        expected_output: 'Command Center created.\nMission entries added.\nEngine check complete\nFuel levels optimal\nNavigation system aligned\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
-        is_hidden: true,
-        weight: 15
+        input: 'Mission_Hub\nstatus.txt\nShields activated\nCrew ready\nLaunch sequence initiated',
+        expected_output: 'Command Center created.\nMission entries added.\nShields activated\nCrew ready\nLaunch sequence initiated\nFile renamed successfully.\nUpdate saved!\nTemp log not found.',
+        is_hidden: false,
+        weight: 50
       }
     ];
 

@@ -39,6 +39,13 @@ const difficultyColor: { [key in Problem['difficulty']]: string } = {
 };
 
 export function CompilerUI({ problem }: CompilerUIProps) {
+  console.log('CompilerUI received problem:', {
+    problem_id: problem.problem_id,
+    title: problem.title,
+    has_case_code: !!problem.case_code,
+    case_code_length: problem.case_code?.length || 0
+  });
+
   const [code, setCode] = useState<string>(problem.compiler_comment || '# Write your code here\n');
   const [customInput, setCustomInput] = useState<string>(problem.sample_input);
   const [result, setResult] = useState<ExecutionResult>({
@@ -636,8 +643,8 @@ export function CompilerUI({ problem }: CompilerUIProps) {
               </details>
             )}
 
-            {/* Code Example (Hidden for final tasks - case_number 6) */}
-            {problem.case_code && problem.case_number !== 6 && (
+            {/* Code Example */}
+            {problem.case_code && (
               <details className="group rounded-lg border border-slate-200 dark:border-slate-700/30 bg-slate-50/50 dark:bg-slate-900/10 overflow-hidden shadow-sm">
                 <summary className="cursor-pointer p-4 flex items-center justify-between hover:bg-slate-100/50 dark:hover:bg-slate-900/20 transition-colors">
                   <div className="flex items-center gap-2">
@@ -850,8 +857,8 @@ export function CompilerUI({ problem }: CompilerUIProps) {
             </div>
           </div>
           <div className="p-4 border-t border-primary/20 bg-card/20">
-            {/* Image Upload Section for Pygame - Only show if compiler_comment exists */}
-            {problem.compiler_comment && (
+            {/* Image Upload Section for Pygame - Only show if compiler_comment exists and not problem 181 or 198 */}
+            {problem.compiler_comment && problem.problem_id !== 181 && problem.problem_id !== 198 && (
               <div className="mb-4">
                 <label className="block text-xs font-space font-bold text-foreground mb-2">
                   Upload Images (for Pygame - .png, .jpg)
