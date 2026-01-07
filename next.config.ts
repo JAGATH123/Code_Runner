@@ -59,6 +59,29 @@ const nextConfig: NextConfig = {
       };
     }
 
+    // Optimize Three.js bundle by code splitting
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        ...config.optimization.splitChunks,
+        cacheGroups: {
+          ...config.optimization.splitChunks?.cacheGroups,
+          threejs: {
+            test: /[\\/]node_modules[\\/]three[\\/]/,
+            name: 'threejs',
+            chunks: 'all',
+            priority: 30,
+          },
+          webgl: {
+            test: /[\\/]src[\\/]components[\\/](SpaceWebGL|FuturisticWebGL|RSIStarMap)\.tsx$/,
+            name: 'webgl-components',
+            chunks: 'all',
+            priority: 20,
+          }
+        }
+      }
+    };
+
     return config;
   },
 };
